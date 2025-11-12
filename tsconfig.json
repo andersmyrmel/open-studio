@@ -19,9 +19,22 @@
       }
     ],
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "types": ["./src/types"],
+      "types/*": ["./src/types/*"],
+      "data/*": ["./src/data/*"],
+      "lib/*": ["./src/lib/*"],
+      "hooks/*": ["./src/hooks/*"],
+      "components/*": ["./src/components/*"],
+      "state/*": ["./src/state/*"],
+      "ui-patterns": ["./packages/ui-patterns/index.tsx"],
+      "ui-patterns/*": ["./packages/ui-patterns/src/*"],
+      "ui": ["./packages/ui/index.tsx"],
+      "ui/*": ["./packages/ui/src/*"],
+      "common": ["./packages/shared-data/index.ts"],
+      "common/*": ["./packages/shared-data/*"]
     }
   },
-  "include": ["next-env.d.ts", "app/**/*.ts", "app/**/*.tsx", "src/**/*.ts", "src/**/*.tsx", ".next/types/**/*.ts"],
-  "exclude": ["node_modules", "apps/**/*", "packages/**/*", "blocks/**/*", "docker/**/*", "e2e/**/*", "examples/**/*", "internal/**/*", "tests/**/*"]
+  "include": ["next-env.d.ts", "app/**/*.ts", "app/**/*.tsx", "src/**/*.ts", "src/**/*.tsx", "packages/**/*.ts", "packages/**/*.tsx", ".next/types/**/*.ts"],
+  "exclude": ["node_modules"]
 }
