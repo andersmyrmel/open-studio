@@ -1,0 +1,38 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-default: 210 10% 5%;
+  --foreground-light: 210 10% 20%;
+  --foreground-lighter: 210 10% 40%;
+  --foreground-muted: 210 10% 60%;
+
+  --background-default: 0 0% 100%;
+  --background-surface-100: 210 20% 98%;
+  --background-surface-200: 210 20% 95%;
+
+  --border-default: 210 20% 90%;
+  --border-muted: 210 20% 95%;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-default: 210 10% 95%;
+    --foreground-light: 210 10% 80%;
+    --foreground-lighter: 210 10% 60%;
+    --foreground-muted: 210 10% 40%;
+
+    --background-default: 210 10% 5%;
+    --background-surface-100: 210 10% 8%;
+    --background-surface-200: 210 10% 12%;
+
+    --border-default: 210 20% 20%;
+    --border-muted: 210 20% 15%;
+  }
+}
+
+body {
+  color: hsl(var(--foreground-default));
+  background: hsl(var(--background-default));
+}

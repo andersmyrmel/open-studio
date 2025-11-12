@@ -1,0 +1,77 @@
+# Docker Compose configuration for Open-Studio
+# A lightweight, self-hosted PostgreSQL UI
+
+version: '3.8'
+
+services:
+  open-studio:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: open-studio
+    ports:
+      - "${HOST_PORT:-8080}:3000"
+    environment:
+      # PostgreSQL connection string
+      # Format: postgresql://username:password@host:port/database
+      - DATABASE_URL=${DATABASE_URL}
+
+      # Application port (internal)
+      - PORT=3000
+
+      # Node environment
+      - NODE_ENV=production
+
+      # Disable Next.js telemetry
+      - NEXT_TELEMETRY_DISABLED=1
+
+    # Restart policy
+    restart: unless-stopped
+
+    # Health check
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost:3000"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+    # Resource limits (optional, uncomment to enable)
+    # deploy:
+    #   resources:
+    #     limits:
+    #       cpus: '1'
+    #       memory: 512M
+    #     reservations:
+    #       cpus: '0.5'
+    #       memory: 256M
+
+    # Logging configuration
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+# Optional: Include a PostgreSQL database for testing
+# Uncomment the section below to run a local PostgreSQL instance alongside Open-Studio
+
+  # postgres:
+  #   image: postgres:16-alpine
+  #   container_name: open-studio-postgres
+  #   environment:
+  #     - POSTGRES_USER=postgres
+  #     - POSTGRES_PASSWORD=postgres
+  #     - POSTGRES_DB=testdb
+  #   ports:
+  #     - "5432:5432"
+  #   volumes:
+  #     - postgres-data:/var/lib/postgresql/data
+  #   healthcheck:
+  #     test: ["CMD-SHELL", "pg_isready -U postgres"]
+  #     interval: 10s
+  #     timeout: 5s
+  #     retries: 5
+
+# volumes:
+#   postgres-data:

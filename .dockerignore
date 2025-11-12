@@ -1,0 +1,21 @@
+# Git and CI
+.git
+.github
+
+# Dependencies
+**/node_modules
+
+# Build outputs
+**/.next
+.vercel
+
+# Environment files
+**/.env.*
+!.env.example
+
+# TypeScript
+tsconfig.tsbuildinfo
+
+# Docker
+.dockerignore
+Dockerfile
