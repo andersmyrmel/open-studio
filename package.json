@@ -86,7 +86,8 @@
     "cmdk": "1.1.1",
     "vaul": "0.9.9",
     "openapi-fetch": "0.12.5",
-    "@supabase/postgres-meta": "0.93.1"
+    "@supabase/postgres-meta": "0.93.1",
+    "path-to-regexp": "6.2.1"
   },
   "devDependencies": {
     "tailwindcss": "3.4.1",
