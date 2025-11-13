@@ -9,7 +9,7 @@ import {
   type PropsWithChildren,
   type RefObject,
 } from 'react'
-import styleHandler from '../../lib/theme/styleHandler'
+import styleHandler from 'lib/theme/styleHandler'
 
 export interface TabsProps {
   type?: 'pills' | 'underlined' | 'cards' | 'rounded-pills'

@@ -1,7 +1,7 @@
 'use client'
 
 import React, { forwardRef, useEffect } from 'react'
-import styleHandler from '../../lib/theme/styleHandler'
+import styleHandler from 'lib/theme/styleHandler'
 import { cn } from '../../lib/utils/cn'
 import { Button, ButtonVariantProps } from '../Button/Button'
 import {

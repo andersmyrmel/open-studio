@@ -4,7 +4,7 @@ import * as RadixAccordion from '@radix-ui/react-accordion'
 import React, { createContext, useContext, useState } from 'react'
 
 import { ChevronDown } from 'lucide-react'
-import styleHandler from '../../lib/theme/styleHandler'
+import styleHandler from 'lib/theme/styleHandler'
 
 type Type = 'default' | 'bordered'
 type Size = 'tiny' | 'small' | 'medium' | 'large' | 'xlarge'

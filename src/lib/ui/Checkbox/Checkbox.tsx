@@ -3,7 +3,7 @@
 import React from 'react'
 
 import { FormLayout } from '../../lib/Layout/FormLayout/FormLayout'
-import styleHandler from '../../lib/theme/styleHandler'
+import styleHandler from 'lib/theme/styleHandler'
 import { useFormContext } from '../Form/FormContext'
 import CheckboxStyles from './Checkbox.module.css'
 import { CheckboxContext } from './CheckboxContext'

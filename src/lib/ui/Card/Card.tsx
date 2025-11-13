@@ -1,6 +1,6 @@
 import React from 'react'
 
-import styleHandler from '../../lib/theme/styleHandler'
+import styleHandler from 'lib/theme/styleHandler'
 import Typography from '../Typography'
 
 interface CardProps {

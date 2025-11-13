@@ -32,7 +32,9 @@
       "common/*": ["./lib/common/*"],
       "@supabase/shared-types/*": ["./@supabase/shared-types/*"],
       "@supabase/pg-meta": ["./@supabase/pg-meta"],
-      "@supabase/pg-meta/*": ["./@supabase/pg-meta/*"]
+      "@supabase/pg-meta/*": ["./@supabase/pg-meta/*"],
+      "@sentry/nextjs": ["./@sentry/nextjs"],
+      "api-types": ["./api-types"]
     }
   },
   "include": ["next-env.d.ts", "app/**/*.ts", "app/**/*.tsx", "src/**/*.ts", "src/**/*.tsx", ".next/types/**/*.ts"],
