@@ -27,6 +27,7 @@
       "hooks/*": ["./hooks/*"],
       "state/*": ["./state/*"],
       "components/*": ["./components/*"],
+      "ui-patterns/*": ["./ui-patterns/*"],
       "common": ["./lib/common"],
       "common/*": ["./lib/common/*"],
       "@supabase/shared-types/*": ["./@supabase/shared-types/*"]
