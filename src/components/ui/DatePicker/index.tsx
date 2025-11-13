@@ -6,13 +6,13 @@ import { ReactNode, useCallback, useEffect, useMemo, useState } from 'react'
 import type { DatePickerToFrom } from 'components/interfaces/Settings/Logs/Logs.types'
 import {
   Button,
+  type ButtonProps,
   Calendar as CalendarPicker,
   Popover,
   PopoverContent_Shadcn_,
   PopoverTrigger_Shadcn_,
   Popover_Shadcn_,
 } from '@/lib/ui'
-import { ButtonProps } from 'ui/src/components/Button/Button'
 import { TimeSplitInput } from './TimeSplitInput'
 
 interface DatePickerProps {

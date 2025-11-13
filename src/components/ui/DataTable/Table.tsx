@@ -1,6 +1,6 @@
 import { ComponentPropsWithRef, forwardRef } from 'react'
-import { cn } from '@/lib/ui'
 import {
+  cn,
   Table as ShadcnTable,
   TableBody as ShadcnTableBody,
   TableCaption as ShadcnTableCaption,
@@ -9,7 +9,7 @@ import {
   TableHead as ShadcnTableHead,
   TableHeader as ShadcnTableHeader,
   TableRow as ShadcnTableRow,
-} from 'ui/src/components/shadcn/ui/table'
+} from '@/lib/ui'
 
 // Only create a custom component for Table with the added props
 export const Table = forwardRef<HTMLTableElement, ComponentPropsWithRef<typeof ShadcnTable>>(

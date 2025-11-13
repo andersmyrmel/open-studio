@@ -36,7 +36,8 @@
       "@sentry/nextjs": ["./@sentry/nextjs"],
       "@testing-library/react": ["./@testing-library/react"],
       "api-types": ["./api-types"],
-      "shared-data": ["./shared-data"]
+      "shared-data": ["./shared-data"],
+      "recharts/types/*": ["./recharts/types/*"]
     }
   },
   "include": ["next-env.d.ts", "app/**/*.ts", "app/**/*.tsx", "src/**/*.ts", "src/**/*.tsx", ".next/types/**/*.ts"],
