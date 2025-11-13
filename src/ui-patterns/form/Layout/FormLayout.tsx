@@ -3,7 +3,7 @@
  * Container layout for form sections
  */
 
-import React from 'react'
+import React, { CSSProperties } from 'react'
 import { cn } from '@/lib/utils'
 
 export interface FormLayoutProps {
@@ -13,6 +13,19 @@ export interface FormLayoutProps {
   footer?: React.ReactNode
   gap?: 'small' | 'medium' | 'large'
   variant?: 'default' | 'card'
+  // Additional props used by form components
+  label?: React.ReactNode
+  labelOptional?: React.ReactNode
+  afterLabel?: string
+  beforeLabel?: string
+  layout?: 'horizontal' | 'vertical' | 'flex'
+  id?: string
+  error?: string | React.ReactNode
+  descriptionText?: React.ReactNode
+  style?: CSSProperties
+  size?: 'tiny' | 'small' | 'medium' | 'large' | 'xlarge'
+  nonBoxInput?: boolean
+  labelLayout?: 'horizontal' | 'vertical'
 }
 
 export const FormLayout: React.FC<FormLayoutProps> = ({

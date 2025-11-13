@@ -69,8 +69,8 @@ function pgMetaGuard(request: Request) {
       throw new ResponseError(
         'API Error: happened while trying to acquire connection to the database',
         400,
-        request.headers.get('X-Request-Id') ?? undefined,
-        retryAfterHeader ? parseInt(retryAfterHeader) : undefined
+        retryAfterHeader ? parseInt(retryAfterHeader) : undefined,
+        request.headers.get('X-Request-Id') ?? undefined
       )
     }
     if (!request.headers.get('x-pg-application-name')) {

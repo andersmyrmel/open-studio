@@ -197,6 +197,16 @@ function Listbox({
   // if (borderless) selectClasses.push(SelectStyles['sbui-listbox--borderless'])
   if (disabled) selectClasses.push(__styles.disabled)
 
+  // Map size strings to pixel values for icons
+  const iconSizeMap = {
+    tiny: 14,
+    small: 16,
+    medium: 18,
+    large: 20,
+    xlarge: 24,
+  }
+  const iconSize = size ? iconSizeMap[size] : 16
+
   return (
     <FormLayout
       label={label}
@@ -242,7 +252,7 @@ function Listbox({
             </span>
             {error && (
               <div className={__styles.actions_container}>
-                {error && <InputErrorIcon size={size} />}
+                {error && <InputErrorIcon size={iconSize} />}
               </div>
             )}
           </button>

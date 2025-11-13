@@ -9,6 +9,7 @@ import { cn } from './lib/utils'
 export interface AiIconAnimationProps {
   className?: string
   loading?: boolean
+  size?: number
 }
 
 export const AiIconAnimation: React.FC<AiIconAnimationProps> = ({ className, loading = false }) => {

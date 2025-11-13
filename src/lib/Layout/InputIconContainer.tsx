@@ -10,6 +10,7 @@ export interface InputIconContainerProps {
   children?: React.ReactNode
   className?: string
   icon?: React.ReactNode
+  size?: 'tiny' | 'small' | 'medium' | 'large' | 'xlarge'
 }
 
 export const InputIconContainer: React.FC<InputIconContainerProps> = ({

@@ -130,7 +130,7 @@ export const ReferenceRecordPeek = ({ table, column, value }: ReferenceRecordPee
         <EditorTablePageLink
           href={`/project/${ref}/editor/${table.id}?schema=${table.schema}&filter=${column}%3Aeq%3A${value}`}
           projectRef={ref}
-          id={String(table.id)}
+          id={table.id}
           filters={[{ column, operator: '=', value: String(value) }]}
         >
           <Button type="default">Open table</Button>
