@@ -13,8 +13,8 @@ import {
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogTitle,
-} from '@/lib/ui/alert-dialog'
-import { Button } from '@/lib/ui'
+  Button,
+} from '@/lib/ui'
 
 export interface ConfirmationModalProps {
   visible?: boolean

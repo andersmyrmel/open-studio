@@ -13,8 +13,8 @@ import {
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogTitle,
-} from '@/lib/ui/alert-dialog'
-import { Input } from '@/lib/ui'
+  Input,
+} from '@/lib/ui'
 
 export interface TextConfirmModalProps {
   visible?: boolean
