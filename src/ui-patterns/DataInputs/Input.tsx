@@ -7,7 +7,7 @@ import React from 'react'
 import { Input as ShadcnInput } from '@/lib/ui'
 import { cn } from '@/lib/utils'
 
-export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
+export interface InputProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size'> {
   size?: 'tiny' | 'small' | 'medium' | 'large'
   error?: string
   descriptionText?: string

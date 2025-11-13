@@ -6,6 +6,10 @@
 import React from 'react'
 import { cn } from '@/lib/utils'
 import dayjs from 'dayjs'
+import relativeTime from 'dayjs/plugin/relativeTime'
+
+// Extend dayjs with relativeTime plugin for fromNow() support
+dayjs.extend(relativeTime)
 
 export interface TimestampInfoProps {
   value?: string | number | Date

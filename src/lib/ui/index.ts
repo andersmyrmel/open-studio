@@ -45,7 +45,19 @@ export * from './LoadingLine'
 export * from './shadcn/ui/dropdown-menu'
 export * from './shadcn/ui/separator'
 export * from './shadcn/ui/badge'
-export * from './shadcn/ui/alert-dialog'
+export {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+  AlertDialogOverlay,
+  AlertDialogPortal,
+} from './shadcn/ui/alert-dialog'
 export * from './shadcn/ui/drawer'
 export * from './shadcn/ui/navigation-menu'
 export * from './shadcn/ui/progress'

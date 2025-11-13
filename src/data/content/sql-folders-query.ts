@@ -13,6 +13,9 @@ export interface SqlFolder {
   updated_at: string
 }
 
+// Alias for backwards compatibility
+export type SnippetFolder = SqlFolder
+
 // SQL Snippet type (SQL query saved by user)
 export interface Snippet {
   id: string

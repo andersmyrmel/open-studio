@@ -95,6 +95,15 @@ export interface SqlSnippet {
   updated_at?: string
 }
 
+export namespace SqlSnippets {
+  export interface Content {
+    content_id: string
+    sql: string
+    schema?: string
+    favorite?: boolean
+  }
+}
+
 export interface SqlSnippets {
   [id: string]: SqlSnippet
 }
