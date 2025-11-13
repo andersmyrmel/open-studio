@@ -87,7 +87,10 @@
     "vaul": "0.9.9",
     "openapi-fetch": "0.12.5",
     "@supabase/postgres-meta": "0.93.1",
-    "path-to-regexp": "6.2.1"
+    "path-to-regexp": "6.2.1",
+    "pg-minify": "1.6.4",
+    "nuqs": "2.2.2",
+    "awesome-debounce-promise": "2.1.0"
   },
   "devDependencies": {
     "tailwindcss": "3.4.1",
