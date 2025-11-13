@@ -6,7 +6,7 @@ import * as React from 'react'
 
 import { VariantProps, cva } from 'class-variance-authority'
 import { SIZE_VARIANTS, SIZE_VARIANTS_DEFAULT } from '../../../lib/constants'
-import { cn } from '../../../lib/utils/cn'
+import { cn } from '../../lib/utils/cn'
 
 const Select = SelectPrimitive.Root
 

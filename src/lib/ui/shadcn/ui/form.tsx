@@ -13,7 +13,7 @@ import {
   useWatch,
 } from 'react-hook-form'
 
-import { cn } from '../../../lib/utils/cn'
+import { cn } from '../../lib/utils/cn'
 import { Label } from './label'
 import { motion, AnimatePresence } from 'framer-motion'
 

@@ -1,7 +1,7 @@
 import type { ComponentProps } from 'react'
 import * as React from 'react'
 
-import { cn } from '../../../lib/utils/cn'
+import { cn } from '../../lib/utils/cn'
 import { ShadowScrollArea } from '../../ShadowScrollArea'
 
 interface TableProps extends React.HTMLAttributes<HTMLTableElement> {
