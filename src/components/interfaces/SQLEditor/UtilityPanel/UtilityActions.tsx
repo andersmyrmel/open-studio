@@ -3,7 +3,6 @@ import { toast } from 'sonner'
 
 import { LOCAL_STORAGE_KEYS, useParams } from '@/lib/common'
 import { RoleImpersonationPopover } from 'components/interfaces/RoleImpersonationSelector/RoleImpersonationPopover'
-import DatabaseSelector from 'components/ui/DatabaseSelector'
 import { useLocalStorageQuery } from '@/lib/common'
 import { IS_PLATFORM } from 'lib/constants'
 import { useSqlEditorV2StateSnapshot } from 'state/sql-editor-v2'
@@ -175,16 +174,9 @@ const UtilityActions = ({
 
       <div className="flex items-center justify-between gap-x-2">
         <div className="flex items-center">
-          {IS_PLATFORM && (
-            <DatabaseSelector
-              selectedDatabaseId={lastSelectedDb.length === 0 ? undefined : lastSelectedDb}
-              variant="connected-on-right"
-              onSelectId={onSelectDatabase}
-            />
-          )}
           <RoleImpersonationPopover
             serviceRoleLabel="postgres"
-            variant={IS_PLATFORM ? 'connected-on-both' : 'connected-on-right'}
+            variant="connected-on-right"
           />
           <SqlRunButton
             hasSelection={hasSelection}

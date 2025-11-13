@@ -5,7 +5,6 @@ import { toast } from 'sonner'
 
 import { useParams } from '@/lib/common'
 import AlertError from 'components/ui/AlertError'
-import { useReadReplicasQuery } from 'data/read-replicas/replicas-query'
 import { useQueryAbortMutation } from 'data/sql/abort-query-mutation'
 import { useOngoingQueriesQuery } from 'data/sql/ongoing-queries-query'
 import { useSelectedProjectQuery } from '@/lib/common'
@@ -38,8 +37,8 @@ export const OngoingQueriesPanel = () => {
   const appState = useAppStateSnapshot()
   const [selectedId, setSelectedId] = useState<number>()
 
-  const { data: databases } = useReadReplicasQuery({ projectRef: project?.ref })
-  const database = (databases ?? []).find((db) => db.identifier === state.selectedDatabaseId)
+  // Local mode: use project connection string directly
+  const connectionString = project?.connectionString
 
   const {
     data,
@@ -51,10 +50,10 @@ export const OngoingQueriesPanel = () => {
   } = useOngoingQueriesQuery(
     {
       projectRef: project?.ref,
-      connectionString: database?.connectionString,
+      connectionString,
     },
     {
-      enabled: !IS_PLATFORM || (IS_PLATFORM && database?.connectionString !== undefined),
+      enabled: Boolean(connectionString),
       staleTime: 5000,
     }
   )

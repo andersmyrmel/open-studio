@@ -1,5 +1,8 @@
-import { Filter, Sort } from '@supabase/pg-meta/src/query'
+import { Filter, Sort, FilterOperator } from '@supabase/pg-meta/src/query'
 import { CalculatedColumn, RenderHeaderCellProps } from 'react-data-grid'
+
+// Re-export for use in grid components
+export type { Filter, Sort, FilterOperator }
 
 export interface SavedState {
   filters?: string[]

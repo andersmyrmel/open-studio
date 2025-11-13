@@ -1,8 +1,8 @@
 import type { ComponentProps } from 'react'
 import * as React from 'react'
 
-import { cn } from '../../../lib/utils/cn'
-import { ShadowScrollArea } from '../../ShadowScrollArea'
+import { cn } from '@/lib/utils/cn'
+import { ScrollArea as ShadowScrollArea } from './scroll-area'
 
 interface TableProps extends React.HTMLAttributes<HTMLTableElement> {
   containerProps?: Partial<ComponentProps<typeof ShadowScrollArea>>

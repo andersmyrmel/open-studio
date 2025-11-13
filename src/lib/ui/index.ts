@@ -6,6 +6,7 @@ export * from './Image'
 export { Card as Card_legacy_ } from './Card'
 export * from './Tabs'
 export * from './Alert'
+export { Alert as Alert_Shadcn_, AlertTitle, AlertDescription } from './shadcn/ui/alert'
 export * from './Accordion'
 export * from './Collapsible'
 export * from './CodeBlock'
@@ -45,7 +46,17 @@ export * from './LoadingLine'
 export * from './shadcn/ui/dropdown-menu'
 export * from './shadcn/ui/separator'
 export * from './shadcn/ui/badge'
-export * from './shadcn/ui/alert-dialog'
+export {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from './shadcn/ui/alert-dialog'
 export * from './shadcn/ui/drawer'
 export * from './shadcn/ui/navigation-menu'
 export * from './shadcn/ui/progress'
@@ -109,11 +120,11 @@ export {
 } from './shadcn/ui/form'
 
 export {
-  Popover as Popover_Shadcn_,
-  PopoverTrigger as PopoverTrigger_Shadcn_,
-  PopoverContent as PopoverContent_Shadcn_,
-  PopoverAnchor as PopoverAnchor_Shadcn_,
-  PopoverSeparator as PopoverSeparator_Shadcn_,
+  Popover,
+  PopoverTrigger,
+  PopoverContent,
+  PopoverAnchor,
+  PopoverSeparator,
 } from './shadcn/ui/popover'
 
 export {
@@ -211,13 +222,21 @@ export { Separator } from './shadcn/ui/separator'
 
 export * from './shadcn/ui/resizable'
 
-export * from './radio-group-stacked'
-export * from './radio-group-card'
+export * from './shadcn/ui/radio-group-stacked'
+export * from './shadcn/ui/radio-group-card'
 
 export * from './TreeView'
 
 export * from './shadcn/ui/chart'
 export * from './shadcn/ui/sidebar'
+export * from './shadcn/ui/sheet'
+export * from './shadcn/ui/sonner-progress'
+
+// Convenient non-suffixed re-exports for common components
+// Popover already exported above without suffix
+
+// Alias for ShadowScrollArea
+export { ScrollArea as ShadowScrollArea } from './shadcn/ui/scroll-area'
 
 // links
 export * from './TextLink'
@@ -228,3 +247,8 @@ export * from './StatusIcon'
 export * from './lib/Hooks'
 
 export * from './KeyboardShortcut/KeyboardShortcut'
+
+// AI and loading components
+export * from './AiIconAnimation'
+export * from './LogoLoader'
+export * from './ExpandingTextArea'

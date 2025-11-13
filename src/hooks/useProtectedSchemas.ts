@@ -1,112 +1,79 @@
-import { uniq } from 'lodash'
-import { useMemo } from 'react'
-
-import { WRAPPER_HANDLERS } from 'components/interfaces/Integrations/Wrappers/Wrappers.constants'
-import {
-  convertKVStringArrayToJson,
-  wrapperMetaComparator,
-} from 'components/interfaces/Integrations/Wrappers/Wrappers.utils'
-import { QUEUES_SCHEMA } from 'data/database-queues/database-queues-toggle-postgrest-mutation'
-import { useFDWsQuery } from 'data/fdw/fdws-query'
-import { useSelectedProjectQuery } from './misc/useSelectedProject'
-
 /**
- * A list of system schemas that users should not interact with
+ * useProtectedSchemas hook for Open Studio
+ * Identifies and handles protected/internal PostgreSQL schemas
  */
+
+import { useSelectedProject } from 'lib/common'
+
+// Internal PostgreSQL schemas that should be protected from modifications
 export const INTERNAL_SCHEMAS = [
-  'auth',
-  'cron',
-  'extensions',
+  'pg_catalog',
   'information_schema',
-  'net',
-  'pgsodium',
-  'pgsodium_masks',
-  'pgbouncer',
-  'pgtle',
-  'realtime',
-  'storage',
-  'supabase_functions',
-  'supabase_migrations',
-  'vault',
-  'graphql',
-  'graphql_public',
-  QUEUES_SCHEMA,
+  'pg_toast',
+  'pg_temp',
+  'pg_toast_temp',
 ]
 
-/**
- * Get the list of schemas used by IcebergFDWs
- */
-const useIcebergFdwSchemasQuery = () => {
-  const { data: project } = useSelectedProjectQuery()
-  const result = useFDWsQuery({
-    projectRef: project?.ref,
-    connectionString: project?.connectionString,
-  })
+// Supabase-specific internal schemas
+export const SUPABASE_INTERNAL_SCHEMAS = [
+  'auth',
+  'storage',
+  'realtime',
+  'supabase_functions',
+  'supabase_migrations',
+  '_analytics',
+  '_realtime',
+]
 
-  const schemas = useMemo(() => {
-    const icebergFDWs = result.data?.filter((wrapper) =>
-      wrapperMetaComparator(
-        { handlerName: WRAPPER_HANDLERS.ICEBERG, server: { options: [] } },
-        wrapper
-      )
-    )
+export const ALL_PROTECTED_SCHEMAS = [...INTERNAL_SCHEMAS, ...SUPABASE_INTERNAL_SCHEMAS]
 
-    const fdwSchemas = icebergFDWs
-      ?.map((fdw) => convertKVStringArrayToJson(fdw.server_options))
-      .map((options) => options['supabase_target_schema'])
-      .flatMap((s) => s?.split(','))
-      .filter(Boolean)
-
-    return uniq(fdwSchemas)
-  }, [result.data])
-
-  return { ...result, data: schemas }
+export interface ProtectedSchemaInfo {
+  isProtected: boolean
+  isInternal: boolean
+  isSupabaseInternal: boolean
+  canModify: boolean
 }
 
-/**
- * Returns a list of schemas that are protected by Supabase (internal schemas or schemas used by Iceberg FDWs).
- */
-export const useProtectedSchemas = ({
-  excludeSchemas = [],
-}: { excludeSchemas?: string[] } = {}) => {
-  // Stabilize the excludeSchemas array to prevent unnecessary re-computations
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  const stableExcludeSchemas = useMemo(() => excludeSchemas, [JSON.stringify(excludeSchemas)])
+export function useProtectedSchemas() {
+  const project = useSelectedProject()
 
-  const result = useIcebergFdwSchemasQuery()
+  const isProtectedSchema = (schema: string): boolean => {
+    return ALL_PROTECTED_SCHEMAS.includes(schema)
+  }
 
-  const schemas = useMemo<{ name: string; type: 'fdw' | 'internal' }[]>(() => {
-    const internalSchemas = INTERNAL_SCHEMAS.map((s) => ({ name: s, type: 'internal' as const }))
-    const icebergFdwSchemas = result.data?.map((s) => ({ name: s, type: 'fdw' as const }))
+  const isInternalSchema = (schema: string): boolean => {
+    return INTERNAL_SCHEMAS.includes(schema)
+  }
 
-    const schemas = uniq([...internalSchemas, ...icebergFdwSchemas])
-    return schemas.filter((schema) => !stableExcludeSchemas.includes(schema.name))
-  }, [result.data, stableExcludeSchemas])
+  const isSupabaseInternalSchema = (schema: string): boolean => {
+    return SUPABASE_INTERNAL_SCHEMAS.includes(schema)
+  }
 
-  return { ...result, data: schemas }
-}
+  const getSchemaInfo = (schema: string): ProtectedSchemaInfo => {
+    const isInternal = isInternalSchema(schema)
+    const isSupabaseInternal = isSupabaseInternalSchema(schema)
+    const isProtected = isInternal || isSupabaseInternal
 
-/**
- * Returns whether a given schema is protected by Supabase (internal schema or schema used by Iceberg FDWs).
- */
-export const useIsProtectedSchema = ({
-  schema,
-  excludedSchemas = [],
-}: {
-  schema: string
-  excludedSchemas?: string[]
-}):
-  | { isSchemaLocked: false; reason: undefined }
-  | { isSchemaLocked: true; reason: 'fdw' | 'internal' } => {
-  const { data: schemas } = useProtectedSchemas({ excludeSchemas: excludedSchemas })
-
-  const foundSchema = schemas.find((s) => s.name === schema)
-
-  if (foundSchema) {
     return {
-      isSchemaLocked: true,
-      reason: foundSchema.type,
+      isProtected,
+      isInternal,
+      isSupabaseInternal,
+      canModify: !isProtected,
     }
   }
-  return { isSchemaLocked: false, reason: undefined }
+
+  return {
+    isProtectedSchema,
+    isInternalSchema,
+    isSupabaseInternalSchema,
+    getSchemaInfo,
+    protectedSchemas: ALL_PROTECTED_SCHEMAS,
+    internalSchemas: INTERNAL_SCHEMAS,
+    supabaseInternalSchemas: SUPABASE_INTERNAL_SCHEMAS,
+  }
 }
+
+export default useProtectedSchemas
+
+// Alias for backwards compatibility
+export const useIsProtectedSchema = useProtectedSchemas

@@ -3,11 +3,9 @@ import { parseAsBoolean, useQueryState } from 'nuqs'
 import { forwardRef } from 'react'
 
 import { useParams } from '@/lib/common'
-import { subscriptionHasHipaaAddon } from 'components/interfaces/Billing/Subscription/Subscription.utils'
 import CopyButton from 'components/ui/CopyButton'
 import { InlineLink, InlineLinkClassName } from 'components/ui/InlineLink'
 import { useProjectSettingsV2Query } from 'data/config/project-settings-v2-query'
-import { useOrgSubscriptionQuery } from 'data/subscriptions/org-subscription-query'
 import { useSelectedOrganizationQuery } from '@/lib/common'
 import { DOCS_URL } from 'lib/constants'
 import { useDatabaseSelectorStateSnapshot } from 'state/database-selector'
@@ -32,11 +30,10 @@ const UtilityTabResults = forwardRef<HTMLDivElement, UtilityTabResultsProps>(
     const [, setShowConnect] = useQueryState('showConnect', parseAsBoolean.withDefault(false))
 
     const result = snapV2.results[id]?.[0]
-    const { data: subscription } = useOrgSubscriptionQuery({ orgSlug: organization?.slug })
 
-    // Customers on HIPAA plans should not have access to Supabase AI
+    // Local mode: no HIPAA restrictions
     const { data: projectSettings } = useProjectSettingsV2Query({ projectRef: ref })
-    const hasHipaaAddon = subscriptionHasHipaaAddon(subscription) && projectSettings?.is_sensitive
+    const hasHipaaAddon = false
 
     const isTimeout =
       result?.error?.message?.includes('canceling statement due to statement timeout') ||

@@ -1,5 +1,5 @@
 import { SVGProps, forwardRef } from 'react'
-import { cn } from '../lib/utils'
+import { cn } from './lib/utils/cn'
 import { Check } from 'lucide-react'
 
 export interface StatusIconProps {

@@ -2,7 +2,7 @@
 
 import * as RadixCollapsible from '@radix-ui/react-collapsible'
 import React from 'react'
-import styleHandler from '../../lib/theme/styleHandler'
+import styleHandler from 'lib/theme/styleHandler'
 
 export interface CollapsibleProps extends RadixCollapsible.CollapsibleProps {
   children: React.ReactNode

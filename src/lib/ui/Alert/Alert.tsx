@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react'
 
-import styleHandler from '../../lib/theme/styleHandler'
+import styleHandler from 'lib/theme/styleHandler'
 import { AlertOctagon, CheckCircle, AlertTriangle, Info, X } from 'lucide-react'
 
 export interface AlertProps {

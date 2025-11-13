@@ -11,12 +11,10 @@ import {
 } from 'data/content/content-upsert-mutation'
 import { Snippet } from 'data/content/sql-folders-query'
 import type { SqlSnippet } from 'data/content/sql-snippets-query'
-import { useOrgSubscriptionQuery } from 'data/subscriptions/org-subscription-query'
 import { useSelectedOrganizationQuery } from '@/lib/common'
 import { useSqlEditorV2StateSnapshot } from 'state/sql-editor-v2'
 import { createTabId, useTabsStateSnapshot } from 'state/tabs'
 import { AiIconAnimation, Button, Form, Input, Modal } from '@/lib/ui'
-import { subscriptionHasHipaaAddon } from '../Billing/Subscription/Subscription.utils'
 
 export interface RenameQueryModalProps {
   snippet?: SqlSnippet | Snippet
@@ -36,15 +34,11 @@ const RenameQueryModal = ({
 
   const snapV2 = useSqlEditorV2StateSnapshot()
   const tabsSnap = useTabsStateSnapshot()
-  const { data: subscription } = useOrgSubscriptionQuery(
-    { orgSlug: organization?.slug },
-    { enabled: visible }
-  )
   const isSQLSnippet = snippet.type === 'sql'
   const { data: projectSettings } = useProjectSettingsV2Query({ projectRef: ref })
 
-  // Customers on HIPAA plans should not have access to Supabase AI
-  const hasHipaaAddon = subscriptionHasHipaaAddon(subscription) && projectSettings?.is_sensitive
+  // Local mode: no HIPAA restrictions
+  const hasHipaaAddon = false
 
   const { id, name, description } = snippet
 

@@ -1,7 +1,7 @@
 'use client'
 
 import Link from 'next/link'
-import { cn } from '../../lib/utils/cn'
+import { cn } from '@/lib/utils/cn'
 import { ChevronRight } from 'lucide-react'
 
 interface Props {

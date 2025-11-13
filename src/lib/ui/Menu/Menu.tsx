@@ -1,8 +1,8 @@
 'use client'
 
 import React from 'react'
-import styleHandler from '../../lib/theme/styleHandler'
-import { cn } from '../../lib/utils/cn'
+import styleHandler from 'lib/theme/styleHandler'
+import { cn } from '@/lib/utils/cn'
 import Typography from '../Typography'
 import { MenuContextProvider, useMenuContext } from './MenuContext'
 

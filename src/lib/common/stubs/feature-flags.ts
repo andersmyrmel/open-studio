@@ -45,3 +45,11 @@ export function useFeatureFlags() {
  * Always false since we're standalone
  */
 export const IS_PLATFORM = false
+
+/**
+ * Hook to check if a specific feature is enabled
+ * Alias for isFeatureEnabled as a hook
+ */
+export function useIsFeatureEnabled(feature: Feature): boolean {
+  return isFeatureEnabled(feature)
+}

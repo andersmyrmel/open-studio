@@ -1,7 +1,7 @@
 import { cva, type VariantProps } from 'class-variance-authority'
 import * as React from 'react'
 
-import { cn } from '../../../lib/utils/cn'
+import { cn } from '@/lib/utils/cn'
 
 // Ivan: replaced [&:has(svg)]:pl-14 with [&>svg~*]:pl-10 cause of github.com/shadcn-ui/ui/issues/998
 export const alertVariants = cva(
