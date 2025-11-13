@@ -3,5 +3,5 @@
  * Re-export from parent module
  */
 
-export { MultiSelectV2 as default, MultiSelectOption } from '../MultiSelectDeprecated'
-export type { MultiSelectProps } from '../MultiSelectDeprecated'
+export { MultiSelectV2 as default } from '../MultiSelectDeprecated'
+export type { MultiSelectOption, MultiSelectProps } from '../MultiSelectDeprecated'

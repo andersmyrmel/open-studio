@@ -11,7 +11,13 @@ export interface SqlFolderCreateVariables {
 
 export async function createSqlFolder({ projectRef, name }: SqlFolderCreateVariables) {
   // Stub: no-op for local mode
-  return { id: 'stub-folder-id', name, project_ref: projectRef }
+  return {
+    id: `folder-${Date.now()}`,
+    name,
+    project_id: parseInt(projectRef) || 0,
+    created_at: new Date().toISOString(),
+    updated_at: new Date().toISOString(),
+  }
 }
 
 export function useSqlFolderCreateMutation() {

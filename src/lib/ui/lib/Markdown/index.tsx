@@ -1,6 +1,6 @@
 'use client'
 
-import { CodeBlock } from '../../components/CodeBlock/CodeBlock'
+import { CodeBlock } from '../../CodeBlock/CodeBlock'
 import Image from 'next/image'
 import { cn } from '../utils'
 

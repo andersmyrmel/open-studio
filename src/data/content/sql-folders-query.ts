@@ -11,6 +11,8 @@ export interface SqlFolder {
   project_id: number
   created_at: string
   updated_at: string
+  owner_id?: number
+  parent_id?: string | null
 }
 
 // Alias for backwards compatibility

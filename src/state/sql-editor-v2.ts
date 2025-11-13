@@ -169,6 +169,8 @@ export const sqlEditorState = proxy({
         owner_id: -1,
         project_id: -1,
         parent_id: null,
+        created_at: new Date().toISOString(),
+        updated_at: new Date().toISOString(),
       },
     }
   },

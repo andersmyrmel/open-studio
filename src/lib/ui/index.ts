@@ -6,6 +6,7 @@ export * from './Image'
 export { Card as Card_legacy_ } from './Card'
 export * from './Tabs'
 export * from './Alert'
+export { Alert as Alert_Shadcn_, AlertTitle, AlertDescription } from './shadcn/ui/alert'
 export * from './Accordion'
 export * from './Collapsible'
 export * from './CodeBlock'
@@ -55,8 +56,6 @@ export {
   AlertDialogHeader,
   AlertDialogTitle,
   AlertDialogTrigger,
-  AlertDialogOverlay,
-  AlertDialogPortal,
 } from './shadcn/ui/alert-dialog'
 export * from './shadcn/ui/drawer'
 export * from './shadcn/ui/navigation-menu'
@@ -121,11 +120,11 @@ export {
 } from './shadcn/ui/form'
 
 export {
-  Popover as Popover_Shadcn_,
-  PopoverTrigger as PopoverTrigger_Shadcn_,
-  PopoverContent as PopoverContent_Shadcn_,
-  PopoverAnchor as PopoverAnchor_Shadcn_,
-  PopoverSeparator as PopoverSeparator_Shadcn_,
+  Popover,
+  PopoverTrigger,
+  PopoverContent,
+  PopoverAnchor,
+  PopoverSeparator,
 } from './shadcn/ui/popover'
 
 export {
@@ -234,13 +233,7 @@ export * from './shadcn/ui/sheet'
 export * from './shadcn/ui/sonner-progress'
 
 // Convenient non-suffixed re-exports for common components
-export {
-  Popover_Shadcn_ as Popover,
-  PopoverTrigger_Shadcn_ as PopoverTrigger,
-  PopoverContent_Shadcn_ as PopoverContent,
-  PopoverAnchor_Shadcn_ as PopoverAnchor,
-  PopoverSeparator_Shadcn_ as PopoverSeparator,
-} from './shadcn/ui/popover'
+// Popover already exported above without suffix
 
 // Alias for ShadowScrollArea
 export { ScrollArea as ShadowScrollArea } from './shadcn/ui/scroll-area'
