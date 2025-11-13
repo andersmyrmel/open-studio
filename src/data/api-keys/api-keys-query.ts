@@ -39,3 +39,6 @@ export function useApiKeysQuery<TData = ApiKey[]>(
     ...options,
   })
 }
+
+// Alias for backwards compatibility
+export const getKeys = getApiKeys

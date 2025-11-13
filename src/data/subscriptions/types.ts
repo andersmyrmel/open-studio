@@ -92,3 +92,16 @@ export function getSubscriptionTierName(tier: SubscriptionTier): string {
 export function getSubscriptionStatusLabel(status: SubscriptionStatus): string {
   return SUBSCRIPTION_STATUS_LABELS[status] ?? status
 }
+
+// Project addon variant metadata
+export interface ProjectAddonVariantMeta {
+  identifier: string
+  name: string
+  price: number
+  features: {
+    cpu_cores?: number
+    memory_gb?: number
+    storage_gb?: number
+    connections?: number
+  }
+}

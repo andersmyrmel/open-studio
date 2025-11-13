@@ -31,3 +31,4 @@ export function getTableRowsSql(options: TableRowQueryOptions): Query {
 export const MAX_CHARACTERS = 5000
 export const MAX_ROWS = 500
 export const DEFAULT_ROWS = 100
+export const MAX_ARRAY_SIZE = 500

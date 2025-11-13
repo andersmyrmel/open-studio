@@ -242,3 +242,8 @@ export * from './StatusIcon'
 export * from './lib/Hooks'
 
 export * from './KeyboardShortcut/KeyboardShortcut'
+
+// AI and loading components
+export * from './AiIconAnimation'
+export * from './LogoLoader'
+export * from './ExpandingTextArea'

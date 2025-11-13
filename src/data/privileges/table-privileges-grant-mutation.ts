@@ -47,3 +47,6 @@ export function useTablePrivilegeGrantMutation() {
     },
   })
 }
+
+// Type alias for backwards compatibility
+export type TablePrivilegesGrant = TablePrivilegeGrantVariables

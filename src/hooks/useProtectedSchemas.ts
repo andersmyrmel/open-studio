@@ -1,31 +1,76 @@
 /**
- * Protected schemas hook for Open Studio
- * Returns schemas that should be protected from modification
+ * useProtectedSchemas hook for Open Studio
+ * Identifies and handles protected/internal PostgreSQL schemas
  */
 
-export const PROTECTED_SCHEMAS = [
-  'information_schema',
+import { useSelectedProject } from 'lib/common'
+
+// Internal PostgreSQL schemas that should be protected from modifications
+export const INTERNAL_SCHEMAS = [
   'pg_catalog',
+  'information_schema',
   'pg_toast',
-  'pg_temp_1',
-  'pg_toast_temp_1',
-  'auth',
-  'extensions',
-  'pgbouncer',
-  'pgsodium',
-  'pgsodium_masks',
-  'realtime',
-  'storage',
-  'supabase_functions',
-  'supabase_migrations',
-  'vault',
+  'pg_temp',
+  'pg_toast_temp',
 ]
 
-export const useIsProtectedSchema = (schema?: string) => {
-  if (!schema) return false
-  return PROTECTED_SCHEMAS.includes(schema.toLowerCase())
+// Supabase-specific internal schemas
+export const SUPABASE_INTERNAL_SCHEMAS = [
+  'auth',
+  'storage',
+  'realtime',
+  'supabase_functions',
+  'supabase_migrations',
+  '_analytics',
+  '_realtime',
+]
+
+export const ALL_PROTECTED_SCHEMAS = [...INTERNAL_SCHEMAS, ...SUPABASE_INTERNAL_SCHEMAS]
+
+export interface ProtectedSchemaInfo {
+  isProtected: boolean
+  isInternal: boolean
+  isSupabaseInternal: boolean
+  canModify: boolean
 }
 
-export const useProtectedSchemas = () => {
-  return PROTECTED_SCHEMAS
+export function useProtectedSchemas() {
+  const project = useSelectedProject()
+
+  const isProtectedSchema = (schema: string): boolean => {
+    return ALL_PROTECTED_SCHEMAS.includes(schema)
+  }
+
+  const isInternalSchema = (schema: string): boolean => {
+    return INTERNAL_SCHEMAS.includes(schema)
+  }
+
+  const isSupabaseInternalSchema = (schema: string): boolean => {
+    return SUPABASE_INTERNAL_SCHEMAS.includes(schema)
+  }
+
+  const getSchemaInfo = (schema: string): ProtectedSchemaInfo => {
+    const isInternal = isInternalSchema(schema)
+    const isSupabaseInternal = isSupabaseInternalSchema(schema)
+    const isProtected = isInternal || isSupabaseInternal
+
+    return {
+      isProtected,
+      isInternal,
+      isSupabaseInternal,
+      canModify: !isProtected,
+    }
+  }
+
+  return {
+    isProtectedSchema,
+    isInternalSchema,
+    isSupabaseInternalSchema,
+    getSchemaInfo,
+    protectedSchemas: ALL_PROTECTED_SCHEMAS,
+    internalSchemas: INTERNAL_SCHEMAS,
+    supabaseInternalSchemas: SUPABASE_INTERNAL_SCHEMAS,
+  }
 }
+
+export default useProtectedSchemas

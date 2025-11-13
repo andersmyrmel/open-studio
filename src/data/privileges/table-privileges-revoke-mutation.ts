@@ -47,3 +47,6 @@ export function useTablePrivilegeRevokeMutation() {
     },
   })
 }
+
+// Type alias for backwards compatibility
+export type TablePrivilegesRevoke = TablePrivilegeRevokeVariables

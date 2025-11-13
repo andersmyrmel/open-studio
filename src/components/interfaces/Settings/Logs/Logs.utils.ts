@@ -1,9 +1,20 @@
 /**
- * Logs utilities stub for Open Studio
+ * Logs utilities for Open Studio
  */
 
-export function formatLogTimestamp(timestamp: string | number): string {
-  return new Date(timestamp).toISOString()
+export function maybeShowUpgradePromptIfNotEntitled(
+  isEntitled: boolean,
+  showUpgradePrompt: () => void
+): boolean {
+  if (!isEntitled) {
+    showUpgradePrompt()
+    return true
+  }
+  return false
+}
+
+export function formatLogTimestamp(timestamp: string): string {
+  return new Date(timestamp).toLocaleString()
 }
 
 export function parseLogLevel(level: string): 'info' | 'warn' | 'error' | 'debug' {

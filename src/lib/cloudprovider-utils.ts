@@ -73,3 +73,12 @@ export function getRegion(regionKey: string): Region | undefined {
 export function getRegionsByProvider(provider: CloudProvider): Region[] {
   return REGIONS.filter((r) => r.provider === provider)
 }
+
+export type Architecture = 'amd64' | 'arm64'
+
+export function getCloudProviderArchitecture(provider: CloudProvider, region?: string): Architecture {
+  // Most cloud providers default to amd64
+  // ARM instances (like AWS Graviton) would need specific detection
+  // For local mode, return amd64 as default
+  return 'amd64'
+}

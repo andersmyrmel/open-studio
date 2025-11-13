@@ -31,3 +31,15 @@ export function canUpgrade(currentTier: SubscriptionTier): boolean {
 export function getUpgradeUrl(orgSlug: string): string {
   return `/org/${orgSlug}/billing`
 }
+
+// Check if subscription has HIPAA add-on (cloud-only feature)
+export function subscriptionHasHipaaAddon(subscription: any): boolean {
+  // Stub: HIPAA add-ons not available in local mode
+  return false
+}
+
+// Get add-ons from subscription (cloud-only feature)
+export function getAddons(subscription: any): Array<{ type: string; variant: string }> {
+  // Stub: return empty array for local mode
+  return []
+}

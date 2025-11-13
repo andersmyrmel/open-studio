@@ -1,21 +1,35 @@
 /**
- * Reports constants stub for Open Studio
+ * Reports constants for Open Studio
  */
 
-export const REPORT_TYPES = {
-  PERFORMANCE: 'performance',
-  USAGE: 'usage',
-  ERRORS: 'errors',
-  SECURITY: 'security',
-} as const
+import { addDays, startOfDay, subDays } from 'date-fns'
 
-export type ReportType = (typeof REPORT_TYPES)[keyof typeof REPORT_TYPES]
+export interface DatePickerHelper {
+  label: string
+  startDate: Date
+  endDate: Date
+}
 
-export const REPORT_INTERVALS = {
-  HOURLY: 'hourly',
-  DAILY: 'daily',
-  WEEKLY: 'weekly',
-  MONTHLY: 'monthly',
-} as const
-
-export type ReportInterval = (typeof REPORT_INTERVALS)[keyof typeof REPORT_INTERVALS]
+// Date picker helpers for reports
+export const REPORTS_DATEPICKER_HELPERS: DatePickerHelper[] = [
+  {
+    label: 'Last 24 hours',
+    startDate: subDays(startOfDay(new Date()), 1),
+    endDate: new Date(),
+  },
+  {
+    label: 'Last 7 days',
+    startDate: subDays(startOfDay(new Date()), 7),
+    endDate: new Date(),
+  },
+  {
+    label: 'Last 30 days',
+    startDate: subDays(startOfDay(new Date()), 30),
+    endDate: new Date(),
+  },
+  {
+    label: 'Last 90 days',
+    startDate: subDays(startOfDay(new Date()), 90),
+    endDate: new Date(),
+  },
+]

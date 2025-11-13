@@ -13,6 +13,21 @@ export interface SqlFolder {
   updated_at: string
 }
 
+// SQL Snippet type (SQL query saved by user)
+export interface Snippet {
+  id: string
+  name: string
+  description?: string
+  sql: string
+  folder_id?: string
+  project_id: number
+  owner_id: string
+  visibility: 'user' | 'project' | 'public'
+  favorite?: boolean
+  created_at: string
+  updated_at: string
+}
+
 export const sqlFoldersKeys = {
   folders: (projectRef: string | undefined) => ['projects', projectRef, 'content', 'folders'] as const,
 }
