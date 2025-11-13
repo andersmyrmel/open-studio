@@ -48,3 +48,6 @@ export function useInfraMonitoringQuery<TData = InfraMonitoring>(
     ...options,
   })
 }
+
+// Type alias for backwards compatibility
+export type InfraMonitoringAttribute = InfraMonitoringVariables

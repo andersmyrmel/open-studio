@@ -46,3 +46,6 @@ export function EditorTablePageLink({
 }
 
 export default prefetchEditorData
+
+// Alias for backwards compatibility
+export const prefetchEditorTablePage = prefetchEditorData

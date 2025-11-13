@@ -50,3 +50,6 @@ export function useTablePrivilegeGrantMutation() {
 
 // Type alias for backwards compatibility
 export type TablePrivilegesGrant = TablePrivilegeGrantVariables
+
+// Alias for backwards compatibility (plural form)
+export const grantTablePrivileges = grantTablePrivilege

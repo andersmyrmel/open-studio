@@ -40,3 +40,6 @@ export function useSqlTitleMutation() {
     mutationFn: generateSqlTitle,
   })
 }
+
+// Alias for backwards compatibility
+export const useSqlTitleGenerateMutation = useSqlTitleMutation

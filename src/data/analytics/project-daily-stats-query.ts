@@ -47,3 +47,6 @@ export function useProjectDailyStatsQuery<TData = DailyStat[]>(
     ...options,
   })
 }
+
+// Type alias for backwards compatibility
+export type ProjectDailyStatsAttribute = ProjectDailyStatsVariables

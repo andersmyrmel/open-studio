@@ -59,3 +59,6 @@ export function useTablePrivilegesQuery<TData = TablePrivilege[]>(
     ...options,
   })
 }
+
+// Type alias for backwards compatibility (Pg prefix)
+export type PgTablePrivileges = TablePrivilege

@@ -50,3 +50,6 @@ export function useTablePrivilegeRevokeMutation() {
 
 // Type alias for backwards compatibility
 export type TablePrivilegesRevoke = TablePrivilegeRevokeVariables
+
+// Alias for backwards compatibility (plural form)
+export const revokeTablePrivileges = revokeTablePrivilege

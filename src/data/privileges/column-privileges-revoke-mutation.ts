@@ -52,3 +52,6 @@ export function useColumnPrivilegeRevokeMutation() {
 
 // Type alias for backwards compatibility
 export type ColumnPrivilegesRevoke = ColumnPrivilegeRevokeVariables
+
+// Alias for backwards compatibility (plural form)
+export const revokeColumnPrivileges = revokeColumnPrivilege

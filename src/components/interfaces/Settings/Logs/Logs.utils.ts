@@ -24,3 +24,23 @@ export function parseLogLevel(level: string): 'info' | 'warn' | 'error' | 'debug
   }
   return 'info'
 }
+
+/**
+ * Check if timestamp is in Unix microseconds format
+ */
+export function isUnixMicro(timestamp: string | number): boolean {
+  if (typeof timestamp === 'string') {
+    timestamp = Number(timestamp)
+  }
+  // Unix microseconds is a 16-digit number (seconds * 1000000)
+  return timestamp > 1000000000000000
+}
+
+/**
+ * Convert Unix microseconds to ISO timestamp
+ */
+export function unixMicroToIsoTimestamp(unixMicro: string | number): string {
+  const microseconds = typeof unixMicro === 'string' ? Number(unixMicro) : unixMicro
+  const milliseconds = Math.floor(microseconds / 1000)
+  return new Date(milliseconds).toISOString()
+}

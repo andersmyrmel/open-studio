@@ -19,3 +19,6 @@ export function useSqlFolderCreateMutation() {
     mutationFn: createSqlFolder,
   })
 }
+
+// Alias for backwards compatibility (capital SQL)
+export const useSQLSnippetFolderCreateMutation = useSqlFolderCreateMutation

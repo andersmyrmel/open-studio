@@ -36,3 +36,6 @@ export function useProjectSettingsQuery<TData = ProjectSettings>(
     ...options,
   })
 }
+
+// Alias for backwards compatibility (V2 suffix)
+export const useProjectSettingsV2Query = useProjectSettingsQuery

@@ -74,3 +74,6 @@ export function useProtectedSchemas() {
 }
 
 export default useProtectedSchemas
+
+// Alias for backwards compatibility
+export const useIsProtectedSchema = useProtectedSchemas

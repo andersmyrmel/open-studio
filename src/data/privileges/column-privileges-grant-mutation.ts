@@ -49,3 +49,6 @@ export function useColumnPrivilegeGrantMutation() {
     },
   })
 }
+
+// Alias for backwards compatibility (plural form)
+export const grantColumnPrivileges = grantColumnPrivilege

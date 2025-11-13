@@ -8,3 +8,6 @@ export const privilegesKeys = {
   tablePrivileges: (projectRef: string | undefined, schema?: string) =>
     ['projects', projectRef, 'privileges', 'tables', schema].filter(Boolean) as const,
 }
+
+// Alias for backwards compatibility (singular form)
+export const privilegeKeys = privilegesKeys
