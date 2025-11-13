@@ -34,7 +34,9 @@
       "@supabase/pg-meta": ["./@supabase/pg-meta"],
       "@supabase/pg-meta/*": ["./@supabase/pg-meta/*"],
       "@sentry/nextjs": ["./@sentry/nextjs"],
-      "api-types": ["./api-types"]
+      "@testing-library/react": ["./@testing-library/react"],
+      "api-types": ["./api-types"],
+      "shared-data": ["./shared-data"]
     }
   },
   "include": ["next-env.d.ts", "app/**/*.ts", "app/**/*.tsx", "src/**/*.ts", "src/**/*.tsx", ".next/types/**/*.ts"],

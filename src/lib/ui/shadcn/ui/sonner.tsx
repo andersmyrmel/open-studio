@@ -3,7 +3,7 @@
 import { useTheme } from 'next-themes'
 import { Toaster as Sonner } from 'sonner'
 
-import { cn } from '../../lib/utils'
+import { cn } from '@/lib/utils'
 import { buttonVariants } from '../../Button'
 import { StatusIcon } from './../../StatusIcon'
 

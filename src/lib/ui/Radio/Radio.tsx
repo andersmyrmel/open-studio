@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from 'react'
 
-import { FormLayout } from '../../lib/Layout/FormLayout/FormLayout'
+import { FormLayout } from 'lib/Layout/FormLayout/FormLayout'
 import styleHandler from 'lib/theme/styleHandler'
 import { useFormContext } from '../Form/FormContext'
 import { generateUID } from './../../lib/utils/randomIdGenerator'

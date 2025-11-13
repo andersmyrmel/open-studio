@@ -2,9 +2,9 @@
 
 import React, { useEffect } from 'react'
 
-import { FormLayout } from '../../lib/Layout/FormLayout/FormLayout'
-import InputErrorIcon from '../../lib/Layout/InputErrorIcon'
-import InputIconContainer from '../../lib/Layout/InputIconContainer'
+import { FormLayout } from 'lib/Layout/FormLayout/FormLayout'
+import InputErrorIcon from 'lib/Layout/InputErrorIcon'
+import InputIconContainer from 'lib/Layout/InputIconContainer'
 import styleHandler from 'lib/theme/styleHandler'
 import { useFormContext } from '../Form/FormContext'
 

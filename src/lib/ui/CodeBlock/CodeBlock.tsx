@@ -6,8 +6,8 @@ import { useTheme } from 'next-themes'
 import { Children, ReactNode, useState } from 'react'
 import { Light as SyntaxHighlighter, SyntaxHighlighterProps } from 'react-syntax-highlighter'
 
-import { copyToClipboard } from '../../lib/utils'
-import { cn } from '../../lib/utils/cn'
+import { copyToClipboard } from '@/lib/utils'
+import { cn } from '@/lib/utils/cn'
 import { Button } from '../Button/Button'
 import { monokaiCustomTheme } from './CodeBlock.utils'
 

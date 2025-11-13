@@ -5,7 +5,7 @@ import { cva, type VariantProps } from 'class-variance-authority'
 import * as React from 'react'
 
 import { X } from 'lucide-react'
-import { cn } from '../../lib/utils/cn'
+import { cn } from '@/lib/utils/cn'
 
 const Sheet = SheetPrimitive.Root
 

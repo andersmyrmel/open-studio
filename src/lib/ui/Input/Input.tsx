@@ -3,13 +3,13 @@
 import React, { useEffect, useState } from 'react'
 
 import { Copy } from 'lucide-react'
-import { FormLayout } from '../../lib/Layout/FormLayout/FormLayout'
-import InputErrorIcon from '../../lib/Layout/InputErrorIcon'
-import InputIconContainer from '../../lib/Layout/InputIconContainer'
+import { FormLayout } from 'lib/Layout/FormLayout/FormLayout'
+import InputErrorIcon from 'lib/Layout/InputErrorIcon'
+import InputIconContainer from 'lib/Layout/InputIconContainer'
 import { HIDDEN_PLACEHOLDER } from '../../lib/constants'
 import styleHandler from 'lib/theme/styleHandler'
-import { copyToClipboard } from '../../lib/utils'
-import { cn } from '../../lib/utils/cn'
+import { copyToClipboard } from '@/lib/utils'
+import { cn } from '@/lib/utils/cn'
 import { Button } from '../Button'
 import { useFormContext } from '../Form/FormContext'
 

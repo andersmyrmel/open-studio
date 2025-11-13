@@ -1,7 +1,7 @@
 import React from 'react'
 import { Loader2 } from 'lucide-react'
 import styleHandler from 'lib/theme/styleHandler'
-import { cn } from '../../lib/utils/cn'
+import { cn } from '@/lib/utils/cn'
 
 interface Props {
   children: React.ReactNode
