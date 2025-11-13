@@ -38,3 +38,6 @@ export function useReplicasQuery<TData = ReadReplica[]>(
     ...options,
   })
 }
+
+// Alias for compatibility
+export const useReadReplicasQuery = useReplicasQuery

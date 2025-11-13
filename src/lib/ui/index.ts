@@ -218,6 +218,20 @@ export * from './TreeView'
 
 export * from './shadcn/ui/chart'
 export * from './shadcn/ui/sidebar'
+export * from './shadcn/ui/sheet'
+export * from './shadcn/ui/sonner-progress'
+
+// Convenient non-suffixed re-exports for common components
+export {
+  Popover_Shadcn_ as Popover,
+  PopoverTrigger_Shadcn_ as PopoverTrigger,
+  PopoverContent_Shadcn_ as PopoverContent,
+  PopoverAnchor_Shadcn_ as PopoverAnchor,
+  PopoverSeparator_Shadcn_ as PopoverSeparator,
+} from './shadcn/ui/popover'
+
+// Alias for ShadowScrollArea
+export { ScrollArea as ShadowScrollArea } from './shadcn/ui/scroll-area'
 
 // links
 export * from './TextLink'

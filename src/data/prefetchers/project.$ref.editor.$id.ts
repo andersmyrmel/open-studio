@@ -24,4 +24,25 @@ export async function prefetchEditorData(
   })
 }
 
+// Link generator for editor table pages
+export interface EditorTablePageLinkParams {
+  projectRef: string
+  id: number
+  schema?: string
+  table?: string
+}
+
+export function EditorTablePageLink({
+  projectRef,
+  id,
+  schema,
+  table,
+}: EditorTablePageLinkParams): string {
+  let path = `/project/${projectRef}/editor/${id}`
+  if (schema && table) {
+    path += `?schema=${encodeURIComponent(schema)}&table=${encodeURIComponent(table)}`
+  }
+  return path
+}
+
 export default prefetchEditorData

@@ -33,3 +33,36 @@ export function parseConnectionString(connectionString: string): {
     database: match[5],
   }
 }
+
+export interface ConnectionInfo {
+  connectionString: string
+  host: string
+  port: number
+  database: string
+  user: string
+}
+
+export function getConnectionStrings(project: any, readReplicas: any[] = []): {
+  primary: ConnectionInfo
+  replicas: ConnectionInfo[]
+} {
+  // Stub implementation - return primary connection from project
+  const primary: ConnectionInfo = {
+    connectionString: project.connectionString || 'postgresql://postgres@localhost:5432/postgres',
+    host: 'localhost',
+    port: 5432,
+    database: 'postgres',
+    user: 'postgres',
+  }
+
+  // Map read replicas if provided
+  const replicas: ConnectionInfo[] = readReplicas.map((replica) => ({
+    connectionString: replica.connectionString || primary.connectionString,
+    host: replica.host || primary.host,
+    port: replica.port || primary.port,
+    database: replica.database || primary.database,
+    user: replica.user || primary.user,
+  }))
+
+  return { primary, replicas }
+}

@@ -3,6 +3,7 @@
  * Minimal implementation - role impersonation is optional for local PostgreSQL
  */
 
+import React from 'react'
 import { proxy, useSnapshot } from 'valtio'
 import type { ImpersonationRole } from 'lib/role-impersonation'
 
@@ -47,4 +48,14 @@ export const setRoleImpersonation = (role?: ImpersonationRole, claims?: Record<s
 export const clearRoleImpersonation = () => {
   roleImpersonationState.role = undefined
   roleImpersonationState.claims = undefined
+}
+
+// Subscribe to impersonated role changes
+export const useSubscribeToImpersonatedRole = (callback: (role?: ImpersonationRole) => void) => {
+  const snap = useRoleImpersonationStateSnapshot()
+
+  // Call callback when role changes
+  React.useEffect(() => {
+    callback(snap.role)
+  }, [snap.role, callback])
 }
