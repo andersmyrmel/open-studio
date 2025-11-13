@@ -211,8 +211,8 @@ export { Separator } from './shadcn/ui/separator'
 
 export * from './shadcn/ui/resizable'
 
-export * from './radio-group-stacked'
-export * from './radio-group-card'
+export * from './shadcn/ui/radio-group-stacked'
+export * from './shadcn/ui/radio-group-card'
 
 export * from './TreeView'
 

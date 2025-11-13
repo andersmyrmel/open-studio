@@ -1,14 +1,9 @@
-// export default function () {
-//   const randomNumber = Math.floor(Math.random() * 26) + Date.now()
-//   return randomNumber.toString()
-// }
+/**
+ * Random ID generator utility for Open Studio
+ */
 
-export function generateUID() {
-  // I generate the UID from two parts here
-  // to ensure the random number provide enough bits.
-  var firstPart = (Math.random() * 46656) | 0
-  var secondPart = (Math.random() * 46656) | 0
-  const newFirstPart = ('00000' + firstPart.toString(36)).slice(-3)
-  const newSecondPart = ('00000' + secondPart.toString(36)).slice(-3)
-  return newFirstPart + newSecondPart
+export function generateUID(): string {
+  const random = Math.random().toString(36).substr(2, 9)
+  const timestamp = Date.now()
+  return `uid-${random}-${timestamp}`
 }

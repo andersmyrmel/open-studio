@@ -3,7 +3,7 @@
  * Cloud-only feature - not applicable for local PostgreSQL
  */
 
-import { useQuery } from '@tantml:react-query'
+import { useQuery } from '@tanstack/react-query'
 import type { Organization } from 'types'
 
 // Stub implementation - returns undefined for local usage

@@ -1,6 +1,7 @@
 /**
  * Edge Functions query stub for Open Studio
- * Cloud-only feature - not available in local mode
+ * Edge Functions are a Supabase platform feature, not PostgreSQL
+ * This stub allows Database Hooks code to compile without edge function support
  */
 
 import { useQuery } from '@tanstack/react-query'
@@ -8,25 +9,21 @@ import type { UseQueryOptions } from '@tanstack/react-query'
 
 export interface EdgeFunction {
   id: string
+  slug: string
   name: string
-  status: 'active' | 'inactive'
-  version: number
-  created_at: string
-  updated_at: string
-}
-
-export const edgeFunctionsKeys = {
-  list: (projectRef: string | undefined) => ['projects', projectRef, 'edge-functions'] as const,
+  verify_jwt?: boolean
 }
 
 export interface EdgeFunctionsVariables {
   projectRef?: string
 }
 
-export async function getEdgeFunctions({ projectRef }: EdgeFunctionsVariables) {
-  if (!projectRef) throw new Error('projectRef is required')
+export const edgeFunctionsKeys = {
+  list: (projectRef: string) => ['edge-functions', projectRef] as const,
+}
 
-  // Stub: return empty array for local mode
+export async function getEdgeFunctions({ projectRef }: EdgeFunctionsVariables) {
+  // Edge Functions not supported in PostgreSQL-only mode
   return [] as EdgeFunction[]
 }
 
@@ -35,9 +32,9 @@ export function useEdgeFunctionsQuery<TData = EdgeFunction[]>(
   options?: UseQueryOptions<EdgeFunction[], Error, TData>
 ) {
   return useQuery({
-    queryKey: edgeFunctionsKeys.list(projectRef),
+    queryKey: edgeFunctionsKeys.list(projectRef!),
     queryFn: () => getEdgeFunctions({ projectRef }),
-    enabled: Boolean(projectRef),
+    enabled: false, // Disabled - edge functions not supported
     ...options,
   })
 }
