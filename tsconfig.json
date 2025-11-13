@@ -28,7 +28,8 @@
       "state/*": ["./state/*"],
       "components/*": ["./components/*"],
       "common": ["./lib/common"],
-      "common/*": ["./lib/common/*"]
+      "common/*": ["./lib/common/*"],
+      "@supabase/shared-types/*": ["./@supabase/shared-types/*"]
     }
   },
   "include": ["next-env.d.ts", "app/**/*.ts", "app/**/*.tsx", "src/**/*.ts", "src/**/*.tsx", ".next/types/**/*.ts"],

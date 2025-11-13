@@ -90,7 +90,10 @@
     "path-to-regexp": "6.2.1",
     "pg-minify": "1.6.4",
     "nuqs": "2.2.2",
-    "awesome-debounce-promise": "2.1.0"
+    "awesome-debounce-promise": "2.1.0",
+    "date-fns": "2.30.0",
+    "recharts": "2.10.3",
+    "@hookform/resolvers": "3.3.4"
   },
   "devDependencies": {
     "tailwindcss": "3.4.1",
@@ -111,7 +114,8 @@
     "eslint-config-next": "15.3.1",
     "prettier": "3.3.3",
     "@typescript-eslint/eslint-plugin": "8.15.0",
-    "@typescript-eslint/parser": "8.15.0"
+    "@typescript-eslint/parser": "8.15.0",
+    "vitest": "1.6.0"
   },
   "engines": {
     "node": ">=18.0.0",
