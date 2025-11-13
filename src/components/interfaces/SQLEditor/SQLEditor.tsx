@@ -14,7 +14,6 @@ import { useSqlTitleGenerateMutation } from 'data/ai/sql-title-mutation'
 import { useEntityDefinitionsQuery } from 'data/database/entity-definitions-query'
 import { constructHeaders, isValidConnString } from 'data/fetchers'
 import { lintKeys } from 'data/lint/keys'
-import { useReadReplicasQuery } from 'data/read-replicas/replicas-query'
 import { useExecuteSqlMutation } from 'data/sql/execute-sql-mutation'
 import { useSendEventMutation } from 'data/telemetry/send-event-mutation'
 import { isError } from 'data/utils/error-check'
@@ -137,12 +136,11 @@ export const SQLEditor = () => {
 
   useAddDefinitions(id, monacoRef.current)
 
-  const { data: databases, isSuccess: isSuccessReadReplicas } = useReadReplicasQuery(
-    {
-      projectRef: ref,
-    },
-    { enabled: isValidConnString(project?.connectionString) }
-  )
+  // Local mode: single database (primary project database)
+  const databases = project?.connectionString
+    ? [{ identifier: ref, connectionString: project.connectionString }]
+    : []
+  const isSuccessReadReplicas = Boolean(project?.connectionString)
 
   const { data, refetch: refetchEntityDefinitions } = useEntityDefinitionsQuery(
     {

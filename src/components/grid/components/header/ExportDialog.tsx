@@ -3,7 +3,6 @@ import { useState } from 'react'
 import { useParams } from '@/lib/common'
 import { Filter, Sort, SupaTable } from 'components/grid/types'
 import { getConnectionStrings } from 'components/interfaces/Connect/DatabaseSettings.utils'
-import { useReadReplicasQuery } from 'data/read-replicas/replicas-query'
 import { getAllTableRowsSql } from 'data/table-rows/table-rows-query'
 import { pluckObjectFields } from 'lib/helpers'
 import { RoleImpersonationState, wrapWithRoleImpersonation } from 'lib/role-impersonation'
@@ -49,12 +48,14 @@ export const ExportDialog = ({
 
   const [selectedTab, setSelectedTab] = useState<string>('csv')
 
-  const { data: databases } = useReadReplicasQuery({ projectRef })
-  const primaryDatabase = (databases ?? []).find((db) => db.identifier === projectRef)
-  const DB_FIELDS = ['db_host', 'db_name', 'db_port', 'db_user', 'inserted_at']
-  const emptyState = { db_user: '', db_host: '', db_port: '', db_name: '' }
-
-  const connectionInfo = pluckObjectFields(primaryDatabase || emptyState, DB_FIELDS)
+  // Local mode: use default localhost database info
+  const connectionInfo = {
+    db_user: 'postgres',
+    db_host: 'localhost',
+    db_port: '5432',
+    db_name: 'postgres',
+    inserted_at: new Date().toISOString(),
+  }
   const { db_host, db_port, db_user, db_name } = connectionInfo
 
   const connectionStrings = getConnectionStrings({
