@@ -12,4 +12,15 @@ export interface WrapperMeta {
   handler: string
   validator?: string
   options?: Record<string, any>
+  label?: string
+  handlerName?: string
+  validatorName?: string
+  server?: {
+    options: Array<{
+      name: string
+      encrypted?: boolean
+      [key: string]: any
+    }>
+    [key: string]: any
+  }
 }

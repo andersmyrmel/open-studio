@@ -13,6 +13,8 @@ export interface TablePrivilegeGrantVariables {
   table: string
   privilege: 'SELECT' | 'INSERT' | 'UPDATE' | 'DELETE' | 'TRUNCATE' | 'REFERENCES' | 'TRIGGER' | 'ALL'
   role: string
+  // Alias for compatibility
+  privilegeType?: 'SELECT' | 'INSERT' | 'UPDATE' | 'DELETE' | 'TRUNCATE' | 'REFERENCES' | 'TRIGGER' | 'ALL'
 }
 
 export async function grantTablePrivilege({

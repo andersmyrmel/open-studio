@@ -87,5 +87,28 @@ export function useProtectedSchemas(options?: { excludeSchemas?: string[] }) {
 
 export default useProtectedSchemas
 
-// Alias for backwards compatibility
-export const useIsProtectedSchema = useProtectedSchemas
+// Hook to check if a specific schema is protected
+export function useIsProtectedSchema(options?: { schema?: string; excludeSchemas?: string[] }) {
+  const result = useProtectedSchemas(options)
+
+  if (options?.schema) {
+    const schema = options.schema
+    const isSchemaLocked = result.isSchemaLocked(schema)
+    const info = result.getSchemaInfo(schema)
+
+    let reason = ''
+    if (info.isInternal) {
+      reason = 'This is a PostgreSQL internal schema and cannot be modified.'
+    } else if (info.isSupabaseInternal) {
+      reason = 'This is a Supabase internal schema and should not be modified.'
+    }
+
+    return {
+      ...result,
+      isSchemaLocked,
+      reason,
+    }
+  }
+
+  return result
+}

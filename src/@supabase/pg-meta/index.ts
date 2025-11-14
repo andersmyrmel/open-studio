@@ -19,6 +19,10 @@ const createStubGenerator = (entityName: string) => ({
     sql: `-- Stub SQL for ${entityName}.remove`,
     zod: {} as any,
   }),
+  retrieve: (id: any) => ({
+    sql: `-- Stub SQL for ${entityName}.retrieve`,
+    zod: {} as any,
+  }),
   pgFunctionCreateZod: {} as any,
 })
 

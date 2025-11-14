@@ -23,6 +23,13 @@ export interface PgRole {
   valid_until: string | null
   config: string[] | null
   activeConnections?: number
+  // CamelCase aliases for backward compatibility
+  isSuperuser?: boolean
+  canLogin?: boolean
+  canCreateRole?: boolean
+  canCreateDb?: boolean
+  isReplicationRole?: boolean
+  canBypassRls?: boolean
 }
 
 export async function getDatabaseRoles(

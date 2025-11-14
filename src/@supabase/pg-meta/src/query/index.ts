@@ -47,4 +47,5 @@ export interface Sort {
   nulls?: 'first' | 'last'
   ascending?: boolean
   table?: string
+  nullsFirst?: boolean
 }
