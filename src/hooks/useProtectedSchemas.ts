@@ -69,7 +69,7 @@ export function useProtectedSchemas(options?: { excludeSchemas?: string[] }) {
   const excludeSchemas = options?.excludeSchemas || []
   const filteredProtectedSchemas = ALL_PROTECTED_SCHEMAS.filter(
     (schema) => !excludeSchemas.includes(schema)
-  )
+  ).map((name) => ({ name }))
 
   return {
     isProtectedSchema,

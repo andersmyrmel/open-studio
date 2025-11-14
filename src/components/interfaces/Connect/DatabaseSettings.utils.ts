@@ -40,11 +40,13 @@ export interface ConnectionInfo {
   port: number
   database: string
   user: string
+  psql?: string
 }
 
 export function getConnectionStrings(project: any, readReplicas: any[] = []): {
   primary: ConnectionInfo
   replicas: ConnectionInfo[]
+  direct: ConnectionInfo & { psql: string }
 } {
   // Stub implementation - return primary connection from project
   const primary: ConnectionInfo = {
@@ -56,7 +58,7 @@ export function getConnectionStrings(project: any, readReplicas: any[] = []): {
   }
 
   // Map read replicas if provided
-  const replicas: ConnectionInfo[] = readReplicas.map((replica) => ({
+  const replicas: ConnectionInfo[] = readReplicas.map((replica: any) => ({
     connectionString: replica.connectionString || primary.connectionString,
     host: replica.host || primary.host,
     port: replica.port || primary.port,
@@ -64,5 +66,11 @@ export function getConnectionStrings(project: any, readReplicas: any[] = []): {
     user: replica.user || primary.user,
   }))
 
-  return { primary, replicas }
+  // Direct connection with psql command
+  const direct = {
+    ...primary,
+    psql: `psql ${primary.connectionString}`,
+  }
+
+  return { primary, replicas, direct }
 }
