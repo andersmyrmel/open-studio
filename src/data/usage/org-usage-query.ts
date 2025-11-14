@@ -11,6 +11,10 @@ export interface OrgMetricsUsage {
   billing_cycle_start: string
   billing_cycle_end: string
   capped?: boolean
+  available_in_plan?: boolean
+  unlimited?: boolean
+  metric?: string
+  pricing_free_units?: number
 }
 
 export const useOrgUsageQuery = () => {

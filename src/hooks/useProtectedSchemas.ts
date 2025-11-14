@@ -110,5 +110,9 @@ export function useIsProtectedSchema(options?: { schema?: string; excludeSchemas
     }
   }
 
-  return result
+  return {
+    ...result,
+    isSchemaLocked: false,
+    reason: undefined,
+  }
 }
