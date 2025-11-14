@@ -64,6 +64,11 @@ export const extensions = Object.values(extensionsData) as Array<{
   name: string
   comment: string
   default_version: string
+  link?: string
+  deprecated?: boolean
+  product?: string
+  product_url?: string
+  github_url?: string
 }>
 
 // Also export as object for key-based access
