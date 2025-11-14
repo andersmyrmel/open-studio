@@ -4,6 +4,6 @@
  */
 
 export const vaultSecretsKeys = {
-  list: () => ['vault', 'secrets'],
-  detail: (id: string) => ['vault', 'secrets', id],
+  list: (projectRef?: string) => ['projects', projectRef, 'vault', 'secrets'] as const,
+  detail: (id: string) => ['vault', 'secrets', id] as const,
 }
