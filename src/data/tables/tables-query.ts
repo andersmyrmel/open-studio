@@ -71,7 +71,7 @@ export const useTablesQuery = <TData = TablesData>(
   // Note: In standalone mode, we don't need projectRef validation
   return useQuery<TablesData, TablesError, TData>({
     queryKey: tableKeys.list(projectRef, schema, includeColumns),
-    queryFn: ({ signal }) =>
+    queryFn: ({ signal }: { signal?: AbortSignal }) =>
       getTables({ projectRef, connectionString, schema, includeColumns }, signal),
     enabled: enabled,
     ...options,
@@ -92,7 +92,7 @@ export function useGetTables({
     (schema?: TablesVariables['schema'], includeColumns?: TablesVariables['includeColumns']) => {
       return queryClient.fetchQuery({
         queryKey: tableKeys.list(projectRef, schema, includeColumns),
-        queryFn: ({ signal }) =>
+        queryFn: ({ signal }: { signal?: AbortSignal }) =>
           getTables({ projectRef, connectionString, schema, includeColumns }, signal),
       })
     },
@@ -110,7 +110,7 @@ export function usePrefetchTables({
     (schema?: TablesVariables['schema'], includeColumns?: TablesVariables['includeColumns']) => {
       return queryClient.prefetchQuery({
         queryKey: tableKeys.list(projectRef, schema, includeColumns),
-        queryFn: ({ signal }) =>
+        queryFn: ({ signal }: { signal?: AbortSignal }) =>
           getTables({ projectRef, connectionString, schema, includeColumns }, signal),
       })
     },

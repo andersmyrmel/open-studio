@@ -49,7 +49,7 @@ export const useTableEditorQuery = <TData = TableEditorData>(
 ) =>
   useQuery<TableEditorData, TableEditorError, TData>({
     queryKey: tableEditorKeys.tableEditor(projectRef, id),
-    queryFn: ({ signal }) => getTableEditor({ projectRef, connectionString, id }, signal),
+    queryFn: ({ signal }: { signal?: AbortSignal }) => getTableEditor({ projectRef, connectionString, id }, signal),
     enabled:
       enabled && typeof projectRef !== 'undefined' && typeof id !== 'undefined' && !isNaN(id),
     refetchOnWindowFocus: false,
@@ -64,7 +64,7 @@ export function prefetchTableEditor(
 ) {
   return client.fetchQuery({
     queryKey: tableEditorKeys.tableEditor(projectRef, id),
-    queryFn: ({ signal }) =>
+    queryFn: ({ signal }: { signal?: AbortSignal }) =>
       getTableEditor(
         {
           projectRef,

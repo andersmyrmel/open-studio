@@ -42,7 +42,7 @@ export const useTablesRolesAccessQuery = <TData = TablesRolesAccessData>(
 ) =>
   useQuery<TablesRolesAccessData, TablesRolesAccessError, TData>({
     queryKey: tableKeys.rolesAccess(projectRef, schema),
-    queryFn: ({ signal }) =>
+    queryFn: ({ signal }: { signal?: AbortSignal }) =>
       getTablesWithAnonAuthenticatedAccess({ projectRef, connectionString, schema }, signal),
     enabled:
       enabled &&

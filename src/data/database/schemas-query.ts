@@ -46,7 +46,7 @@ export const useSchemasQuery = <TData = SchemasData>(
 ) =>
   useQuery<SchemasData, SchemasError, TData>({
     queryKey: databaseKeys.schemas(projectRef),
-    queryFn: ({ signal }) => getSchemas({ projectRef, connectionString }, signal),
+    queryFn: ({ signal }: { signal?: AbortSignal }) => getSchemas({ projectRef, connectionString }, signal),
     enabled: enabled && typeof projectRef !== 'undefined',
     ...options,
   })
@@ -61,6 +61,6 @@ export function prefetchSchemas(
 ) {
   return client.fetchQuery({
     queryKey: databaseKeys.schemas(projectRef),
-    queryFn: ({ signal }) => getSchemas({ projectRef, connectionString }, signal),
+    queryFn: ({ signal }: { signal?: AbortSignal }) => getSchemas({ projectRef, connectionString }, signal),
   })
 }

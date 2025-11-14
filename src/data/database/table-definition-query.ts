@@ -73,7 +73,7 @@ export const useTableDefinitionQuery = <TData = TableDefinitionData>(
 ) =>
   useQuery<TableDefinitionData, TableDefinitionError, TData>({
     queryKey: databaseKeys.tableDefinition(projectRef, id),
-    queryFn: ({ signal }) => getTableDefinition({ projectRef, connectionString, id }, signal),
+    queryFn: ({ signal }: { signal?: AbortSignal }) => getTableDefinition({ projectRef, connectionString, id }, signal),
     enabled:
       enabled && typeof projectRef !== 'undefined' && typeof id !== 'undefined' && !isNaN(id),
     ...options,

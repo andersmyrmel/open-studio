@@ -67,7 +67,7 @@ export const useDatabaseRolesQuery = <TData = DatabaseRolesData>(
 ) =>
   useQuery<DatabaseRolesData, DatabaseRolesError, TData>({
     queryKey: databaseRoleKeys.databaseRoles(projectRef),
-    queryFn: ({ signal }) => getDatabaseRoles({ projectRef, connectionString }, signal),
+    queryFn: ({ signal }: { signal?: AbortSignal }) => getDatabaseRoles({ projectRef, connectionString }, signal),
     enabled: enabled && typeof projectRef !== 'undefined',
     ...options,
   })

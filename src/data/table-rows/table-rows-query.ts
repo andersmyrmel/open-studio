@@ -305,7 +305,7 @@ export const useTableRowsQuery = <TData = TableRowsData>(
       table: { id: tableId },
       ...args,
     }),
-    queryFn: ({ signal }) =>
+    queryFn: ({ signal }: { signal?: AbortSignal }) =>
       getTableRows({ queryClient, projectRef, connectionString, tableId, ...args }, signal),
     enabled: enabled && typeof projectRef !== 'undefined' && typeof tableId !== 'undefined',
     ...options,
@@ -321,7 +321,7 @@ export function prefetchTableRows(
       table: { id: tableId },
       ...args,
     }),
-    queryFn: ({ signal }) =>
+    queryFn: ({ signal }: { signal?: AbortSignal }) =>
       getTableRows({ queryClient: client, projectRef, connectionString, tableId, ...args }, signal),
   })
 }

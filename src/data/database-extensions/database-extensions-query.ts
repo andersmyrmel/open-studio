@@ -56,7 +56,7 @@ export const useDatabaseExtensionsQuery = <TData = DatabaseExtensionsData>(
 
   return useQuery<DatabaseExtensionsData, DatabaseExtensionsError, TData>({
     queryKey: databaseExtensionsKeys.list(projectRef),
-    queryFn: ({ signal }) => getDatabaseExtensions({ projectRef, connectionString }, signal),
+    queryFn: ({ signal }: { signal?: AbortSignal }) => getDatabaseExtensions({ projectRef, connectionString }, signal),
     enabled: enabled && typeof projectRef !== 'undefined' && isActive,
     ...options,
   })

@@ -139,7 +139,7 @@ const ColumnEditor = ({
 
     if (
       changedName &&
-      fkRelations.find((fk: any) => fk.columns.find(({ source }) => source === columnFields?.name))
+      fkRelations.find((fk: any) => fk.columns.find(({ source }: any) => source === columnFields?.name))
     ) {
       setFkRelations(
         fkRelations.map((relation: any) => ({

@@ -92,7 +92,7 @@ export const useFDWsQuery = <TData = FDWsData>(
 ) =>
   useQuery<FDWsData, FDWsError, TData>({
     queryKey: fdwKeys.list(projectRef),
-    queryFn: ({ signal }) => getFDWs({ projectRef, connectionString }, signal),
+    queryFn: ({ signal }: { signal?: AbortSignal }) => getFDWs({ projectRef, connectionString }, signal),
     enabled: enabled && typeof projectRef !== 'undefined',
     ...options,
   })

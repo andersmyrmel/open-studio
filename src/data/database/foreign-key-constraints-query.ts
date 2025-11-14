@@ -137,7 +137,7 @@ export const useForeignKeyConstraintsQuery = <TData = ForeignKeyConstraintsData>
 ) =>
   useQuery<ForeignKeyConstraintsData, ForeignKeyConstraintsError, TData>({
     queryKey: databaseKeys.foreignKeyConstraints(projectRef, schema),
-    queryFn: ({ signal }) =>
+    queryFn: ({ signal }: { signal?: AbortSignal }) =>
       getForeignKeyConstraints({ projectRef, connectionString, schema }, signal),
     enabled: enabled && typeof projectRef !== 'undefined' && typeof schema !== 'undefined',
     ...options,
@@ -149,7 +149,7 @@ export function prefetchForeignKeyConstraints(
 ) {
   return client.fetchQuery({
     queryKey: databaseKeys.foreignKeyConstraints(projectRef, schema),
-    queryFn: ({ signal }) =>
+    queryFn: ({ signal }: { signal?: AbortSignal }) =>
       getForeignKeyConstraints({ projectRef, connectionString, schema }, signal),
   })
 }

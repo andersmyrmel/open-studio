@@ -55,7 +55,7 @@ export const useForeignTablesQuery = <TData = ForeignTablesData>(
     queryKey: schema
       ? foreignTableKeys.listBySchema(projectRef, schema)
       : foreignTableKeys.list(projectRef),
-    queryFn: ({ signal }) => getForeignTables({ projectRef, connectionString, schema }, signal),
+    queryFn: ({ signal }: { signal?: AbortSignal }) => getForeignTables({ projectRef, connectionString, schema }, signal),
     enabled: enabled && typeof projectRef !== 'undefined',
     ...options,
   })

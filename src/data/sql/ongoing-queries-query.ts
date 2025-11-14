@@ -48,7 +48,7 @@ export const useOngoingQueriesQuery = <TData = OngoingQueriesData>(
 ) =>
   useQuery<OngoingQueriesData, OngoingQueriesError, TData>({
     queryKey: sqlKeys.ongoingQueries(projectRef),
-    queryFn: ({ signal }) => getOngoingQueries({ projectRef, connectionString }, signal),
+    queryFn: ({ signal }: { signal?: AbortSignal }) => getOngoingQueries({ projectRef, connectionString }, signal),
     enabled: enabled && typeof projectRef !== 'undefined',
     ...options,
   })

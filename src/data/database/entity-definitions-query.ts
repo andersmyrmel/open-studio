@@ -114,7 +114,7 @@ export const useEntityDefinitionsQuery = <TData = EntityDefinitionsData>(
 ) =>
   useQuery<EntityDefinitionsData, EntityDefinitionsError, TData>({
     queryKey: databaseKeys.entityDefinitions(projectRef, schemas),
-    queryFn: ({ signal }) =>
+    queryFn: ({ signal }: { signal?: AbortSignal }) =>
       getEntityDefinitions({ projectRef, connectionString, schemas, limit }, signal),
     enabled: enabled && typeof projectRef !== 'undefined' && schemas.length > 0,
     ...options,
