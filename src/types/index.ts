@@ -78,6 +78,23 @@ export interface Organization {
 // SQL Editor Types
 // ============================================================================
 
+/**
+ * User content types (SQL snippets, folders, etc.)
+ */
+export interface UserContent {
+  id: string
+  name: string
+  description?: string
+  type: 'sql' | 'folder'
+  content?: string
+  visibility: 'user' | 'project' | 'public'
+  owner_id?: number
+  project_id?: number
+  created_at?: string
+  updated_at?: string
+  folder_id?: string | null
+}
+
 export interface SqlSnippet {
   id: string
   name: string

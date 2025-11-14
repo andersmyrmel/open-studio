@@ -19,6 +19,8 @@ export enum PermissionAction {
   TENANT_SQL_INSERT = 'tenant.sql_insert',
   TENANT_SQL_UPDATE = 'tenant.sql_update',
   TENANT_SQL_DELETE = 'tenant.sql_delete',
+  TENANT_SQL_ADMIN_READ = 'tenant.sql_admin_read',
+  TENANT_SQL_ADMIN_WRITE = 'tenant.sql_admin_write',
 
   // Functions
   TENANT_SQL_FUNCTION_CREATE = 'tenant.sql_function_create',

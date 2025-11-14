@@ -42,3 +42,12 @@ export interface TelemetryEventMetadata {
   properties?: Record<string, any>
   timestamp?: string
 }
+
+/**
+ * JWT Secret update status
+ */
+export enum JwtSecretUpdateStatus {
+  Updated = 'UPDATED',
+  Updating = 'UPDATING',
+  Failed = 'FAILED',
+}
