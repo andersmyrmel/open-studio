@@ -10,6 +10,7 @@ export interface OrgMetricsUsage {
   }
   billing_cycle_start: string
   billing_cycle_end: string
+  capped?: boolean
 }
 
 export const useOrgUsageQuery = () => {
@@ -17,5 +18,6 @@ export const useOrgUsageQuery = () => {
     data: undefined,
     isLoading: false,
     error: undefined,
+    isSuccess: true,
   }
 }

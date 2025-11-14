@@ -28,4 +28,8 @@ declare module 'dayjs' {
     format?: string,
     timezone?: string
   ): Dayjs
+
+  namespace tz {
+    function guess(): string
+  }
 }
