@@ -38,6 +38,11 @@ export interface Field {
 export interface ExtendedPostgresRelationship extends PostgresRelationship {
   deletion_action: string
   update_action: string
+  // Aliases for different naming conventions
+  target_table_schema?: string
+  target_table_name?: string
+  target_column_name?: string
+  id?: number
 }
 
 export interface ColumnField {

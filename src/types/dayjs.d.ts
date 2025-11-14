@@ -2,7 +2,7 @@
  * Type declarations for dayjs with utc and timezone plugins
  */
 
-import 'dayjs'
+import type { Dayjs } from 'dayjs'
 
 declare module 'dayjs' {
   interface Dayjs {
@@ -10,17 +10,28 @@ declare module 'dayjs' {
     tz(timezone?: string, keepLocalTime?: boolean): Dayjs
   }
 
+  namespace Dayjs {
+    function utc(
+      date?: string | number | Date | Dayjs,
+      format?: string,
+      strict?: boolean
+    ): Dayjs
+
+    function tz(
+      date?: string | number | Date | Dayjs,
+      format?: string,
+      timezone?: string
+    ): Dayjs
+
+    namespace tz {
+      function guess(): string
+    }
+  }
+
   export function utc(
     date?: string | number | Date | Dayjs,
     format?: string,
     strict?: boolean
-  ): Dayjs
-
-  export function utc(date?: string | number | Date | Dayjs, strict?: boolean): Dayjs
-
-  export function tz(
-    date?: string | number | Date | Dayjs,
-    timezone?: string
   ): Dayjs
 
   export function tz(
