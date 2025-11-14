@@ -7,20 +7,24 @@ import * as pgMeta from '@supabase/postgres-meta'
 
 // Stub generator functions for compatibility with Supabase Studio monorepo API
 const createStubGenerator = (entityName: string) => ({
-  create: (payload: any) => ({
+  create: (payload: any, options?: any) => ({
     sql: `-- Stub SQL for ${entityName}.create`,
     zod: {} as any,
   }),
-  update: (id: any, payload: any) => ({
+  update: (id: any, payload: any, options?: any) => ({
     sql: `-- Stub SQL for ${entityName}.update`,
     zod: {} as any,
   }),
-  remove: (id: any) => ({
+  remove: (id: any, options?: any) => ({
     sql: `-- Stub SQL for ${entityName}.remove`,
     zod: {} as any,
   }),
-  retrieve: (id: any) => ({
+  retrieve: (id: any, options?: any) => ({
     sql: `-- Stub SQL for ${entityName}.retrieve`,
+    zod: {} as any,
+  }),
+  list: (options?: any) => ({
+    sql: `-- Stub SQL for ${entityName}.list`,
     zod: {} as any,
   }),
   pgFunctionCreateZod: {} as any,
