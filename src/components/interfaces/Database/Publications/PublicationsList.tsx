@@ -71,8 +71,8 @@ export const PublicationsList = () => {
   const publications = (
     filterString.length === 0
       ? data
-      : data.filter((publication) => publication.name.includes(filterString))
-  ).sort((a, b) => a.id - b.id)
+      : data.filter((publication: any) => publication.name.includes(filterString))
+  ).sort((a: any, b: any) => a.id - b.id)
 
   const [toggleListenEventValue, setToggleListenEventValue] = useState<{
     publication: any
@@ -104,7 +104,7 @@ export const PublicationsList = () => {
               className="w-48 pl-8"
               placeholder="Search for a publication"
               value={filterString}
-              onChange={(e) => setFilterString(e.target.value)}
+              onChange={(e: any) => setFilterString(e.target.value)}
             />
           </div>
           {isPermissionsLoaded && !canUpdatePublications && (
@@ -145,7 +145,7 @@ export const PublicationsList = () => {
               )}
 
               {isSuccess &&
-                publications.map((x) => (
+                publications.map((x: any) => (
                   <TableRow key={x.name}>
                     <TableCell>
                       <div className="flex items-center gap-x-2">
@@ -170,7 +170,7 @@ export const PublicationsList = () => {
                       </div>
                     </TableCell>
                     <TableCell>{x.id}</TableCell>
-                    {publicationEvents.map((event) => (
+                    {publicationEvents.map((event: any) => (
                       <TableCell key={event.key}>
                         <Switch
                           size="small"

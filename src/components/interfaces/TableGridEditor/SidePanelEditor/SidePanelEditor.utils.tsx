@@ -109,14 +109,14 @@ export const getAddForeignKeySQL = ({
         : ''
   return (
     foreignKeys
-      .map((relation) => {
+      .map((relation: any) => {
         const { deletionAction, updateAction } = relation
         const onDeleteSql = getOnDeleteSql(deletionAction)
         const onUpdateSql = getOnUpdateSql(updateAction)
         return `
       ALTER TABLE "${table.schema}"."${table.name}"
-      ADD FOREIGN KEY (${relation.columns.map((column) => `"${column.source}"`).join(',')})
-      REFERENCES "${relation.schema}"."${relation.table}" (${relation.columns.map((column) => `"${column.target}"`).join(',')})
+      ADD FOREIGN KEY (${relation.columns.map((column: any) => `"${column.source}"`).join(',')})
+      REFERENCES "${relation.schema}"."${relation.table}" (${relation.columns.map((column: any) => `"${column.target}"`).join(',')})
       ${onUpdateSql}
       ${onDeleteSql}
     `
@@ -156,7 +156,7 @@ export const getRemoveForeignKeySQL = ({
 }) => {
   return (
     foreignKeys
-      .map((relation) =>
+      .map((relation: any) =>
         `
 ALTER TABLE IF EXISTS "${table.schema}"."${table.name}"
 DROP CONSTRAINT IF EXISTS "${relation.name}"
@@ -250,7 +250,7 @@ export const createColumn = async ({
     if (isPrimaryKey) {
       toast.loading('Assigning primary key to column...', { id: toastId })
       // Same logic in createTable: Remove any primary key constraints first (we'll add it back later)
-      const existingPrimaryKeys = selectedTable.primary_keys.map((x) => x.name)
+      const existingPrimaryKeys = selectedTable.primary_keys.map((x: any) => x.name)
 
       if (existingPrimaryKeys.length > 0 && primaryKey !== undefined) {
         await dropConstraint(
@@ -325,7 +325,7 @@ export const updateColumn = async ({
     })
 
     if (!skipPKCreation && isPrimaryKey !== undefined) {
-      const existingPrimaryKeys = selectedTable.primary_keys.map((x) => x.name)
+      const existingPrimaryKeys = selectedTable.primary_keys.map((x: any) => x.name)
 
       // Primary key is getting updated for the column
       if (existingPrimaryKeys.length > 0 && primaryKey !== undefined) {
@@ -341,7 +341,7 @@ export const updateColumn = async ({
       const columnName = formattedPayload.name ?? originalColumn.name
       const primaryKeyColumns = isPrimaryKey
         ? existingPrimaryKeys.concat([columnName])
-        : existingPrimaryKeys.filter((x) => x !== columnName)
+        : existingPrimaryKeys.filter((x: any) => x !== columnName)
 
       if (primaryKeyColumns.length) {
         await addPrimaryKey(
@@ -421,8 +421,8 @@ export const duplicateTable = async (
 
     // Insert into does not copy over auto increment sequences, so we manually do it next if any
     const columns = duplicateTable.columns ?? []
-    const identityColumns = columns.filter((column) => column.identity_generation !== null)
-    identityColumns.map(async (column) => {
+    const identityColumns = columns.filter((column: any) => column.identity_generation !== null)
+    identityColumns.map(async (column: any) => {
       await executeSql({
         projectRef,
         connectionString,
@@ -573,8 +573,8 @@ export const createTable = async ({
 
     // Then add the primary key constraints here to support composite keys
     const primaryKeyColumns = columns
-      .filter((column) => column.isPrimaryKey)
-      .map((column) => column.name)
+      .filter((column: any) => column.isPrimaryKey)
+      .map((column: any) => column.name)
     if (primaryKeyColumns.length > 0) {
       await addPrimaryKey(projectRef, connectionString, table.schema, table.name, primaryKeyColumns)
     }
@@ -619,7 +619,7 @@ export const createTable = async ({
         )
 
         // For identity columns, manually raise the sequences
-        const identityColumns = columns.filter((column) => column.isIdentity)
+        const identityColumns = columns.filter((column: any) => column.isIdentity)
         for (const column of identityColumns) {
           await executeSql({
             projectRef,
@@ -663,7 +663,7 @@ export const createTable = async ({
         )
 
         // For identity columns, manually raise the sequences
-        const identityColumns = columns.filter((column) => column.isIdentity)
+        const identityColumns = columns.filter((column: any) => column.isIdentity)
         for (const column of identityColumns) {
           await executeSql({
             projectRef,
@@ -722,8 +722,8 @@ export const updateTable = async ({
 
   // Prepare a check to see if primary keys to the tables were updated or not
   const primaryKeyColumns = columns
-    .filter((column) => column.isPrimaryKey)
-    .map((column) => column.name)
+    .filter((column: any) => column.isPrimaryKey)
+    .map((column: any) => column.name)
 
   const existingPrimaryKeyColumns = table.primary_keys.map((pk: PostgresPrimaryKey) => pk.name)
   const isPrimaryKeyUpdated = !isEqual(primaryKeyColumns, existingPrimaryKeyColumns)
@@ -789,10 +789,10 @@ export const updateTable = async ({
   })
 
   const originalColumns = updatedTable.columns ?? []
-  const columnIds = columns.map((column) => column.id)
+  const columnIds = columns.map((column: any) => column.id)
 
   // Delete any removed columns
-  const columnsToRemove = originalColumns.filter((column) => !columnIds.includes(column.id))
+  const columnsToRemove = originalColumns.filter((column: any) => !columnIds.includes(column.id))
   for (const column of columnsToRemove) {
     toast.loading(`Removing column ${column.name} from ${updatedTable.name}`, { id: toastId })
     await deleteDatabaseColumn({
@@ -907,8 +907,8 @@ export const formatRowsForInsert = ({
 }) => {
   return rows.map((row: any) => {
     const formattedRow: any = {}
-    headers.forEach((header) => {
-      const column = columns?.find((c) => c.name === header)
+    headers.forEach((header: any) => {
+      const column = columns?.find((c: any) => c.name === header)
       const originalValue = row[header]
 
       if ((column?.format ?? '').includes('json')) {
@@ -945,7 +945,7 @@ export const insertRowsViaSpreadsheet = async (
   let chunkNumber = 0
   let insertError: any = undefined
   const t1: any = new Date()
-  return new Promise((resolve) => {
+  return new Promise((resolve: any) => {
     Papa.parse(file, {
       header: true,
       // dynamicTyping has to be disabled so that "00001" doesn't get parsed as 1.
@@ -1028,7 +1028,7 @@ export const insertTableRows = async (
 
   const batchedPromises = chunk(promises, 10)
   for (const batchedPromise of batchedPromises) {
-    const res = await Promise.allSettled(batchedPromise.map((batch) => batch()))
+    const res = await Promise.allSettled(batchedPromise.map((batch: any) => batch()))
     const hasFailedBatch = find(res, { status: 'rejected' })
     if (hasFailedBatch) break
     onProgressUpdate(insertProgress * 100)
@@ -1050,7 +1050,7 @@ const updateForeignKeys = async ({
   existingForeignKeyRelations: ForeignKeyConstraint[]
 }) => {
   // Foreign keys will get updated here accordingly
-  const relationsToAdd = foreignKeys.filter((x) => typeof x.id === 'string')
+  const relationsToAdd = foreignKeys.filter((x: any) => typeof x.id === 'string')
   if (relationsToAdd.length > 0) {
     await addForeignKey({
       projectRef,
@@ -1060,7 +1060,7 @@ const updateForeignKeys = async ({
     })
   }
 
-  const relationsToRemove = foreignKeys.filter((x) => x.toRemove)
+  const relationsToRemove = foreignKeys.filter((x: any) => x.toRemove)
   if (relationsToRemove.length > 0) {
     await removeForeignKey({
       projectRef,
@@ -1070,9 +1070,9 @@ const updateForeignKeys = async ({
     })
   }
 
-  const remainingRelations = foreignKeys.filter((x) => typeof x.id === 'number' && !x.toRemove)
-  const relationsToUpdate = remainingRelations.filter((x) => {
-    const existingRelation = existingForeignKeyRelations.find((y) => x.id === y.id)
+  const remainingRelations = foreignKeys.filter((x: any) => typeof x.id === 'number' && !x.toRemove)
+  const relationsToUpdate = remainingRelations.filter((x: any) => {
+    const existingRelation = existingForeignKeyRelations.find((y: any) => x.id === y.id)
     if (existingRelation !== undefined) {
       return checkIfRelationChanged(existingRelation as unknown as ForeignKeyConstraint, x)
     } else return false

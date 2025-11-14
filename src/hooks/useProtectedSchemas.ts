@@ -34,7 +34,7 @@ export interface ProtectedSchemaInfo {
   canModify: boolean
 }
 
-export function useProtectedSchemas() {
+export function useProtectedSchemas(options?: { excludeSchemas?: string[] }) {
   const project = useSelectedProject()
 
   const isProtectedSchema = (schema: string): boolean => {
@@ -66,6 +66,11 @@ export function useProtectedSchemas() {
     return isProtectedSchema(schema)
   }
 
+  const excludeSchemas = options?.excludeSchemas || []
+  const filteredProtectedSchemas = ALL_PROTECTED_SCHEMAS.filter(
+    (schema) => !excludeSchemas.includes(schema)
+  )
+
   return {
     isProtectedSchema,
     isInternalSchema,
@@ -75,6 +80,7 @@ export function useProtectedSchemas() {
     protectedSchemas: ALL_PROTECTED_SCHEMAS,
     internalSchemas: INTERNAL_SCHEMAS,
     supabaseInternalSchemas: SUPABASE_INTERNAL_SCHEMAS,
+    data: filteredProtectedSchemas,
   }
 }
 

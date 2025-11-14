@@ -46,12 +46,12 @@ const RenameQueryModal = ({
   const [descriptionInput, setDescriptionInput] = useState(description)
 
   const { mutate: titleSql, isLoading: isTitleGenerationLoading } = useSqlTitleGenerateMutation({
-    onSuccess: (data) => {
+    onSuccess: (data: any) => {
       const { title, description } = data
       setNameInput(title)
       if (!descriptionInput) setDescriptionInput(description)
     },
-    onError: (error) => {
+    onError: (error: any) => {
       toast.error(`Failed to rename query: ${error.message}`)
     },
   })
@@ -139,7 +139,7 @@ const RenameQueryModal = ({
                 id="name"
                 name="name"
                 value={nameInput}
-                onChange={(e) => setNameInput(e.target.value)}
+                onChange={(e: any) => setNameInput(e.target.value)}
               />
               <div className="flex w-full justify-end mt-2">
                 {!hasHipaaAddon && (
@@ -165,7 +165,7 @@ const RenameQueryModal = ({
                 size="medium"
                 textAreaClassName="resize-none"
                 value={descriptionInput}
-                onChange={(e) => setDescriptionInput(e.target.value)}
+                onChange={(e: any) => setDescriptionInput(e.target.value)}
               />
             </Modal.Content>
             <Modal.Separator />

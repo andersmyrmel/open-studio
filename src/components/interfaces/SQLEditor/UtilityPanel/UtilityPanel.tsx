@@ -54,7 +54,7 @@ const UtilityPanel = ({
   const { mutate: upsertContent } = useContentUpsertMutation({
     invalidateQueriesOnSuccess: false,
     // Optimistic update to the cache
-    onMutate: async (newContentSnippet) => {
+    onMutate: async (newContentSnippet: any) => {
       const { payload } = newContentSnippet
 
       // No need to update the cache for non-SQL content

@@ -9,6 +9,7 @@ import { WRAPPER_HANDLERS } from 'components/interfaces/Integrations/Wrappers/Wr
 import { ENTITY_TYPE } from 'data/entity-types/entity-type-constants'
 
 interface TableRelationship extends PostgresRelationship {
+  id?: number
   deletion_action: 'a' | 'r' | 'c' | 'n' | 'd'
   update_action: 'a' | 'r' | 'c' | 'n' | 'd'
   // Old schema properties for backwards compatibility

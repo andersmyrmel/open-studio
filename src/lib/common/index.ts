@@ -35,3 +35,11 @@ export * from './stubs/organization'
 export * from './stubs/permissions'
 export * from './stubs/entitlements'
 export { useIsOrioleDb } from './hooks/useIsOrioleDb'
+
+// Additional stub functions
+export const getAccessToken = async () => undefined
+export const useCurrentOrgPlan = () => ({
+  plan: undefined,
+  isLoading: false,
+  error: undefined,
+})

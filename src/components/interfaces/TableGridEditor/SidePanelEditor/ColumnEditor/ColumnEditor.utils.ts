@@ -60,7 +60,7 @@ export const generateColumnFieldFromPostgresColumn = (
   foreignKeys: ForeignKeyConstraint[]
 ): ColumnField => {
   const { primary_keys } = table
-  const primaryKeyColumns = primary_keys.map((key) => key.name)
+  const primaryKeyColumns = primary_keys.map((key: any) => key.name)
   const foreignKey = getColumnForeignKey(column, table, foreignKeys)
   const isArray = column?.data_type === 'ARRAY'
 
@@ -120,7 +120,7 @@ export const generateUpdateColumnPayload = (
   table: RetrieveTableResult,
   field: ColumnField
 ): Partial<UpdateColumnPayload> => {
-  const primaryKeyColumns = table.primary_keys.map((key) => key.name)
+  const primaryKeyColumns = table.primary_keys.map((key: any) => key.name)
   const isOriginallyPrimaryKey = primaryKeyColumns.includes(originalColumn.name)
 
   // Only append the properties which are getting updated
@@ -212,7 +212,7 @@ export const getColumnForeignKey = (
 ) => {
   const { relationships } = table
 
-  const foreignKey = relationships.find((relationship) => {
+  const foreignKey = relationships.find((relationship: any) => {
     return (
       relationship.source_schema === column.schema &&
       relationship.source_table_name === column.table &&
@@ -221,7 +221,7 @@ export const getColumnForeignKey = (
   })
   if (foreignKey === undefined) return foreignKey
   else {
-    const foreignKeyMeta = foreignKeys.find((fk) => fk.id === foreignKey.id)
+    const foreignKeyMeta = foreignKeys.find((fk: any) => fk.id === foreignKey.id)
     return {
       ...foreignKey,
       deletion_action: foreignKeyMeta?.deletion_action ?? FOREIGN_KEY_CASCADE_ACTION.NO_ACTION,

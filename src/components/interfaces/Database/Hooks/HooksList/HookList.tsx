@@ -45,7 +45,7 @@ export const HookList = ({
   const restUrlTld = restUrl ? new URL(restUrl).hostname.split('.').pop() : 'co'
 
   const filteredHooks = (hooks ?? []).filter(
-    (x) =>
+    (x: any) =>
       includes(x.name.toLowerCase(), filterString.toLowerCase()) &&
       x.schema === schema &&
       x.function_args.length >= 2
@@ -57,7 +57,7 @@ export const HookList = ({
 
   return (
     <>
-      {filteredHooks.map((x) => {
+      {filteredHooks.map((x: any) => {
         const isEdgeFunction = (url: string) =>
           url.includes(`https://${ref}.functions.supabase.${restUrlTld}/`) ||
           url.includes(`https://${ref}.supabase.${restUrlTld}/functions/`)

@@ -30,7 +30,7 @@ export const PublicationsTables = () => {
     projectRef: project?.ref,
     connectionString: project?.connectionString,
   })
-  const selectedPublication = publications.find((pub) => pub.id === Number(id))
+  const selectedPublication = publications.find((pub: any) => pub.id === Number(id))
 
   const {
     data: tablesData = [],
@@ -44,7 +44,7 @@ export const PublicationsTables = () => {
   })
 
   const tables = useMemo(() => {
-    return tablesData.filter((table) =>
+    return tablesData.filter((table: any) =>
       filterString.length === 0 ? table : table.name.includes(filterString)
     )
   }, [tablesData, filterString])
@@ -68,7 +68,7 @@ export const PublicationsTables = () => {
                 size="tiny"
                 placeholder="Search for a table"
                 value={filterString}
-                onChange={(e) => setFilterString(e.target.value)}
+                onChange={(e: any) => setFilterString(e.target.value)}
                 icon={<Search size={12} />}
                 className="w-48 pl-8"
               />
@@ -112,7 +112,7 @@ export const PublicationsTables = () => {
               </TableHeader>
               <TableBody>
                 {!!selectedPublication ? (
-                  tables.map((table) => (
+                  tables.map((table: any) => (
                     <PublicationsTableItem
                       key={table.id}
                       table={table}

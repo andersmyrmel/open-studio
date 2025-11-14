@@ -44,13 +44,13 @@ export const EnumeratedTypes = () => {
     projectRef: project?.ref,
     connectionString: project?.connectionString,
   })
-  const enumeratedTypes = (data ?? []).filter((type) => type.enums.length > 0)
+  const enumeratedTypes = (data ?? []).filter((type: any) => type.enums.length > 0)
   const filteredEnumeratedTypes =
     search.length > 0
       ? enumeratedTypes.filter(
-          (x) => x.schema === selectedSchema && x.name.toLowerCase().includes(search.toLowerCase())
+          (x: any) => x.schema === selectedSchema && x.name.toLowerCase().includes(search.toLowerCase())
         )
-      : enumeratedTypes.filter((x) => x.schema === selectedSchema)
+      : enumeratedTypes.filter((x: any) => x.schema === selectedSchema)
 
   const { isSchemaLocked } = useIsProtectedSchema({ schema: selectedSchema })
 
@@ -69,7 +69,7 @@ export const EnumeratedTypes = () => {
             size="tiny"
             value={search}
             className="w-full lg:w-52"
-            onChange={(e) => setSearch(e.target.value)}
+            onChange={(e: any) => setSearch(e.target.value)}
             placeholder="Search for a type"
             icon={<Search size={14} />}
           />
@@ -133,7 +133,7 @@ export const EnumeratedTypes = () => {
                   </TableRow>
                 )}
                 {filteredEnumeratedTypes.length > 0 &&
-                  filteredEnumeratedTypes.map((type) => (
+                  filteredEnumeratedTypes.map((type: any) => (
                     <TableRow key={type.id}>
                       <TableCell className="w-20">
                         <p className="w-20 truncate">{type.schema}</p>
