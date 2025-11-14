@@ -2,9 +2,9 @@
  * Free project limit check query stub for Open Studio
  */
 
-export const useFreeProjectLimitCheckQuery = () => {
+export const useFreeProjectLimitCheckQuery = (variables?: any, options?: any) => {
   return {
-    data: { withinLimit: true },
+    data: [] as any[],
     isLoading: false,
     error: undefined,
     isSuccess: true,

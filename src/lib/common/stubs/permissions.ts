@@ -7,7 +7,7 @@
 /**
  * Async permission check - always returns true
  */
-export function useAsyncCheckPermissions() {
+export function useAsyncCheckPermissions(action?: string, resource?: string) {
   return {
     can: true,
     checkPermissions: async () => true,

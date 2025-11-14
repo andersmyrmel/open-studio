@@ -10,9 +10,12 @@ export interface OrgProject {
   organization_id: string
 }
 
-export const useOrgProjectsInfiniteQuery = () => {
+export const useOrgProjectsInfiniteQuery = (variables?: any, options?: any) => {
   return {
-    data: undefined,
+    data: {
+      pages: [] as any[],
+      pageParams: [],
+    },
     isLoading: false,
     error: undefined,
     isSuccess: false,
