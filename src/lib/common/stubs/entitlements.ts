@@ -21,5 +21,7 @@ export function useOrgAiOptInLevel() {
   return {
     level: 'full', // Full AI access in standalone
     isLoading: false,
+    includeSchemaMetadata: true,
+    isHipaaProjectDisallowed: false,
   }
 }
