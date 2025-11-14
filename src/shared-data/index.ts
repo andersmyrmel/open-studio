@@ -8,6 +8,7 @@ export const logConstants = {
   DEFAULT_LOG_LEVEL: 'INFO' as const,
   MAX_LOG_SIZE: 1000,
   LOG_RETENTION_DAYS: 7,
+  schemas: [] as any[],
 }
 
 const extensionsData = {

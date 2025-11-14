@@ -10,6 +10,10 @@ export const DEFAULT_ORGANIZATION = {
   name: 'Open Studio',
   billing_email: 'local@open-studio.dev',
   opt_in_tags: [],
+  plan: {
+    id: 'free',
+    name: 'Free',
+  },
 }
 
 /**
