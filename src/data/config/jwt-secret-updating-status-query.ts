@@ -10,6 +10,8 @@ export interface JwtSecretUpdatingStatus {
   isUpdating: boolean
   progress?: number
   error?: string
+  jwtSecretUpdateStatus?: string
+  jwt_secret?: string
 }
 
 export const jwtSecretKeys = {

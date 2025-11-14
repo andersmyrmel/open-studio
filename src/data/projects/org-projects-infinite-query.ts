@@ -17,7 +17,7 @@ export const useOrgProjectsInfiniteQuery = (variables?: any, options?: any) => {
       pageParams: [],
     },
     isLoading: false,
-    error: undefined,
+    error: undefined as Error | undefined,
     isSuccess: false,
     isError: false,
     isFetching: false,
