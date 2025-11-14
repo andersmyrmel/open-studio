@@ -9,7 +9,7 @@ export interface CustomContent {
   content?: string
 }
 
-export const useCustomContent = () => {
+export const useCustomContent = (keys?: string[]) => {
   return {
     data: null as CustomContent | null,
     isLoading: false,

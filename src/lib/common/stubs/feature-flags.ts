@@ -47,9 +47,24 @@ export function useFeatureFlags() {
 export const IS_PLATFORM = false
 
 /**
- * Hook to check if a specific feature is enabled
- * Alias for isFeatureEnabled as a hook
+ * Hook to check if specific features are enabled
+ * Returns an object with feature flags as properties
  */
-export function useIsFeatureEnabled(feature: Feature): boolean {
-  return isFeatureEnabled(feature)
+export function useIsFeatureEnabled(features: string[] | Feature[]): Record<string, boolean> {
+  const result: Record<string, boolean> = {}
+
+  // Convert feature strings to camelCase property names
+  features.forEach((feature) => {
+    const key = typeof feature === 'string' ? feature.replace(/[:-]/g, '') : feature
+    result[key] = true
+  })
+
+  // Common feature flags
+  return {
+    ...result,
+    realtimeAll: true,
+    realtime: true,
+    billingAll: true,
+    billing: true,
+  }
 }
