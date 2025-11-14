@@ -19,7 +19,7 @@ export interface DatabaseFunction {
   security_definer: boolean
   config_params: Record<string, string> | null
   args?: Array<{ name: string; type?: string; mode?: string }>
-  behavior?: string
+  behavior?: 'IMMUTABLE' | 'STABLE' | 'VOLATILE'
   complete_statement?: string
 }
 

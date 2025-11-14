@@ -42,7 +42,9 @@ export const EditHookPanel = ({ visible, selectedHook, onClose }: EditHookPanelP
 
   // [Joshen] There seems to be some bug between Checkbox.Group within the Form component
   // hence why this external state as a temporary workaround
-  const [events, setEvents] = useState<string[]>(selectedHook?.events ?? [])
+  const [events, setEvents] = useState<('INSERT' | 'UPDATE' | 'DELETE' | 'TRUNCATE')[]>(
+    (selectedHook?.events as ('INSERT' | 'UPDATE' | 'DELETE' | 'TRUNCATE')[] | undefined) ?? []
+  )
   const [eventsError, setEventsError] = useState<string>()
   const [isSubmitting, setIsSubmitting] = useState(false)
 
@@ -140,7 +142,7 @@ export const EditHookPanel = ({ visible, selectedHook, onClose }: EditHookPanelP
     else onClose()
   }
 
-  const onUpdateSelectedEvents = (event: string) => {
+  const onUpdateSelectedEvents = (event: 'INSERT' | 'UPDATE' | 'DELETE' | 'TRUNCATE') => {
     if (events.includes(event)) {
       setEvents(events.filter((e) => e !== event))
     } else {
