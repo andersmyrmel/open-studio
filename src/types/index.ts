@@ -72,6 +72,11 @@ export interface Organization {
   billing_email?: string
   is_owner?: boolean
   stripe_customer_id?: string
+  opt_in_tags?: never[]
+  plan?: {
+    id: string
+    name: string
+  }
 }
 
 // ============================================================================
