@@ -35,6 +35,9 @@ const pgMetaWithGenerators = {
   triggers: createStubGenerator('triggers'),
   policies: createStubGenerator('policies'),
   roles: createStubGenerator('roles'),
+  columns: createStubGenerator('columns'),
+  publications: createStubGenerator('publications'),
+  schemas: createStubGenerator('schemas'),
 }
 
 export default pgMetaWithGenerators

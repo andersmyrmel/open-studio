@@ -63,6 +63,12 @@ export enum PermissionAction {
 
   // Infra
   INFRA_EXECUTE = 'infra.execute',
+
+  // Secrets
+  SECRETS_WRITE = 'secrets.write',
+
+  // Billing
+  BILLING_WRITE = 'billing.write',
 }
 
 /**
@@ -94,4 +100,5 @@ export enum SupportCategories {
   BUG_REPORT = 'bug_report',
   AI_ASSISTANT = 'ai_assistant',
   DASHBOARD_BUG = 'dashboard_bug',
+  DATABASE_UNRESPONSIVE = 'database_unresponsive',
 }

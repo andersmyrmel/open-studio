@@ -3,9 +3,15 @@
  */
 
 export interface Organization {
-  id: string
+  id: number
   name: string
   slug: string
+  billing_email: string
+  opt_in_tags: never[]
+  plan?: {
+    id: string
+    name: string
+  }
 }
 
 export const useOrganizationsQuery = () => {
@@ -14,5 +20,6 @@ export const useOrganizationsQuery = () => {
     isLoading: false,
     error: undefined,
     isSuccess: true,
+    isError: false,
   }
 }
