@@ -96,7 +96,7 @@ const LogsExplorerHeader = ({ subtitle }: LogsExplorerHeaderProps) => {
             defaultActiveId="edge_logs"
             listClassNames="px-2"
           >
-            {logConstants.schemas.map((schema) => (
+            {logConstants.schemas.map((schema: any) => (
               <Tabs.Panel
                 key={schema.reference}
                 id={schema.reference}
@@ -114,7 +114,7 @@ const LogsExplorerHeader = ({ subtitle }: LogsExplorerHeaderProps) => {
                   ]}
                   body={schema.fields
                     .sort((a: any, b: any) => a.path - b.path)
-                    .map((field) => (
+                    .map((field: any) => (
                       <Field key={field.path} field={field} />
                     ))}
                 />

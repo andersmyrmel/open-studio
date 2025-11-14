@@ -91,8 +91,8 @@ export const OrganizationProjectSelector = ({
     { enabled: fetchOnMount || open, keepPreviousData: true }
   )
 
-  const projects = useMemo(() => data?.pages.flatMap((page) => page.projects), [data?.pages]) || []
-  const selectedProject = projects.find((p) => p.ref === selectedRef)
+  const projects = useMemo(() => data?.pages.flatMap((page: any) => page.projects), [data?.pages]) || []
+  const selectedProject = projects.find((p: any) => p.ref === selectedRef)
 
   useEffect(() => {
     if (
@@ -187,7 +187,7 @@ export const OrganizationProjectSelector = ({
                     </p>
                   )}
                   <ScrollArea className={(projects || []).length > 7 ? 'h-[210px]' : ''}>
-                    {projects?.map((project) => (
+                    {projects?.map((project: any) => (
                       <CommandItem_Shadcn_
                         key={project.ref}
                         value={`${project.name.replaceAll('"', '')}-${project.ref}`}

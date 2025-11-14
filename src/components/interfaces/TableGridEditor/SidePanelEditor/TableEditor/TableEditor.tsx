@@ -108,7 +108,7 @@ export const TableEditor = ({
   })
   const { data: protectedSchemas } = useProtectedSchemas({ excludeSchemas: ['extensions'] })
   const enumTypes = (types ?? []).filter(
-    (type) => !protectedSchemas.find((s) => s.name === type.schema)
+    (type: any) => !protectedSchemas.find((s: any) => s.name === type.schema)
   )
 
   const { data: publications } = useDatabasePublicationsQuery({
@@ -116,7 +116,7 @@ export const TableEditor = ({
     connectionString: project?.connectionString,
   })
   const realtimePublication = (publications ?? []).find(
-    (publication) => publication.name === 'supabase_realtime'
+    (publication: any) => publication.name === 'supabase_realtime'
   )
   const realtimeEnabledTables = realtimePublication?.tables ?? []
   const isRealtimeEnabled = isNewRecord

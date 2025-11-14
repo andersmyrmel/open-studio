@@ -45,7 +45,7 @@ export const useDatabaseHooksQuery = <TData = DatabaseTriggersData>(
     queryKey: databaseTriggerKeys.list(projectRef),
     queryFn: ({ signal }) => getDatabaseTriggers({ projectRef, connectionString }, signal),
     select: (data) => {
-      return data.filter((trigger) => {
+      return data.filter((trigger: any) => {
         return (
           trigger.function_schema === 'supabase_functions' &&
           (trigger.schema !== 'net' || trigger.function_args.length === 0)

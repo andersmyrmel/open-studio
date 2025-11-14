@@ -7,7 +7,7 @@ export const MIME_TYPES_BY_EXTENSION = Object.fromEntries(
   Object.entries(db)
     .filter(([, { extensions }]) => extensions !== undefined)
     .flatMap(([mime, { extensions }]) =>
-      extensions!.map((extension) => [extension.toLowerCase(), mime])
+      extensions!.map((extension: any) => [extension.toLowerCase(), mime])
     )
 )
 
