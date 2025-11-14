@@ -24,8 +24,9 @@ export async function upsertContent({ projectRef, payload }: ContentUpsertVariab
   return { id: payload.id || 'stub-id', ...payload }
 }
 
-export function useContentUpsertMutation() {
+export function useContentUpsertMutation(options?: any) {
   return useMutation({
     mutationFn: upsertContent,
+    ...options,
   })
 }

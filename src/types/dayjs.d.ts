@@ -8,6 +8,7 @@ declare module 'dayjs' {
   interface Dayjs {
     utc(keepLocalTime?: boolean): Dayjs
     tz(timezone?: string, keepLocalTime?: boolean): Dayjs
+    utcOffset(offset?: number | string, keepLocalTime?: boolean): Dayjs | number
   }
 
   namespace Dayjs {

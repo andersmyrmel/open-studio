@@ -11,12 +11,13 @@ export interface CustomContent {
   [key: string]: any
 }
 
-export function useCustomContent() {
+export function useCustomContent(keys?: string[]) {
   // Stub: return null for local mode (no custom branding)
   return {
     data: null as CustomContent | null,
     isLoading: false,
     error: undefined,
+    docsRowLevelSecurityGuidePath: undefined,
   }
 }
 

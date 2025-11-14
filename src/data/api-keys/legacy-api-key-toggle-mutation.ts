@@ -4,8 +4,8 @@
 
 export const useLegacyApiKeyToggleMutation = () => {
   return {
-    mutate: () => {},
-    mutateAsync: async () => {},
+    mutate: (variables?: any, options?: any) => {},
+    mutateAsync: async (variables?: any, options?: any) => {},
     isLoading: false,
   }
 }
