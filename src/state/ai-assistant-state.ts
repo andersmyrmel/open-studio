@@ -13,7 +13,10 @@ export type AiAssistantState = {
   newChat?: (options: {
     name?: string
     initialInput?: string
-    suggestions?: { title: string; prompts?: string[] }
+    suggestions?: {
+      title: string
+      prompts?: Array<{ label: string; description: string } | string>
+    }
   }) => void
 }
 
