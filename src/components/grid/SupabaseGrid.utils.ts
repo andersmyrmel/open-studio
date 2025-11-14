@@ -19,10 +19,16 @@ export function formatSortURLParams(tableName: string, sort?: string[]): Sort[] 
   if (Array.isArray(sort)) {
     return compact(
       sort.map((s) => {
-        const [column, order] = s.split(':')
+        const [column, orderStr] = s.split(':')
         // Reject any possible malformed sort param
-        if (!column || !order) return undefined
-        else return { table: tableName, column, ascending: order === 'asc' }
+        if (!column || !orderStr) return undefined
+        const ascending = orderStr === 'asc'
+        return {
+          table: tableName,
+          column,
+          order: (ascending ? 'asc' : 'desc') as 'asc' | 'desc',
+          ascending
+        }
       })
     )
   }

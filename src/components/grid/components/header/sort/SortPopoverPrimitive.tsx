@@ -101,7 +101,7 @@ export const SortPopoverPrimitive = ({
     if (currentTableName) {
       setLocalSorts([
         ...localSorts,
-        { table: currentTableName, column: columnName as string, ascending: true },
+        { table: currentTableName, column: columnName as string, order: 'asc' as const, ascending: true },
       ])
     }
   }
