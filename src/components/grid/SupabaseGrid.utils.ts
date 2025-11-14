@@ -108,9 +108,9 @@ export function parseSupaTable(table: Entity): SupaTable {
       )
     })
     if (relationship) {
-      temp.foreignKey.targetTableSchema = relationship.target_table_schema
-      temp.foreignKey.targetTableName = relationship.target_table_name
-      temp.foreignKey.targetColumnName = relationship.target_column_name
+      temp.foreignKey.targetTableSchema = relationship.target_table_schema ?? null
+      temp.foreignKey.targetTableName = relationship.target_table_name ?? null
+      temp.foreignKey.targetColumnName = relationship.target_column_name ?? null
       temp.foreignKey.deletionAction = relationship.deletion_action
       temp.foreignKey.updateAction = relationship.update_action
     }
