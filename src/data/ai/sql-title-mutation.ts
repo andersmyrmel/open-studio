@@ -35,9 +35,10 @@ export async function generateSqlTitle({ sql }: SqlTitleMutationVariables): Prom
   return 'SQL query'
 }
 
-export function useSqlTitleMutation() {
+export function useSqlTitleMutation(options?: any) {
   return useMutation({
     mutationFn: generateSqlTitle,
+    ...options,
   })
 }
 

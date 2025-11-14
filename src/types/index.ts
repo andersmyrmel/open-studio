@@ -25,13 +25,15 @@ export interface Dictionary<T> {
  */
 export class ResponseError extends Error {
   code?: number
+  requestId?: string
   retryAfter?: number
   requestPathname?: string
 
-  constructor(message: string, code?: number, retryAfter?: number, requestPathname?: string) {
+  constructor(message: string, code?: number, requestId?: string, retryAfter?: number, requestPathname?: string) {
     super(message)
     this.name = 'ResponseError'
     this.code = code
+    this.requestId = requestId
     this.retryAfter = retryAfter
     this.requestPathname = requestPathname
   }

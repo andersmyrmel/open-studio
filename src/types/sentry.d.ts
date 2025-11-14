@@ -9,7 +9,7 @@ declare module '@sentry/nextjs' {
     setContext(key: string, context: any): void
   }
 
-  export function captureException(exception: any): string
+  export function captureException(exception: any, context?: any): string
   export function captureMessage(message: string, level?: 'fatal' | 'error' | 'warning' | 'log' | 'info' | 'debug'): string
   export function withScope(callback: (scope: Scope) => void): void
 }
