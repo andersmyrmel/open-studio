@@ -3,7 +3,7 @@
  * AI-powered SQL query title generation (cloud-only feature)
  */
 
-import { useMutation } from '@tanstack/react-query'
+import { useMutation, UseMutationOptions } from '@tanstack/react-query'
 
 export interface SqlTitleMutationVariables {
   sql: string
@@ -35,8 +35,10 @@ export async function generateSqlTitle({ sql }: SqlTitleMutationVariables): Prom
   return 'SQL query'
 }
 
-export function useSqlTitleMutation(options?: any) {
-  return useMutation({
+export function useSqlTitleMutation(
+  options?: UseMutationOptions<string, Error, SqlTitleMutationVariables>
+) {
+  return useMutation<string, Error, SqlTitleMutationVariables>({
     mutationFn: generateSqlTitle,
     ...options,
   })

@@ -2,7 +2,7 @@
  * Content upsert mutation stub for Open Studio
  */
 
-import { useMutation } from '@tanstack/react-query'
+import { useMutation, UseMutationOptions } from '@tanstack/react-query'
 
 export interface UpsertContentPayload {
   id?: string
@@ -24,8 +24,10 @@ export async function upsertContent({ projectRef, payload }: ContentUpsertVariab
   return { id: payload.id || 'stub-id', ...payload }
 }
 
-export function useContentUpsertMutation(options?: any) {
-  return useMutation({
+export function useContentUpsertMutation(
+  options?: UseMutationOptions<any, Error, ContentUpsertVariables>
+) {
+  return useMutation<any, Error, ContentUpsertVariables>({
     mutationFn: upsertContent,
     ...options,
   })
