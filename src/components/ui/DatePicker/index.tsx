@@ -180,17 +180,20 @@ export function DatePicker({
     setAppliedStartDate(startDate)
     setAppliedEndDate(endDate)
 
+    const fromISO = dayjs(startDate)
+      .second(Number(startTime.ss))
+      .minute(Number(startTime.mm))
+      .hour(Number(startTime.HH))
+      .toISOString()
+    const toISO = dayjs(endDate || startDate)
+      .second(Number(endTime.ss))
+      .minute(Number(endTime.mm))
+      .hour(Number(endTime.HH))
+      .toISOString()
+
     const payload = {
-      from: dayjs(startDate)
-        .second(Number(startTime.ss))
-        .minute(Number(startTime.mm))
-        .hour(Number(startTime.HH))
-        .toISOString(),
-      to: dayjs(endDate || startDate)
-        .second(Number(endTime.ss))
-        .minute(Number(endTime.mm))
-        .hour(Number(endTime.HH))
-        .toISOString(),
+      from: new Date(fromISO),
+      to: new Date(toISO),
     }
     if (onChange) onChange(payload)
   }

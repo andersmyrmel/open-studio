@@ -6,6 +6,9 @@ export enum QUEUE_MESSAGE_TYPE {
   STANDARD = 'standard',
   PRIORITY = 'priority',
   DELAYED = 'delayed',
+  AVAILABLE = 'available',
+  SCHEDULED = 'scheduled',
+  ARCHIVED = 'archived',
 }
 
 export const parseQueueMessage = (message: any) => {

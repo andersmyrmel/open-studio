@@ -13,6 +13,8 @@ export type Feature =
   | 'inline_editor'
   | 'query_performance'
   | 'linter'
+  | 'disableProjectCreationAndUpdate'
+  | 'showRefreshToast'
 
 /**
  * Check if a feature is enabled
