@@ -12,6 +12,7 @@ export function useAsyncCheckPermissions() {
     can: true,
     checkPermissions: async () => true,
     isLoading: false,
+    isSuccess: true,
   }
 }
 

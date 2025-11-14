@@ -44,4 +44,6 @@ export interface Sort {
   column: string
   order: SortOrder
   nulls?: 'first' | 'last'
+  ascending?: boolean
+  table?: string
 }

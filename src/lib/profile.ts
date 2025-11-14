@@ -10,6 +10,7 @@ export const useProfile = () => {
     data: undefined,
     isLoading: false,
     error: undefined,
+    profile: undefined,
   }
 }
 

@@ -10,6 +10,11 @@ export type AiAssistantState = {
   isEnabled: boolean
   messages: any[]
   currentContext?: string
+  newChat?: (options: {
+    name?: string
+    initialInput?: string
+    suggestions?: { title: string; prompts?: string[] }
+  }) => void
 }
 
 // Create a simple valtio state
@@ -18,6 +23,10 @@ export const aiAssistantState = proxy<AiAssistantState>({
   isEnabled: false,
   messages: [],
   currentContext: undefined,
+  newChat: (options) => {
+    // Stub implementation - AI features not available in local mode
+    console.log('AI Assistant newChat called (stub):', options)
+  },
 })
 
 export const useAiAssistantStateSnapshot = (

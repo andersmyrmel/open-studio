@@ -8,6 +8,12 @@
  * In standalone mode, all permissions are granted by default
  */
 export enum PermissionAction {
+  // Generic CRUD actions
+  CREATE = 'create',
+  READ = 'read',
+  UPDATE = 'update',
+  DELETE = 'delete',
+
   // Database
   SQL_SELECT = 'sql.select',
   SQL_INSERT = 'sql.insert',
@@ -86,4 +92,6 @@ export enum SupportCategories {
   FEATURE_REQUEST = 'feature_request',
   GENERAL = 'general',
   BUG_REPORT = 'bug_report',
+  AI_ASSISTANT = 'ai_assistant',
+  DASHBOARD_BUG = 'dashboard_bug',
 }

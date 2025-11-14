@@ -18,6 +18,8 @@ export const SIDEBAR_KEYS = {
   PUBLICATIONS: 'publications',
   INDEXES: 'indexes',
   SETTINGS: 'settings',
+  AI_ASSISTANT: 'ai-assistant',
+  EDITOR_PANEL: 'editor-panel',
 } as const
 
 export type SidebarKey = (typeof SIDEBAR_KEYS)[keyof typeof SIDEBAR_KEYS]

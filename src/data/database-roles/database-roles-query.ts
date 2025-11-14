@@ -22,6 +22,7 @@ export interface PgRole {
   password: string | null
   valid_until: string | null
   config: string[] | null
+  activeConnections?: number
 }
 
 export async function getDatabaseRoles(

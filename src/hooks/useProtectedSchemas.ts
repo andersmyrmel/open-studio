@@ -62,10 +62,15 @@ export function useProtectedSchemas() {
     }
   }
 
+  const isSchemaLocked = (schema: string): boolean => {
+    return isProtectedSchema(schema)
+  }
+
   return {
     isProtectedSchema,
     isInternalSchema,
     isSupabaseInternalSchema,
+    isSchemaLocked,
     getSchemaInfo,
     protectedSchemas: ALL_PROTECTED_SCHEMAS,
     internalSchemas: INTERNAL_SCHEMAS,
