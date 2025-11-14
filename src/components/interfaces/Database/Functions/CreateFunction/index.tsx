@@ -14,7 +14,6 @@ import { DatabaseFunction } from 'data/database-functions/database-functions-que
 import { useDatabaseFunctionUpdateMutation } from 'data/database-functions/database-functions-update-mutation'
 import { useSelectedProjectQuery } from '@/lib/common'
 import { useProtectedSchemas } from 'hooks/useProtectedSchemas'
-import type { FormSchema } from 'types'
 import {
   Button,
   FormControl_Shadcn_,

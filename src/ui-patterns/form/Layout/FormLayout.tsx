@@ -16,7 +16,7 @@ export interface FormLayoutProps {
   // Additional props used by form components
   label?: React.ReactNode
   labelOptional?: React.ReactNode
-  afterLabel?: string
+  afterLabel?: React.ReactNode
   beforeLabel?: string
   layout?: 'horizontal' | 'vertical' | 'flex'
   id?: string
@@ -26,6 +26,7 @@ export interface FormLayoutProps {
   size?: 'tiny' | 'small' | 'medium' | 'large' | 'xlarge'
   nonBoxInput?: boolean
   labelLayout?: 'horizontal' | 'vertical'
+  align?: 'right' | 'left'
 }
 
 export const FormLayout: React.FC<FormLayoutProps> = ({
