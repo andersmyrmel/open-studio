@@ -15,6 +15,7 @@ export const useOrgProjectsInfiniteQuery = () => {
     data: undefined,
     isLoading: false,
     error: undefined,
+    isSuccess: false,
     fetchNextPage: () => {},
     hasNextPage: false,
   }

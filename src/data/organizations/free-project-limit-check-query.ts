@@ -7,5 +7,6 @@ export const useFreeProjectLimitCheckQuery = () => {
     data: { withinLimit: true },
     isLoading: false,
     error: undefined,
+    isSuccess: true,
   }
 }

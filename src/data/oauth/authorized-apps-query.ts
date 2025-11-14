@@ -7,5 +7,6 @@ export const useAuthorizedAppsQuery = () => {
     data: [],
     isLoading: false,
     error: undefined,
+    isSuccess: true,
   }
 }

@@ -81,6 +81,7 @@ export function useProtectedSchemas(options?: { excludeSchemas?: string[] }) {
     internalSchemas: INTERNAL_SCHEMAS,
     supabaseInternalSchemas: SUPABASE_INTERNAL_SCHEMAS,
     data: filteredProtectedSchemas,
+    isSuccess: true,
   }
 }
 

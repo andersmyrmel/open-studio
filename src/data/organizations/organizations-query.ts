@@ -13,5 +13,6 @@ export const useOrganizationsQuery = () => {
     data: [],
     isLoading: false,
     error: undefined,
+    isSuccess: true,
   }
 }
