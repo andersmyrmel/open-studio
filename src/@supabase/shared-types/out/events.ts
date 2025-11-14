@@ -51,3 +51,13 @@ export enum JwtSecretUpdateStatus {
   Updating = 'UPDATING',
   Failed = 'FAILED',
 }
+
+/**
+ * Database upgrade status
+ */
+export enum DatabaseUpgradeStatus {
+  Idle = 'IDLE',
+  Upgrading = 'UPGRADING',
+  Completed = 'COMPLETED',
+  Failed = 'FAILED',
+}

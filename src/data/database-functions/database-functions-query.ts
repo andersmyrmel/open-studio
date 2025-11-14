@@ -18,6 +18,9 @@ export interface DatabaseFunction {
   return_type: string
   security_definer: boolean
   config_params: Record<string, string> | null
+  args?: Array<{ name: string; type?: string; mode?: string }>
+  behavior?: string
+  complete_statement?: string
 }
 
 export async function getDatabaseFunctions(
