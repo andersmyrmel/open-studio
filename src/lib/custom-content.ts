@@ -14,5 +14,7 @@ export const useCustomContent = () => {
     data: null as CustomContent | null,
     isLoading: false,
     error: undefined,
+    // Flatten common properties for convenience
+    docsRowLevelSecurityGuidePath: undefined as string | undefined,
   }
 }
