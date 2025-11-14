@@ -16,7 +16,7 @@ export function useLocalStorage<T>(key: string, initialValue: T) {
       const item = window.localStorage.getItem(key)
       // Parse stored json or if none return initialValue
       return item ? JSON.parse(item) : initialValue
-    } catch (error) {
+    } catch (error: any) {
       // If error also return initialValue
       console.log(error)
       return initialValue
@@ -36,7 +36,7 @@ export function useLocalStorage<T>(key: string, initialValue: T) {
         if (typeof window !== 'undefined') {
           window.localStorage.setItem(key, JSON.stringify(valueToStore))
         }
-      } catch (error) {
+      } catch (error: any) {
         // A more advanced implementation would handle the error case
         console.log(error)
       }

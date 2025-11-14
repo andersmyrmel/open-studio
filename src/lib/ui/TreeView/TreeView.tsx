@@ -130,7 +130,7 @@ const TreeViewItem = forwardRef<
 
               try {
                 input.setSelectionRange(startPos, endPos)
-              } catch (e) {
+              } catch (e: any) {
                 console.error('Could not set selection range', e)
               }
             }, 50)

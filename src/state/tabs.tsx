@@ -68,7 +68,7 @@ function getSavedRecentItems(ref: string): RecentItem[] {
 
   try {
     return JSON.parse(stored ?? '{"items": []}').items
-  } catch (error) {
+  } catch (error: any) {
     return []
   }
 }
@@ -105,7 +105,7 @@ function getSavedTabs(ref: string) {
     }
 
     return parsed
-  } catch (error) {
+  } catch (error: any) {
     return DEFAULT_TABS_STATE
   }
 }

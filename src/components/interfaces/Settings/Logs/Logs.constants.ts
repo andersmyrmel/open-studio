@@ -17,3 +17,12 @@ export const DEFAULT_QUERY_PARAMS = {
 }
 
 export const LOGS_EXPLORER_DOCS_URL = 'https://supabase.com/docs/guides/platform/logs'
+
+export const LOG_LEVELS = ['DEBUG', 'INFO', 'WARN', 'ERROR', 'FATAL'] as const
+export const DEFAULT_LOG_LEVEL = 'INFO'
+export const MAX_LOG_SIZE = 10000
+export const LOG_RETENTION_DAYS = 7
+
+export const LOG_SCHEMAS = {
+  schemas: ['public', 'auth', 'storage']
+}

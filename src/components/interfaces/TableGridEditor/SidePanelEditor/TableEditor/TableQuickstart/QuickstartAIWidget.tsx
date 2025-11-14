@@ -93,7 +93,7 @@ export const QuickstartAIWidget = ({ onSelectTable, disabled }: QuickstartAIWidg
         })
 
         setLastGeneratedPrompt(promptToUse)
-      } catch (error) {
+      } catch (error: any) {
         track('table_quickstart_ai_generation_completed', {
           success: false,
           tablesGenerated: 0,

@@ -190,7 +190,7 @@ export const SidePanelEditor = ({
     if (payload !== undefined && configuration !== undefined) {
       try {
         await saveRow(payload, isNewRecord, configuration, () => {})
-      } catch (error) {
+      } catch (error: any) {
         // [Joshen] No error handler required as error is handled within saveRow
       } finally {
         resolve()
@@ -215,7 +215,7 @@ export const SidePanelEditor = ({
       const configuration = { identifiers, rowIdx: row.idx }
 
       saveRow(value, isNewRecord, configuration, () => {})
-    } catch (error) {}
+    } catch (error: any) {}
   }
 
   const saveColumn = async (

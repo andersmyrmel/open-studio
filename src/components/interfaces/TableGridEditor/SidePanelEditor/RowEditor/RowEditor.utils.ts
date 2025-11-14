@@ -130,7 +130,7 @@ export const parseValue = (originalValue: any, format: string) => {
     } else {
       return originalValue
     }
-  } catch (error) {
+  } catch (error: any) {
     return originalValue
   }
 }

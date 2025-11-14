@@ -15,7 +15,7 @@ export const tryParseJson = (jsonString: any) => {
   try {
     const parsed = JSON.parse(jsonString)
     return parsed
-  } catch (error) {
+  } catch (error: any) {
     return undefined
   }
 }
@@ -31,7 +31,7 @@ export const minifyJSON = (prettifiedJSON: string) => {
     } else {
       return res
     }
-  } catch (err) {
+  } catch (err: any) {
     throw err
   }
 }
@@ -43,7 +43,7 @@ export const prettifyJSON = (minifiedJSON: string) => {
     } else {
       return minifiedJSON
     }
-  } catch (err) {
+  } catch (err: any) {
     // dont need to throw error, just return text value
     // Users have to fix format if they want to save
     return minifiedJSON
@@ -106,7 +106,7 @@ export const tryParseInt = (str: string) => {
   try {
     const int = parseInt(str, 10)
     return isNaN(int) ? undefined : int
-  } catch (error) {
+  } catch (error: any) {
     return undefined
   }
 }
@@ -122,7 +122,7 @@ export const propsAreEqual = (prevProps: any, nextProps: any) => {
       }
     })
     return true
-  } catch (e) {
+  } catch (e: any) {
     return false
   }
 }

@@ -202,7 +202,7 @@ export const fetchAllTableRows = async ({
       if (result.length < rowsPerPage) break
 
       await sleep(THROTTLE_DELAY)
-    } catch (error) {
+    } catch (error: any) {
       throw new Error(
         `Error fetching all table rows: ${error instanceof Error ? error.message : 'Unknown error'}`
       )
@@ -290,7 +290,7 @@ export async function getTableRows(
     }) as SupaRow[]
 
     return { rows }
-  } catch (error) {
+  } catch (error: any) {
     throw new Error(error instanceof Error ? error.message : 'Unknown error')
   }
 }

@@ -56,7 +56,7 @@ export const EditHookPanel = ({ visible, selectedHook, onClose }: EditHookPanelP
 
     try {
       parsedHeaders = JSON.parse(headers.replace(/\\"/g, '"'))
-    } catch (e) {
+    } catch (e: any) {
       parsedHeaders = {}
     }
 
@@ -76,7 +76,7 @@ export const EditHookPanel = ({ visible, selectedHook, onClose }: EditHookPanelP
 
     try {
       parsedParameters = JSON.parse(parameters.replace(/\\"/g, '"'))
-    } catch (e) {
+    } catch (e: any) {
       parsedParameters = {}
     }
 

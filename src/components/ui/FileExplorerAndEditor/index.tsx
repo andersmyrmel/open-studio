@@ -103,7 +103,7 @@ export const FileExplorerAndEditor = ({
           content,
           selected: i === droppedFiles.length - 1, // Select the last dropped file
         })
-      } catch (error) {
+      } catch (error: any) {
         console.error(`Failed to read file ${file.name}:`, error)
       }
     }

@@ -20,7 +20,7 @@ export const JsonFormatter = (p: PropsWithChildren<RenderCellProps<SupaRow, unkn
   try {
     const jsonValue = JSON.parse(value)
     return <>{JSON.stringify(jsonValue)}</>
-  } catch (err) {
+  } catch (err: any) {
     return <>{JSON.stringify(value)}</>
   }
 }

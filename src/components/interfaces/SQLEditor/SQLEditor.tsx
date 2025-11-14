@@ -210,7 +210,7 @@ export const SQLEditor = () => {
         snapV2.renameSnippet({ id, name })
         const tabId = createTabId('sql', { id })
         tabs.updateTab(tabId, { label: name })
-      } catch (error) {
+      } catch (error: any) {
         // [Joshen] No error handler required as this happens in the background and not necessary to ping the user
       }
     },
@@ -549,7 +549,7 @@ export const SQLEditor = () => {
           },
         },
       })
-    } catch (error) {
+    } catch (error: any) {
       setPromptState((prev) => ({ ...prev, isLoading: false }))
     }
   }

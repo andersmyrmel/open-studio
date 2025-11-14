@@ -34,7 +34,7 @@ try {
       globalState.syncTooltip = JSON.parse(tooltipSyncStored)
     }
   }
-} catch (error) {
+} catch (error: any) {
   console.warn('Failed to load chart sync settings from localStorage:', error)
 }
 
@@ -50,14 +50,14 @@ function updateGlobalState(updates: Partial<ChartHoverState>) {
   if (updates.syncHover !== undefined) {
     try {
       localStorage.setItem(CHART_HOVER_SYNC_STORAGE_KEY, JSON.stringify(globalState.syncHover))
-    } catch (error) {
+    } catch (error: any) {
       console.warn('Failed to save chart hover sync setting to localStorage:', error)
     }
   }
   if (updates.syncTooltip !== undefined) {
     try {
       localStorage.setItem(CHART_TOOLTIP_SYNC_STORAGE_KEY, JSON.stringify(globalState.syncTooltip))
-    } catch (error) {
+    } catch (error: any) {
       console.warn('Failed to save chart tooltip sync setting to localStorage:', error)
     }
   }

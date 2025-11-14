@@ -13,6 +13,7 @@ export type QueryResult<T = any> = {
 }
 
 export type FilterOperator =
+  | '='
   | 'eq'
   | 'neq'
   | 'gt'

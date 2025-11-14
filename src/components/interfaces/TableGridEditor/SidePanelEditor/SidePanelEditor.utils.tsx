@@ -503,7 +503,7 @@ export const createTable = async ({
         },
       },
     })
-  } catch (error) {
+  } catch (error: any) {
     console.error('Failed to track table creation event:', error)
   }
 
@@ -548,7 +548,7 @@ export const createTable = async ({
             },
           },
         })
-      } catch (error) {
+      } catch (error: any) {
         console.error('Failed to track RLS enablement event:', error)
       }
     }
@@ -683,7 +683,7 @@ export const createTable = async ({
 
     // Finally, return the created table
     return table
-  } catch (error) {
+  } catch (error: any) {
     deleteTableMutation({
       projectRef,
       connectionString,
@@ -765,7 +765,7 @@ export const updateTable = async ({
           },
         },
       })
-    } catch (error) {
+    } catch (error: any) {
       console.error('Failed to track RLS enablement event:', error)
     }
   }
@@ -967,7 +967,7 @@ export const insertRowsViaSpreadsheet = async (
           await executeWithRetry(() =>
             executeSql({ projectRef, connectionString, sql: insertQuery })
           )
-        } catch (error) {
+        } catch (error: any) {
           console.warn(error)
           insertError = error
           parser.abort()
@@ -1013,7 +1013,7 @@ export const insertTableRows = async (
           const insertQuery = new Query().from(table.name, table.schema).insert(batch).toSql()
           try {
             await executeSql({ projectRef, connectionString, sql: insertQuery })
-          } catch (error) {
+          } catch (error: any) {
             insertError = error
             reject(error)
           }

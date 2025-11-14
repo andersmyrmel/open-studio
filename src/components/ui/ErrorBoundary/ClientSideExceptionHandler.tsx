@@ -29,7 +29,7 @@ export const ClientSideExceptionHandler = ({
     try {
       localStorage.clear()
       sessionStorage.clear()
-    } catch (e) {
+    } catch (e: any) {
       // ignore
     }
     window.location.reload()

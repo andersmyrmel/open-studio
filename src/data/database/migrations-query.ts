@@ -38,7 +38,7 @@ export async function getMigrations(
     )
 
     return result as DatabaseMigration[]
-  } catch (error) {
+  } catch (error: any) {
     if (
       (error as ExecuteSqlError).message.includes(
         'relation "supabase_migrations.schema_migrations" does not exist'
