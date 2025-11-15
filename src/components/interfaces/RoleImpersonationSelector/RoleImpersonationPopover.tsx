@@ -9,6 +9,7 @@ import { Popover, PopoverContent, PopoverTrigger, Button } from '@/lib/ui'
 export interface RoleImpersonationPopoverProps {
   serviceRoleLabel?: string
   children?: React.ReactNode
+  variant?: string
 }
 
 export const RoleImpersonationPopover: React.FC<RoleImpersonationPopoverProps> = ({

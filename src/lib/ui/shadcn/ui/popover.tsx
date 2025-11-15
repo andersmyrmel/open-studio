@@ -6,7 +6,16 @@ import * as React from 'react'
 import { cn } from '@/lib/utils/cn'
 import styles from './popover.module.css'
 
-const Popover = PopoverPrimitive.Root
+// Extended Popover to accept legacy props for backwards compatibility
+const Popover = PopoverPrimitive.Root as React.FC<
+  React.ComponentPropsWithoutRef<typeof PopoverPrimitive.Root> & {
+    side?: 'top' | 'right' | 'bottom' | 'left'
+    align?: 'start' | 'center' | 'end'
+    sideOffset?: number
+    className?: string
+    overlay?: React.ReactNode
+  }
+>
 const PopoverTrigger = PopoverPrimitive.Trigger
 const PopoverAnchor = PopoverPrimitive.Anchor
 
