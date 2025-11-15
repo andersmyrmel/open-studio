@@ -2,7 +2,19 @@
  * Vercel redirect query stub for Open Studio
  */
 
-export const useVercelRedirectQuery = (variables?: any, options?: any) => {
+export interface VercelRedirect {
+  url: string
+}
+
+export const useVercelRedirectQuery = (
+  variables?: any,
+  options?: any
+): {
+  data: VercelRedirect | undefined
+  isLoading: boolean
+  error: undefined
+  isError: boolean
+} => {
   return {
     data: undefined,
     isLoading: false,

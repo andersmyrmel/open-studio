@@ -1,6 +1,9 @@
 import dayjs from 'dayjs'
+import utc from 'dayjs/plugin/utc'
 import { FC, PropsWithChildren, useMemo } from 'react'
 import { ResponsiveContainer } from 'recharts'
+
+dayjs.extend(utc)
 
 import { DateTimeFormats } from './Charts.constants'
 import type { CommonChartProps, StackedChartProps } from './Charts.types'

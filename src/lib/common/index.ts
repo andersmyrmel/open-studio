@@ -38,7 +38,11 @@ export { useIsOrioleDb } from './hooks/useIsOrioleDb'
 
 // Additional stub functions
 export const getAccessToken = async () => undefined
-export const useCurrentOrgPlan = () => ({
+export const useCurrentOrgPlan = (): {
+  plan: { id: string } | undefined
+  isLoading: boolean
+  error: undefined
+} => ({
   plan: undefined,
   isLoading: false,
   error: undefined,

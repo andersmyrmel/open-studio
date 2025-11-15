@@ -18,7 +18,7 @@ export const useDatabaseQueuesVersionQuery = (
     { projectRef, connectionString },
     {
       enabled,
-      select: (extensions) => {
+      select: (extensions: any) => {
         const pgmqExtension = extensions.find((ext: any) => ext.name === PGMQ_EXTENSION_NAME)
 
         if (!pgmqExtension?.installed_version) return null

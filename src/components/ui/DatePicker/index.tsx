@@ -10,6 +10,7 @@ import {
   Calendar as CalendarPicker,
   Popover,
   PopoverContent_Shadcn_,
+  PopoverSeparator_Shadcn_,
   PopoverTrigger_Shadcn_,
   Popover_Shadcn_,
 } from '@/lib/ui'
@@ -310,7 +311,7 @@ export function DatePicker({
             from: startDate?.toISOString() || null,
             to: endDate?.toISOString() || null,
           })}
-          <Popover.Separator />
+          <PopoverSeparator_Shadcn_ />
           <div className="flex items-center justify-end gap-2 py-2 px-3 pb-4">
             {!hideClear && (
               <Button type="default" onClick={() => handleClear()}>

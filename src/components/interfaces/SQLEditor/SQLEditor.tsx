@@ -206,7 +206,7 @@ export const SQLEditor = () => {
   const setAiTitle = useCallback(
     async (id: string, sql: string) => {
       try {
-        const { title: name } = await generateSqlTitle({ sql })
+        const name = await generateSqlTitle({ sql })
         snapV2.renameSnippet({ id, name })
         const tabId = createTabId('sql', { id })
         tabs.updateTab(tabId, { label: name })
@@ -417,7 +417,7 @@ export const SQLEditor = () => {
       const sql = diffModel.modified.getValue()
 
       if (selectedDiffType === DiffType.NewSnippet) {
-        const { title } = await generateSqlTitle({ sql })
+        const title = await generateSqlTitle({ sql })
         await handleNewQuery(sql, title)
       } else {
         editorRef.current.executeEdits('apply-ai-edit', [

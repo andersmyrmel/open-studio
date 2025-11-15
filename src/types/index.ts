@@ -125,6 +125,7 @@ export namespace SqlSnippets {
     sql: string
     schema?: string
     favorite?: boolean
+    chart?: any
   }
 }
 

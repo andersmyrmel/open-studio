@@ -131,9 +131,9 @@ export const MoveQueryModal = ({ visible, snippets = [], onClose }: MoveQueryMod
         snippets.map(async (snippet: any) => {
           let snippetContent = (snippet as SnippetWithContent)?.content
           if (snippetContent === undefined) {
-            const { content } = await getContentById({ projectRef: ref, id: snippet.id })
-            if ('sql' in content) {
-              snippetContent = content
+            const result = await getContentById({ projectRef: ref, id: snippet.id })
+            if (result?.content && 'sql' in result.content) {
+              snippetContent = result.content
             }
           }
 

@@ -14,7 +14,13 @@ export interface Organization {
   }
 }
 
-export const useOrganizationsQuery = () => {
+export const useOrganizationsQuery = (): {
+  data: Organization[]
+  isLoading: boolean
+  error: undefined
+  isSuccess: boolean
+  isError: boolean
+} => {
   return {
     data: [],
     isLoading: false,

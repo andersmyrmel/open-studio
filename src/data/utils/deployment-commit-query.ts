@@ -2,7 +2,21 @@
  * Deployment commit query stub for Open Studio
  */
 
-export const useDeploymentCommitQuery = (variables?: any, options?: any) => {
+export interface DeploymentCommit {
+  commitSha: string
+  commitTime: string
+}
+
+export const useDeploymentCommitQuery = (
+  variables?: any,
+  options?: any
+): {
+  data: DeploymentCommit | undefined
+  isLoading: boolean
+  error: undefined
+  isError: boolean
+  isSuccess: boolean
+} => {
   return {
     data: undefined,
     isLoading: false,

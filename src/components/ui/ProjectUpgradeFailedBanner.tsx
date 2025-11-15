@@ -1,7 +1,10 @@
 import { DatabaseUpgradeStatus } from '@supabase/shared-types/out/events'
 import dayjs from 'dayjs'
+import utc from 'dayjs/plugin/utc'
 import { X } from 'lucide-react'
 import { useEffect, useState } from 'react'
+
+dayjs.extend(utc)
 
 import { SupportCategories } from '@supabase/shared-types/out/constants'
 import { useParams } from '@/lib/common'
