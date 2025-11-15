@@ -306,7 +306,7 @@ export const CreateFunction = ({
                               {/* Form selects don't need form controls, otherwise the CSS gets weird */}
                               <Select_Shadcn_
                                 defaultValue={field.value}
-                                onValueChange={field.onChange}
+                                onValueChange={field.onChange as any}
                               >
                                 <SelectTrigger_Shadcn_ className="col-span-8">
                                   <SelectValue_Shadcn_ />
