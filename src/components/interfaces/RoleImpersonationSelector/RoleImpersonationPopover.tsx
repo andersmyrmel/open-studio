@@ -16,10 +16,11 @@ export const RoleImpersonationPopover: React.FC<RoleImpersonationPopoverProps> =
   serviceRoleLabel = 'Service Role',
   children,
 }) => {
+  const defaultButton = <Button variant="outline" as any>Switch Role</Button>
   return (
     <Popover>
       <PopoverTrigger asChild>
-        {children || <Button variant="outline">Switch Role</Button>}
+        {children || defaultButton}
       </PopoverTrigger>
       <PopoverContent>
         <div className="space-y-2">
