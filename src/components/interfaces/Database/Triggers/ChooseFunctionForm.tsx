@@ -127,7 +127,7 @@ const SchemaFunctionGroup = ({ schema, functions, selectFunction }: SchemaFuncti
           <Function
             id={x.id}
             key={x.id}
-            completeStatement={x.complete_statement}
+            completeStatement={x.complete_statement ?? ''}
             name={x.name}
             onClick={selectFunction}
           />
