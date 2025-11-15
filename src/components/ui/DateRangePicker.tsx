@@ -72,11 +72,11 @@ export const DateRangePicker = ({
       case 'currentBillingCycle':
         onChange({
           period_start: {
-            date: dayjs.unix(currentBillingPeriodStart ?? 0).format(DATE_FORMAT),
+            date: (dayjs as any).unix(currentBillingPeriodStart ?? 0).format(DATE_FORMAT),
             time_period: '1d',
           },
           period_end: {
-            date: dayjs.unix(currentBillingPeriodEnd ?? 0).format(DATE_FORMAT),
+            date: (dayjs as any).unix(currentBillingPeriodEnd ?? 0).format(DATE_FORMAT),
             time_period: 'today',
           },
           interval: '1d',
@@ -85,14 +85,14 @@ export const DateRangePicker = ({
       case 'previousBillingCycle':
         onChange({
           period_start: {
-            date: dayjs
+            date: (dayjs as any)
               .unix(currentBillingPeriodStart ?? 0)
               .subtract(1, 'month')
               .format(DATE_FORMAT),
             time_period: '1d',
           },
           period_end: {
-            date: dayjs.unix(currentBillingPeriodStart ?? 0).format(DATE_FORMAT),
+            date: (dayjs as any).unix(currentBillingPeriodStart ?? 0).format(DATE_FORMAT),
             time_period: 'today',
           },
           interval: '1d',
