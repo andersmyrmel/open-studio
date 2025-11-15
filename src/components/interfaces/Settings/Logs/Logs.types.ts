@@ -3,8 +3,8 @@
  */
 
 export interface DatePickerToFrom {
-  from: Date | undefined
-  to: Date | undefined
+  from: Date | string | undefined | null
+  to: Date | string | undefined | null
 }
 
 export interface LogsQueryParams {

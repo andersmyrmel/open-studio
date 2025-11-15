@@ -194,7 +194,7 @@ const MonacoEditor = ({
           id,
           name: untitledSnippetTitle,
           sql: value,
-          owner_id: profile?.id,
+          owner_id: profile?.id as any,
           project_id: project?.id as any,
         })
         snapV2.addSnippet({ projectRef: ref, snippet })

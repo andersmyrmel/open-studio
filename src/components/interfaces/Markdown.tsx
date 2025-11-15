@@ -12,6 +12,7 @@ export interface MarkdownProps {
   className?: string
   children?: string
   extLinks?: boolean
+  remarkPlugins?: any[]
 }
 
 export const Markdown: React.FC<MarkdownProps> = ({

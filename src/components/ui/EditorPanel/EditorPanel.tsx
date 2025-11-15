@@ -239,8 +239,8 @@ export const EditorPanel = () => {
                 id: uuidv4(),
                 name: 'New query',
                 sql: currentValue,
-                owner_id: profile.id,
-                project_id: project.id,
+                owner_id: profile.id as any,
+                project_id: project.id as any,
               })
 
               sqlEditorSnap.addSnippet({ projectRef: ref, snippet })

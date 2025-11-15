@@ -678,7 +678,7 @@ export const createTable = async ({
       queryClient,
       projectRef,
       connectionString,
-      id: table.id,
+      id: table.id as any,
     })
 
     // Finally, return the created table

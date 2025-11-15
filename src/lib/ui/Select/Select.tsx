@@ -36,6 +36,7 @@ export interface Props extends Omit<React.InputHTMLAttributes<HTMLSelectElement>
   size?: 'tiny' | 'small' | 'medium' | 'large' | 'xlarge'
   borderless?: boolean
   validation?: (x: any) => void
+  onValueChange?: (value: string) => void
 }
 
 export const ColLayout = (props: any) => <div>{props.children}</div>

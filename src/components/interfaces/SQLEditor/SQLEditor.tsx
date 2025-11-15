@@ -350,7 +350,7 @@ export const SQLEditor = () => {
           id: uuidv4(),
           name,
           sql,
-          owner_id: profile.id,
+          owner_id: profile.id as any,
           project_id: project.id as any,
         })
         snapV2.addSnippet({ projectRef: ref, snippet })
