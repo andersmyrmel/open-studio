@@ -154,7 +154,7 @@ export const TriggerSheet = ({
       createDatabaseTrigger({
         projectRef: project?.ref,
         connectionString: project?.connectionString,
-        payload,
+        payload: payload as any,
       })
     }
   }
