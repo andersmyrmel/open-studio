@@ -677,7 +677,7 @@ export const createTable = async ({
     await prefetchEditorTablePage({
       queryClient,
       projectRef,
-      connectionString,
+      connectionString: connectionString ?? undefined,
       id: table.id as any,
     })
 

@@ -174,7 +174,8 @@ const DeleteConfirmationDialogs = ({
       if (filters.length === 0) {
         if (getImpersonatedRoleState().role !== undefined) {
           snap.closeConfirmationDialog()
-          return toast.error('Table truncation is not supported when impersonating a role')
+          toast.error('Table truncation is not supported when impersonating a role')
+          return
         }
 
         truncateRows({

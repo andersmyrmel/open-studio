@@ -17,6 +17,8 @@ export interface AIEditorProps {
   initialPrompt?: string
   options?: any
   openAIAssistantShortcutEnabled?: boolean
+  executeQuery?: (sql: string) => void
+  closeShortcutEnabled?: boolean
 }
 
 export const AIEditor: React.FC<AIEditorProps> = () => {

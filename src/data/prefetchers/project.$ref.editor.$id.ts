@@ -59,6 +59,9 @@ export interface EditorTablePageLinkParams {
   id: number
   schema?: string
   table?: string
+  href?: string
+  children?: React.ReactNode
+  filters?: Array<{ column: string; operator: string; value: string }>
 }
 
 export function EditorTablePageLink({
