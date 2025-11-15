@@ -8,6 +8,15 @@ import React from 'react'
 export interface AIEditorProps {
   className?: string
   onClose?: () => void
+  autoFocus?: boolean
+  language?: string
+  value?: string
+  onChange?: (value: string) => void
+  aiEndpoint?: string
+  aiMetadata?: any
+  initialPrompt?: string
+  options?: any
+  openAIAssistantShortcutEnabled?: boolean
 }
 
 export const AIEditor: React.FC<AIEditorProps> = () => {

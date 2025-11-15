@@ -257,7 +257,7 @@ const Indexes = () => {
         confirmLabel="Confirm delete"
         confirmLabelLoading="Deleting..."
         onConfirm={() =>
-          selectedIndexToDelete !== undefined ? onConfirmDeleteIndex(selectedIndexToDelete) : {}
+          selectedIndexToDelete !== undefined ? onConfirmDeleteIndex(selectedIndexToDelete) : undefined
         }
         onCancel={() => setSelectedIndexToDelete(undefined)}
         alert={{

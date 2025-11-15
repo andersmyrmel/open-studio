@@ -158,9 +158,15 @@ const DeleteConfirmationDialogs = ({
 
   const getImpersonatedRoleState = useGetImpersonatedRoleState()
 
-  const onConfirmDeleteRow = async () => {
-    if (!project) return console.error('Project ref is required')
-    if (!selectedTable) return console.error('Selected table required')
+  const onConfirmDeleteRow = async (): Promise<void> => {
+    if (!project) {
+      console.error('Project ref is required')
+      return
+    }
+    if (!selectedTable) {
+      console.error('Selected table required')
+      return
+    }
     if (snap.confirmationDialog?.type !== 'row') return
     const selectedRowsToDelete = snap.confirmationDialog.rows
 
