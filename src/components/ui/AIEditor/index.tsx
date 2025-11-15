@@ -17,7 +17,7 @@ export interface AIEditorProps {
   initialPrompt?: string
   options?: any
   openAIAssistantShortcutEnabled?: boolean
-  executeQuery?: (sql: string) => void
+  executeQuery?: (sqlOrSkipValidation?: string | boolean) => void
   closeShortcutEnabled?: boolean
 }
 
