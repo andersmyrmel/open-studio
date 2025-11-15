@@ -235,7 +235,7 @@ export const TriggerSheet = ({
                       description="Determines if a trigger should or should not fire. Can also be used to disable a trigger, but not delete it."
                     >
                       <FormControl_Shadcn_>
-                        <Select_Shadcn_ defaultValue={field.value} onValueChange={field.onChange}>
+                        <Select_Shadcn_ defaultValue={field.value} onValueChange={field.onChange as any}>
                           <SelectTrigger_Shadcn_ className="col-span-8">
                             {
                               TRIGGER_ENABLED_MODES.find((option) => option.value === field.value)
@@ -353,7 +353,7 @@ export const TriggerSheet = ({
                         description="Determines when your trigger fires"
                       >
                         <FormControl_Shadcn_>
-                          <Select_Shadcn_ defaultValue={field.value} onValueChange={field.onChange}>
+                          <Select_Shadcn_ defaultValue={field.value} onValueChange={field.onChange as any}>
                             <SelectTrigger_Shadcn_ className="col-span-8">
                               {TRIGGER_TYPES.find((option) => option.value === field.value)?.label}
                             </SelectTrigger_Shadcn_>
@@ -382,7 +382,7 @@ export const TriggerSheet = ({
                         description="Identifies whether the trigger fires once for each processed row or once for each statement"
                       >
                         <FormControl_Shadcn_>
-                          <Select_Shadcn_ defaultValue={field.value} onValueChange={field.onChange}>
+                          <Select_Shadcn_ defaultValue={field.value} onValueChange={field.onChange as any}>
                             <SelectTrigger_Shadcn_ className="col-span-8">
                               {
                                 TRIGGER_ORIENTATIONS.find((option) => option.value === field.value)

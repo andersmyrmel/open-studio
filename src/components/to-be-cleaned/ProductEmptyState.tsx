@@ -12,6 +12,11 @@ export interface ProductEmptyStateProps {
   children?: React.ReactNode
   className?: string
   action?: React.ReactNode
+  ctaButtonLabel?: string
+  onClickCta?: () => void
+  ctaUrl?: string
+  disabled?: boolean
+  disabledMessage?: string
 }
 
 export const ProductEmptyState: React.FC<ProductEmptyStateProps> = ({

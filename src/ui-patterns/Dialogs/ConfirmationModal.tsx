@@ -30,6 +30,7 @@ export interface ConfirmationModalProps {
   loading?: boolean
   disabled?: boolean
   children?: React.ReactNode
+  alert?: React.ReactNode
 }
 
 const ConfirmationModal = ({
