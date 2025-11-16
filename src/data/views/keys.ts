@@ -4,7 +4,7 @@
 
 export const viewsKeys = {
   list: (projectRef: string | undefined, schema?: string) =>
-    ['projects', projectRef, 'views', schema].filter(Boolean) as const,
+    ['projects', projectRef, 'views', schema].filter(Boolean),
   listBySchema: (projectRef: string | undefined, schema?: string) =>
-    ['projects', projectRef, 'views', schema].filter(Boolean) as const,
+    ['projects', projectRef, 'views', schema].filter(Boolean),
 }
