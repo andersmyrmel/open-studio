@@ -50,4 +50,4 @@ export const useTablesRolesAccessQuery = <TData = TablesRolesAccessData>(
       typeof schema !== 'undefined' &&
       !!connectionString,
     ...options,
-  })
+ } as any)

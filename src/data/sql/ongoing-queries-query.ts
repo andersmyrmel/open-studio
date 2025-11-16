@@ -51,4 +51,4 @@ export const useOngoingQueriesQuery = <TData = OngoingQueriesData>(
     queryFn: ({ signal }: { signal?: AbortSignal }) => getOngoingQueries({ projectRef, connectionString }, signal),
     enabled: enabled && typeof projectRef !== 'undefined',
     ...options,
-  })
+ } as any)

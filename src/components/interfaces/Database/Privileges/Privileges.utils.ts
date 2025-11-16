@@ -122,7 +122,7 @@ export function usePrivilegesState({
         Object.entries(curr).map(([id, column]) => [
           id,
           Object.fromEntries(
-            Object.entries(column).map(([privilege, value]) => [
+            Object.entries(column as any).map(([privilege, value]) => [
               privilege,
               op.privilege_type === privilege ? op.type === 'grant' : value,
             ])

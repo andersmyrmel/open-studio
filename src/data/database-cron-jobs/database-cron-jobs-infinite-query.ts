@@ -95,7 +95,7 @@ export const useCronJobsInfiniteQuery = <TData = DatabaseCronJobsInfiniteData>(
 ) =>
   useInfiniteQuery<DatabaseCronJobsInfiniteData, DatabaseCronJobsInfiniteError, TData>({
     queryKey: databaseCronJobsKeys.listInfinite(projectRef, searchTerm),
-    queryFn: ({ pageParam }) => {
+    queryFn: ({ pageParam }: any) => {
       return getDatabaseCronJobs({
         projectRef,
         connectionString,
@@ -105,11 +105,11 @@ export const useCronJobsInfiniteQuery = <TData = DatabaseCronJobsInfiniteData>(
     },
     staleTime: 0,
     enabled: enabled && typeof projectRef !== 'undefined',
-    getNextPageParam(lastPage, pages) {
+    getNextPageParam(lastPage: any, pages: any) {
       const page = pages.length
       const hasNextPage = lastPage.length >= CRON_JOBS_PAGE_LIMIT
       if (!hasNextPage) return undefined
       return page
     },
     ...options,
-  })
+ } as any)

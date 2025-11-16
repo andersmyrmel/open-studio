@@ -52,4 +52,4 @@ export const useCheckPrimaryKeysExists = <TData = CheckPrimaryKeysExistsData>(
     retry: false,
     enabled: enabled && typeof projectRef !== 'undefined' && tables.length > 0,
     ...options,
-  })
+ } as any)

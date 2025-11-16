@@ -95,4 +95,4 @@ export const useFDWsQuery = <TData = FDWsData>(
     queryFn: ({ signal }: { signal?: AbortSignal }) => getFDWs({ projectRef, connectionString }, signal),
     enabled: enabled && typeof projectRef !== 'undefined',
     ...options,
-  })
+ } as any)

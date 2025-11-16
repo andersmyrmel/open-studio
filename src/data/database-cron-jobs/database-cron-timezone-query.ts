@@ -33,4 +33,4 @@ export const useCronTimezoneQuery = <TData = string>(
     queryFn: () => getDatabaseCronTimezone({ projectRef, connectionString }),
     enabled: enabled && typeof projectRef !== 'undefined',
     ...options,
-  })
+ } as any)

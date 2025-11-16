@@ -155,5 +155,5 @@ export const useTableRowsCountQuery = <TData = TableRowsCountData>(
       getTableRowsCount({ queryClient, projectRef, connectionString, tableId, ...args }, signal),
     enabled: enabled && typeof projectRef !== 'undefined' && typeof tableId !== 'undefined',
     ...options,
-  })
+ } as any)
 }

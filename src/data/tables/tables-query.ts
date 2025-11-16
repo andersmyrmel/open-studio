@@ -75,7 +75,7 @@ export const useTablesQuery = <TData = TablesData>(
       getTables({ projectRef, connectionString, schema, includeColumns }, signal),
     enabled: enabled,
     ...options,
-  })
+ } as any)
 }
 
 /**

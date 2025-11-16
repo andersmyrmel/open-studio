@@ -77,4 +77,4 @@ export const useTableDefinitionQuery = <TData = TableDefinitionData>(
     enabled:
       enabled && typeof projectRef !== 'undefined' && typeof id !== 'undefined' && !isNaN(id),
     ...options,
-  })
+ } as any)

@@ -309,7 +309,7 @@ export const useTableRowsQuery = <TData = TableRowsData>(
       getTableRows({ queryClient, projectRef, connectionString, tableId, ...args }, signal),
     enabled: enabled && typeof projectRef !== 'undefined' && typeof tableId !== 'undefined',
     ...options,
-  })
+ } as any)
 }
 
 export function prefetchTableRows(

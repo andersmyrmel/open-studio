@@ -159,7 +159,7 @@ export const useGetIndexesFromSelectQuery = <TData = GetInvolvedIndexesFromSelec
       typeof query !== 'undefined' &&
       isValidQueryForIndexing,
     ...options,
-  })
+ } as any)
 }
 
 // Helper functions

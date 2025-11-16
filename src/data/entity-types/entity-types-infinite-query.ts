@@ -134,7 +134,7 @@ export const useEntityTypesQuery = <TData = EntityTypesData>(
 ) => {
   return useInfiniteQuery<EntityTypesData, EntityTypesError, TData>({
     queryKey: entityTypeKeys.list(projectRef, { schemas, search, sort, limit, filterTypes }),
-    queryFn: ({ signal, pageParam }) =>
+    queryFn: ({ signal, pageParam }: any) =>
       getEntityTypes(
         {
           projectRef,
@@ -149,7 +149,7 @@ export const useEntityTypesQuery = <TData = EntityTypesData>(
         signal
       ),
     enabled: enabled && typeof projectRef !== 'undefined',
-    getNextPageParam(lastPage, pages) {
+    getNextPageParam(lastPage: any, pages: any) {
       const page = pages.length
       const currentTotalCount = page * limit
       const totalCount = lastPage.data.count
@@ -161,7 +161,7 @@ export const useEntityTypesQuery = <TData = EntityTypesData>(
       return page
     },
     ...options,
-  })
+ } as any)
 }
 
 export function prefetchEntityTypes(

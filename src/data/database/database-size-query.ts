@@ -55,4 +55,4 @@ export const useDatabaseSizeQuery = <TData = DatabaseSizeData>(
     queryFn: ({ signal }: { signal?: AbortSignal }) => getDatabaseSize({ projectRef, connectionString }, signal),
     enabled: enabled && typeof projectRef !== 'undefined',
     ...options,
-  })
+ } as any)

@@ -90,7 +90,7 @@ export const useQueueMessagesInfiniteQuery = <TData = DatabaseQueueData>(
 ) =>
   useInfiniteQuery<DatabaseQueueData, DatabaseQueueError, TData>({
     queryKey: databaseQueuesKeys.getMessagesInfinite(projectRef, queueName, { status }),
-    queryFn: ({ pageParam }) => {
+    queryFn: ({ pageParam }: any) => {
       return getDatabaseQueue({
         projectRef,
         connectionString,
@@ -102,10 +102,10 @@ export const useQueueMessagesInfiniteQuery = <TData = DatabaseQueueData>(
     staleTime: 0,
     enabled: enabled && typeof projectRef !== 'undefined',
 
-    getNextPageParam(lastPage) {
+    getNextPageParam(lastPage: any) {
       const hasNextPage = lastPage.length <= QUEUE_MESSAGES_PAGE_SIZE
       if (!hasNextPage) return undefined
-      return last(lastPage)?.enqueued_at
+      return (last(lastPage) as any)?.enqueued_at
     },
     ...options,
-  })
+ } as any)

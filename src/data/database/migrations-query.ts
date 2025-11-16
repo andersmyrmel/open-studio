@@ -63,4 +63,4 @@ export const useMigrationsQuery = <TData = MigrationsData>(
     queryFn: ({ signal }: { signal?: AbortSignal }) => getMigrations({ projectRef, connectionString }, signal),
     enabled: enabled && typeof projectRef !== 'undefined',
     ...options,
-  })
+ } as any)

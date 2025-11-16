@@ -40,4 +40,4 @@ export const useCronJobsCountQuery = <TData = DatabaseCronJobData>(
     queryFn: () => getDatabaseCronJobsCount({ projectRef, connectionString }),
     enabled: enabled && typeof projectRef !== 'undefined',
     ...options,
-  })
+  } as any)

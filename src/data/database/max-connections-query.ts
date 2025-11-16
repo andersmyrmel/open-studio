@@ -47,4 +47,4 @@ export const useMaxConnectionsQuery = <TData = MaxConnectionsData>(
     queryFn: ({ signal }: { signal?: AbortSignal }) => getMaxConnections({ projectRef, connectionString }, signal),
     enabled: enabled && typeof projectRef !== 'undefined',
     ...options,
-  })
+ } as any)

@@ -164,5 +164,5 @@ export const useExecuteSqlQuery = <TData = ExecuteSqlData>(
     enabled: enabled,
     staleTime: 0,
     ...options,
-  })
+ } as any)
 }

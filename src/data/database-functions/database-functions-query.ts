@@ -61,4 +61,4 @@ export const useDatabaseFunctionsQuery = <TData = DatabaseFunctionsData>(
     queryFn: ({ signal }: { signal?: AbortSignal }) => getDatabaseFunctions({ projectRef, connectionString }, signal),
     enabled: enabled && typeof projectRef !== 'undefined',
     ...options,
-  })
+ } as any)

@@ -83,4 +83,4 @@ export const useTableConstraintsQuery = <TData = TableConstraintsData>(
     queryFn: ({ signal }: { signal?: AbortSignal }) => getTableConstraints({ projectRef, connectionString, id }, signal),
     enabled: enabled && typeof projectRef !== 'undefined' && typeof id !== 'undefined',
     ...options,
-  })
+ } as any)
