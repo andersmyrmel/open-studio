@@ -21,13 +21,13 @@ interface TableRelationship extends PostgresRelationship {
   target_column_name?: string
 }
 
-export interface Table extends PostgresTable {
+export interface Table extends Omit<PostgresTable, 'columns' | 'relationships'> {
   entity_type: ENTITY_TYPE.TABLE
   columns: PostgresColumn[]
   relationships: TableRelationship[]
 }
 
-export interface PartitionedTable extends PostgresTable {
+export interface PartitionedTable extends Omit<PostgresTable, 'columns' | 'relationships'> {
   entity_type: ENTITY_TYPE.PARTITIONED_TABLE
   columns: PostgresColumn[]
   relationships: TableRelationship[]
