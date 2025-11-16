@@ -60,6 +60,7 @@ export class Query {
   private _select?: string
   private _filters: Array<{ column: string; operator: string; value: any }> = []
   private _count: boolean = false
+  private _orderBy?: Array<{ column: string; ascending?: boolean }>
 
   from(table: string, schema?: string): this {
     this._table = table
@@ -77,8 +78,43 @@ export class Query {
     return this
   }
 
+  match(filters: Record<string, any>): this {
+    Object.entries(filters).forEach(([column, value]) => {
+      this._filters.push({ column, operator: '=', value })
+    })
+    return this
+  }
+
   count(): this {
     this._count = true
+    return this
+  }
+
+  insert(data: any): this {
+    // Stub implementation
+    return this
+  }
+
+  update(data: any): this {
+    // Stub implementation
+    return this
+  }
+
+  delete(): this {
+    // Stub implementation
+    return this
+  }
+
+  truncate(): this {
+    // Stub implementation
+    return this
+  }
+
+  order(column: string, options?: { ascending?: boolean; nullsFirst?: boolean }): this {
+    if (!this._orderBy) {
+      this._orderBy = []
+    }
+    this._orderBy.push({ column, ascending: options?.ascending })
     return this
   }
 
