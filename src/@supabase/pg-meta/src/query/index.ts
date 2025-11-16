@@ -90,12 +90,12 @@ export class Query {
     return this
   }
 
-  insert(data: any): this {
+  insert(data: any, options?: { returning?: boolean; enumArrayColumns?: string[] }): this {
     // Stub implementation
     return this
   }
 
-  update(data: any): this {
+  update(data: any, options?: { returning?: boolean; enumArrayColumns?: string[] }): this {
     // Stub implementation
     return this
   }
@@ -110,11 +110,25 @@ export class Query {
     return this
   }
 
-  order(column: string, options?: { ascending?: boolean; nullsFirst?: boolean }): this {
+  order(
+    columnOrTable: string,
+    columnOrOptions?: string | { ascending?: boolean; nullsFirst?: boolean },
+    ascending?: boolean,
+    nullsFirst?: boolean
+  ): this {
     if (!this._orderBy) {
       this._orderBy = []
     }
-    this._orderBy.push({ column, ascending: options?.ascending })
+
+    // Handle both signatures:
+    // order(column, options) or order(table, column, ascending, nullsFirst)
+    if (typeof columnOrOptions === 'string') {
+      // order(table, column, ascending, nullsFirst)
+      this._orderBy.push({ column: columnOrOptions, ascending })
+    } else {
+      // order(column, options)
+      this._orderBy.push({ column: columnOrTable, ascending: columnOrOptions?.ascending })
+    }
     return this
   }
 
