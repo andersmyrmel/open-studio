@@ -9,12 +9,18 @@ import { privilegesKeys } from './keys'
 export interface TablePrivilegeRevokeVariables {
   projectRef: string
   connectionString?: string
-  schema: string
-  table: string
-  privilege: 'SELECT' | 'INSERT' | 'UPDATE' | 'DELETE' | 'TRUNCATE' | 'REFERENCES' | 'TRIGGER' | 'ALL'
-  role: string
+  schema?: string
+  table?: string
+  privilege?: 'SELECT' | 'INSERT' | 'UPDATE' | 'DELETE' | 'TRUNCATE' | 'REFERENCES' | 'TRIGGER' | 'ALL'
+  role?: string
   // Alias for compatibility
   privilegeType?: 'SELECT' | 'INSERT' | 'UPDATE' | 'DELETE' | 'TRUNCATE' | 'REFERENCES' | 'TRIGGER' | 'ALL'
+  // Batch operations
+  revokes?: Array<{
+    table_id?: string
+    grantee: string
+    privilege_type: 'SELECT' | 'INSERT' | 'UPDATE' | 'DELETE' | 'TRUNCATE' | 'REFERENCES' | 'TRIGGER' | 'ALL'
+  }>
 }
 
 export async function revokeTablePrivilege({

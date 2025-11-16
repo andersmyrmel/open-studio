@@ -17,6 +17,7 @@ export type AiAssistantState = {
       title: string
       prompts?: Array<{ label: string; description: string } | string>
     }
+    sqlSnippets?: string[]
   }) => void
 }
 
