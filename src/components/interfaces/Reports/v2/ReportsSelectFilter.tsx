@@ -20,7 +20,7 @@ export const ReportsSelectFilter: React.FC<ReportsSelectFilterProps> = ({
 }) => {
   return (
     <Select value={value} onValueChange={onChange}>
-      {/* Stub implementation */}
+      <div />
     </Select>
   )
 }

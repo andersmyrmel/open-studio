@@ -124,6 +124,7 @@ export namespace SqlSnippets {
     content_id: string
     sql: string
     schema?: string
+    schema_version?: string
     favorite?: boolean
     chart?: any
   }
