@@ -191,7 +191,7 @@ export const TableList = ({
     (publication: any) => publication.name === 'supabase_realtime'
   )
 
-  const entities = formatAllEntities({ tables, views, materializedViews, foreignTables }).filter(
+  const entities = formatAllEntities({ tables, views, materializedViews: materializedViews as any, foreignTables }).filter(
     (x: any) => visibleTypes.includes(x.type)
   )
 

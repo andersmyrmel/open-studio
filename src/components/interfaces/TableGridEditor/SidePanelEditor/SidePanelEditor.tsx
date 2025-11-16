@@ -635,12 +635,12 @@ export const SidePanelEditor = ({
         isDuplicating={snap.sidePanel?.type === 'table' && snap.sidePanel.mode === 'duplicate'}
         templateData={
           snap.sidePanel?.type === 'table' && snap.sidePanel.templateData
-            ? {
+            ? ({
                 ...snap.sidePanel.templateData,
                 columns: snap.sidePanel.templateData.columns
                   ? [...snap.sidePanel.templateData.columns]
                   : undefined,
-              }
+              } as any)
             : undefined
         }
         visible={snap.sidePanel?.type === 'table'}

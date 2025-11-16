@@ -58,19 +58,19 @@ export function DataTableFilterControls({ dateRangeDisabled }: DataTableFilterCo
                       if (field.hasDynamicOptions && isLoadingCounts) {
                         return <DataTableFilterCheckboxLoader />
                       } else if (field.hasAsyncSearch) {
-                        return <DataTableFilterCheckboxAsync {...field} />
+                        return <DataTableFilterCheckboxAsync {...(field as any)} />
                       } else {
-                        return <DataTableFilterCheckbox {...field} />
+                        return <DataTableFilterCheckbox {...(field as any)} />
                       }
                     }
                     case 'slider': {
-                      return <DataTableFilterSlider {...field} />
+                      return <DataTableFilterSlider {...(field as any)} />
                     }
                     case 'input': {
-                      return <DataTableFilterInput {...field} />
+                      return <DataTableFilterInput {...(field as any)} />
                     }
                     case 'timerange': {
-                      return <DataTableFilterTimerange {...field} />
+                      return <DataTableFilterTimerange {...(field as any)} />
                     }
                   }
                 })()}

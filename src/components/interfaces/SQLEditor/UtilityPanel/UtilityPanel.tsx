@@ -98,6 +98,7 @@ const UtilityPanel = ({
       payload: {
         ...snippet,
         id: snippet.id,
+        type: snippet.type || 'sql',
         description: snippet.description || '',
         project_id: snippet.project_id || 0,
         content: {

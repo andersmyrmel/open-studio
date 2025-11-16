@@ -55,7 +55,7 @@ function PartnerManagedResource({ managedBy, resource, cta }: PartnerManagedReso
 
   return (
     <Alert_Shadcn_ className="flex flex-col items-center gap-y-2 border-0 rounded-none">
-      <PartnerIcon organization={{ managed_by: managedBy }} showTooltip={false} size="large" />
+      <PartnerIcon organization={{ managed_by: managedBy } as any} showTooltip={false} size="large" />
 
       <AlertTitle_Shadcn_ className="text-sm">
         {resource} are managed by {PARTNER_TO_NAME[managedBy]}.

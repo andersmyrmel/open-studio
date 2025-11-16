@@ -283,31 +283,31 @@ export function useApplyPrivilegeOperations(callback?: () => void) {
       const grantTableOperations = tableOperations
         .filter((op: any) => op.type === 'grant')
         .map((op: any) => ({
-          relationId: Number(op.id),
-          grantee: op.grantee,
-          privilegeType: op.privilege_type as TablePrivilegesGrant['privilegeType'],
+          table_id: String(op.id),
+          grantee: String(op.grantee),
+          privilege_type: op.privilege_type as 'SELECT' | 'INSERT' | 'UPDATE' | 'DELETE' | 'TRUNCATE' | 'REFERENCES' | 'TRIGGER' | 'ALL',
         }))
       const revokeTableOperations = tableOperations
         .filter((op: any) => op.type === 'revoke')
         .map((op: any) => ({
-          relationId: Number(op.id),
-          grantee: op.grantee,
-          privilegeType: op.privilege_type as TablePrivilegesRevoke['privilegeType'],
+          table_id: String(op.id),
+          grantee: String(op.grantee),
+          privilege_type: op.privilege_type as 'SELECT' | 'INSERT' | 'UPDATE' | 'DELETE' | 'TRUNCATE' | 'REFERENCES' | 'TRIGGER' | 'ALL',
         }))
 
       const grantColumnOperations = columnOperations
         .filter((op: any) => op.type === 'grant')
         .map((op: any) => ({
           column_id: String(op.id),
-          grantee: op.grantee,
-          privilege_type: op.privilege_type as ColumnPrivilegesRevoke['privilege_type'],
+          grantee: String(op.grantee),
+          privilege_type: op.privilege_type as 'SELECT' | 'INSERT' | 'UPDATE' | 'REFERENCES',
         }))
       const revokeColumnOperations = columnOperations
         .filter((op: any) => op.type === 'revoke')
         .map((op: any) => ({
           column_id: String(op.id),
-          grantee: op.grantee,
-          privilege_type: op.privilege_type as ColumnPrivilegesRevoke['privilege_type'],
+          grantee: String(op.grantee),
+          privilege_type: op.privilege_type as 'SELECT' | 'INSERT' | 'UPDATE' | 'REFERENCES',
         }))
 
       // annoyingly these can't be run all at once
