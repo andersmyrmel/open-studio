@@ -16,7 +16,7 @@ export const RoleImpersonationPopover: React.FC<RoleImpersonationPopoverProps> =
   serviceRoleLabel = 'Service Role',
   children,
 }) => {
-  const defaultButton = <Button variant="outline" as any>Switch Role</Button>
+  const defaultButton = <Button type="outline">Switch Role</Button>
   return (
     <Popover>
       <PopoverTrigger asChild>

@@ -43,4 +43,4 @@ export const useQueuesQuery = <TData = DatabaseQueueData>(
     queryFn: () => getDatabaseQueues({ projectRef, connectionString }),
     enabled: enabled && typeof projectRef !== 'undefined',
     ...options,
-  })
+ } as any)

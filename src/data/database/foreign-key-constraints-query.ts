@@ -141,7 +141,7 @@ export const useForeignKeyConstraintsQuery = <TData = ForeignKeyConstraintsData>
       getForeignKeyConstraints({ projectRef, connectionString, schema }, signal),
     enabled: enabled && typeof projectRef !== 'undefined' && typeof schema !== 'undefined',
     ...options,
-  })
+ } as any)
 
 export function prefetchForeignKeyConstraints(
   client: QueryClient,

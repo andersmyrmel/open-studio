@@ -36,7 +36,7 @@ export function getDefaultTableCheckedStates(tablePrivilege: PgTablePrivileges) 
   return Object.fromEntries(
     ALL_PRIVILEGE_TYPES.map((privilege: any) => [
       privilege,
-      tablePrivilege.privileges.find((p: any) => p.privilege_type === privilege) !== undefined,
+      tablePrivilege.privileges?.find((p: any) => p.privilege_type === privilege) !== undefined,
     ])
   )
 }
@@ -122,7 +122,7 @@ export function usePrivilegesState({
         Object.entries(curr).map(([id, column]) => [
           id,
           Object.fromEntries(
-            Object.entries(column).map(([privilege, value]) => [
+            Object.entries(column as any).map(([privilege, value]) => [
               privilege,
               op.privilege_type === privilege ? op.type === 'grant' : value,
             ])
@@ -199,7 +199,7 @@ export function usePrivilegesState({
           .filter(([id]) => id !== columnId)
           .map(([id, column]) => ({
             object: 'column' as const,
-            type: column[privilegeType] ? ('grant' as const) : ('revoke' as const),
+            type: (column as any)[privilegeType] ? ('grant' as const) : ('revoke' as const),
             id,
             grantee: role,
             privilege_type: privilegeType,
@@ -211,7 +211,7 @@ export function usePrivilegesState({
 
       if (shouldGrant) {
         const areAllOtherColumnsEnabled = Object.entries(columnCheckedStates).every(
-          ([id, column]) => id === columnId || column[privilegeType]
+          ([id, column]) => id === columnId || (column as any)[privilegeType]
         )
 
         if (areAllOtherColumnsEnabled) {
@@ -283,31 +283,31 @@ export function useApplyPrivilegeOperations(callback?: () => void) {
       const grantTableOperations = tableOperations
         .filter((op: any) => op.type === 'grant')
         .map((op: any) => ({
-          relationId: Number(op.id),
-          grantee: op.grantee,
-          privilegeType: op.privilege_type as TablePrivilegesGrant['privilegeType'],
+          table_id: String(op.id),
+          grantee: String(op.grantee),
+          privilege_type: op.privilege_type as 'SELECT' | 'INSERT' | 'UPDATE' | 'DELETE' | 'TRUNCATE' | 'REFERENCES' | 'TRIGGER' | 'ALL',
         }))
       const revokeTableOperations = tableOperations
         .filter((op: any) => op.type === 'revoke')
         .map((op: any) => ({
-          relationId: Number(op.id),
-          grantee: op.grantee,
-          privilegeType: op.privilege_type as TablePrivilegesRevoke['privilegeType'],
+          table_id: String(op.id),
+          grantee: String(op.grantee),
+          privilege_type: op.privilege_type as 'SELECT' | 'INSERT' | 'UPDATE' | 'DELETE' | 'TRUNCATE' | 'REFERENCES' | 'TRIGGER' | 'ALL',
         }))
 
       const grantColumnOperations = columnOperations
         .filter((op: any) => op.type === 'grant')
         .map((op: any) => ({
           column_id: String(op.id),
-          grantee: op.grantee,
-          privilege_type: op.privilege_type as ColumnPrivilegesRevoke['privilege_type'],
+          grantee: String(op.grantee),
+          privilege_type: op.privilege_type as 'SELECT' | 'INSERT' | 'UPDATE' | 'REFERENCES',
         }))
       const revokeColumnOperations = columnOperations
         .filter((op: any) => op.type === 'revoke')
         .map((op: any) => ({
           column_id: String(op.id),
-          grantee: op.grantee,
-          privilege_type: op.privilege_type as ColumnPrivilegesRevoke['privilege_type'],
+          grantee: String(op.grantee),
+          privilege_type: op.privilege_type as 'SELECT' | 'INSERT' | 'UPDATE' | 'REFERENCES',
         }))
 
       // annoyingly these can't be run all at once

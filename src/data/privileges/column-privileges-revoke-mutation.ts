@@ -9,13 +9,19 @@ import { privilegesKeys } from './keys'
 export interface ColumnPrivilegeRevokeVariables {
   projectRef: string
   connectionString?: string
-  schema: string
-  table: string
-  column: string
-  privilege: 'SELECT' | 'INSERT' | 'UPDATE' | 'REFERENCES'
-  role: string
+  schema?: string
+  table?: string
+  column?: string
+  privilege?: 'SELECT' | 'INSERT' | 'UPDATE' | 'REFERENCES'
+  role?: string
   // Alias for compatibility
   privilege_type?: 'SELECT' | 'INSERT' | 'UPDATE' | 'REFERENCES'
+  // Batch operations
+  revokes?: Array<{
+    column_id: string
+    grantee: string
+    privilege_type: 'SELECT' | 'INSERT' | 'UPDATE' | 'REFERENCES'
+  }>
 }
 
 export async function revokeColumnPrivilege({

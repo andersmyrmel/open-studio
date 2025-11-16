@@ -36,8 +36,8 @@ export const isRoleImpersonationEnabled = (role?: string | ImpersonationRole): b
 }
 
 export const useGetImpersonatedRoleState = () => {
-  const snap = useRoleImpersonationStateSnapshot()
-  return snap.role
+  // Return a function that gets the current role state from the proxy directly
+  return () => ({ role: roleImpersonationState.role, claims: roleImpersonationState.claims })
 }
 
 export const setRoleImpersonation = (role?: ImpersonationRole, claims?: Record<string, any>) => {
@@ -56,6 +56,8 @@ export const useSubscribeToImpersonatedRole = (callback: (role?: ImpersonationRo
 
   // Call callback when role changes
   React.useEffect(() => {
-    callback(snap.role)
+    // Extract the role value from the readonly snapshot
+    const role = snap.role ? { ...snap.role } as ImpersonationRole : undefined
+    callback(role)
   }, [snap.role, callback])
 }

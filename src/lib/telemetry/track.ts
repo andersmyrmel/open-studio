@@ -30,4 +30,9 @@ export function resetUser(): void {
   // No-op for local mode
 }
 
+// React hook for tracking - returns the track function
+export function useTrack() {
+  return track
+}
+
 export default track

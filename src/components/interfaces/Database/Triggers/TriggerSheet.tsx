@@ -148,7 +148,7 @@ export const TriggerSheet = ({
         projectRef: project?.ref,
         connectionString: project?.connectionString,
         originalTrigger: selectedTrigger,
-        payload: { name: payload.name, enabled_mode: payload.enabled_mode },
+        payload: { id: selectedTrigger.id, name: payload.name, enabled_mode: payload.enabled_mode },
       })
     } else {
       createDatabaseTrigger({

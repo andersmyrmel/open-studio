@@ -201,7 +201,7 @@ export const TableGridEditor = ({
       <SidePanelEditor
         editable={editable}
         selectedTable={
-          isTableSelected || isForeignTableSelected ? (selectedTable as TableLike) : undefined
+          isTableSelected || isForeignTableSelected ? (selectedTable as any) : undefined
         }
         onTableCreated={onTableCreated}
       />

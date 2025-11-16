@@ -25,7 +25,7 @@ export interface Content {
 
 export const contentKeys = {
   detail: (projectRef: string | undefined, id: string | undefined) =>
-    ['projects', projectRef, 'content', id].filter(Boolean) as const,
+    ['projects', projectRef, 'content', id].filter(Boolean),
 }
 
 export interface ContentByIdVariables {

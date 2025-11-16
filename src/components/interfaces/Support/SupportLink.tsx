@@ -10,9 +10,12 @@ export interface SupportLinkProps {
   children?: React.ReactNode
   queryParams?: {
     orgSlug?: string
+    projectRef?: string
     category?: string
     subject?: string
     message?: string
+    sid?: string
+    error?: Error | string | any
   }
   className?: string
   href?: string

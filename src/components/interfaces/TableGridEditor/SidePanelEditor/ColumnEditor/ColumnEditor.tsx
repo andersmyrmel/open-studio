@@ -107,7 +107,7 @@ const ColumnEditor = ({
   const isNewRecord = column === undefined
   const foreignKeyMeta = data || []
   const foreignKeys = foreignKeyMeta.filter((relation: any) => {
-    return relation.source_id === column?.table_id && relation.source_columns.includes(column.name)
+    return relation.source_id === column?.table_id && relation.source_columns.includes(column?.name)
   })
   const lockColumnType =
     fkRelations.find(

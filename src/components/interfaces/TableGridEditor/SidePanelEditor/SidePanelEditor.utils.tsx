@@ -491,6 +491,7 @@ export const createTable = async ({
   try {
     await sendEvent({
       event: {
+        type: 'table_event',
         action: 'table_created',
         properties: {
           method: 'table_editor',
@@ -536,6 +537,7 @@ export const createTable = async ({
       try {
         await sendEvent({
           event: {
+            type: 'table_event',
             action: 'table_rls_enabled',
             properties: {
               method: 'table_editor',
@@ -753,6 +755,7 @@ export const updateTable = async ({
     try {
       await sendEvent({
         event: {
+          type: 'table_event',
           action: 'table_rls_enabled',
           properties: {
             method: 'table_editor',

@@ -2,8 +2,7 @@ import { X } from 'lucide-react'
 import { ReactNode } from 'react'
 import { motion, HTMLMotionProps } from 'framer-motion'
 
-import { useParams } from 'common/hooks'
-import { useLocalStorageQuery } from '@/lib/common'
+import { useParams, useLocalStorageQuery } from '@/lib/common'
 import { Button, cn } from '@/lib/ui'
 
 // Base props common to all feature banners

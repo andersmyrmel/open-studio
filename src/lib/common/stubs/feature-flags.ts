@@ -15,6 +15,7 @@ export type Feature =
   | 'linter'
   | 'disableProjectCreationAndUpdate'
   | 'showRefreshToast'
+  | 'triggersInsteadOfRealtime'
 
 /**
  * Check if a feature is enabled

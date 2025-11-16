@@ -69,7 +69,7 @@ export const GridHeaderActions = ({ table, isRefetching }: GridHeaderActionsProp
   const isView = isTableLikeView(table)
   const isMaterializedView = isTableLikeMaterializedView(table)
 
-  const triggersInsteadOfRealtime = useFlag<boolean>('triggersInsteadOfRealtime')
+  const triggersInsteadOfRealtime = useFlag('triggersInsteadOfRealtime')
   const { realtimeAll: realtimeEnabled } = useIsFeatureEnabled(['realtime:all'])
   const { isSchemaLocked } = useIsProtectedSchema({ schema: table.schema })
 

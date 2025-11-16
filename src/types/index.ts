@@ -88,12 +88,12 @@ export interface Organization {
 /**
  * User content types (SQL snippets, folders, etc.)
  */
-export interface UserContent {
+export interface UserContent<T = any> {
   id: string
   name: string
   description?: string
-  type: 'sql' | 'folder'
-  content?: string
+  type: 'sql' | 'folder' | 'query' | 'snippet'
+  content?: T
   visibility: 'user' | 'project' | 'public'
   owner_id?: number
   project_id?: number
@@ -124,6 +124,7 @@ export namespace SqlSnippets {
     content_id: string
     sql: string
     schema?: string
+    schema_version?: string
     favorite?: boolean
     chart?: any
   }

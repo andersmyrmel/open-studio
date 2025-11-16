@@ -6,9 +6,16 @@
 import { useMutation } from '@tanstack/react-query'
 
 export type SendEventVariables = {
-  action: string
+  action?: string
   properties?: Record<string, any>
   groups?: Record<string, string>
+  event?: {
+    type: string
+    action?: string
+    data?: Record<string, any>
+    properties?: Record<string, any>
+    groups?: Record<string, string>
+  }
 }
 
 // Stub implementation - does nothing for local usage

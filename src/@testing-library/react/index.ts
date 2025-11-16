@@ -26,21 +26,36 @@ export function renderHook<TResult, TProps>(
 }
 
 export const screen = {
-  getByText: () => null,
-  getByRole: () => null,
-  getByLabelText: () => null,
-  getByPlaceholderText: () => null,
-  getByAltText: () => null,
-  getByTestId: () => null,
-  queryByText: () => null,
-  queryByRole: () => null,
-  findByText: async () => null,
-  findByRole: async () => null,
+  getByText: (text: any, options?: any) => null,
+  getByRole: (role: any, options?: any) => null,
+  getByLabelText: (text: any, options?: any) => null,
+  getByPlaceholderText: (text: any, options?: any) => null,
+  getByAltText: (text: any, options?: any) => null,
+  getByTestId: (id: any, options?: any) => null,
+  queryByText: (text: any, options?: any) => null,
+  queryByRole: (role: any, options?: any) => null,
+  findByText: async (text: any, options?: any) => null,
+  findByRole: async (role: any, options?: any) => null,
 }
 
-export function fireEvent(element: any, event: any): void {
-  // No-op stub
-}
+export const fireEvent = Object.assign(
+  (element: any, event: any): void => {
+    // No-op stub
+  },
+  {
+    click: (element: any, options?: any): void => {},
+    change: (element: any, options?: any): void => {},
+    input: (element: any, options?: any): void => {},
+    submit: (element: any, options?: any): void => {},
+    focus: (element: any, options?: any): void => {},
+    blur: (element: any, options?: any): void => {},
+    keyDown: (element: any, options?: any): void => {},
+    keyUp: (element: any, options?: any): void => {},
+    keyPress: (element: any, options?: any): void => {},
+    mouseEnter: (element: any, options?: any): void => {},
+    mouseLeave: (element: any, options?: any): void => {},
+  }
+)
 
 export function waitFor(callback: () => void, options?: any): Promise<void> {
   return Promise.resolve()

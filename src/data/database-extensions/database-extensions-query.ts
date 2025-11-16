@@ -59,5 +59,5 @@ export const useDatabaseExtensionsQuery = <TData = DatabaseExtensionsData>(
     queryFn: ({ signal }: { signal?: AbortSignal }) => getDatabaseExtensions({ projectRef, connectionString }, signal),
     enabled: enabled && typeof projectRef !== 'undefined' && isActive,
     ...options,
-  })
+ } as any)
 }

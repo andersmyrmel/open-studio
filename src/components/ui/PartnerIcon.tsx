@@ -4,14 +4,14 @@ import { cn, Tooltip, TooltipContent, TooltipTrigger } from '@/lib/ui'
 import { PARTNER_TO_NAME } from './PartnerManagedResource'
 
 interface PartnerIconProps {
-  organization: Pick<Organization, 'managed_by'>
+  organization: Organization & { managed_by?: string }
   showTooltip?: boolean
   tooltipText?: string
   size?: 'small' | 'medium' | 'large'
 }
 
 function getPartnerIcon(
-  organization: Pick<Organization, 'managed_by'>,
+  organization: Organization & { managed_by?: string },
   size: 'small' | 'medium' | 'large'
 ) {
   switch (organization.managed_by) {

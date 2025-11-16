@@ -188,7 +188,7 @@ export const TriggerList = ({
                         onClick={() => {
                           const sql = generateTriggerCreateSQL(x)
                           openSidebar(SIDEBAR_KEYS.AI_ASSISTANT)
-                          aiSnap.newChat({
+                          aiSnap.newChat?.({
                             name: `Update trigger ${x.name}`,
                             initialInput: `Update this trigger which exists on the ${x.schema}.${x.table} table to...`,
                             suggestions: {

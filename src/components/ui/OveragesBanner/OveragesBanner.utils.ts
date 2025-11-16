@@ -15,8 +15,9 @@ export const getResourcesExceededLimitsOrg = (usageMetrics: OrgMetricsUsage[]): 
       }
 
       const freeUnits = usageMetric.pricing_free_units || 0
+      const usage = typeof usageMetric.usage === 'object' ? 0 : usageMetric.usage
 
-      return usageMetric.usage > freeUnits
+      return usage > freeUnits
     })
     .map((it) => it.metric)
     .filter((metric): metric is string => metric !== undefined)

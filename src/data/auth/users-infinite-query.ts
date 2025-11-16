@@ -12,6 +12,7 @@ export interface User {
   user_metadata?: Record<string, any>
   role?: string
   is_anonymous?: boolean
+  providers?: any[]
 }
 
 export const useUsersInfiniteQuery = () => {

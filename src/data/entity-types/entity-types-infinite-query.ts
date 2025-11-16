@@ -1,6 +1,6 @@
 import { QueryClient, useInfiniteQuery } from '@tanstack/react-query'
 import { executeSql, ExecuteSqlVariables } from 'data/sql/execute-sql-query'
-import type { ResponseError, UseCustomInfiniteQueryOptions } from 'types'
+import type { ResponseError, UseCustomQueryOptions } from 'types'
 import { ENTITY_TYPE } from './entity-type-constants'
 import { entityTypeKeys } from './keys'
 
@@ -130,11 +130,11 @@ export const useEntityTypesQuery = <TData = EntityTypesData>(
   {
     enabled = true,
     ...options
-  }: UseCustomInfiniteQueryOptions<EntityTypesData, EntityTypesError, TData> = {}
+  }: UseCustomQueryOptions<EntityTypesData, EntityTypesError, TData> = {}
 ) => {
   return useInfiniteQuery<EntityTypesData, EntityTypesError, TData>({
     queryKey: entityTypeKeys.list(projectRef, { schemas, search, sort, limit, filterTypes }),
-    queryFn: ({ signal, pageParam }) =>
+    queryFn: ({ signal, pageParam }: any) =>
       getEntityTypes(
         {
           projectRef,
@@ -149,7 +149,7 @@ export const useEntityTypesQuery = <TData = EntityTypesData>(
         signal
       ),
     enabled: enabled && typeof projectRef !== 'undefined',
-    getNextPageParam(lastPage, pages) {
+    getNextPageParam(lastPage: any, pages: any) {
       const page = pages.length
       const currentTotalCount = page * limit
       const totalCount = lastPage.data.count
@@ -161,7 +161,7 @@ export const useEntityTypesQuery = <TData = EntityTypesData>(
       return page
     },
     ...options,
-  })
+ } as any)
 }
 
 export function prefetchEntityTypes(

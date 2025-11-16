@@ -50,4 +50,4 @@ export const useCronJobQuery = <TData = DatabaseCronJobData>(
       typeof projectRef !== 'undefined' &&
       (typeof id !== 'undefined' || typeof name !== 'undefined'),
     ...options,
-  })
+  } as any)

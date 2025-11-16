@@ -118,4 +118,4 @@ export const useEntityDefinitionsQuery = <TData = EntityDefinitionsData>(
       getEntityDefinitions({ projectRef, connectionString, schemas, limit }, signal),
     enabled: enabled && typeof projectRef !== 'undefined' && schemas.length > 0,
     ...options,
-  })
+ } as any)

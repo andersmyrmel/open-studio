@@ -95,4 +95,4 @@ export const useQueuesMetricsQuery = <TData = DatabaseQueuesMetricsData>(
     queryFn: () => getDatabaseQueuesMetrics({ projectRef, connectionString, queueName }),
     enabled: enabled && typeof projectRef !== 'undefined',
     ...options,
-  })
+ } as any)

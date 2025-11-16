@@ -126,7 +126,7 @@ export const getAllTableRowsSql = ({
     }
   } else {
     sorts.forEach((sort) => {
-      queryChains = queryChains.order(sort.table, sort.column, sort.ascending, sort.nullsFirst)
+      queryChains = queryChains.order(sort.table ?? table.name, sort.column, sort.ascending, sort.nullsFirst)
     })
 
     // Add primary keys as tie-breakers so page order doesn't shuffle
@@ -269,7 +269,7 @@ export async function getTableRows(
       limit,
       page,
       sortExcludedColumns: excludedColumns,
-    }),
+    }).sql,
     roleImpersonationState
   )
 
@@ -309,7 +309,7 @@ export const useTableRowsQuery = <TData = TableRowsData>(
       getTableRows({ queryClient, projectRef, connectionString, tableId, ...args }, signal),
     enabled: enabled && typeof projectRef !== 'undefined' && typeof tableId !== 'undefined',
     ...options,
-  })
+ } as any)
 }
 
 export function prefetchTableRows(

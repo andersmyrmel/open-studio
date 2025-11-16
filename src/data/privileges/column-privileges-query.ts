@@ -23,7 +23,7 @@ export interface ColumnPrivilege {
 
 export const columnPrivilegesKeys = {
   list: (projectRef: string | undefined, schema?: string, table?: string) =>
-    ['projects', projectRef, 'column-privileges', schema, table].filter(Boolean) as const,
+    ['projects', projectRef, 'column-privileges', schema, table].filter(Boolean),
 }
 
 export interface ColumnPrivilegesVariables {

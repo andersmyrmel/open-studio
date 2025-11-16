@@ -15,7 +15,7 @@ export const GlobalErrorBoundaryState = ({ error, resetErrorBoundary }: Fallback
   const router = useRouter()
   const checkIsError = isError(error)
 
-  const largeLogo = useIsFeatureEnabled('branding:large_logo')
+  const { brandinglarge_logo: largeLogo } = useIsFeatureEnabled(['branding:large_logo'])
 
   const errorMessage = checkIsError ? error.message : ''
   const urlMessage = checkIsError ? `Path name: ${router.pathname}\n\n${error?.stack}` : ''

@@ -18,6 +18,7 @@ export const apiKeysKeys = {
 
 export interface ApiKeysVariables {
   projectRef?: string
+  reveal?: boolean
 }
 
 export async function getApiKeys({ projectRef }: ApiKeysVariables) {

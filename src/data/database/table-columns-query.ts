@@ -123,4 +123,4 @@ export const useTableColumnsQuery = <TData = TableColumnsData>(
       getTableColumns({ projectRef, connectionString, schema, table }, signal),
     enabled: enabled && typeof projectRef !== 'undefined',
     ...options,
-  })
+ } as any)

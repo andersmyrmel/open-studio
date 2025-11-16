@@ -89,8 +89,12 @@ const RenameQueryModal = ({
 
       // [Joshen] For SQL V2 - content is loaded on demand so we need to fetch the data if its not already loaded in the valtio state
       if (!('content' in localSnippet)) {
-        localSnippet = await getContentById({ projectRef: ref, id })
-        snapV2.addSnippet({ projectRef: ref, snippet: localSnippet })
+        const fetchedContent = await getContentById({ projectRef: ref, id })
+        if (!fetchedContent) {
+          throw new Error('Failed to fetch snippet content')
+        }
+        localSnippet = fetchedContent as any
+        snapV2.addSnippet({ projectRef: ref, snippet: localSnippet as any })
       }
 
       await upsertContent({

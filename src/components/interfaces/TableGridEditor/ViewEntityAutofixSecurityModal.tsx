@@ -63,7 +63,7 @@ export default function ViewEntityAutofixSecurityModal({
   return (
     <ConfirmationModal
       visible={isAutofixViewSecurityModalOpen}
-      size="xlarge"
+      size="large"
       title="Confirm autofixing view security"
       confirmLabel="Confirm"
       onCancel={() => setIsAutofixViewSecurityModalOpen(false)}

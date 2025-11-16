@@ -27,7 +27,7 @@ export const SchemaTable = ({
       </div>
       <Table
         className="table-fixed"
-        head={
+        head={[
           <>
             <Table.th key="name" className="w-[20%]">
               <p className="translate-x-[36px]">Name</p>
@@ -43,15 +43,16 @@ export const SchemaTable = ({
             </Table.th>
             <Table.th key="buttons" className="w-[5%]"></Table.th>
           </>
-        }
-        body={
+        ]}
+        body={[
           <HookList
+            key="hook-list"
             filterString={filterString}
             schema={schema}
             editHook={editHook}
             deleteHook={deleteHook}
           />
-        }
+        ]}
       />
     </div>
   )

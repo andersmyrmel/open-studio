@@ -23,7 +23,7 @@ export interface SqlSnippet {
 export const sqlSnippetsKeys = {
   list: (projectRef: string | undefined) => ['projects', projectRef, 'sql-snippets'] as const,
   detail: (projectRef: string | undefined, id: string | undefined) =>
-    ['projects', projectRef, 'sql-snippets', id].filter(Boolean) as const,
+    ['projects', projectRef, 'sql-snippets', id].filter(Boolean),
 }
 
 export interface SqlSnippetsVariables {

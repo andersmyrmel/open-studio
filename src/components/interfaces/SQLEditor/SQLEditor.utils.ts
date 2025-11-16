@@ -26,7 +26,7 @@ export const createSqlSnippetSkeleton = ({
 } = {}): UserContent<SqlSnippets.Content> => {
   return {
     ...NEW_SQL_SNIPPET_SKELETON,
-    id,
+    id: id ?? '',
     ...(name && { name }),
     ...(owner_id && { owner_id }),
     ...(project_id && { project_id }),
@@ -69,7 +69,7 @@ export const createSqlSnippetSkeletonV2 = ({
       sql: sql ?? '',
     } as any,
     isNotSavedInDatabaseYet: true,
-  }
+  } as any
 }
 
 export function getDiffTypeButtonLabel(diffType: DiffType) {

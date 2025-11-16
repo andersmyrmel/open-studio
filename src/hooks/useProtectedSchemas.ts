@@ -3,7 +3,7 @@
  * Identifies and handles protected/internal PostgreSQL schemas
  */
 
-import { useSelectedProject } from 'lib/common'
+import { useSelectedProjectQuery } from 'lib/common'
 
 // Internal PostgreSQL schemas that should be protected from modifications
 export const INTERNAL_SCHEMAS = [
@@ -35,7 +35,7 @@ export interface ProtectedSchemaInfo {
 }
 
 export function useProtectedSchemas(options?: { excludeSchemas?: string[] }) {
-  const project = useSelectedProject()
+  const { data: project } = useSelectedProjectQuery()
 
   const isProtectedSchema = (schema: string): boolean => {
     return ALL_PROTECTED_SCHEMAS.includes(schema)

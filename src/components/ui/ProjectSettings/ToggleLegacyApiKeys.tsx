@@ -5,8 +5,8 @@ import { toast } from 'sonner'
 import { useParams } from '@/lib/common'
 import { ButtonTooltip } from 'components/ui/ButtonTooltip'
 import { useToggleLegacyAPIKeysMutation } from 'data/api-keys/legacy-api-key-toggle-mutation'
-import { useLegacyAPIKeysStatusQuery } from 'data/api-keys/legacy-api-keys-status-query'
-import { useLegacyJWTSigningKeyQuery } from 'data/jwt-signing-keys/legacy-jwt-signing-key-query'
+import { useLegacyApiKeysStatusQuery } from 'data/api-keys/legacy-api-keys-status-query'
+import { useLegacyJwtSigningKeyQuery } from 'data/jwt-signing-keys/legacy-jwt-signing-key-query'
 import { useAuthorizedAppsQuery } from 'data/oauth/authorized-apps-query'
 import { useAsyncCheckPermissions } from '@/lib/common'
 import { useSelectedOrganizationQuery } from '@/lib/common'
@@ -31,9 +31,9 @@ export const ToggleLegacyApiKeysPanel = () => {
   const [isAppsWarningOpen, setIsAppsWarningOpen] = useState(false)
 
   const { data: legacyAPIKeysStatusData, isSuccess: isLegacyAPIKeysStatusSuccess } =
-    useLegacyAPIKeysStatusQuery({ projectRef })
+    useLegacyApiKeysStatusQuery({ projectRef })
 
-  const { data: legacyJWTSecret } = useLegacyJWTSigningKeyQuery({ projectRef })
+  const { data: legacyJWTSecret } = useLegacyJwtSigningKeyQuery({ projectRef })
 
   const { can: canUpdateAPIKeys, isSuccess: isPermissionsSuccess } = useAsyncCheckPermissions(
     PermissionAction.SECRETS_WRITE,

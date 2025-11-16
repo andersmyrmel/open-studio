@@ -244,14 +244,20 @@ export const useReportDateRange = (
   )
 
   const handleDatePickerChange = (values: DatePickerValue) => {
-    const shouldShowUpgradePrompt = maybeShowUpgradePrompt(values.from, orgPlan?.id)
+    if (!values || values instanceof Date) {
+      return false
+    }
+
+    const shouldShowUpgradePrompt = maybeShowUpgradePrompt('from' in values ? values.from : undefined, orgPlan?.id)
     if (shouldShowUpgradePrompt) {
       setShowUpgradePrompt(true)
       return true
     } else {
-      if (values.from && values.to) {
-        setTimestampStart(values.from)
-        setTimestampEnd(values.to)
+      if ('from' in values && 'to' in values && values.from && values.to) {
+        const fromStr = values.from instanceof Date ? values.from.toISOString() : values.from
+        const toStr = values.to instanceof Date ? values.to.toISOString() : values.to
+        setTimestampStart(fromStr)
+        setTimestampEnd(toStr)
         setIsHelper(values.isHelper || false)
         setHelperText(values.text || '')
       }

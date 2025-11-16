@@ -42,11 +42,28 @@ export const TimestampInfo: React.FC<TimestampInfoProps> = ({
 /**
  * Formatter for timestamp fields to local timezone
  */
-export const timestampLocalFormatter = (value: string | number | Date | null | undefined): string => {
+export const timestampLocalFormatter = (
+  options:
+    | string
+    | number
+    | Date
+    | null
+    | undefined
+    | { utcTimestamp: string | number | Date | null | undefined; format?: string }
+): string => {
+  // Handle both direct value and options object
+  const value = typeof options === 'object' && options !== null && 'utcTimestamp' in options
+    ? options.utcTimestamp
+    : options as string | number | Date | null | undefined
+
+  const format = typeof options === 'object' && options !== null && 'format' in options
+    ? options.format
+    : 'YYYY-MM-DD HH:mm:ss'
+
   if (!value) return ''
 
   try {
-    return dayjs(value).format('YYYY-MM-DD HH:mm:ss')
+    return dayjs(value).format(format || 'YYYY-MM-DD HH:mm:ss')
   } catch {
     return String(value)
   }

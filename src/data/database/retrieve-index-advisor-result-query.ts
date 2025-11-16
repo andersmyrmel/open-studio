@@ -58,4 +58,4 @@ export const useGetIndexAdvisorResult = <TData = GetIndexAdvisorResultData>(
         (query.startsWith('select') || query.startsWith('SELECT'))) ||
       query.trim().toLowerCase().startsWith('with pgrst_source'),
     ...options,
-  })
+ } as any)

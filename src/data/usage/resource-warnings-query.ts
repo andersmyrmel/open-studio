@@ -22,6 +22,7 @@ export const resourceWarningsKeys = {
 
 export interface ResourceWarningsVariables {
   projectRef?: string
+  ref?: string // Alias for projectRef
 }
 
 export async function getResourceWarnings({ projectRef }: ResourceWarningsVariables) {

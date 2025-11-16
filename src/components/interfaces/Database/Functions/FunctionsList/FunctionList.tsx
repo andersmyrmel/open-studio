@@ -176,7 +176,7 @@ const FunctionList = ({
                           className="space-x-2"
                           onClick={() => {
                             openSidebar(SIDEBAR_KEYS.AI_ASSISTANT)
-                            aiSnap.newChat({
+                            aiSnap.newChat?.({
                               name: `Update function ${x.name}`,
                               initialInput: 'Update this function to do...',
                               suggestions: {
@@ -198,7 +198,7 @@ const FunctionList = ({
                                   },
                                 ],
                               },
-                              sqlSnippets: [x.complete_statement],
+                              sqlSnippets: x.complete_statement ? [x.complete_statement] : [],
                             })
                           }}
                         >

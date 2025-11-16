@@ -319,11 +319,13 @@ CREATE INDEX ON "${selectedSchema}"."${selectedEntity}" USING ${selectedIndexTyp
               {isLoadingTableColumns && <ShimmeringLoader className="py-4" />}
               {isSuccessTableColumns && (
                 <MultiSelectV2
-                  options={columnOptions}
-                  placeholder="Choose which columns to create an index on"
-                  searchPlaceholder="Search for a column"
-                  value={selectedColumns}
-                  onChange={setSelectedColumns}
+                  {...({
+                    options: columnOptions,
+                    placeholder: "Choose which columns to create an index on",
+                    searchPlaceholder: "Search for a column",
+                    value: selectedColumns,
+                    onChange: (value: any) => setSelectedColumns(value.map(String)),
+                  } as any)}
                 />
               )}
             </FormItemLayout>

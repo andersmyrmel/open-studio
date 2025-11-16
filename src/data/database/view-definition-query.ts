@@ -69,4 +69,4 @@ export const useViewDefinitionQuery = <TData = ViewDefinitionData>(
     enabled:
       enabled && typeof projectRef !== 'undefined' && typeof id !== 'undefined' && !isNaN(id),
     ...options,
-  })
+ } as any)

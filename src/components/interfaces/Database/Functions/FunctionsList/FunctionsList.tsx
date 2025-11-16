@@ -205,7 +205,7 @@ const FunctionsList = ({
                     icon={<AiIconAnimation size={16} />}
                     onClick={() => {
                       openSidebar(SIDEBAR_KEYS.AI_ASSISTANT)
-                      aiSnap.newChat({
+                      aiSnap.newChat?.({
                         name: 'Create new function',
                         initialInput: `Create a new function for the schema ${selectedSchema} that does ...`,
                       })

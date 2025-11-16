@@ -15,7 +15,7 @@ export interface MaterializedView {
 
 export const materializedViewsKeys = {
   list: (projectRef: string | undefined, schema?: string) =>
-    ['projects', projectRef, 'materialized-views', schema].filter(Boolean) as const,
+    ['projects', projectRef, 'materialized-views', schema].filter(Boolean),
 }
 
 export interface MaterializedViewsVariables {

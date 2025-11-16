@@ -20,9 +20,15 @@ export const ReportsSelectFilter: React.FC<ReportsSelectFilterProps> = ({
 }) => {
   return (
     <Select value={value} onValueChange={onChange}>
-      {/* Stub implementation */}
+      <div />
     </Select>
   )
+}
+
+// Simple validation schema stub
+export const selectFilterSchema = {
+  parse: (value: any) => value,
+  safeParse: (value: any) => ({ success: true, data: value }),
 }
 
 export default ReportsSelectFilter

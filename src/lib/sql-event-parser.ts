@@ -14,7 +14,7 @@ export interface TableEventDetails {
 
 type Detector = {
   type: TableEventAction
-  patterns: RegExp[]
+  patterns: { regex: RegExp; schemaGroup: number; tableGroup: number }[]
 }
 
 export class SQLEventParser {
@@ -22,25 +22,25 @@ export class SQLEventParser {
     {
       type: TABLE_EVENT_ACTIONS.TableCreated,
       patterns: [
-        /CREATE\s+TABLE\s+(?:IF\s+NOT\s+EXISTS\s+)?(?<schema>(?:"[^"]+"|[\w]+)\.)?(?<table>[\w"`]+)/i,
-        /CREATE\s+TEMP(?:ORARY)?\s+TABLE\s+(?:IF\s+NOT\s+EXISTS\s+)?(?<schema>(?:"[^"]+"|[\w]+)\.)?(?<table>[\w"`]+)/i,
-        /CREATE\s+UNLOGGED\s+TABLE\s+(?:IF\s+NOT\s+EXISTS\s+)?(?<schema>(?:"[^"]+"|[\w]+)\.)?(?<table>[\w"`]+)/i,
-        /SELECT\s+.*?\s+INTO\s+(?<schema>(?:"[^"]+"|[\w]+)\.)?(?<table>[\w"`]+)/is,
-        /CREATE\s+TABLE\s+(?:IF\s+NOT\s+EXISTS\s+)?(?<schema>(?:"[^"]+"|[\w]+)\.)?(?<table>[\w"`]+)\s+AS\s+SELECT/i,
+        { regex: /CREATE\s+TABLE\s+(?:IF\s+NOT\s+EXISTS\s+)?((?:"[^"]+"|[\w]+)\.)?([\ w"`]+)/i, schemaGroup: 1, tableGroup: 2 },
+        { regex: /CREATE\s+TEMP(?:ORARY)?\s+TABLE\s+(?:IF\s+NOT\s+EXISTS\s+)?((?:"[^"]+"|[\w]+)\.)?([\ w"`]+)/i, schemaGroup: 1, tableGroup: 2 },
+        { regex: /CREATE\s+UNLOGGED\s+TABLE\s+(?:IF\s+NOT\s+EXISTS\s+)?((?:"[^"]+"|[\w]+)\.)?([\ w"`]+)/i, schemaGroup: 1, tableGroup: 2 },
+        { regex: /SELECT\s+.*?\s+INTO\s+((?:"[^"]+"|[\w]+)\.)?([\ w"`]+)/is, schemaGroup: 1, tableGroup: 2 },
+        { regex: /CREATE\s+TABLE\s+(?:IF\s+NOT\s+EXISTS\s+)?((?:"[^"]+"|[\w]+)\.)?([\ w"`]+)\s+AS\s+SELECT/i, schemaGroup: 1, tableGroup: 2 },
       ],
     },
     {
       type: TABLE_EVENT_ACTIONS.TableDataAdded,
       patterns: [
-        /INSERT\s+INTO\s+(?<schema>(?:"[^"]+"|[\w]+)\.)?(?<table>[\w"`]+)/i,
-        /COPY\s+(?<schema>(?:"[^"]+"|[\w]+)\.)?(?<table>[\w"`]+)\s+FROM/i,
+        { regex: /INSERT\s+INTO\s+((?:"[^"]+"|[\w]+)\.)?([\ w"`]+)/i, schemaGroup: 1, tableGroup: 2 },
+        { regex: /COPY\s+((?:"[^"]+"|[\w]+)\.)?([\ w"`]+)\s+FROM/i, schemaGroup: 1, tableGroup: 2 },
       ],
     },
     {
       type: TABLE_EVENT_ACTIONS.TableRLSEnabled,
       patterns: [
-        /ALTER\s+TABLE\s+(?<schema>(?:"[^"]+"|[\w]+)\.)?(?<table>[\w"`]+).*?ENABLE\s+ROW\s+LEVEL\s+SECURITY/i,
-        /ALTER\s+TABLE\s+(?<schema>(?:"[^"]+"|[\w]+)\.)?(?<table>[\w"`]+).*?ENABLE\s+RLS/i,
+        { regex: /ALTER\s+TABLE\s+((?:"[^"]+"|[\w]+)\.)?([\ w"`]+).*?ENABLE\s+ROW\s+LEVEL\s+SECURITY/i, schemaGroup: 1, tableGroup: 2 },
+        { regex: /ALTER\s+TABLE\s+((?:"[^"]+"|[\w]+)\.)?([\ w"`]+).*?ENABLE\s+RLS/i, schemaGroup: 1, tableGroup: 2 },
       ],
     },
   ]
@@ -51,13 +51,13 @@ export class SQLEventParser {
 
   private match(sql: string): TableEventDetails | null {
     for (const { type, patterns } of SQLEventParser.DETECTORS) {
-      for (const pattern of patterns) {
-        const match = sql.match(pattern)
-        if (match?.groups) {
+      for (const { regex, schemaGroup, tableGroup } of patterns) {
+        const match = sql.match(regex)
+        if (match) {
           return {
             type,
-            schema: this.cleanIdentifier(match.groups.schema),
-            tableName: this.cleanIdentifier(match.groups.table ?? match.groups.object),
+            schema: this.cleanIdentifier(match[schemaGroup]),
+            tableName: this.cleanIdentifier(match[tableGroup]),
           }
         }
       }

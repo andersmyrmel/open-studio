@@ -6,7 +6,7 @@ import { isQueueNameValid } from 'components/interfaces/Integrations/Queues/Queu
 import { QUEUE_MESSAGE_TYPE } from 'components/interfaces/Integrations/Queues/SingleQueue/Queue.utils'
 import { executeSql } from 'data/sql/execute-sql-query'
 import { DATE_FORMAT } from 'lib/constants'
-import type { ResponseError, UseCustomInfiniteQueryOptions } from 'types'
+import type { ResponseError, UseCustomQueryOptions } from 'types'
 import { databaseQueuesKeys } from './keys'
 
 export type DatabaseQueueVariables = {
@@ -47,16 +47,16 @@ export async function getDatabaseQueue({
 
   // handles when scheduled and available are deselected
   let queueQuery = ``
-  if (status.includes('available') && status.includes('scheduled')) {
+  if (status.includes(QUEUE_MESSAGE_TYPE.AVAILABLE) && status.includes(QUEUE_MESSAGE_TYPE.SCHEDULED)) {
     queueQuery = `SELECT msg_id, enqueued_at, read_ct, vt, message, NULL as archived_at FROM "pgmq"."q_${queueName}"`
-  } else if (status.includes('available') && !status.includes('scheduled')) {
+  } else if (status.includes(QUEUE_MESSAGE_TYPE.AVAILABLE) && !status.includes(QUEUE_MESSAGE_TYPE.SCHEDULED)) {
     queueQuery = `SELECT msg_id, enqueued_at, read_ct, vt, message, NULL as archived_at FROM "pgmq"."q_${queueName}" WHERE vt < '${dayjs(new Date()).format(DATE_FORMAT)}'`
-  } else if (!status.includes('available') && status.includes('scheduled')) {
+  } else if (!status.includes(QUEUE_MESSAGE_TYPE.AVAILABLE) && status.includes(QUEUE_MESSAGE_TYPE.SCHEDULED)) {
     queueQuery = `SELECT msg_id, enqueued_at, read_ct, vt, message, NULL as archived_at FROM "pgmq"."q_${queueName}" WHERE vt > '${dayjs(new Date()).format(DATE_FORMAT)}'`
   }
 
   let archivedQuery = ``
-  if (status.includes('archived')) {
+  if (status.includes(QUEUE_MESSAGE_TYPE.ARCHIVED)) {
     archivedQuery = `SELECT msg_id, enqueued_at, read_ct, vt, message, archived_at FROM "pgmq"."a_${queueName}"`
   }
 
@@ -86,11 +86,11 @@ export const useQueueMessagesInfiniteQuery = <TData = DatabaseQueueData>(
   {
     enabled = true,
     ...options
-  }: UseCustomInfiniteQueryOptions<DatabaseQueueData, DatabaseQueueError, TData> = {}
+  }: UseCustomQueryOptions<DatabaseQueueData, DatabaseQueueError, TData> = {}
 ) =>
   useInfiniteQuery<DatabaseQueueData, DatabaseQueueError, TData>({
     queryKey: databaseQueuesKeys.getMessagesInfinite(projectRef, queueName, { status }),
-    queryFn: ({ pageParam }) => {
+    queryFn: ({ pageParam }: any) => {
       return getDatabaseQueue({
         projectRef,
         connectionString,
@@ -102,10 +102,10 @@ export const useQueueMessagesInfiniteQuery = <TData = DatabaseQueueData>(
     staleTime: 0,
     enabled: enabled && typeof projectRef !== 'undefined',
 
-    getNextPageParam(lastPage) {
+    getNextPageParam(lastPage: any) {
       const hasNextPage = lastPage.length <= QUEUE_MESSAGES_PAGE_SIZE
       if (!hasNextPage) return undefined
-      return last(lastPage)?.enqueued_at
+      return (last(lastPage) as any)?.enqueued_at
     },
     ...options,
-  })
+ } as any)

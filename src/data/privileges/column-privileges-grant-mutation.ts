@@ -9,11 +9,17 @@ import { privilegesKeys } from './keys'
 export interface ColumnPrivilegeGrantVariables {
   projectRef: string
   connectionString?: string
-  schema: string
-  table: string
-  column: string
-  privilege: 'SELECT' | 'INSERT' | 'UPDATE' | 'REFERENCES'
-  role: string
+  schema?: string
+  table?: string
+  column?: string
+  privilege?: 'SELECT' | 'INSERT' | 'UPDATE' | 'REFERENCES'
+  role?: string
+  // Batch operations
+  grants?: Array<{
+    column_id: string
+    grantee: string
+    privilege_type: 'SELECT' | 'INSERT' | 'UPDATE' | 'REFERENCES'
+  }>
 }
 
 export async function grantColumnPrivilege({

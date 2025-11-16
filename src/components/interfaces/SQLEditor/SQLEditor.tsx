@@ -309,7 +309,7 @@ export const SQLEditor = () => {
           connectionString: connectionString,
           sql: wrapWithRoleImpersonation(formattedSql, impersonatedRoleState),
           autoLimit: appendAutoLimit ? limit : undefined,
-          isRoleImpersonationEnabled: isRoleImpersonationEnabled(impersonatedRoleState.role),
+          isRoleImpersonationEnabled: isRoleImpersonationEnabled(impersonatedRoleState?.role),
           isStatementTimeoutDisabled: true,
           contextualInvalidation: true,
           handleError: (error) => {
@@ -382,7 +382,7 @@ export const SQLEditor = () => {
       const snippet = snapV2.snippets[id]
       const result = snapV2.results[id]?.[0]
       openSidebar(SIDEBAR_KEYS.AI_ASSISTANT)
-      aiSnap.newChat({
+      aiSnap.newChat?.({
         name: 'Debug SQL snippet',
         sqlSnippets: [
           (snippet.snippet.content?.sql ?? '').replace(sqlAiDisclaimerComment, '').trim(),

@@ -35,7 +35,11 @@ export interface ConfirmationModalProps {
   loading?: boolean
   disabled?: boolean
   children?: React.ReactNode
-  alert?: React.ReactNode
+  alert?: React.ReactNode | {
+    title?: React.ReactNode
+    description?: React.ReactNode
+    base?: React.ReactNode | { variant?: 'default' | 'destructive' | 'warning' }
+  }
 }
 
 const ConfirmationModal = ({

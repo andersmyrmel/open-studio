@@ -10,7 +10,7 @@ import { FilterOperatorOptions } from './components/header/filter/Filter.constan
 import { STORAGE_KEY_PREFIX } from './constants'
 import type { Sort, SupaColumn, SupaTable } from './types'
 import { formatClipboardValue } from './utils/common'
-import { parseAsNativeArrayOf, parseAsBoolean, parseAsString, useQueryStates } from 'nuqs'
+import { parseAsArrayOf, parseAsBoolean, parseAsString, useQueryStates } from 'nuqs'
 import { useSearchParams } from 'next/navigation'
 
 export const LOAD_TAB_FROM_CACHE_PARAM = 'loadFromCache'
@@ -206,8 +206,8 @@ export function useSyncTableEditorStateFromLocalStorageWithUrl({
   // Warning: nuxt url state often fails to update to changes to URL
   const [, updateUrlParams] = useQueryStates(
     {
-      sort: parseAsNativeArrayOf(parseAsString),
-      filter: parseAsNativeArrayOf(parseAsString),
+      sort: parseAsArrayOf(parseAsString),
+      filter: parseAsArrayOf(parseAsString),
       [LOAD_TAB_FROM_CACHE_PARAM]: parseAsBoolean.withDefault(false),
     },
     {

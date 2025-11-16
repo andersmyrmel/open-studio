@@ -56,7 +56,7 @@ export const useTableEditorQuery = <TData = TableEditorData>(
     refetchOnMount: false,
     staleTime: 5 * 60 * 1000,
     ...options,
-  })
+ } as any)
 
 export function prefetchTableEditor(
   client: QueryClient,
