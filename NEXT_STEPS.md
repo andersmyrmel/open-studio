@@ -1,4 +1,4 @@
-# Phase 48+: TypeScript Error Reduction - Final Push
+# Phase 49+: TypeScript Error Reduction - Continue
 
 ## Project Context
 
@@ -9,215 +9,215 @@
 
 ## Current Status
 
-**Branch:** `claude/typescript-phase-18-errors-011CV6AxFZsmwwr95Pq9q564`
+**Branch:** `claude/typescript-phase-48-final-0124rVftpFEgdeutE5Nvmsaz`
 
-**Error Count:** 375 TypeScript errors (down from 1,353 at start - **72.3% reduction**)
+**Error Count:** 240 TypeScript errors (down from 1,353 at start - **82.3% reduction**)
 
-**PR:** #3 - "Fix TypeScript errors across codebase (72% reduction)"
+**Recent Work (Phase 48):** Fixed 30 errors (11.1% reduction)
 
-**Phases Completed (18-47):**
-- Phase 18: Fixed component props and type conflicts (978 → 798 errors)
-- Phase 19: Fixed module exports and type declarations (798 → 738 errors)
-- Phase 20: Added missing type exports and fixed permissions (738 → 688 errors)
-- Phase 21: Fixed property access and type declaration errors (688 → 636 errors)
-- Phase 22: Added stub modules and type declarations (636 → 640 errors)
-- Phase 23: Fixed implicit any and missing exports (641 → 586 errors)
-- Phase 24: Fixed all TS7006 implicit any parameter errors (591 → 556 errors)
-- Phase 25-27: Fixed TS2339 property errors (556 → 504 errors)
-- Phase 28-47: Systematic fixes across hooks, queries, types, and interfaces (504 → 375 errors)
+## Phase 48 Accomplishments
 
-## Major Accomplishments
+### Part 1: ES2018 Target & Regex Fixes (28 errors fixed)
+- ✅ Updated `tsconfig.json` target from ES5 to ES2020
+- ✅ Added `downlevelIteration` flag for modern JavaScript iteration
+- ✅ Refactored `src/lib/sql-event-parser.ts` to use indexed regex groups
+- ✅ Cleared TypeScript build caches
 
-### Eliminated Error Categories
-- ✅ **TS7006** (implicit any): 82 → 0 (100% fixed)
-- ✅ **TS2307** (module not found): 32 → 0 (100% fixed)
-- ✅ **TS2305** (no exported member): 48 → 0 (100% fixed)
-- ✅ **TS7031** (binding element): 25 → 1 (96% fixed)
+**Errors Eliminated:**
+- ✅ TS1503: 18 errors (named capturing groups) → 0
+- ✅ TS1501: 3 errors (regex flags) → 0
+- ✅ TS2802: 7 errors (iteration) → 0
 
-### Significantly Reduced
-- **TS2339** (property errors): 264 → 39 (85% reduction)
-- **TS2554** (argument mismatch): 68 → 13 (81% reduction)
-- **TS2322** (type assignment): ~80 remaining
+### Part 2: Module Export Fixes (2 net errors, 37 issues resolved)
+- ✅ Fixed 18 incorrect import names (TS2724)
+- ✅ Added 7 missing exports (TS2305)
+- ✅ Converted Query from interface to class (TS2693 - 12 errors)
 
-## Remaining Work
+**Errors Eliminated:**
+- ✅ TS2724: 18 errors → 0 (wrong import names)
+- ✅ TS2305: 7 errors → 0 (missing exports)
+- ✅ TS2693: 12 errors → 0 (type-only imports)
 
-**Target:** Eliminate all 375 remaining errors in a single focused session
+## Remaining Errors (240 total)
 
-### Error Distribution (Estimated)
-Based on the pattern from previous phases:
-- **TS2339** (~39 errors): Properties that don't exist on types
-- **TS2322** (~80 errors): Type assignment issues
-- **TS2769** (~30 errors): No overload matches
-- **TS2554** (~13 errors): Argument count mismatches
-- **TS1503** (~18 errors): Missing semicolons
-- **Others** (~195 errors): Mixed type issues
+### Error Distribution
+1. **TS2769**: 38 errors - No overload matches (query hooks)
+2. **TS2353**: 31 errors - Unknown object literal properties
+3. **TS2339**: 25 errors - Property does not exist
+4. **TS2554**: 19 errors - Argument count mismatch
+5. **TS2345**: 18 errors - Type assignment errors
+6. **TS2349**: 15 errors - Expression not callable
+7. **TS2722**: 13 errors - Possibly undefined
+8. **TS18048**: 12 errors - Possibly undefined (strict)
+9. **TS2322**: 11 errors - Type not assignable
+10. **TS2614**: 8 errors - Module errors
+11. **TS2304**: 7 errors - Cannot find name
+12. **TS1355**: 7 errors - Modifiers errors
+13. **TS2551**: 6 errors - Property name typos
+14. **Others**: 30 errors
 
-### Key Areas to Focus
+### Top Files with Errors
+1. `src/components/interfaces/Database/Privileges/Privileges.utils.ts` - 10 errors
+2. `src/data/database-queues/database-queue-messages-infinite-query.ts` - 8 errors
+3. `src/lib/ui/Button/Button.test.tsx` - 11 errors (test file)
+4. `src/lib/ui/Alert/Alert.test.tsx` - 6 errors (test file)
+5. `src/components/interfaces/SQLEditor/OngoingQueriesPanel.tsx` - 7 errors
 
-1. **Property Access Errors (TS2339)**
-   - Extend interfaces with missing properties
-   - Add type guards where needed
-   - Use optional chaining for optional properties
+## Next Steps for Phase 49
 
-2. **Type Assignment Errors (TS2322)**
-   - Fix type mismatches in assignments
-   - Add proper type annotations
-   - Convert undefined to null where needed
+### Priority 1: Query Hook Overload Errors (TS2769 - 38 errors)
+**Impact:** High - Affects data fetching throughout the app
 
-3. **Function Overload Errors (TS2769)**
-   - Fix function call signatures
-   - Add missing parameters
-   - Update parameter types
+Pattern: `useQuery` and `useInfiniteQuery` calls with type mismatches
 
-4. **Argument Errors (TS2554)**
-   - Add missing parameters to function calls
-   - Make parameters optional in definitions
-   - Fix parameter order
+Example locations:
+- `src/data/database-cron-jobs/*` (6 files)
+- `src/data/database-extensions/database-extensions-query.ts`
+- `src/data/database-functions/database-functions-query.ts`
+- `src/data/database-indexes/indexes-query.ts`
+- `src/data/database-queues/*`
 
-5. **Syntax Errors (TS1503)**
-   - Add missing semicolons
-   - Fix syntax issues
+Common issue: Object literal properties in wrong position or spreading conflicts
 
-## Detailed Execution Strategy
+**Fix Strategy:**
+1. Examine useQuery/useInfiniteQuery call signatures
+2. Ensure options object structure matches TanStack Query v5 types
+3. Check for property conflicts in spread operators
+4. May need to update custom query option types in `types/index.ts`
 
-### Phase 1: Baseline Analysis (10 min)
-```bash
-# Get current error count and distribution
-npx tsc --noEmit 2>&1 | tee /tmp/tsc-phase48-start.txt
-grep "error TS" /tmp/tsc-phase48-start.txt | wc -l
-
-# Analyze error distribution
-grep "error TS" /tmp/tsc-phase48-start.txt | sed 's/.*error TS/TS/' | sed 's/:.*//' | sort | uniq -c | sort -rn | head -20
-
-# Get top files with errors
-grep "error TS" /tmp/tsc-phase48-start.txt | cut -d'(' -f1 | sort | uniq -c | sort -rn | head -20
-```
-
-### Phase 2: Fix Syntax Errors (TS1503) - 10 min
-- These are quick wins - missing semicolons
-- Can often be batch-fixed with search/replace
-- Validate after fixing
-
-### Phase 3: Fix Property Errors (TS2339) - 45 min
-Priority order:
-1. Identify most common missing properties
-2. Group by interface/type that needs extension
-3. Add properties in batches of 5-10
-4. Test after each batch
+### Priority 2: Object Literal Properties (TS2353 - 31 errors)
+**Impact:** Medium - Type safety issues
 
 Common patterns:
-- Add optional properties: `propertyName?: Type`
-- Add union types: `Type | undefined`
-- Use type guards: `if ('property' in object)`
+- Missing `title` property in React components
+- Missing `reveal` in ApiKeysVariables
+- Missing `sqlSnippets`, `grants`, `revokes` in various interfaces
+- Missing `utcTimestamp` in Date objects
 
-### Phase 4: Fix Type Assignment Errors (TS2322) - 45 min
-Common fixes:
-- Add type annotations to variables
-- Fix return types of functions
-- Convert types properly (undefined → null, etc.)
-- Add type assertions where safe
+**Fix Strategy:**
+1. Extend interfaces with missing properties
+2. For component props, check if using wrong prop type
+3. For API variables, add optional properties where appropriate
 
-### Phase 5: Fix Function Signature Errors (TS2769, TS2554) - 30 min
-- Fix parameter counts
-- Add missing optional parameters
-- Update parameter types
-- Fix parameter order
+Example fixes needed:
+```typescript
+// Add to ApiKeysVariables
+interface ApiKeysVariables {
+  reveal?: boolean
+  // ... existing properties
+}
 
-### Phase 6: Fix Remaining Errors - 30 min
-- Handle edge cases
-- Fix any new errors exposed by previous fixes
-- Add type assertions where absolutely needed
-
-### Phase 7: Final Validation - 15 min
-```bash
-# Final error count
-npx tsc --noEmit 2>&1 | tee /tmp/tsc-phase48-final.txt
-grep "error TS" /tmp/tsc-phase48-final.txt | wc -l
-
-# Compare before/after
-echo "Start: 375 errors"
-echo "End: $(grep 'error TS' /tmp/tsc-phase48-final.txt | wc -l) errors"
-echo "Fixed: $((375 - $(grep 'error TS' /tmp/tsc-phase48-final.txt | wc -l))) errors"
+// Add to mutation variables
+interface TablePrivilegeGrantVariables {
+  grants?: Grant[]
+  // ... existing properties
+}
 ```
 
-## Success Criteria
+### Priority 3: Property Access Errors (TS2339 - 25 errors)
+**Impact:** Medium - Runtime safety
 
-**Primary Goal:** 0 TypeScript errors ✅
+**Fix Strategy:**
+1. Add missing properties to interfaces
+2. Use optional chaining where appropriate
+3. Add type guards for union types
 
-**Acceptable:** < 50 errors (86%+ reduction from start)
+### Priority 4: Test File Errors (TS2554 - subset of 19)
+**Impact:** Low - Only affects test files
 
-**Minimum:** < 100 errors (92%+ reduction from start)
+Files:
+- `src/lib/ui/Button/Button.test.tsx` (11 errors)
+- `src/lib/ui/Alert/Alert.test.tsx` (6 errors)
 
-## Commit Strategy
+Common issue: `fireEvent` API usage
 
-Make commits at logical checkpoints:
-1. After fixing syntax errors
-2. After each major error category (TS2339, TS2322, etc.)
-3. Final commit with summary
+**Fix Strategy:**
+1. Update `@testing-library/react` type declarations
+2. Fix `fireEvent.click` calls to match v14+ API
+3. Consider creating a `@testing-library/react.d.ts` stub
 
-Each commit message should follow this pattern:
-```
-Phase [N]: Fix [error type] - [brief description]
+### Priority 5: Remaining Errors (167 errors)
+Work through remaining error types systematically:
+- TS2345 (18) - Type assignments
+- TS2349 (15) - Not callable
+- TS2722 (13) - Possibly undefined
+- TS18048 (12) - Possibly undefined
+- TS2322 (11) - Type not assignable
+- Others (98)
 
-- [Specific fix 1]
-- [Specific fix 2]
-- [Specific fix 3]
+## Execution Strategy
 
-Result: [before] → [after] errors (-[X] errors)
-```
+### Session 1: Query Hooks (2-3 hours)
+Fix all TS2769 errors in query hooks
+- Expected reduction: ~38 errors
+- Target: 240 → 202 errors
 
-## Important Notes
+### Session 2: Object Literals & Properties (2-3 hours)
+Fix TS2353 and major TS2339 errors
+- Expected reduction: ~50 errors
+- Target: 202 → 152 errors
 
-1. **Prioritize correctness over speed** - Better to have proper types than quick fixes
-2. **Test incrementally** - Run `npx tsc --noEmit` after each batch of changes
-3. **Use existing patterns** - Follow patterns established in phases 18-47
-4. **Don't create new stubs unless necessary** - Prefer fixing types properly
-5. **Document complex fixes** - Add comments for non-obvious type solutions
+### Session 3: Test Files & Misc (2-3 hours)
+Fix test file errors and remaining issues
+- Expected reduction: ~50 errors
+- Target: 152 → 102 errors
 
-## Reference Commands
+### Session 4: Final Push (2-3 hours)
+Fix all remaining errors
+- Expected reduction: ~102 errors
+- **Target: 0 errors ✅**
 
-```bash
-# Check specific error type count
-grep "TS2339" /tmp/tsc-phase48-start.txt | wc -l
-
-# Find most common property errors
-grep "TS2339" /tmp/tsc-phase48-start.txt | sed "s/.*Property '\([^']*\)'.*/\1/" | sort | uniq -c | sort -rn | head -20
-
-# Find files with most errors
-grep "error TS" /tmp/tsc-phase48-start.txt | cut -d'(' -f1 | sort | uniq -c | sort -rn | head -20
-
-# Get specific error details
-grep -A 2 "specific-file.tsx" /tmp/tsc-phase48-start.txt
-
-# Quick type check (faster than full tsc)
-npx tsc --noEmit --skipLibCheck 2>&1 | grep "error TS" | wc -l
-```
-
-## Files Modified So Far
-
-100+ files across phases 18-47, including:
-- Component props and interfaces
-- Type declarations for external libraries
-- Hook signatures and return types
-- Query/mutation parameter types
-- Interface extensions for missing properties
-- Stub modules for compatibility
-
-See PR #3 for full details.
-
-## Starting Command for Next Session
+## Important Commands
 
 ```bash
-# Ensure you're on the right branch
-git status
-# Should show: claude/typescript-phase-18-errors-011CV6AxFZsmwwr95Pq9q564
+# Baseline check
+npx tsc --noEmit 2>&1 | tee /tmp/tsc-current.txt
+grep "error TS" /tmp/tsc-current.txt | wc -l
 
-# Start baseline analysis
-npx tsc --noEmit 2>&1 | tee /tmp/tsc-phase48-start.txt
-grep "error TS" /tmp/tsc-phase48-start.txt | wc -l
+# Error distribution
+grep "error TS" /tmp/tsc-current.txt | sed 's/.*error TS/TS/' | sed 's/:.*//' | sort | uniq -c | sort -rn
 
-# Begin systematic fixing
-# Work through phases 1-7 above
+# Top files with errors
+grep "error TS" /tmp/tsc-current.txt | cut -d'(' -f1 | sort | uniq -c | sort -rn | head -20
+
+# Specific error type
+grep "TS2769" /tmp/tsc-current.txt
+
+# Clear caches (after tsconfig changes)
+find . -name "*.tsbuildinfo" -delete
+rm -rf .next
 ```
 
-Execute all phases systematically. Goal: **0 TypeScript errors**. Good luck! 🚀
+## Patterns Established (Phase 48)
+
+1. **Always use TypeScript's suggested names** for TS2724 errors
+2. **Create stub implementations** for missing exports rather than ignoring
+3. **Convert interfaces to classes** when used as constructors
+4. **Target ES2020** for modern JavaScript features
+5. **Clear caches** after tsconfig.json changes
+
+## Git History
+
+### Phase 48 Commits
+1. `55a738b` - Phase 48 Part 1: ES2018 regex and iteration fixes (-28 errors)
+2. `053f5dc` - Phase 48 Part 2: Module export fixes (-2 net, 37 issues resolved)
+
+### Previous Phases
+- Phase 18-47: 1,353 → 270 errors (80% reduction)
+- Phase 48: 270 → 240 errors (11.1% reduction)
+- **Total: 82.3% error reduction**
+
+## Success Metrics
+
+**Current Goal:** < 100 errors (92.6% total reduction)
+
+**Stretch Goal:** 0 errors (100% reduction) ✅
+
+**Next Milestone:** 200 errors (85.2% reduction) - Achievable in 1 session
+
+## Notes for Next Session
+
+1. **Cache Issues:** Always clear `.tsbuildinfo` and `.next` after config changes
+2. **Test Files:** Consider handling separately or excluding from strict checks
+3. **Query Hooks:** May need to review TanStack Query v5 migration guide
+4. **Stub Quality:** Query class stub may need enhancement for complex queries
