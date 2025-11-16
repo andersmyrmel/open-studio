@@ -13,14 +13,14 @@ export const LOCAL_STORAGE_KEYS = {
   SQL_EDITOR_INTELLISENSE: 'supabase_sql-editor-intellisense-enabled',
   SQL_EDITOR_SPLIT_SIZE: 'supabase_sql-editor-split-size',
   SQL_EDITOR_AI_OPEN: 'supabase_sql-editor-ai-open',
-  SQL_EDITOR_AI_SCHEMA: 'supabase_sql-editor-ai-schema',
-  SQL_EDITOR_LAST_SELECTED_DB: 'sql-editor-last-selected-db',
+  SQL_EDITOR_AI_SCHEMA: (projectRef: string) => `supabase_sql-editor-ai-schema-${projectRef}`,
+  SQL_EDITOR_LAST_SELECTED_DB: (projectRef: string) => `sql-editor-last-selected-db-${projectRef}`,
   SQL_EDITOR_SECTION_STATE: 'sql-editor-section-state',
   SQL_EDITOR_SORT: 'sql-editor-sort',
-  SQL_EDITOR_SQL_BLOCK_ACKNOWLEDGED: 'sql-editor-sql-block-acknowledged',
+  SQL_EDITOR_SQL_BLOCK_ACKNOWLEDGED: (projectRef: string) => `sql-editor-sql-block-acknowledged-${projectRef}`,
 
   // Table Editor
-  LAST_SELECTED_SCHEMA: 'last-selected-schema',
+  LAST_SELECTED_SCHEMA: (projectRef: string) => `last-selected-schema-${projectRef}`,
   TABLE_QUICKSTART_DISMISSED: 'table-quickstart-dismissed',
 
   // Schema Visualizer
@@ -56,7 +56,7 @@ export const LOCAL_STORAGE_KEYS = {
   HOTKEY_SIDEBAR: (sidebarId: string) => `supabase-dashboard-hotkey-sidebar-${sidebarId}`,
 
   // Dashboard
-  DASHBOARD_HISTORY: 'dashboard-history',
+  DASHBOARD_HISTORY: (projectRef: string) => `dashboard-history-${projectRef}`,
 
   // Tabs
   TABS_INTERFACE_ACKNOWLEDGED: 'tabs-interface-acknowledge',
