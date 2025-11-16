@@ -26,16 +26,16 @@ export function renderHook<TResult, TProps>(
 }
 
 export const screen = {
-  getByText: () => null,
-  getByRole: () => null,
-  getByLabelText: () => null,
-  getByPlaceholderText: () => null,
-  getByAltText: () => null,
-  getByTestId: () => null,
-  queryByText: () => null,
-  queryByRole: () => null,
-  findByText: async () => null,
-  findByRole: async () => null,
+  getByText: (text: any, options?: any) => null,
+  getByRole: (role: any, options?: any) => null,
+  getByLabelText: (text: any, options?: any) => null,
+  getByPlaceholderText: (text: any, options?: any) => null,
+  getByAltText: (text: any, options?: any) => null,
+  getByTestId: (id: any, options?: any) => null,
+  queryByText: (text: any, options?: any) => null,
+  queryByRole: (role: any, options?: any) => null,
+  findByText: async (text: any, options?: any) => null,
+  findByRole: async (role: any, options?: any) => null,
 }
 
 export const fireEvent = Object.assign(
