@@ -37,7 +37,7 @@ export const isRoleImpersonationEnabled = (role?: string | ImpersonationRole): b
 
 export const useGetImpersonatedRoleState = () => {
   // Return a function that gets the current role state from the proxy directly
-  return () => roleImpersonationState.role
+  return () => ({ role: roleImpersonationState.role, claims: roleImpersonationState.claims })
 }
 
 export const setRoleImpersonation = (role?: ImpersonationRole, claims?: Record<string, any>) => {

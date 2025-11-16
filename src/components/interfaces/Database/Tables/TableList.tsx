@@ -492,11 +492,13 @@ export const TableList = ({
                                         `/project/${project?.ref}/editor/${x.id}?${LOAD_TAB_FROM_CACHE_PARAM}=true`
                                       )
                                     }
-                                    onMouseEnter={() =>
-                                      prefetchEditorTablePage({
-                                        id: x.id ? String(x.id) : undefined,
-                                      })
-                                    }
+                                    onMouseEnter={() => {
+                                      if (x.id) {
+                                        prefetchEditorTablePage({
+                                          id: x.id,
+                                        })
+                                      }
+                                    }}
                                   >
                                     <Eye size={12} />
                                     <p>View in Table Editor</p>

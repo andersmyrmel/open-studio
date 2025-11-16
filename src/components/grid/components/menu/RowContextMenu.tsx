@@ -83,12 +83,12 @@ export const RowContextMenu = ({ rows }: RowContextMenuProps) => {
 		  https://github.com/fkhadra/react-contexify/blob/8d9fc63ac13040d3250e8eefd593d50a3ebdd1e6/src/components/Menu.tsx#L295
 		*/}
       {snap.editable && <DialogSectionSeparator className="my-1.5" />}
-      <Item onClick={onEditRowClick} hidden={!snap.editable} data="edit">
+      <Item onClick={onEditRowClick} hidden={!snap.editable}>
         <Edit size={12} />
         <span className="ml-2 text-xs">Edit row</span>
       </Item>
       {snap.editable && <DialogSectionSeparator className="my-1.5" />}
-      <Item onClick={onDeleteRow} hidden={!snap.editable} data="delete">
+      <Item onClick={onDeleteRow} hidden={!snap.editable}>
         <Trash size={12} />
         <span className="ml-2 text-xs">Delete row</span>
       </Item>

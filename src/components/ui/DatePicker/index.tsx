@@ -108,25 +108,25 @@ export function DatePicker({
     setStartDate((prev) => {
       if (!prev) return prev
       const clamped = clampDateToRange(prev)
-      return dayjs(clamped).isSame(prev) ? prev : clamped
+      return clamped && dayjs(clamped).isSame(prev) ? prev : clamped
     })
 
     setEndDate((prev) => {
       if (!prev) return prev
       const clamped = clampDateToRange(prev)
-      return dayjs(clamped).isSame(prev) ? prev : clamped
+      return clamped && dayjs(clamped).isSame(prev) ? prev : clamped
     })
 
     setAppliedStartDate((prev) => {
       if (!prev) return prev
       const clamped = clampDateToRange(prev)
-      return dayjs(clamped).isSame(prev) ? prev : clamped
+      return clamped && dayjs(clamped).isSame(prev) ? prev : clamped
     })
 
     setAppliedEndDate((prev) => {
       if (!prev) return prev
       const clamped = clampDateToRange(prev)
-      return dayjs(clamped).isSame(prev) ? prev : clamped
+      return clamped && dayjs(clamped).isSame(prev) ? prev : clamped
     })
   }, [minDate, maxDate, clampDateToRange])
 
@@ -181,11 +181,13 @@ export function DatePicker({
     setAppliedStartDate(startDate)
     setAppliedEndDate(endDate)
 
-    const fromISO = dayjs(startDate)
-      .second(Number(startTime.ss))
-      .minute(Number(startTime.mm))
-      .hour(Number(startTime.HH))
-      .toISOString()
+    const fromISO = startDate
+      ? dayjs(startDate)
+          .second(Number(startTime.ss))
+          .minute(Number(startTime.mm))
+          .hour(Number(startTime.HH))
+          .toISOString()
+      : ''
     const toISO = dayjs(endDate || startDate)
       .second(Number(endTime.ss))
       .minute(Number(endTime.mm))

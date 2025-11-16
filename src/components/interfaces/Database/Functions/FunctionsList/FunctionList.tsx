@@ -198,7 +198,7 @@ const FunctionList = ({
                                   },
                                 ],
                               },
-                              sqlSnippets: [x.complete_statement],
+                              sqlSnippets: x.complete_statement ? [x.complete_statement] : [],
                             })
                           }}
                         >
