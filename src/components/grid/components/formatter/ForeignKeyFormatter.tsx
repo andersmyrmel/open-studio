@@ -89,7 +89,7 @@ export const ForeignKeyFormatter = (props: Props) => {
               <PopoverContent_Shadcn_ portal align="end" className="p-0 w-96">
                 <ReferenceRecordPeek
                   table={targetTable}
-                  column={relationship.target_column_name}
+                  column={relationship.target_column_name ?? ''}
                   value={formattedValue}
                 />
               </PopoverContent_Shadcn_>

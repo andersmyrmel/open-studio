@@ -89,7 +89,7 @@ export const useTableRowCreateMutation = ({
             ...(org?.slug && { organization: org.slug }),
           },
         })
-      } catch (error) {
+      } catch (error: any) {
         console.error('Failed to track table data insertion event:', error)
       }
 

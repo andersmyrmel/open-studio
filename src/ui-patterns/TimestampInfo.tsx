@@ -16,6 +16,9 @@ export interface TimestampInfoProps {
   format?: string
   className?: string
   showRelative?: boolean
+  displayAs?: string
+  utcTimestamp?: string | number
+  labelFormat?: string
 }
 
 export const TimestampInfo: React.FC<TimestampInfoProps> = ({

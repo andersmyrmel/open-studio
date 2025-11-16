@@ -12,6 +12,8 @@ export interface ResourceWarning {
   message: string
   threshold: number
   current: number
+  project?: any
+  is_readonly_mode_enabled?: boolean
 }
 
 export const resourceWarningsKeys = {

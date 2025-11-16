@@ -69,8 +69,8 @@ function pgMetaGuard(request: Request) {
       throw new ResponseError(
         'API Error: happened while trying to acquire connection to the database',
         400,
-        request.headers.get('X-Request-Id') ?? undefined,
-        retryAfterHeader ? parseInt(retryAfterHeader) : undefined
+        retryAfterHeader ? parseInt(retryAfterHeader) : undefined,
+        request.headers.get('X-Request-Id') ?? undefined
       )
     }
     if (!request.headers.get('x-pg-application-name')) {
@@ -194,11 +194,11 @@ async function handleFetchResponse<T>(response: Response): Promise<T | ResponseE
     try {
       // try to parse response text as json
       return JSON.parse(resTxt)
-    } catch (err) {
+    } catch (err: any) {
       // return as text plain
       return resTxt as any
     }
-  } catch (e) {
+  } catch (e: any) {
     return handleError(response) as T | ResponseError
   }
 }
@@ -213,7 +213,7 @@ async function handleFetchHeadResponse<T>(
       res[header] = response.headers.get(header)
     })
     return res
-  } catch (e) {
+  } catch (e: any) {
     return handleError(response) as T | ResponseError
   }
 }
@@ -274,7 +274,7 @@ export async function fetchGet<T = any>(
     })
     if (!response.ok) return handleFetchError(response)
     return handleFetchResponse(response)
-  } catch (error) {
+  } catch (error: any) {
     return handleFetchError(error)
   }
 }
@@ -306,7 +306,7 @@ export async function fetchPost<T = any>(
     })
     if (!response.ok) return handleFetchError(response)
     return handleFetchResponse(response)
-  } catch (error) {
+  } catch (error: any) {
     return handleFetchError(error)
   }
 }
@@ -339,7 +339,7 @@ export async function fetchHeadWithTimeout<T = any>(
 
     if (!response.ok) return handleFetchError(response)
     return handleFetchHeadResponse(response, headersToRetrieve)
-  } catch (error) {
+  } catch (error: any) {
     return handleFetchError(error)
   }
 }

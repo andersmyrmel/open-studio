@@ -64,7 +64,7 @@ function BaseEditor<TRow, TSummaryRow = unknown>({
   useEffect(() => {
     try {
       ref.current?.focus({ preventScroll: true })
-    } catch (e) {
+    } catch (e: any) {
       ref.current?.focus()
     }
   }, [])

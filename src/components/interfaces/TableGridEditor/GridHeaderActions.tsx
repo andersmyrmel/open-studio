@@ -74,7 +74,7 @@ export const GridHeaderActions = ({ table, isRefetching }: GridHeaderActionsProp
   const { isSchemaLocked } = useIsProtectedSchema({ schema: table.schema })
 
   const { mutate: updateTable } = useTableUpdateMutation({
-    onError: (error) => {
+    onError: (error: any) => {
       toast.error(`Failed to toggle RLS: ${error.message}`)
     },
     onSettled: () => {
@@ -95,7 +95,7 @@ export const GridHeaderActions = ({ table, isRefetching }: GridHeaderActionsProp
     connectionString: project?.connectionString,
   })
   const policies = (data ?? []).filter(
-    (policy) => policy.schema === table.schema && policy.table === table.name
+    (policy: any) => policy.schema === table.schema && policy.table === table.name
   )
 
   const { data: publications } = useDatabasePublicationsQuery({
@@ -103,7 +103,7 @@ export const GridHeaderActions = ({ table, isRefetching }: GridHeaderActionsProp
     connectionString: project?.connectionString,
   })
   const realtimePublication = (publications ?? []).find(
-    (publication) => publication.name === 'supabase_realtime'
+    (publication: any) => publication.name === 'supabase_realtime'
   )
   const realtimeEnabledTables = realtimePublication?.tables ?? []
   const isRealtimeEnabled = realtimeEnabledTables.some((t: any) => t.id === table?.id)
@@ -113,7 +113,7 @@ export const GridHeaderActions = ({ table, isRefetching }: GridHeaderActionsProp
       onSuccess: () => {
         setShowEnableRealtime(false)
       },
-      onError: (error) => {
+      onError: (error: any) => {
         toast.error(`Failed to toggle realtime for ${table.name}: ${error.message}`)
       },
     })
@@ -128,7 +128,7 @@ export const GridHeaderActions = ({ table, isRefetching }: GridHeaderActionsProp
     }
   )
   const tableTriggers = (triggersData ?? []).filter(
-    (trigger) => trigger.schema === table.schema && trigger.table === table.name
+    (trigger: any) => trigger.schema === table.schema && trigger.table === table.name
   )
 
   const tableTriggersCount = tableTriggers.length

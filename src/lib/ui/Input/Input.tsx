@@ -138,6 +138,16 @@ function Input({
   if (disabled) inputClasses.push(__styles.disabled)
   if (inputClassName) inputClasses.push(inputClassName)
 
+  // Map size strings to pixel values for icons
+  const iconSizeMap = {
+    tiny: 14,
+    small: 16,
+    medium: 18,
+    large: 20,
+    xlarge: 24,
+  }
+  const iconSize = size ? iconSizeMap[size] : 16
+
   return (
     <FormLayout
       label={label}
@@ -174,7 +184,7 @@ function Input({
         {icon && <InputIconContainer size={size} icon={icon} className={iconContainerClassName} />}
         {copy || error || actions ? (
           <div className={__styles.actions_container}>
-            {error && <InputErrorIcon size={size} />}
+            {error && <InputErrorIcon size={iconSize} />}
             {copy && !(reveal && hidden) ? (
               <Button size="tiny" type="default" icon={<Copy />} onClick={() => _onCopy(value)}>
                 {copyLabel}
@@ -303,6 +313,16 @@ function TextArea({
   if (disabled) classes.push(__styles.disabled)
   if (textAreaClassName) classes.push(textAreaClassName)
 
+  // Map size strings to pixel values for icons
+  const iconSizeMap = {
+    tiny: 14,
+    small: 16,
+    medium: 18,
+    large: 20,
+    xlarge: 24,
+  }
+  const iconSize = size ? iconSizeMap[size] : 16
+
   return (
     <FormLayout
       className={className}
@@ -336,7 +356,7 @@ function TextArea({
         {copy || error || actions ? (
           <div className={__styles['textarea_actions_container']}>
             <div className={__styles['textarea_actions_container_items']}>
-              {error && <InputErrorIcon size={size} />}
+              {error && <InputErrorIcon size={iconSize} />}
               {copy && (
                 <Button size="tiny" type="default" onClick={() => _onCopy(value)} icon={<Copy />}>
                   {copyLabel}

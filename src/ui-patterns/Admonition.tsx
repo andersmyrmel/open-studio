@@ -4,7 +4,7 @@
  */
 
 import React from 'react'
-import { Alert_Shadcn_ as Alert, AlertDescription, AlertTitle } from '@/lib/ui'
+import { Alert_Shadcn_ as Alert, AlertDescription_Shadcn_ as AlertDescription, AlertTitle_Shadcn_ as AlertTitle } from '@/lib/ui'
 import { cn } from '@/lib/utils'
 import { AlertCircle, AlertTriangle, Info, CheckCircle } from 'lucide-react'
 

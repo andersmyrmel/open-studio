@@ -312,7 +312,7 @@ async function upsertSnippet(
       snippet.isNotSavedInDatabaseYet = false
     }
     sqlEditorState.savingStates[id] = 'IDLE'
-  } catch (error) {
+  } catch (error: any) {
     sqlEditorState.savingStates[id] = 'UPDATING_FAILED'
   }
 }

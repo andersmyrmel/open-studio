@@ -168,15 +168,15 @@ const FunctionsList = ({
                   label: type,
                   value: type,
                 }))}
-                value={returnTypeFilter ?? []}
-                onChange={setReturnTypeFilter}
+                value={returnTypeFilter ?? undefined}
+                onChange={setReturnTypeFilter as any}
                 showSearch
               />
               <ReportsSelectFilter
                 label="Security"
                 options={securityOptions}
-                value={securityFilter ?? []}
-                onChange={setSecurityFilter}
+                value={securityFilter ?? undefined}
+                onChange={setSecurityFilter as any}
               />
             </div>
 

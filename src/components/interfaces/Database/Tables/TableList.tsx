@@ -112,7 +112,7 @@ export const TableList = ({
       select(tables) {
         return filterString.length === 0
           ? tables
-          : tables.filter((table) => table.name.toLowerCase().includes(filterString.toLowerCase()))
+          : tables.filter((table: any) => table.name.toLowerCase().includes(filterString.toLowerCase()))
       },
     }
   )
@@ -133,7 +133,7 @@ export const TableList = ({
       select(views) {
         return filterString.length === 0
           ? views
-          : views.filter((view) => view.name.toLowerCase().includes(filterString.toLowerCase()))
+          : views.filter((view: any) => view.name.toLowerCase().includes(filterString.toLowerCase()))
       },
     }
   )
@@ -154,7 +154,7 @@ export const TableList = ({
       select(materializedViews) {
         return filterString.length === 0
           ? materializedViews
-          : materializedViews.filter((view) =>
+          : materializedViews.filter((view: any) =>
               view.name.toLowerCase().includes(filterString.toLowerCase())
             )
       },
@@ -177,7 +177,7 @@ export const TableList = ({
       select(foreignTables) {
         return filterString.length === 0
           ? foreignTables
-          : foreignTables.filter((table) =>
+          : foreignTables.filter((table: any) =>
               table.name.toLowerCase().includes(filterString.toLowerCase())
             )
       },
@@ -189,11 +189,11 @@ export const TableList = ({
     connectionString: project?.connectionString,
   })
   const realtimePublication = (publications ?? []).find(
-    (publication) => publication.name === 'supabase_realtime'
+    (publication: any) => publication.name === 'supabase_realtime'
   )
 
   const entities = formatAllEntities({ tables, views, materializedViews, foreignTables }).filter(
-    (x) => visibleTypes.includes(x.type)
+    (x: any) => visibleTypes.includes(x.type)
   )
 
   const { isSchemaLocked } = useIsProtectedSchema({ schema: selectedSchema })
@@ -246,7 +246,7 @@ export const TableList = ({
                           checked={visibleTypes.includes(value)}
                           onCheckedChange={() => {
                             if (visibleTypes.includes(value)) {
-                              setVisibleTypes(visibleTypes.filter((y) => y !== value))
+                              setVisibleTypes(visibleTypes.filter((y: any) => y !== value))
                             } else {
                               setVisibleTypes(visibleTypes.concat([value]))
                             }
@@ -277,7 +277,7 @@ export const TableList = ({
             className="flex-grow lg:flex-grow-0 w-52"
             placeholder="Search for a table"
             value={filterString}
-            onChange={(e) => setFilterString(e.target.value)}
+            onChange={(e: any) => setFilterString(e.target.value)}
             icon={<Search size={12} />}
           />
 
@@ -357,7 +357,7 @@ export const TableList = ({
                                   ? `${formatTooltipText(visibleTypes[0])}s`
                                   : `${visibleTypes
                                       .slice(0, -1)
-                                      .map((x) => `${formatTooltipText(x)}s`)
+                                      .map((x: any) => `${formatTooltipText(x)}s`)
                                       .join(
                                         ', '
                                       )}, and ${formatTooltipText(visibleTypes[visibleTypes.length - 1])}s`}{' '}
@@ -379,7 +379,7 @@ export const TableList = ({
                     </TableRow>
                   )}
                   {entities.length > 0 &&
-                    entities.map((x) => (
+                    entities.map((x: any) => (
                       <TableRow key={x.id}>
                         <TableCell className="!pl-5 !pr-1">
                           <Tooltip>
@@ -455,7 +455,7 @@ export const TableList = ({
                         </TableCell>
                         <TableCell className="hidden xl:table-cell text-center">
                           {(realtimePublication?.tables ?? []).find(
-                            (table) => table.id === x.id
+                            (table: any) => table.id === x.id
                           ) ? (
                             <div className="flex justify-end">
                               <Check size={18} strokeWidth={2} className="text-brand" />

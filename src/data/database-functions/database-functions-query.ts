@@ -18,6 +18,9 @@ export interface DatabaseFunction {
   return_type: string
   security_definer: boolean
   config_params: Record<string, string> | null
+  args?: Array<{ name: string; type?: string; mode?: string }>
+  behavior?: 'IMMUTABLE' | 'STABLE' | 'VOLATILE'
+  complete_statement?: string
 }
 
 export async function getDatabaseFunctions(
@@ -55,7 +58,7 @@ export const useDatabaseFunctionsQuery = <TData = DatabaseFunctionsData>(
 ) =>
   useQuery<DatabaseFunctionsData, DatabaseFunctionsError, TData>({
     queryKey: databaseKeys.databaseFunctions(projectRef),
-    queryFn: ({ signal }) => getDatabaseFunctions({ projectRef, connectionString }, signal),
+    queryFn: ({ signal }: { signal?: AbortSignal }) => getDatabaseFunctions({ projectRef, connectionString }, signal),
     enabled: enabled && typeof projectRef !== 'undefined',
     ...options,
   })

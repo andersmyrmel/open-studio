@@ -18,10 +18,12 @@ export interface FormItemLayoutProps {
   beforeLabel?: React.ReactNode
   afterLabel?: React.ReactNode
   id?: string
+  name?: string
   isReactForm?: boolean
   flex?: boolean
   align?: 'start' | 'center' | 'end'
   size?: 'tiny' | 'small' | 'medium' | 'large'
+  hideMessage?: boolean
 }
 
 export const FormItemLayout: React.FC<FormItemLayoutProps> = ({

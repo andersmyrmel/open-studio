@@ -1,8 +1,9 @@
 /**
- * Vault query keys for Open Studio
+ * Vault secrets keys stub for Open Studio
+ * Vault not available in standalone mode
  */
 
-export const vaultKeys = {
-  list: (projectRef: string | undefined) => ['projects', projectRef, 'vault'] as const,
-  secrets: (projectRef: string | undefined) => ['projects', projectRef, 'vault', 'secrets'] as const,
+export const vaultSecretsKeys = {
+  list: (projectRef?: string) => ['projects', projectRef, 'vault', 'secrets'] as const,
+  detail: (id: string) => ['vault', 'secrets', id] as const,
 }

@@ -9,6 +9,8 @@ export interface ReportsSelectFilterProps {
   value?: string
   onChange?: (value: string) => void
   options?: Array<{ value: string; label: string }>
+  label?: string
+  showSearch?: boolean
 }
 
 export const ReportsSelectFilter: React.FC<ReportsSelectFilterProps> = ({

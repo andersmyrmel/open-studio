@@ -252,7 +252,7 @@ export const useAITableGeneration = () => {
       }
 
       return finalTables
-    } catch (error) {
+    } catch (error: any) {
       if (error instanceof Error && error.name === 'AbortError') {
         return []
       }

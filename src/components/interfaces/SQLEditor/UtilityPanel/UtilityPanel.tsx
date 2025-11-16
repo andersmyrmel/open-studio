@@ -54,7 +54,7 @@ const UtilityPanel = ({
   const { mutate: upsertContent } = useContentUpsertMutation({
     invalidateQueriesOnSuccess: false,
     // Optimistic update to the cache
-    onMutate: async (newContentSnippet) => {
+    onMutate: async (newContentSnippet: any) => {
       const { payload } = newContentSnippet
 
       // No need to update the cache for non-SQL content
@@ -71,7 +71,7 @@ const UtilityPanel = ({
 
       snapV2.updateSnippet({ id, snippet: newSnippet as unknown as Snippet })
     },
-    onError: async (err, newContent, context) => {
+    onError: async (err: any, newContent: any, context: any) => {
       toast.error(`Failed to update chart. Please try again.`)
     },
   })

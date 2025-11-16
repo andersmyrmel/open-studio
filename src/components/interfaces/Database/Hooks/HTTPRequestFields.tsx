@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { useParams } from '@/lib/common'
 import { ButtonTooltip } from 'components/ui/ButtonTooltip'
 import { FormSection, FormSectionContent, FormSectionLabel } from 'components/ui/Forms/FormSection'
-import { getKeys, useAPIKeysQuery } from 'data/api-keys/api-keys-query'
+import { useAPIKeysQuery } from 'data/api-keys/api-keys-query'
 import { useEdgeFunctionsQuery } from 'data/edge-functions/edge-functions-query'
 import { useSelectedProjectQuery } from '@/lib/common'
 import { uuidv4 } from 'lib/helpers'
@@ -54,7 +54,8 @@ const HTTPRequestFields = ({
   const { data: apiKeys } = useAPIKeysQuery({ projectRef: ref, reveal: true })
 
   const edgeFunctions = functions ?? []
-  const { serviceKey, secretKey } = getKeys(apiKeys)
+  const serviceKey = apiKeys?.find((key) => key.name === 'service_role')
+  const secretKey = apiKeys?.find((key) => key.name === 'anon')
   const apiKey = secretKey?.api_key ?? serviceKey?.api_key ?? '[YOUR API KEY]'
 
   return (
@@ -183,7 +184,7 @@ const HTTPRequestFields = ({
                             name: 'Authorization',
                             value: `Bearer ${apiKey}`,
                           },
-                          ...(serviceKey?.type === 'secret'
+                          ...(serviceKey
                             ? [{ id: uuidv4(), name: 'apikey', value: apiKey }]
                             : []),
                         ])

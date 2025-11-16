@@ -10,9 +10,17 @@ export interface Content {
   id: string
   name: string
   type: 'sql' | 'report' | 'chart'
-  content: any
+  content: {
+    content_id: string
+    sql: string
+    schema?: string
+    favorite?: boolean
+    chart?: any
+  }
   created_at: string
   updated_at: string
+  title?: string
+  chart?: any
 }
 
 export const contentKeys = {

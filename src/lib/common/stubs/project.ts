@@ -12,6 +12,10 @@ export const DEFAULT_PROJECT = {
   status: 'ACTIVE_HEALTHY',
   region: 'local',
   inserted_at: new Date().toISOString(),
+  connectionString: process.env.DATABASE_URL || process.env.DB_URL || '',
+  parent_project_ref: undefined as string | undefined,
+  cloud_provider: 'local' as string,
+  restUrl: process.env.REST_URL || 'http://localhost:3000/api',
 }
 
 /**

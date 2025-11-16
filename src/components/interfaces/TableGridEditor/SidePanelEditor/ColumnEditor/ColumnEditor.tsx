@@ -86,7 +86,7 @@ const ColumnEditor = ({
   })
   const { data: protectedSchemas } = useProtectedSchemas({ excludeSchemas: ['extensions'] })
   const enumTypes = (types ?? []).filter(
-    (type) => !protectedSchemas.find((s) => s.name === type.schema)
+    (type: any) => !protectedSchemas.find((s: any) => s.name === type.schema)
   )
 
   const { data: constraints } = useTableConstraintsQuery({
@@ -95,7 +95,7 @@ const ColumnEditor = ({
     id: selectedTable?.id,
   })
   const primaryKey = (constraints ?? []).find(
-    (constraint) => constraint.type === CONSTRAINT_TYPE.PRIMARY_KEY_CONSTRAINT
+    (constraint: any) => constraint.type === CONSTRAINT_TYPE.PRIMARY_KEY_CONSTRAINT
   )
 
   const { data } = useForeignKeyConstraintsQuery({
@@ -106,13 +106,13 @@ const ColumnEditor = ({
 
   const isNewRecord = column === undefined
   const foreignKeyMeta = data || []
-  const foreignKeys = foreignKeyMeta.filter((relation) => {
+  const foreignKeys = foreignKeyMeta.filter((relation: any) => {
     return relation.source_id === column?.table_id && relation.source_columns.includes(column.name)
   })
   const lockColumnType =
     fkRelations.find(
-      (fk) =>
-        fk.columns.find((col) => col.source === columnFields?.name) !== undefined && !fk.toRemove
+      (fk: any) =>
+        fk.columns.find((col: any) => col.source === columnFields?.name) !== undefined && !fk.toRemove
     ) !== undefined
 
   useEffect(() => {
@@ -139,12 +139,12 @@ const ColumnEditor = ({
 
     if (
       changedName &&
-      fkRelations.find((fk) => fk.columns.find(({ source }) => source === columnFields?.name))
+      fkRelations.find((fk: any) => fk.columns.find(({ source }: any) => source === columnFields?.name))
     ) {
       setFkRelations(
-        fkRelations.map((relation) => ({
+        fkRelations.map((relation: any) => ({
           ...relation,
-          columns: relation.columns.map((col) =>
+          columns: relation.columns.map((col: any) =>
             col.source === columnFields?.name ? { ...col, source: changes.name! } : col
           ),
         }))

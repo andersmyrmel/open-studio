@@ -13,6 +13,12 @@ export interface ReportBlockContainerProps {
   className?: string
   loading?: boolean
   error?: string
+  draggable?: boolean
+  showDragHandle?: boolean
+  onDragStart?: (e: React.DragEvent<Element>) => void
+  label?: string
+  badge?: React.ReactNode
+  actions?: React.ReactNode
 }
 
 export const ReportBlockContainer: React.FC<ReportBlockContainerProps> = ({

@@ -65,7 +65,7 @@ export const useViewDefinitionQuery = <TData = ViewDefinitionData>(
 ) =>
   useQuery<ViewDefinitionData, ViewDefinitionError, TData>({
     queryKey: databaseKeys.viewDefinition(projectRef, id),
-    queryFn: ({ signal }) => getViewDefinition({ projectRef, connectionString, id }, signal),
+    queryFn: ({ signal }: { signal?: AbortSignal }) => getViewDefinition({ projectRef, connectionString, id }, signal),
     enabled:
       enabled && typeof projectRef !== 'undefined' && typeof id !== 'undefined' && !isNaN(id),
     ...options,

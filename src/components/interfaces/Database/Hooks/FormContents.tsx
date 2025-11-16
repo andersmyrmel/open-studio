@@ -19,9 +19,9 @@ export interface FormContentsProps {
   errors: any
   selectedHook?: PostgresTrigger
   tables: PostgresTable[]
-  events: string[]
+  events: ('INSERT' | 'UPDATE' | 'DELETE' | 'TRUNCATE')[]
   eventsError?: string
-  onUpdateSelectedEvents: (event: string) => void
+  onUpdateSelectedEvents: (event: 'INSERT' | 'UPDATE' | 'DELETE' | 'TRUNCATE') => void
   httpHeaders: HTTPArgument[]
   httpParameters: HTTPArgument[]
   setHttpHeaders: (arr: HTTPArgument[]) => void
@@ -181,8 +181,8 @@ export const FormContents = ({
                 value={event.value}
                 label={event.label}
                 description={event.description}
-                checked={events.includes(event.value)}
-                onChange={() => onUpdateSelectedEvents(event.value)}
+                checked={events.includes(event.value as any)}
+                onChange={() => onUpdateSelectedEvents(event.value as any)}
               />
             ))}
           </Checkbox.Group>

@@ -57,13 +57,13 @@ export const TriggerList = ({
     connectionString: project?.connectionString,
   })
   const filteredTriggers = (triggers ?? []).filter(
-    (x) =>
+    (x: any) =>
       includes(x.name.toLowerCase(), filterString.toLowerCase()) ||
       (x.function_name && includes(x.function_name.toLowerCase(), filterString.toLowerCase()))
   )
   const _triggers = sortBy(
-    filteredTriggers.filter((x) => x.schema == schema),
-    (trigger) => trigger.name.toLocaleLowerCase()
+    filteredTriggers.filter((x: any) => x.schema == schema),
+    (trigger: any) => trigger.name.toLocaleLowerCase()
   )
 
   if (_triggers.length === 0 && filterString.length === 0) {
@@ -94,7 +94,7 @@ export const TriggerList = ({
 
   return (
     <>
-      {_triggers.map((x) => (
+      {_triggers.map((x: any) => (
         <TableRow key={x.id}>
           <TableCell className="space-x-2">
             <Button

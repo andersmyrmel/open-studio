@@ -23,7 +23,7 @@ export function getPool(): Pool {
     })
 
     // Log pool errors
-    pool.on('error', (err) => {
+    pool.on('error', (err: any) => {
       console.error('Unexpected error on idle PostgreSQL client', err)
     })
   }
@@ -73,7 +73,7 @@ export async function transaction<T>(
     const result = await fn(client)
     await client.query('COMMIT')
     return result
-  } catch (error) {
+  } catch (error: any) {
     await client.query('ROLLBACK')
     throw error
   } finally {
@@ -148,7 +148,7 @@ export async function testConnection(): Promise<boolean> {
   try {
     const result = await query('SELECT 1 as test')
     return result.rows.length === 1 && result.rows[0].test === 1
-  } catch (error) {
+  } catch (error: any) {
     console.error('Database connection test failed:', error)
     return false
   }

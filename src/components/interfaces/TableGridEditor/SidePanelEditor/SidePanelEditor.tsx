@@ -81,10 +81,10 @@ export const SidePanelEditor = ({
   const [isClosingPanel, setIsClosingPanel] = useState<boolean>(false)
 
   const enumArrayColumns = (selectedTable?.columns ?? [])
-    .filter((column) => {
+    .filter((column: any) => {
       return (column?.enums ?? []).length > 0 && column.data_type.toLowerCase() === 'array'
     })
-    .map((column) => column.name)
+    .map((column: any) => column.name)
 
   const { mutateAsync: createTableRows } = useTableRowCreateMutation({
     onSuccess() {
@@ -175,7 +175,7 @@ export const SidePanelEditor = ({
       const selectedValueForJsonEdit = snap.sidePanel.jsonValue
       const { row, column } = selectedValueForJsonEdit
       payload = { [column]: value === null ? null : JSON.parse(value as any) }
-      selectedTable.primary_keys.forEach((column) => (identifiers[column.name] = row![column.name]))
+      selectedTable.primary_keys.forEach((column: any) => (identifiers[column.name] = row![column.name]))
       configuration = { identifiers, rowIdx: row.idx }
     } else if (snap.sidePanel?.type === 'cell') {
       const column = snap.sidePanel.value?.column
@@ -183,14 +183,14 @@ export const SidePanelEditor = ({
 
       if (!column || !row) return
       payload = { [column]: value === null ? null : value }
-      selectedTable.primary_keys.forEach((column) => (identifiers[column.name] = row![column.name]))
+      selectedTable.primary_keys.forEach((column: any) => (identifiers[column.name] = row![column.name]))
       configuration = { identifiers, rowIdx: row.idx }
     }
 
     if (payload !== undefined && configuration !== undefined) {
       try {
         await saveRow(payload, isNewRecord, configuration, () => {})
-      } catch (error) {
+      } catch (error: any) {
         // [Joshen] No error handler required as error is handled within saveRow
       } finally {
         resolve()
@@ -205,8 +205,8 @@ export const SidePanelEditor = ({
     try {
       const { row } = selectedForeignKeyToEdit
       const identifiers = {} as Dictionary<any>
-      selectedTable.primary_keys.forEach((column) => {
-        const col = selectedTable.columns?.find((x) => x.name === column.name)
+      selectedTable.primary_keys.forEach((column: any) => {
+        const col = selectedTable.columns?.find((x: any) => x.name === column.name)
         identifiers[column.name] =
           col?.format === 'bytea' ? convertByteaToHex(row![column.name]) : row![column.name]
       })
@@ -215,7 +215,7 @@ export const SidePanelEditor = ({
       const configuration = { identifiers, rowIdx: row.idx }
 
       saveRow(value, isNewRecord, configuration, () => {})
-    } catch (error) {}
+    } catch (error: any) {}
   }
 
   const saveColumn = async (
@@ -298,7 +298,7 @@ export const SidePanelEditor = ({
    * Adds the renamed column's filter and/or sort rules.
    */
   const reAddRenamedColumnSortAndFilter = (oldColumnName: string, newColumnName: string) => {
-    setParams((prevParams) => {
+    setParams((prevParams: any) => {
       const existingFilters = (prevParams?.filter ?? []) as string[]
       const existingSorts = (prevParams?.sort ?? []) as string[]
 
@@ -318,7 +318,7 @@ export const SidePanelEditor = ({
 
   const updateTableRealtime = async (table: RetrieveTableResult, enabled: boolean) => {
     if (!project) return console.error('Project is required')
-    const realtimePublication = publications?.find((pub) => pub.name === 'supabase_realtime')
+    const realtimePublication = publications?.find((pub: any) => pub.name === 'supabase_realtime')
 
     try {
       if (realtimePublication === undefined) {
@@ -352,8 +352,8 @@ export const SidePanelEditor = ({
         })
         // TODO: support tables in non-public schemas
         const realtimeTables = enabled
-          ? publicTables.map((t) => `${t.schema}.${t.name}`)
-          : publicTables.filter((t) => t.id !== table.id).map((t) => `${t.schema}.${t.name}`)
+          ? publicTables.map((t: any) => `${t.schema}.${t.name}`)
+          : publicTables.filter((t: any) => t.id !== table.id).map((t: any) => `${t.schema}.${t.name}`)
         await updatePublication({
           id: realtimePublication.id,
           projectRef: project.ref,
@@ -362,17 +362,17 @@ export const SidePanelEditor = ({
         })
         return
       }
-      const isAlreadyEnabled = realtimePublication.tables.some((x) => x.id == table.id)
+      const isAlreadyEnabled = realtimePublication.tables.some((x: any) => x.id == table.id)
       const realtimeTables =
         isAlreadyEnabled && !enabled
           ? // Toggle realtime off
             realtimePublication.tables
-              .filter((t) => t.id !== table.id)
-              .map((t) => `${t.schema}.${t.name}`)
+              .filter((t: any) => t.id !== table.id)
+              .map((t: any) => `${t.schema}.${t.name}`)
           : !isAlreadyEnabled && enabled
             ? // Toggle realtime on
               realtimePublication.tables
-                .map((t) => `${t.schema}.${t.name}`)
+                .map((t: any) => `${t.schema}.${t.name}`)
                 .concat([`${table.schema}.${table.name}`])
             : null
       if (realtimeTables === null) return

@@ -27,7 +27,7 @@ const useLegacyInlineEditorHotkeyMigration = () => {
           setInlineEditorEnabled(legacyValue === 'true')
           window.localStorage.removeItem(LEGACY_INLINE_EDITOR_HOTKEY_KEY)
         }
-      } catch (error) {
+      } catch (error: any) {
         console.warn('Failed to migrate inline editor hotkey preference', error)
       }
     }

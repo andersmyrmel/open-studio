@@ -56,10 +56,19 @@ export function useTableSort() {
 
       if (existingSortIndex !== -1) {
         // Column already exists in sorts: Update the existing sort (toggle handled by removeSort)
-        newSorts[existingSortIndex] = { ...newSorts[existingSortIndex], ascending: ascending }
+        newSorts[existingSortIndex] = {
+          ...newSorts[existingSortIndex],
+          ascending: ascending,
+          order: ascending ? 'asc' : 'desc'
+        }
       } else {
         // Column doesn't exist in sorts: Add it to the beginning
-        newSorts.unshift({ table: tableName, column: columnKey, ascending: ascending })
+        newSorts.unshift({
+          table: tableName,
+          column: columnKey,
+          ascending: ascending,
+          order: ascending ? 'asc' : 'desc'
+        })
       }
 
       onApplySorts(newSorts)

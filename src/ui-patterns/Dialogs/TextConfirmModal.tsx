@@ -31,6 +31,8 @@ export interface TextConfirmModalProps {
   variant?: 'default' | 'destructive' | 'warning'
   size?: 'tiny' | 'small' | 'medium' | 'large'
   children?: React.ReactNode
+  text?: React.ReactNode
+  alert?: React.ReactNode
 }
 
 const TextConfirmModal = ({

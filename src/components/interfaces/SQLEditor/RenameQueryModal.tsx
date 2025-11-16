@@ -46,12 +46,12 @@ const RenameQueryModal = ({
   const [descriptionInput, setDescriptionInput] = useState(description)
 
   const { mutate: titleSql, isLoading: isTitleGenerationLoading } = useSqlTitleGenerateMutation({
-    onSuccess: (data) => {
+    onSuccess: (data: any) => {
       const { title, description } = data
       setNameInput(title)
       if (!descriptionInput) setDescriptionInput(description)
     },
-    onError: (error) => {
+    onError: (error: any) => {
       toast.error(`Failed to rename query: ${error.message}`)
     },
   })
@@ -61,9 +61,11 @@ const RenameQueryModal = ({
       titleSql({ sql: snippet.content.sql })
     } else {
       try {
-        const { content } = await getContentById({ projectRef: ref, id: snippet.id })
-        if ('sql' in content) titleSql({ sql: content.sql })
-      } catch (error) {
+        const result = await getContentById({ projectRef: ref, id: snippet.id })
+        if (result?.content && 'sql' in result.content) {
+          titleSql({ sql: result.content.sql })
+        }
+      } catch (error: any) {
         toast.error('Unable to generate title based on query contents')
       }
     }
@@ -139,7 +141,7 @@ const RenameQueryModal = ({
                 id="name"
                 name="name"
                 value={nameInput}
-                onChange={(e) => setNameInput(e.target.value)}
+                onChange={(e: any) => setNameInput(e.target.value)}
               />
               <div className="flex w-full justify-end mt-2">
                 {!hasHipaaAddon && (
@@ -165,7 +167,7 @@ const RenameQueryModal = ({
                 size="medium"
                 textAreaClassName="resize-none"
                 value={descriptionInput}
-                onChange={(e) => setDescriptionInput(e.target.value)}
+                onChange={(e: any) => setDescriptionInput(e.target.value)}
               />
             </Modal.Content>
             <Modal.Separator />

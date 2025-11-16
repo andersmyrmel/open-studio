@@ -23,8 +23,8 @@ export const LOCAL_STORAGE_KEYS = {
   TABLE_QUICKSTART_DISMISSED: 'table-quickstart-dismissed',
 
   // Schema Visualizer
-  SCHEMA_VISUALIZER_POSITIONS: (schemaId: number) =>
-    `schema-visualizer-positions-${schemaId}`,
+  SCHEMA_VISUALIZER_POSITIONS: (projectRef: string, schemaId: number) =>
+    `schema-visualizer-positions-${projectRef}-${schemaId}`,
 
   // Log Explorer
   LOG_EXPLORER_SPLIT_SIZE: 'supabase_log-explorer-split-size',

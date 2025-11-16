@@ -8,9 +8,10 @@ export const logConstants = {
   DEFAULT_LOG_LEVEL: 'INFO' as const,
   MAX_LOG_SIZE: 1000,
   LOG_RETENTION_DAYS: 7,
+  schemas: [] as any[],
 }
 
-export const extensions = {
+const extensionsData = {
   // PostgreSQL extensions available in Supabase
   pg_stat_statements: {
     name: 'pg_stat_statements',
@@ -59,4 +60,19 @@ export const extensions = {
   },
 }
 
-export type Extension = keyof typeof extensions
+// Export as array with find method for compatibility
+export const extensions = Object.values(extensionsData) as Array<{
+  name: string
+  comment: string
+  default_version: string
+  link?: string
+  deprecated?: string[]
+  product?: string
+  product_url?: string
+  github_url?: string
+}>
+
+// Also export as object for key-based access
+export const extensionsMap = extensionsData
+
+export type Extension = keyof typeof extensionsData

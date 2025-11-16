@@ -49,10 +49,10 @@ export function getCreateFDWSql({
     validator "${wrapperMeta.validatorName}";
   `
 
-  const encryptedOptions = wrapperMeta.server.options.filter((option) => option.encrypted)
-  const unencryptedOptions = wrapperMeta.server.options.filter((option) => !option.encrypted)
+  const encryptedOptions = wrapperMeta.server.options.filter((option: any) => option.encrypted)
+  const unencryptedOptions = wrapperMeta.server.options.filter((option: any) => !option.encrypted)
 
-  const createEncryptedKeysSqlArray = encryptedOptions.map((option) => {
+  const createEncryptedKeysSqlArray = encryptedOptions.map((option: any) => {
     const key = `${formState.wrapper_name}_${option.name}`
     // Escape single quotes in postgresql by doubling them up
     const value = (formState[option.name] || '').replace(/'/g, "''")
@@ -114,13 +114,13 @@ export function getCreateFDWSql({
   const createEncryptedKeysSql = createEncryptedKeysSqlArray.join('\n')
 
   const encryptedOptionsSqlArray = encryptedOptions
-    .filter((option) => formState[option.name])
-    .map((option) => `${option.name} ''%s''`)
+    .filter((option: any) => formState[option.name])
+    .map((option: any) => `${option.name} ''%s''`)
   const unencryptedOptionsSqlArray = unencryptedOptions
-    .filter((option) => formState[option.name])
+    .filter((option: any) => formState[option.name])
     // wrap all option names in double quotes to handle dots
     // wrap all options values in single quotes, replace single quotes with 4 single quotes to escape them in SQL past the execute format
-    .map((option) => `"${option.name}" ''${formState[option.name].replace(/'/g, `''''`)}''`)
+    .map((option: any) => `"${option.name}" ''${formState[option.name].replace(/'/g, `''''`)}''`)
   const optionsSqlArray = [...encryptedOptionsSqlArray, ...unencryptedOptionsSqlArray].join(',')
 
   const createServerSql = /* SQL */ `
@@ -129,7 +129,7 @@ export function getCreateFDWSql({
       -- Old wrappers has an implicit dependency on pgsodium. For new wrappers
       -- we use Vault directly.
       is_using_old_wrappers bool;
-      ${encryptedOptions.map((option) => `v_${option.name} text;`).join('\n')}
+      ${encryptedOptions.map((option: any) => `v_${option.name} text;`).join('\n')}
     begin
       is_using_old_wrappers := (select extversion from pg_extension where extname = 'wrappers') in (
         '0.1.0',
@@ -161,7 +161,7 @@ export function getCreateFDWSql({
       );
       ${encryptedOptions
         .map(
-          (option) => /* SQL */ `
+          (option: any) => /* SQL */ `
               if is_using_old_wrappers then
                 select id into v_${option.name} from pgsodium.valid_key where name = '${formState.wrapper_name}_${option.name}' limit 1;
               else
@@ -174,8 +174,8 @@ export function getCreateFDWSql({
       execute format(
         E'create server "${formState.server_name}" foreign data wrapper "${formState.wrapper_name}" options (${optionsSqlArray});',
         ${encryptedOptions
-          .filter((option) => formState[option.name])
-          .map((option) => `v_${option.name}`)
+          .filter((option: any) => formState[option.name])
+          .map((option: any) => `v_${option.name}`)
           .join(',\n')}
       );
     end $$;

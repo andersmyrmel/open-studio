@@ -100,7 +100,7 @@ const CreateIndexSidePanel = ({ visible, onClose }: CreateIndexSidePanelProps) =
     .map((column) => ({
       id: column.attname,
       value: column.attname,
-      name: column.attname,
+      label: column.attname,
       disabled: false,
     }))
 

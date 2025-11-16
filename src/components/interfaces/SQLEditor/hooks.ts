@@ -48,8 +48,8 @@ export const useNewQuery = () => {
         id: uuidv4(),
         name,
         sql,
-        owner_id: profile?.id,
-        project_id: project?.id,
+        owner_id: profile?.id as any,
+        project_id: project?.id as any,
       })
       snapV2.addSnippet({ projectRef: ref, snippet })
       snapV2.addNeedsSaving(snippet.id)

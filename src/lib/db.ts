@@ -28,7 +28,7 @@ const pool = new Pool({
 });
 
 // Handle pool errors
-pool.on('error', (err) => {
+pool.on('error', (err: any) => {
   console.error('Unexpected error on idle client', err);
 });
 
@@ -63,7 +63,7 @@ export async function query<T extends QueryResultRow = any>(
     }
 
     return result;
-  } catch (error) {
+  } catch (error: any) {
     const duration = Date.now() - start;
 
     // Log errors
@@ -87,7 +87,7 @@ export async function query<T extends QueryResultRow = any>(
  *   await client.query('BEGIN');
  *   await client.query('INSERT INTO ...');
  *   await client.query('COMMIT');
- * } catch (e) {
+ * } catch (e: any) {
  *   await client.query('ROLLBACK');
  *   throw e;
  * } finally {
@@ -108,7 +108,7 @@ export async function testConnection(): Promise<boolean> {
   try {
     const result = await query('SELECT 1 as test');
     return result.rows.length > 0;
-  } catch (error) {
+  } catch (error: any) {
     console.error('Database connection test failed:', error);
     return false;
   }

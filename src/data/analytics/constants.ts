@@ -13,7 +13,7 @@ export const ANALYTICS_CATEGORIES = {
 export type AnalyticsCategory = (typeof ANALYTICS_CATEGORIES)[keyof typeof ANALYTICS_CATEGORIES]
 
 // Time intervals for analytics data
-export type AnalyticsInterval = '1h' | '1d' | '7d' | '30d'
+export type AnalyticsInterval = '1m' | '5m' | '10m' | '30m' | '1h' | '1d' | '7d' | '30d'
 
 // Data point structure for time-series analytics
 export interface DataPoint {

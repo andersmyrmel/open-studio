@@ -70,7 +70,7 @@ export const MoveQueryModal = ({ visible, snippets = [], onClose }: MoveQueryMod
   const { mutateAsync: createFolder, isLoading: isCreatingFolder } =
     useSQLSnippetFolderCreateMutation()
   const { mutateAsync: moveSnippetAsync, isLoading: isMovingSnippet } = useContentUpsertMutation({
-    onError: (error) => {
+    onError: (error: any) => {
       toast.error(`Failed to move query: ${error.message}`)
     },
   })
@@ -81,7 +81,7 @@ export const MoveQueryModal = ({ visible, snippets = [], onClose }: MoveQueryMod
         .object({
           name: z.string().min(1, 'Please provide a name for the folder'),
         })
-        .refine((data) => !snapV2.allFolderNames.includes(data.name), {
+        .refine((data: any) => !snapV2.allFolderNames.includes(data.name), {
           message: 'This folder name already exists',
           path: ['name'],
         })
@@ -105,7 +105,7 @@ export const MoveQueryModal = ({ visible, snippets = [], onClose }: MoveQueryMod
       ? 'Root of the editor'
       : selectedId === 'new-folder'
         ? 'Create a new folder'
-        : folders.find((f) => f.id === selectedId)?.name
+        : folders.find((f: any) => f.id === selectedId)?.name
   const isCurrentFolder =
     snippets.length === 1 &&
     ((!snippets[0].folder_id && selectedId === 'root') || snippets[0].folder_id === selectedId)
@@ -128,12 +128,12 @@ export const MoveQueryModal = ({ visible, snippets = [], onClose }: MoveQueryMod
       }
 
       await Promise.all(
-        snippets.map(async (snippet) => {
+        snippets.map(async (snippet: any) => {
           let snippetContent = (snippet as SnippetWithContent)?.content
           if (snippetContent === undefined) {
-            const { content } = await getContentById({ projectRef: ref, id: snippet.id })
-            if ('sql' in content) {
-              snippetContent = content
+            const result = await getContentById({ projectRef: ref, id: snippet.id })
+            if (result?.content && 'sql' in result.content) {
+              snippetContent = result.content
             }
           }
 
@@ -161,7 +161,7 @@ export const MoveQueryModal = ({ visible, snippets = [], onClose }: MoveQueryMod
       toast.success(
         `Successfully moved ${snippets.length === 1 ? `"${snippets[0].name}"` : `${snippets.length} snippets`} to ${selectedId === 'root' ? 'the root of the editor' : selectedFolder}`
       )
-      snippets.forEach((snippet) => {
+      snippets.forEach((snippet: any) => {
         snapV2.updateSnippet({
           id: snippet.id,
           snippet: { ...snippet, folder_id: selectedId === 'root' ? null : folderId },
@@ -259,7 +259,7 @@ export const MoveQueryModal = ({ visible, snippets = [], onClose }: MoveQueryMod
                               </span>
                               {selectedId === 'root' && <Check size={14} />}
                             </CommandItem_Shadcn_>
-                            {folders?.map((folder) => (
+                            {folders?.map((folder: any) => (
                               <CommandItem_Shadcn_
                                 key={folder.id}
                                 value={folder.name}
@@ -288,7 +288,7 @@ export const MoveQueryModal = ({ visible, snippets = [], onClose }: MoveQueryMod
                         <CommandGroup_Shadcn_>
                           <CommandItem_Shadcn_
                             className="cursor-pointer w-full justify-start gap-x-2"
-                            onSelect={(e) => {
+                            onSelect={(e: any) => {
                               setOpen(false)
                               setSelectedId('new-folder')
                             }}

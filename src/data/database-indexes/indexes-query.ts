@@ -60,7 +60,7 @@ export const useIndexesQuery = <TData = IndexesData>(
 ) =>
   useQuery<IndexesData, IndexesError, TData>({
     queryKey: databaseIndexesKeys.list(projectRef, schema),
-    queryFn: ({ signal }) => getIndexes({ projectRef, connectionString, schema }, signal),
+    queryFn: ({ signal }: { signal?: AbortSignal }) => getIndexes({ projectRef, connectionString, schema }, signal),
     enabled: enabled && typeof projectRef !== 'undefined' && typeof schema !== 'undefined',
     ...options,
   })

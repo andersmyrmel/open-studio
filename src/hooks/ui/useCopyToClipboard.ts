@@ -33,7 +33,7 @@ export function useCopyToClipboard() {
         }
 
         return true
-      } catch (error) {
+      } catch (error: any) {
         console.warn('Copy failed', error)
         setText(null)
         return false

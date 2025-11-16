@@ -42,7 +42,7 @@ const SchemaEditor = ({ visible, onSuccess, closePanel }: SchemaEditorProps) => 
       })
       onSuccess(name)
       toast.success(`Successfully created schema "${name}"`)
-    } catch (error) {
+    } catch (error: any) {
       toast.error(`Failed to create schema: ${error}`)
     }
   }

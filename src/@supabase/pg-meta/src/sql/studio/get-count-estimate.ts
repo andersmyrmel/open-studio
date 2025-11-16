@@ -1,11 +1,11 @@
 /**
- * Count estimation constants and utilities
+ * Count estimate SQL stub for Open Studio
  */
 
-// Threshold for using estimated counts vs exact counts
-// When row count exceeds this, use pg_class estimates instead of COUNT(*)
-export const THRESHOLD_COUNT = 100000
+export const THRESHOLD_COUNT = 500000
 
-export function shouldUseEstimate(rowCount: number): boolean {
-  return rowCount > THRESHOLD_COUNT
+export const getCountEstimateSQL = (schema: string, table: string) => {
+  return `SELECT reltuples::bigint AS estimate
+FROM pg_class
+WHERE oid = '${schema}.${table}'::regclass`
 }

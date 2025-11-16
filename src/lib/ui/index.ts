@@ -6,7 +6,6 @@ export * from './Image'
 export { Card as Card_legacy_ } from './Card'
 export * from './Tabs'
 export * from './Alert'
-export { Alert as Alert_Shadcn_, AlertTitle, AlertDescription } from './shadcn/ui/alert'
 export * from './Accordion'
 export * from './Collapsible'
 export * from './CodeBlock'
@@ -125,6 +124,14 @@ export {
   PopoverContent,
   PopoverAnchor,
   PopoverSeparator,
+} from './shadcn/ui/popover'
+
+export {
+  Popover as Popover_Shadcn_,
+  PopoverTrigger as PopoverTrigger_Shadcn_,
+  PopoverContent as PopoverContent_Shadcn_,
+  PopoverAnchor as PopoverAnchor_Shadcn_,
+  PopoverSeparator as PopoverSeparator_Shadcn_,
 } from './shadcn/ui/popover'
 
 export {

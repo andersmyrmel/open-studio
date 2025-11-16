@@ -15,6 +15,8 @@ export interface ActionCardProps {
   className?: string
   onClick?: () => void
   disabled?: boolean
+  bgColor?: string
+  key?: string
 }
 
 export const ActionCard: React.FC<ActionCardProps> = ({

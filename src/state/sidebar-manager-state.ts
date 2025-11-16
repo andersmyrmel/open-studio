@@ -29,7 +29,7 @@ export const useSidebarManagerSnapshot = (
       sidebarManagerState.activeSidebar = key
       sidebarManagerState.isOpen = true
     },
-    closeSidebar: () => {
+    closeSidebar: (key?: SidebarKey) => {
       sidebarManagerState.isOpen = false
       sidebarManagerState.activeSidebar = null
     },

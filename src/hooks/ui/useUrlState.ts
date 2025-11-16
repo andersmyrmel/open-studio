@@ -43,7 +43,7 @@ export function useUrlState<ValueParams extends UrlStateParams>({
       const nextParams = typeof newParams === 'function' ? newParams(params) : newParams
       let newQuery = Object.fromEntries(
         Object.entries({ ...params, ...nextParams }).filter(([, value]) => Boolean(value))
-      )
+      ) as Record<string, string | string[]>
 
       const replaceOrPush = replace ? router.replace : router.push
 

@@ -119,7 +119,7 @@ export const useTableColumnsQuery = <TData = TableColumnsData>(
 ) =>
   useQuery<TableColumnsData, TableColumnsError, TData>({
     queryKey: databaseKeys.tableColumns(projectRef, schema, table),
-    queryFn: ({ signal }) =>
+    queryFn: ({ signal }: { signal?: AbortSignal }) =>
       getTableColumns({ projectRef, connectionString, schema, table }, signal),
     enabled: enabled && typeof projectRef !== 'undefined',
     ...options,

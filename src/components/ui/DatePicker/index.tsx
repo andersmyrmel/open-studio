@@ -10,6 +10,7 @@ import {
   Calendar as CalendarPicker,
   Popover,
   PopoverContent_Shadcn_,
+  PopoverSeparator_Shadcn_,
   PopoverTrigger_Shadcn_,
   Popover_Shadcn_,
 } from '@/lib/ui'
@@ -180,17 +181,20 @@ export function DatePicker({
     setAppliedStartDate(startDate)
     setAppliedEndDate(endDate)
 
+    const fromISO = dayjs(startDate)
+      .second(Number(startTime.ss))
+      .minute(Number(startTime.mm))
+      .hour(Number(startTime.HH))
+      .toISOString()
+    const toISO = dayjs(endDate || startDate)
+      .second(Number(endTime.ss))
+      .minute(Number(endTime.mm))
+      .hour(Number(endTime.HH))
+      .toISOString()
+
     const payload = {
-      from: dayjs(startDate)
-        .second(Number(startTime.ss))
-        .minute(Number(startTime.mm))
-        .hour(Number(startTime.HH))
-        .toISOString(),
-      to: dayjs(endDate || startDate)
-        .second(Number(endTime.ss))
-        .minute(Number(endTime.mm))
-        .hour(Number(endTime.HH))
-        .toISOString(),
+      from: new Date(fromISO),
+      to: new Date(toISO),
     }
     if (onChange) onChange(payload)
   }
@@ -307,7 +311,7 @@ export function DatePicker({
             from: startDate?.toISOString() || null,
             to: endDate?.toISOString() || null,
           })}
-          <Popover.Separator />
+          <PopoverSeparator_Shadcn_ />
           <div className="flex items-center justify-end gap-2 py-2 px-3 pb-4">
             {!hideClear && (
               <Button type="default" onClick={() => handleClear()}>

@@ -117,7 +117,7 @@ export async function getInvolvedIndexesInSelectQuery({
     })
 
     return indexResult as GetInvolvedIndexesFromSelectQueryResponse[]
-  } catch (err) {
+  } catch (err: any) {
     return []
   }
 }

@@ -22,14 +22,20 @@ export interface ConfirmationModalProps {
   description?: React.ReactNode
   size?: 'tiny' | 'small' | 'medium' | 'large'
   variant?: 'default' | 'destructive' | 'warning'
+  danger?: boolean
   confirmLabel?: string
   confirmLabelLoading?: string
   cancelLabel?: string
-  onConfirm?: () => void
+  buttonLabel?: string
+  buttonLoadingLabel?: string
+  onConfirm?: () => void | Promise<void>
   onCancel?: () => void
+  onSelectConfirm?: () => void | Promise<void>
+  onSelectCancel?: () => void
   loading?: boolean
   disabled?: boolean
   children?: React.ReactNode
+  alert?: React.ReactNode
 }
 
 const ConfirmationModal = ({

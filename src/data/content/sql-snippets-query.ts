@@ -8,9 +8,13 @@ import type { UseQueryOptions } from '@tanstack/react-query'
 export interface SqlSnippet {
   id: string
   name: string
+  type?: string
   description?: string
   content: {
     sql: string
+    chart?: any
+    schema?: string
+    favorite?: boolean
   }
   created_at: string
   updated_at: string

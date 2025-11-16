@@ -1,22 +1,14 @@
 /**
- * Logs types for Open Studio
+ * Logs types stub for Open Studio
  */
 
-export type LogLevel = 'info' | 'warn' | 'error' | 'debug'
-
-export interface LogEntry {
-  id: string
-  timestamp: string
-  level: LogLevel
-  message: string
-  metadata?: Record<string, any>
+export interface DatePickerToFrom {
+  from: Date | string | undefined | null
+  to: Date | string | undefined | null
 }
 
-export interface LogsFilter {
-  level?: LogLevel
-  search?: string
-  startTime?: string
-  endTime?: string
+export interface LogsQueryParams {
+  sql?: string
+  timestamp_start?: number
+  timestamp_end?: number
 }
-
-export type LogsQueryType = 'api' | 'database' | 'functions' | 'realtime'

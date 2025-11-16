@@ -81,7 +81,7 @@ const EditEnumeratedTypeSidePanel = ({
     move(result.source.index, result.destination.index)
   }
 
-  const originalEnumeratedTypes = (selectedEnumeratedType?.enums ?? []).map((x) => ({
+  const originalEnumeratedTypes = (selectedEnumeratedType?.enums ?? []).map((x: any) => ({
     isNew: false,
     originalValue: x,
     updatedValue: x,
@@ -103,8 +103,8 @@ const EditEnumeratedTypeSidePanel = ({
       schema: selectedEnumeratedType.schema,
       name: { original: selectedEnumeratedType.name, updated: data.name },
       values: data.values
-        .filter((x) => x.updatedValue.length !== 0)
-        .map((x) => ({
+        .filter((x: any) => x.updatedValue.length !== 0)
+        .map((x: any) => ({
           original: x.originalValue,
           updated: x.updatedValue.trim(),
           isNew: x.isNew,

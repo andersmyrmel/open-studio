@@ -25,13 +25,15 @@ export interface Dictionary<T> {
  */
 export class ResponseError extends Error {
   code?: number
+  requestId?: string
   retryAfter?: number
   requestPathname?: string
 
-  constructor(message: string, code?: number, retryAfter?: number, requestPathname?: string) {
+  constructor(message: string, code?: number, requestId?: string, retryAfter?: number, requestPathname?: string) {
     super(message)
     this.name = 'ResponseError'
     this.code = code
+    this.requestId = requestId
     this.retryAfter = retryAfter
     this.requestPathname = requestPathname
   }
@@ -72,11 +74,33 @@ export interface Organization {
   billing_email?: string
   is_owner?: boolean
   stripe_customer_id?: string
+  opt_in_tags?: never[]
+  plan?: {
+    id: string
+    name: string
+  }
 }
 
 // ============================================================================
 // SQL Editor Types
 // ============================================================================
+
+/**
+ * User content types (SQL snippets, folders, etc.)
+ */
+export interface UserContent {
+  id: string
+  name: string
+  description?: string
+  type: 'sql' | 'folder'
+  content?: string
+  visibility: 'user' | 'project' | 'public'
+  owner_id?: number
+  project_id?: number
+  created_at?: string
+  updated_at?: string
+  folder_id?: string | null
+}
 
 export interface SqlSnippet {
   id: string
@@ -101,6 +125,7 @@ export namespace SqlSnippets {
     sql: string
     schema?: string
     favorite?: boolean
+    chart?: any
   }
 }
 

@@ -14,6 +14,8 @@ export interface ColumnPrivilegeRevokeVariables {
   column: string
   privilege: 'SELECT' | 'INSERT' | 'UPDATE' | 'REFERENCES'
   role: string
+  // Alias for compatibility
+  privilege_type?: 'SELECT' | 'INSERT' | 'UPDATE' | 'REFERENCES'
 }
 
 export async function revokeColumnPrivilege({

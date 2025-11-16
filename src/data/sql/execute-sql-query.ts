@@ -157,7 +157,7 @@ export const useExecuteSqlQuery = <TData = ExecuteSqlData>(
   // as we're always connected to a local database
   return useQuery<ExecuteSqlData, ExecuteSqlError, TData>({
     queryKey: sqlKeys.query(projectRef, queryKey ?? [btoa(sql)]),
-    queryFn: ({ signal }) =>
+    queryFn: ({ signal }: { signal?: AbortSignal }) =>
       executeSql(
         { projectRef, connectionString, sql, queryKey, handleError, isRoleImpersonationEnabled },
         signal

@@ -39,7 +39,7 @@ export const useKeywordsQuery = <TData = KeywordsData>(
 ) =>
   useQuery<KeywordsData, KeywordsError, TData>({
     queryKey: databaseKeys.keywords(projectRef),
-    queryFn: ({ signal }) => getKeywords({ projectRef, connectionString }, signal),
+    queryFn: ({ signal }: { signal?: AbortSignal }) => getKeywords({ projectRef, connectionString }, signal),
     enabled: enabled && typeof projectRef !== 'undefined',
     ...options,
   })

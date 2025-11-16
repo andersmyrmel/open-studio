@@ -34,21 +34,21 @@ export interface PrivilegeOperation {
 
 export function getDefaultTableCheckedStates(tablePrivilege: PgTablePrivileges) {
   return Object.fromEntries(
-    ALL_PRIVILEGE_TYPES.map((privilege) => [
+    ALL_PRIVILEGE_TYPES.map((privilege: any) => [
       privilege,
-      tablePrivilege.privileges.find((p) => p.privilege_type === privilege) !== undefined,
+      tablePrivilege.privileges.find((p: any) => p.privilege_type === privilege) !== undefined,
     ])
   )
 }
 
 export function getDefaultColumnCheckedStates(columnPrivileges: ColumnPrivilege[]) {
   return Object.fromEntries(
-    columnPrivileges.map((column) => [
+    columnPrivileges.map((column: any) => [
       column.column_id,
       Object.fromEntries(
-        COLUMN_PRIVILEGE_TYPES.map((privilege) => [
+        COLUMN_PRIVILEGE_TYPES.map((privilege: any) => [
           privilege,
-          column.privileges.find((p) => p.privilege_type === privilege) !== undefined,
+          column.privileges.find((p: any) => p.privilege_type === privilege) !== undefined,
         ])
       ),
     ])
@@ -72,7 +72,7 @@ function addOrRemoveOperation(
 
   const oppositeType = operation.type === 'grant' ? 'revoke' : 'grant'
 
-  const existing = state.find((op) => {
+  const existing = state.find((op: any) => {
     return (
       op.object === operation.object &&
       op.type === oppositeType &&
@@ -83,7 +83,7 @@ function addOrRemoveOperation(
   })
 
   if (existing !== undefined) {
-    state = state.filter((op) => op !== existing)
+    state = state.filter((op: any) => op !== existing)
 
     if (!forceAdd) {
       return state
@@ -147,7 +147,7 @@ export function usePrivilegesState({
   function toggleTablePrivilege(privilegeType: string) {
     const shouldGrant = !tableCheckedStates[privilegeType]
 
-    setOperations((prevState) => {
+    setOperations((prevState: any) => {
       let state = [...prevState]
 
       if (COLUMN_PRIVILEGE_TYPES.includes(privilegeType as ColumnPrivilegeType)) {
@@ -155,7 +155,7 @@ export function usePrivilegesState({
           // remove all operations for the columns since
           // the table privilege will take precedence
           state = state.filter(
-            (op) =>
+            (op: any) =>
               !(
                 op.object === 'column' &&
                 op.grantee === role &&
@@ -180,7 +180,7 @@ export function usePrivilegesState({
   function toggleColumnPrivilege(columnId: string, privilegeType: string) {
     const shouldGrant = !columnCheckedStates[columnId][privilegeType]
 
-    setOperations((prevState) => {
+    setOperations((prevState: any) => {
       let state = [...prevState]
 
       // if the user is revoking a column and the table is enabled
@@ -204,7 +204,7 @@ export function usePrivilegesState({
             grantee: role,
             privilege_type: privilegeType,
           }))
-        operations.forEach((op) => {
+        operations.forEach((op: any) => {
           state = addOrRemoveOperation(state, op)
         })
       }
@@ -218,7 +218,7 @@ export function usePrivilegesState({
           // remove all operations for the columns since
           // the table privilege will take precedence
           state = state.filter(
-            (op) =>
+            (op: any) =>
               !(
                 op.object === 'column' &&
                 op.grantee === role &&
@@ -277,34 +277,34 @@ export function useApplyPrivilegeOperations(callback?: () => void) {
 
       setIsLoading(true)
 
-      const tableOperations = operations.filter((op) => op.object === 'table')
-      const columnOperations = operations.filter((op) => op.object === 'column')
+      const tableOperations = operations.filter((op: any) => op.object === 'table')
+      const columnOperations = operations.filter((op: any) => op.object === 'column')
 
       const grantTableOperations = tableOperations
-        .filter((op) => op.type === 'grant')
-        .map((op) => ({
+        .filter((op: any) => op.type === 'grant')
+        .map((op: any) => ({
           relationId: Number(op.id),
           grantee: op.grantee,
           privilegeType: op.privilege_type as TablePrivilegesGrant['privilegeType'],
         }))
       const revokeTableOperations = tableOperations
-        .filter((op) => op.type === 'revoke')
-        .map((op) => ({
+        .filter((op: any) => op.type === 'revoke')
+        .map((op: any) => ({
           relationId: Number(op.id),
           grantee: op.grantee,
           privilegeType: op.privilege_type as TablePrivilegesRevoke['privilegeType'],
         }))
 
       const grantColumnOperations = columnOperations
-        .filter((op) => op.type === 'grant')
-        .map((op) => ({
+        .filter((op: any) => op.type === 'grant')
+        .map((op: any) => ({
           column_id: String(op.id),
           grantee: op.grantee,
           privilege_type: op.privilege_type as ColumnPrivilegesRevoke['privilege_type'],
         }))
       const revokeColumnOperations = columnOperations
-        .filter((op) => op.type === 'revoke')
-        .map((op) => ({
+        .filter((op: any) => op.type === 'revoke')
+        .map((op: any) => ({
           column_id: String(op.id),
           grantee: op.grantee,
           privilege_type: op.privilege_type as ColumnPrivilegesRevoke['privilege_type'],

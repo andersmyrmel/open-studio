@@ -20,7 +20,7 @@ const verifyJSON = (value: string) => {
   try {
     JSON.parse(value)
     return true
-  } catch (err) {
+  } catch (err: any) {
     return false
   }
 }
@@ -35,7 +35,7 @@ const tryFormatInitialValue = (value: string) => {
   try {
     const jsonValue = JSON.parse(value)
     return JSON.stringify(jsonValue)
-  } catch (err) {
+  } catch (err: any) {
     if (typeof value === 'string') {
       return value.replaceAll(`\"`, `"`)
     } else {

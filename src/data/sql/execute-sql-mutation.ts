@@ -62,7 +62,7 @@ export const useExecuteSqlMutation = ({
             })
           }
         })
-      } catch (error) {
+      } catch (error: any) {
         console.error('Failed to parse SQL for telemetry:', error)
       }
 

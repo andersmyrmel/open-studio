@@ -206,11 +206,11 @@ export const SQLEditor = () => {
   const setAiTitle = useCallback(
     async (id: string, sql: string) => {
       try {
-        const { title: name } = await generateSqlTitle({ sql })
+        const name = await generateSqlTitle({ sql })
         snapV2.renameSnippet({ id, name })
         const tabId = createTabId('sql', { id })
         tabs.updateTab(tabId, { label: name })
-      } catch (error) {
+      } catch (error: any) {
         // [Joshen] No error handler required as this happens in the background and not necessary to ping the user
       }
     },
@@ -350,8 +350,8 @@ export const SQLEditor = () => {
           id: uuidv4(),
           name,
           sql,
-          owner_id: profile.id,
-          project_id: project.id,
+          owner_id: profile.id as any,
+          project_id: project.id as any,
         })
         snapV2.addSnippet({ projectRef: ref, snippet })
         snapV2.addNeedsSaving(snippet.id!)
@@ -417,7 +417,7 @@ export const SQLEditor = () => {
       const sql = diffModel.modified.getValue()
 
       if (selectedDiffType === DiffType.NewSnippet) {
-        const { title } = await generateSqlTitle({ sql })
+        const title = await generateSqlTitle({ sql })
         await handleNewQuery(sql, title)
       } else {
         editorRef.current.executeEdits('apply-ai-edit', [
@@ -549,7 +549,7 @@ export const SQLEditor = () => {
           },
         },
       })
-    } catch (error) {
+    } catch (error: any) {
       setPromptState((prev) => ({ ...prev, isLoading: false }))
     }
   }

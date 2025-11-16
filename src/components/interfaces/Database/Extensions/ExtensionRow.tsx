@@ -36,7 +36,7 @@ export const ExtensionRow = ({ extension }: ExtensionRowProps) => {
   const orioleDbCheck = isOrioleDb && extension.name === 'orioledb'
   const disabled = !canUpdateExtensions || orioleDbCheck
 
-  const extensionMeta = extensions.find((item) => item.name === extension.name)
+  const extensionMeta = extensions.find((item: any) => item.name === extension.name)
   const docsUrl = extensionMeta?.link.startsWith('/guides')
     ? `${DOCS_URL}${extensionMeta?.link}`
     : extensionMeta?.link ?? undefined

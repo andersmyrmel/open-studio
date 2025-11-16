@@ -194,8 +194,8 @@ const MonacoEditor = ({
           id,
           name: untitledSnippetTitle,
           sql: value,
-          owner_id: profile?.id,
-          project_id: project?.id,
+          owner_id: profile?.id as any,
+          project_id: project?.id as any,
         })
         snapV2.addSnippet({ projectRef: ref, snippet })
         router.push(`/project/${ref}/sql/${snippet.id}`, undefined, { shallow: true })

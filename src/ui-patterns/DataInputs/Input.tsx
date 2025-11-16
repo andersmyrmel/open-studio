@@ -4,7 +4,7 @@
  */
 
 import React from 'react'
-import { Input as ShadcnInput } from '@/lib/ui'
+import { Input_Shadcn_ } from '@/lib/ui'
 import { cn } from '@/lib/utils'
 
 export interface InputProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size'> {
@@ -56,9 +56,9 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
         )}
         <div className="relative">
           {icon && <div className="absolute left-3 top-1/2 -translate-y-1/2">{icon}</div>}
-          <ShadcnInput
+          <Input_Shadcn_
             ref={ref}
-            className={cn(sizeClasses[size], icon && 'pl-10', error && 'border-destructive', className)}
+            className={cn(sizeClasses[size], icon ? 'pl-10' : '', error ? 'border-destructive' : '', className)}
             {...props}
           />
         </div>

@@ -36,6 +36,7 @@ export interface Props extends Omit<React.InputHTMLAttributes<HTMLSelectElement>
   size?: 'tiny' | 'small' | 'medium' | 'large' | 'xlarge'
   borderless?: boolean
   validation?: (x: any) => void
+  onValueChange?: (value: string) => void
 }
 
 export const ColLayout = (props: any) => <div>{props.children}</div>
@@ -110,6 +111,16 @@ function Select({
   if (size) classes.push(__styles.size[size])
   if (disabled) classes.push(__styles.disabled)
 
+  // Map size strings to pixel values for icons
+  const iconSizeMap = {
+    tiny: 14,
+    small: 16,
+    medium: 18,
+    large: 20,
+    xlarge: 24,
+  }
+  const iconSize = size ? iconSizeMap[size] : 16
+
   return (
     <FormLayout
       label={label}
@@ -148,7 +159,7 @@ function Select({
         {icon && <InputIconContainer size={size} icon={icon} />}
         {error && (
           <div className={__styles.actions_container}>
-            {error && <InputErrorIcon size={size} />}
+            {error && <InputErrorIcon size={iconSize} />}
           </div>
         )}
         <span className={__styles.chevron_container}>

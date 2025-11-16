@@ -14,7 +14,6 @@ import { DatabaseFunction } from 'data/database-functions/database-functions-que
 import { useDatabaseFunctionUpdateMutation } from 'data/database-functions/database-functions-update-mutation'
 import { useSelectedProjectQuery } from '@/lib/common'
 import { useProtectedSchemas } from 'hooks/useProtectedSchemas'
-import type { FormSchema } from 'types'
 import {
   Button,
   FormControl_Shadcn_,
@@ -307,7 +306,7 @@ export const CreateFunction = ({
                               {/* Form selects don't need form controls, otherwise the CSS gets weird */}
                               <Select_Shadcn_
                                 defaultValue={field.value}
-                                onValueChange={field.onChange}
+                                onValueChange={field.onChange as any}
                               >
                                 <SelectTrigger_Shadcn_ className="col-span-8">
                                   <SelectValue_Shadcn_ />

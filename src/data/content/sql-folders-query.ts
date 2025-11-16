@@ -31,6 +31,7 @@ export interface Snippet {
   favorite?: boolean
   created_at: string
   updated_at: string
+  type?: 'sql' | 'query' | 'snippet'
 }
 
 export const sqlFoldersKeys = {

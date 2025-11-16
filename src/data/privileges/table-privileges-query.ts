@@ -12,6 +12,11 @@ export interface TablePrivilege {
   table_name: string
   privilege_type: string
   grantee: string
+  // For grouped privileges
+  privileges?: Array<{
+    privilege_type: string
+    grantee?: string
+  }>
 }
 
 export interface TablePrivilegesVariables {

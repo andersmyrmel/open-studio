@@ -61,7 +61,7 @@ export const TriggersList = ({
     connectionString: project?.connectionString,
   })
   const hasTables =
-    data.filter((a) => !protectedSchemas.find((s) => s.name === a.schema)).length > 0
+    data.filter((a: any) => !protectedSchemas.find((s: any) => s.name === a.schema)).length > 0
 
   const {
     data: triggers,
@@ -86,7 +86,7 @@ export const TriggersList = ({
     return <AlertError error={error} subject="Failed to retrieve database triggers" />
   }
 
-  const schemaTriggers = triggers.filter((x) => x.schema == selectedSchema)
+  const schemaTriggers = triggers.filter((x: any) => x.schema == selectedSchema)
 
   return (
     <div className="space-y-4">
@@ -105,7 +105,7 @@ export const TriggersList = ({
             icon={<Search size="14" />}
             value={filterString}
             className="w-full lg:w-52"
-            onChange={(e) => setFilterString(e.target.value)}
+            onChange={(e: any) => setFilterString(e.target.value)}
           />
         </div>
         {!isSchemaLocked && (
