@@ -1,4 +1,4 @@
-import useLatest from '@/lib/common'
+import { useLatest } from '@/lib/common'
 import { useRouter } from 'next/router'
 import { type Dispatch, type SetStateAction, useCallback, useMemo } from 'react'
 

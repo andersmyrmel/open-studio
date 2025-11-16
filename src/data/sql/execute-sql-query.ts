@@ -75,7 +75,6 @@ export async function executeSql<T = any>(
       signal,
       params: {
         header: {},
-        // @ts-expect-error: This is just a client side thing to identify queries better
         query: {
           key:
             queryKey
