@@ -1,20 +1,27 @@
-import type * as Sentry from '@sentry/nextjs'
-
 import { RingBuffer } from './ringBuffer'
 
-export const MIRRORED_BREADCRUMBS = new RingBuffer<Sentry.Breadcrumb>(50)
+// Minimal Breadcrumb type for Open Studio
+type Breadcrumb = {
+  message?: string
+  category?: string
+  level?: string
+  timestamp?: number
+  data?: Record<string, any>
+}
 
-export const getMirroredBreadcrumbs = (): Sentry.Breadcrumb[] => {
+export const MIRRORED_BREADCRUMBS = new RingBuffer<Breadcrumb>(50)
+
+export const getMirroredBreadcrumbs = (): Breadcrumb[] => {
   return MIRRORED_BREADCRUMBS.toArray()
 }
 
-let BREADCRUMB_SNAPSHOT: Sentry.Breadcrumb[] | null = null
+let BREADCRUMB_SNAPSHOT: Breadcrumb[] | null = null
 
 export const takeBreadcrumbSnapshot = (): void => {
   BREADCRUMB_SNAPSHOT = getMirroredBreadcrumbs()
 }
 
-export const getOwnershipOfBreadcrumbSnapshot = (): Sentry.Breadcrumb[] | null => {
+export const getOwnershipOfBreadcrumbSnapshot = (): Breadcrumb[] | null => {
   const snapshot = BREADCRUMB_SNAPSHOT
   BREADCRUMB_SNAPSHOT = null
   return snapshot

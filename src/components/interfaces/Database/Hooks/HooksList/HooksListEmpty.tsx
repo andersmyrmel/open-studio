@@ -4,7 +4,7 @@ export const HooksListEmpty = () => {
   return (
     <Table
       className="table-fixed"
-      head={
+      head={[
         <>
           <Table.th key="name" className="w-[20%]">
             <p className="translate-x-[36px]">Name</p>
@@ -20,9 +20,9 @@ export const HooksListEmpty = () => {
           </Table.th>
           <Table.th key="buttons" className="w-[5%]"></Table.th>
         </>
-      }
-      body={
-        <Table.tr>
+      ]}
+      body={[
+        <Table.tr key="empty-row">
           <Table.td colSpan={5}>
             <p className="text-sm text-foreground">No hooks created yet</p>
             <p className="text-sm text-foreground-light">
@@ -30,7 +30,7 @@ export const HooksListEmpty = () => {
             </p>
           </Table.td>
         </Table.tr>
-      }
+      ]}
     />
   )
 }
