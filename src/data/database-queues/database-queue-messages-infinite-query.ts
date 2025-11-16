@@ -47,11 +47,11 @@ export async function getDatabaseQueue({
 
   // handles when scheduled and available are deselected
   let queueQuery = ``
-  if (status.includes('available') && status.includes('scheduled')) {
+  if (status.includes(QUEUE_MESSAGE_TYPE.AVAILABLE) && status.includes(QUEUE_MESSAGE_TYPE.SCHEDULED)) {
     queueQuery = `SELECT msg_id, enqueued_at, read_ct, vt, message, NULL as archived_at FROM "pgmq"."q_${queueName}"`
-  } else if (status.includes('available') && !status.includes('scheduled')) {
+  } else if (status.includes(QUEUE_MESSAGE_TYPE.AVAILABLE) && !status.includes(QUEUE_MESSAGE_TYPE.SCHEDULED)) {
     queueQuery = `SELECT msg_id, enqueued_at, read_ct, vt, message, NULL as archived_at FROM "pgmq"."q_${queueName}" WHERE vt < '${dayjs(new Date()).format(DATE_FORMAT)}'`
-  } else if (!status.includes('available') && status.includes('scheduled')) {
+  } else if (!status.includes(QUEUE_MESSAGE_TYPE.AVAILABLE) && status.includes(QUEUE_MESSAGE_TYPE.SCHEDULED)) {
     queueQuery = `SELECT msg_id, enqueued_at, read_ct, vt, message, NULL as archived_at FROM "pgmq"."q_${queueName}" WHERE vt > '${dayjs(new Date()).format(DATE_FORMAT)}'`
   }
 

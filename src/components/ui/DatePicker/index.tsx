@@ -188,11 +188,13 @@ export function DatePicker({
           .hour(Number(startTime.HH))
           .toISOString()
       : ''
-    const toISO = dayjs(endDate || startDate)
-      .second(Number(endTime.ss))
-      .minute(Number(endTime.mm))
-      .hour(Number(endTime.HH))
-      .toISOString()
+    const toISO = (endDate || startDate)
+      ? dayjs(endDate || startDate)
+          .second(Number(endTime.ss))
+          .minute(Number(endTime.mm))
+          .hour(Number(endTime.HH))
+          .toISOString()
+      : ''
 
     const payload = {
       from: new Date(fromISO),
