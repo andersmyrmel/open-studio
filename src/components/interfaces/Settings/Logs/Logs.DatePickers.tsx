@@ -7,6 +7,7 @@ import React from 'react'
 export type DatePickerValue =
   | { mode: 'custom'; from: Date; to: Date; isHelper?: boolean; text?: string }
   | { mode: 'preset'; preset: string; from?: Date; to?: Date; isHelper?: boolean; text?: string }
+  | { from: string; to: string; isHelper?: boolean; text?: string }
   | Date
   | null
 

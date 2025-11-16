@@ -254,8 +254,10 @@ export const useReportDateRange = (
       return true
     } else {
       if ('from' in values && 'to' in values && values.from && values.to) {
-        setTimestampStart(values.from)
-        setTimestampEnd(values.to)
+        const fromStr = values.from instanceof Date ? values.from.toISOString() : values.from
+        const toStr = values.to instanceof Date ? values.to.toISOString() : values.to
+        setTimestampStart(fromStr)
+        setTimestampEnd(toStr)
         setIsHelper(values.isHelper || false)
         setHelperText(values.text || '')
       }
