@@ -188,7 +188,7 @@ export function DatePicker({
           .hour(Number(startTime.HH))
           .toISOString()
       : ''
-    const toISO = (endDate || startDate)
+    const toISO = (endDate || startDate) && (endDate || startDate) !== null
       ? dayjs(endDate || startDate)
           .second(Number(endTime.ss))
           .minute(Number(endTime.mm))

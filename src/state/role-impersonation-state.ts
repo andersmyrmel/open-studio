@@ -56,6 +56,8 @@ export const useSubscribeToImpersonatedRole = (callback: (role?: ImpersonationRo
 
   // Call callback when role changes
   React.useEffect(() => {
-    callback(snap.role)
+    // Extract the role value from the readonly snapshot
+    const role = snap.role ? { ...snap.role } as ImpersonationRole : undefined
+    callback(role)
   }, [snap.role, callback])
 }

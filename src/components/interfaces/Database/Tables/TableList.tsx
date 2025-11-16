@@ -493,11 +493,10 @@ export const TableList = ({
                                       )
                                     }
                                     onMouseEnter={() => {
-                                      if (x.id) {
-                                        prefetchEditorTablePage({
-                                          id: x.id,
-                                        })
-                                      }
+                                      // Prefetch disabled - requires queryClient context
+                                      // if (x.id) {
+                                      //   prefetchEditorTablePage({ id: x.id })
+                                      // }
                                     }}
                                   >
                                     <Eye size={12} />

@@ -129,7 +129,7 @@ export function wrapWithRoleImpersonation(sql: string, state?: RoleImpersonation
   const impersonationSql =
     role.type === 'postgrest'
       ? claims !== undefined
-        ? getPostgrestRoleImpersonationSql(role, claims)
+        ? getPostgrestRoleImpersonationSql(role, claims as ReturnType<typeof getPostgrestClaims>)
         : ''
       : getCustomRoleImpersonationSql(role.role)
 
