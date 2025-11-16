@@ -6,7 +6,9 @@
 // Constants
 export * from './constants'
 export * from './constants/local-storage'
-export * from './constants/environment'
+// Note: IS_PLATFORM is exported from both './constants/environment' and './stubs/feature-flags'
+// We only export from environment to avoid the duplicate
+export { IS_PLATFORM } from './constants/environment'
 
 // Hooks
 export { useParams } from './hooks/useParams'

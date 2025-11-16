@@ -199,7 +199,7 @@ export function usePrivilegesState({
           .filter(([id]) => id !== columnId)
           .map(([id, column]) => ({
             object: 'column' as const,
-            type: column[privilegeType] ? ('grant' as const) : ('revoke' as const),
+            type: (column as any)[privilegeType] ? ('grant' as const) : ('revoke' as const),
             id,
             grantee: role,
             privilege_type: privilegeType,
@@ -211,7 +211,7 @@ export function usePrivilegesState({
 
       if (shouldGrant) {
         const areAllOtherColumnsEnabled = Object.entries(columnCheckedStates).every(
-          ([id, column]) => id === columnId || column[privilegeType]
+          ([id, column]) => id === columnId || (column as any)[privilegeType]
         )
 
         if (areAllOtherColumnsEnabled) {
