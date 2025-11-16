@@ -137,7 +137,7 @@ export const TriggersList = ({
                 icon={<AiIconAnimation size={16} />}
                 onClick={() => {
                   openSidebar(SIDEBAR_KEYS.AI_ASSISTANT)
-                  aiSnap.newChat({
+                  aiSnap.newChat?.({
                     name: 'Create new trigger',
                     initialInput: `Create a new trigger for the schema ${selectedSchema} that does ...`,
                     suggestions: {
