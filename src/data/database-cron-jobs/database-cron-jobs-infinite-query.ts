@@ -1,7 +1,7 @@
 import { useInfiniteQuery } from '@tanstack/react-query'
 
 import { executeSql } from 'data/sql/execute-sql-query'
-import type { ResponseError, UseCustomInfiniteQueryOptions } from 'types'
+import type { ResponseError, UseCustomQueryOptions } from 'types'
 import { databaseCronJobsKeys } from './keys'
 
 const CRON_JOBS_PAGE_LIMIT = 20
@@ -87,7 +87,7 @@ export const useCronJobsInfiniteQuery = <TData = DatabaseCronJobsInfiniteData>(
   {
     enabled = true,
     ...options
-  }: UseCustomInfiniteQueryOptions<
+  }: UseCustomQueryOptions<
     DatabaseCronJobsInfiniteData,
     DatabaseCronJobsInfiniteError,
     TData

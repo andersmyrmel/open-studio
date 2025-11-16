@@ -1,7 +1,7 @@
 import { createClient } from '@supabase/supabase-js'
 import { useQuery } from '@tanstack/react-query'
 
-import { useTemporaryAPIKeyQuery } from 'data/api-keys/temp-api-keys-query'
+import { useTempApiKeysQuery } from 'data/api-keys/temp-api-keys-query'
 import { useProjectSettingsV2Query } from 'data/config/project-settings-v2-query'
 
 const getSupabaseClient = ({
@@ -38,7 +38,7 @@ export const useSupabaseClientQuery = (
   { enabled = true, ...options } = {}
 ) => {
   const { data: settings } = useProjectSettingsV2Query({ projectRef })
-  const { data: temporaryApiKeyData } = useTemporaryAPIKeyQuery({ projectRef, expiry: 3600 })
+  const { data: temporaryApiKeyData } = useTempApiKeysQuery({ projectRef, expiry: 3600 })
 
   const endpoint = settings
     ? `${settings?.app_config?.protocol ?? 'https'}://${settings?.app_config?.endpoint}`

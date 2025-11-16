@@ -21,3 +21,19 @@ export const TELEMETRY_CATEGORIES = {
 } as const
 
 export type TelemetryCategory = (typeof TELEMETRY_CATEGORIES)[keyof typeof TELEMETRY_CATEGORIES]
+
+// Table event actions for SQL event parser
+export const TABLE_EVENT_ACTIONS = {
+  TableCreated: 'table_created' as const,
+  TableDataAdded: 'table_data_added' as const,
+  TableRLSEnabled: 'table_rls_enabled' as const,
+}
+
+export type TableEventAction = (typeof TABLE_EVENT_ACTIONS)[keyof typeof TABLE_EVENT_ACTIONS]
+
+// Import data events
+export interface ImportDataFileDroppedEvent {
+  type: 'import_data_file_dropped'
+  fileType: string
+  fileSize: number
+}

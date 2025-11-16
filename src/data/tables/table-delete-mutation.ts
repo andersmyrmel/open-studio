@@ -5,7 +5,7 @@ import { toast } from 'sonner'
 import { entityTypeKeys } from 'data/entity-types/keys'
 import { executeSql } from 'data/sql/execute-sql-query'
 import { tableEditorKeys } from 'data/table-editor/keys'
-import { viewKeys } from 'data/views/keys'
+import { viewsKeys } from 'data/views/keys'
 import type { ResponseError, UseCustomMutationOptions } from 'types'
 import { tableKeys } from './keys'
 
@@ -59,7 +59,7 @@ export const useTableDeleteMutation = ({
         queryClient.invalidateQueries({ queryKey: tableKeys.list(projectRef, schema) }),
         queryClient.invalidateQueries({ queryKey: entityTypeKeys.list(projectRef) }),
         // invalidate all views from this schema
-        queryClient.invalidateQueries({ queryKey: viewKeys.listBySchema(projectRef, schema) }),
+        queryClient.invalidateQueries({ queryKey: viewsKeys.listBySchema(projectRef, schema) }),
       ])
 
       await onSuccess?.(data, variables, context)

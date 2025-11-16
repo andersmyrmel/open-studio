@@ -6,7 +6,7 @@ import { isQueueNameValid } from 'components/interfaces/Integrations/Queues/Queu
 import { QUEUE_MESSAGE_TYPE } from 'components/interfaces/Integrations/Queues/SingleQueue/Queue.utils'
 import { executeSql } from 'data/sql/execute-sql-query'
 import { DATE_FORMAT } from 'lib/constants'
-import type { ResponseError, UseCustomInfiniteQueryOptions } from 'types'
+import type { ResponseError, UseCustomQueryOptions } from 'types'
 import { databaseQueuesKeys } from './keys'
 
 export type DatabaseQueueVariables = {
@@ -86,7 +86,7 @@ export const useQueueMessagesInfiniteQuery = <TData = DatabaseQueueData>(
   {
     enabled = true,
     ...options
-  }: UseCustomInfiniteQueryOptions<DatabaseQueueData, DatabaseQueueError, TData> = {}
+  }: UseCustomQueryOptions<DatabaseQueueData, DatabaseQueueError, TData> = {}
 ) =>
   useInfiniteQuery<DatabaseQueueData, DatabaseQueueError, TData>({
     queryKey: databaseQueuesKeys.getMessagesInfinite(projectRef, queueName, { status }),

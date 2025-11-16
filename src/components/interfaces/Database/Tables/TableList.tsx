@@ -30,7 +30,7 @@ import { useDatabasePublicationsQuery } from 'data/database-publications/databas
 import { ENTITY_TYPE } from 'data/entity-types/entity-type-constants'
 import { useForeignTablesQuery } from 'data/foreign-tables/foreign-tables-query'
 import { useMaterializedViewsQuery } from 'data/materialized-views/materialized-views-query'
-import { usePrefetchEditorTablePage } from 'data/prefetchers/project.$ref.editor.$id'
+import { prefetchEditorTablePage } from 'data/prefetchers/project.$ref.editor.$id'
 import { useTablesQuery } from 'data/tables/tables-query'
 import { useViewsQuery } from 'data/views/views-query'
 import { useAsyncCheckPermissions } from '@/lib/common'
@@ -82,7 +82,6 @@ export const TableList = ({
   const { ref } = useParams()
   const { data: project } = useSelectedProjectQuery()
 
-  const prefetchEditorTablePage = usePrefetchEditorTablePage()
 
   const { selectedSchema, setSelectedSchema } = useQuerySchemaState()
 

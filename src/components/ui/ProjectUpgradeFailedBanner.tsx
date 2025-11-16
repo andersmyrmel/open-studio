@@ -9,7 +9,7 @@ dayjs.extend(utc)
 import { SupportCategories } from '@supabase/shared-types/out/constants'
 import { useParams } from '@/lib/common'
 import { SupportLink } from 'components/interfaces/Support/SupportLink'
-import { useProjectUpgradingStatusQuery } from 'data/config/project-upgrade-status-query'
+import { useProjectUpgradeStatusQuery } from 'data/config/project-upgrade-status-query'
 import { IS_PLATFORM } from 'lib/constants'
 import { Alert, Button } from '@/lib/ui'
 import { InlineLink } from './InlineLink'
@@ -18,7 +18,7 @@ import { InlineLink } from './InlineLink'
 
 export const ProjectUpgradeFailedBanner = () => {
   const { ref } = useParams()
-  const { data } = useProjectUpgradingStatusQuery({ projectRef: ref }, { enabled: IS_PLATFORM })
+  const { data } = useProjectUpgradeStatusQuery({ projectRef: ref }, { enabled: IS_PLATFORM })
   const { status, initiated_at, latest_status_at, error } = data?.databaseUpgradeStatus ?? {}
 
   const key = `supabase-upgrade-${ref}-${initiated_at}`

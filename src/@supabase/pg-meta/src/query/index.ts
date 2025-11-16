@@ -1,8 +1,8 @@
 /**
- * Query types stub for pg-meta
+ * Query types and builder stub for pg-meta
  */
 
-export interface Query {
+export interface QueryInterface {
   sql: string
   params?: any[]
 }
@@ -48,4 +48,75 @@ export interface Sort {
   ascending?: boolean
   table?: string
   nullsFirst?: boolean
+}
+
+/**
+ * Query builder class for PostgreSQL queries
+ * This is a simplified stub implementation
+ */
+export class Query {
+  private _table?: string
+  private _schema?: string
+  private _select?: string
+  private _filters: Array<{ column: string; operator: string; value: any }> = []
+  private _count: boolean = false
+
+  from(table: string, schema?: string): this {
+    this._table = table
+    this._schema = schema
+    return this
+  }
+
+  select(columns: string): this {
+    this._select = columns
+    return this
+  }
+
+  filter(column: string, operator: string, value: any): this {
+    this._filters.push({ column, operator, value })
+    return this
+  }
+
+  count(): this {
+    this._count = true
+    return this
+  }
+
+  toSql(): string {
+    const schema = this._schema ? `"${this._schema}".` : ''
+    const table = this._table ? `"${this._table}"` : ''
+
+    if (this._count) {
+      let sql = `SELECT COUNT(*) FROM ${schema}${table}`
+      if (this._filters.length > 0) {
+        const conditions = this._filters
+          .map((f) => `"${f.column}" ${f.operator} ${this.formatValue(f.value)}`)
+          .join(' AND ')
+        sql += ` WHERE ${conditions}`
+      }
+      return sql + ';'
+    }
+
+    const select = this._select || '*'
+    let sql = `SELECT ${select} FROM ${schema}${table}`
+
+    if (this._filters.length > 0) {
+      const conditions = this._filters
+        .map((f) => `"${f.column}" ${f.operator} ${this.formatValue(f.value)}`)
+        .join(' AND ')
+      sql += ` WHERE ${conditions}`
+    }
+
+    return sql + ';'
+  }
+
+  private formatValue(value: any): string {
+    if (typeof value === 'string') {
+      return `'${value.replace(/'/g, "''")}'`
+    }
+    if (value === null) {
+      return 'NULL'
+    }
+    return String(value)
+  }
 }
