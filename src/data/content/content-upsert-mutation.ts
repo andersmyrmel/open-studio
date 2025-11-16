@@ -24,11 +24,17 @@ export async function upsertContent({ projectRef, payload }: ContentUpsertVariab
   return { id: payload.id || 'stub-id', ...payload }
 }
 
+export interface ContentUpsertMutationOptions extends UseMutationOptions<any, Error, ContentUpsertVariables> {
+  invalidateQueriesOnSuccess?: boolean
+}
+
 export function useContentUpsertMutation(
-  options?: UseMutationOptions<any, Error, ContentUpsertVariables>
+  options?: ContentUpsertMutationOptions
 ) {
+  const { invalidateQueriesOnSuccess, ...mutationOptions } = options || {}
+
   return useMutation<any, Error, ContentUpsertVariables>({
     mutationFn: upsertContent,
-    ...options,
+    ...mutationOptions,
   })
 }

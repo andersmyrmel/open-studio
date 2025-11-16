@@ -32,7 +32,7 @@ export interface TextConfirmModalProps {
   size?: 'tiny' | 'small' | 'medium' | 'large'
   children?: React.ReactNode
   text?: React.ReactNode
-  alert?: React.ReactNode
+  alert?: React.ReactNode | { title?: React.ReactNode; description?: React.ReactNode }
 }
 
 const TextConfirmModal = ({

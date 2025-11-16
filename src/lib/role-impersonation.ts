@@ -53,7 +53,7 @@ export function getPostgrestClaims(projectRef: string, role: PostgrestImpersonat
       return {
         aal: role.aal ?? 'aal1',
         amr: [{ method: 'password', timestamp: nowTimestamp }],
-        app_metadata: user.raw_app_meta_data,
+        app_metadata: user.app_metadata,
         aud: 'authenticated',
         email: user.email,
         exp,
@@ -63,7 +63,7 @@ export function getPostgrestClaims(projectRef: string, role: PostgrestImpersonat
         role: user.role ?? role.role,
         session_id: uuidv4(),
         sub: user.id,
-        user_metadata: user.raw_user_meta_data,
+        user_metadata: user.user_metadata,
         is_anonymous: user.is_anonymous,
       }
     }

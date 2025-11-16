@@ -13,6 +13,7 @@ export const LOCAL_STORAGE_KEYS = {
   SQL_EDITOR_INTELLISENSE: 'supabase_sql-editor-intellisense-enabled',
   SQL_EDITOR_SPLIT_SIZE: 'supabase_sql-editor-split-size',
   SQL_EDITOR_AI_OPEN: 'supabase_sql-editor-ai-open',
+  SQL_EDITOR_AI_SCHEMA: 'supabase_sql-editor-ai-schema',
   SQL_EDITOR_LAST_SELECTED_DB: 'sql-editor-last-selected-db',
   SQL_EDITOR_SECTION_STATE: 'sql-editor-section-state',
   SQL_EDITOR_SORT: 'sql-editor-sort',

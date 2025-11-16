@@ -34,6 +34,7 @@ export type TableEventAction = (typeof TABLE_EVENT_ACTIONS)[keyof typeof TABLE_E
 // Import data events
 export interface ImportDataFileDroppedEvent {
   type: 'import_data_file_dropped'
+  action?: string
   fileType: string
   fileSize: number
 }

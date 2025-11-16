@@ -15,6 +15,7 @@ export interface TableRowQueryOptions {
   offset?: number
   page?: number
   columns?: string[]
+  sortExcludedColumns?: string[]
 }
 
 export function getTableRowsSql(options: TableRowQueryOptions): QueryInterface {

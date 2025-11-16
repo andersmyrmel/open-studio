@@ -5,4 +5,6 @@
 export const viewsKeys = {
   list: (projectRef: string | undefined, schema?: string) =>
     ['projects', projectRef, 'views', schema].filter(Boolean) as const,
+  listBySchema: (projectRef: string | undefined, schema?: string) =>
+    ['projects', projectRef, 'views', schema].filter(Boolean) as const,
 }

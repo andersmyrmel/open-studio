@@ -4,6 +4,12 @@
 
 import React from 'react'
 
+export type DatePickerValue =
+  | { mode: 'custom'; from: Date; to: Date }
+  | { mode: 'preset'; preset: string }
+  | Date
+  | null
+
 export interface LogsDatePickersProps {
   onDateChange?: (startDate: Date, endDate: Date) => void
 }

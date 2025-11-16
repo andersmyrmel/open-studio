@@ -118,6 +118,11 @@ export class Query {
     return this
   }
 
+  range(from: number, to: number): this {
+    // Stub implementation for pagination
+    return this
+  }
+
   toSql(): string {
     const schema = this._schema ? `"${this._schema}".` : ''
     const table = this._table ? `"${this._table}"` : ''

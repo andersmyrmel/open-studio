@@ -8,4 +8,10 @@ export const InlineEditorSettings: React.FC = () => {
   return null
 }
 
+// Hook to check if inline editor is enabled
+export function useIsInlineEditorEnabled(): boolean {
+  // Stub: always return false for local mode
+  return false
+}
+
 export default InlineEditorSettings

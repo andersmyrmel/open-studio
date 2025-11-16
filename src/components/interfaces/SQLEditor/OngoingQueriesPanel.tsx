@@ -40,6 +40,10 @@ export const OngoingQueriesPanel = () => {
   // Local mode: use project connection string directly
   const connectionString = project?.connectionString
 
+  // In local mode, we only have a single primary database
+  const database = { identifier: project?.ref }
+  const databases = [database]
+
   const {
     data,
     error,

@@ -13,6 +13,8 @@ export type SendEventVariables = {
     type: string
     action?: string
     data?: Record<string, any>
+    properties?: Record<string, any>
+    groups?: Record<string, string>
   }
 }
 
