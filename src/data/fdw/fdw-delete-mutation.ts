@@ -22,7 +22,7 @@ export const getDeleteFDWSql = ({
   wrapper,
   wrapperMeta,
 }: Pick<FDWDeleteVariables, 'wrapper' | 'wrapperMeta'>) => {
-  const encryptedOptions = wrapperMeta.server.options.filter((option: any) => option.encrypted)
+  const encryptedOptions = wrapperMeta.server?.options?.filter((option: any) => option.encrypted) ?? []
 
   const deleteEncryptedSecretsSqlArray = encryptedOptions.map((option: any) => {
     const key = `${wrapper.name}_${option.name}`

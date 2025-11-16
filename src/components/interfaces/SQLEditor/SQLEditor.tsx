@@ -309,7 +309,7 @@ export const SQLEditor = () => {
           connectionString: connectionString,
           sql: wrapWithRoleImpersonation(formattedSql, impersonatedRoleState),
           autoLimit: appendAutoLimit ? limit : undefined,
-          isRoleImpersonationEnabled: isRoleImpersonationEnabled(impersonatedRoleState.role),
+          isRoleImpersonationEnabled: isRoleImpersonationEnabled(impersonatedRoleState?.role),
           isStatementTimeoutDisabled: true,
           contextualInvalidation: true,
           handleError: (error) => {

@@ -49,8 +49,8 @@ export function getCreateFDWSql({
     validator "${wrapperMeta.validatorName}";
   `
 
-  const encryptedOptions = wrapperMeta.server.options.filter((option: any) => option.encrypted)
-  const unencryptedOptions = wrapperMeta.server.options.filter((option: any) => !option.encrypted)
+  const encryptedOptions = wrapperMeta.server?.options?.filter((option: any) => option.encrypted) ?? []
+  const unencryptedOptions = wrapperMeta.server?.options?.filter((option: any) => !option.encrypted) ?? []
 
   const createEncryptedKeysSqlArray = encryptedOptions.map((option: any) => {
     const key = `${formState.wrapper_name}_${option.name}`

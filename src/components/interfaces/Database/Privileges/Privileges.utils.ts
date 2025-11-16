@@ -36,7 +36,7 @@ export function getDefaultTableCheckedStates(tablePrivilege: PgTablePrivileges) 
   return Object.fromEntries(
     ALL_PRIVILEGE_TYPES.map((privilege: any) => [
       privilege,
-      tablePrivilege.privileges.find((p: any) => p.privilege_type === privilege) !== undefined,
+      tablePrivilege.privileges?.find((p: any) => p.privilege_type === privilege) !== undefined,
     ])
   )
 }
