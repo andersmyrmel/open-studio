@@ -269,7 +269,7 @@ export async function getTableRows(
       limit,
       page,
       sortExcludedColumns: excludedColumns,
-    }).toSql(),
+    }).sql,
     roleImpersonationState
   )
 
