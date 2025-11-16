@@ -1,4 +1,4 @@
-import { PostgresTrigger } from '@supabase/postgres-meta'
+import { PostgresTrigger } from '@supabase/pg-meta'
 import { toast } from 'sonner'
 
 import { useDatabaseTriggerDeleteMutation } from 'data/database-triggers/database-trigger-delete-mutation'

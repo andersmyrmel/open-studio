@@ -1,5 +1,5 @@
 import dagre from '@dagrejs/dagre'
-import type { PostgresSchema, PostgresTable } from '@supabase/postgres-meta'
+import type { PostgresSchema, PostgresTable } from '@supabase/pg-meta'
 import { uniqBy } from 'lodash'
 import { Edge, Node, Position } from 'reactflow'
 import 'reactflow/dist/style.css'

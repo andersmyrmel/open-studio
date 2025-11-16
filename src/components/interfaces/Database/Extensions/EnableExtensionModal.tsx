@@ -1,4 +1,4 @@
-import type { PostgresExtension } from '@supabase/postgres-meta'
+import type { PostgresExtension } from '@supabase/pg-meta'
 import { Database, ExternalLinkIcon, Plus } from 'lucide-react'
 import { useEffect, useState } from 'react'
 import { toast } from 'sonner'

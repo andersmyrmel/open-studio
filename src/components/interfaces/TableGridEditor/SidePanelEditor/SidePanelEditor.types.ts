@@ -1,4 +1,4 @@
-import type { PostgresRelationship } from '@supabase/postgres-meta'
+import type { PostgresRelationship } from '@supabase/pg-meta'
 import { CreateColumnBody } from 'data/database-columns/database-column-create-mutation'
 import { UpdateColumnBody } from 'data/database-columns/database-column-update-mutation'
 

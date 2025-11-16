@@ -1,4 +1,4 @@
-import type { PostgresColumn } from '@supabase/postgres-meta'
+import type { PostgresColumn } from '@supabase/pg-meta'
 import { PropsWithChildren, createContext, useContext, useRef } from 'react'
 import { proxy, useSnapshot } from 'valtio'
 

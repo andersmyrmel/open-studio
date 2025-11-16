@@ -1,4 +1,4 @@
-import type { PostgresTable, PostgresTrigger } from '@supabase/postgres-meta'
+import type { PostgresTable, PostgresTrigger } from '@supabase/pg-meta'
 import Image from 'next/legacy/image'
 import { MutableRefObject, useEffect } from 'react'
 

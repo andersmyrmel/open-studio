@@ -1,4 +1,4 @@
-import type { PostgresTable } from '@supabase/postgres-meta'
+import type { PostgresTable } from '@supabase/pg-meta'
 import { some } from 'lodash'
 
 import type { ForeignKeyConstraint } from 'data/database/foreign-key-constraints-query'

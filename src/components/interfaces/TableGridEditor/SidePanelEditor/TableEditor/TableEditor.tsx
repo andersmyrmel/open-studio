@@ -1,4 +1,4 @@
-import type { PostgresTable } from '@supabase/postgres-meta'
+import type { PostgresTable } from '@supabase/pg-meta'
 import { isEmpty, isUndefined, noop } from 'lodash'
 import { useEffect, useMemo, useState } from 'react'
 import { toast } from 'sonner'

@@ -1,5 +1,5 @@
-import { PostgresMaterializedView, PostgresTable, PostgresView } from '@supabase/postgres-meta'
-import { PostgresForeignTable } from '@supabase/postgres-meta/dist/lib/types'
+import { PostgresMaterializedView, PostgresTable, PostgresView } from '@supabase/pg-meta'
+import { PostgresForeignTable } from '@supabase/pg-meta/dist/lib/types'
 import { ENTITY_TYPE } from 'data/entity-types/entity-type-constants'
 
 // [Joshen] We just need name, description, rows, size, and the number of columns

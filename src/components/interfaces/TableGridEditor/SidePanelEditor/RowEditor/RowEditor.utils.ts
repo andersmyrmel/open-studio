@@ -1,4 +1,4 @@
-import type { PostgresColumn, PostgresRelationship, PostgresTable } from '@supabase/postgres-meta'
+import type { PostgresColumn, PostgresRelationship, PostgresTable } from '@supabase/pg-meta'
 import dayjs from 'dayjs'
 import { compact, isEqual, isNull, isString, omitBy } from 'lodash'
 import type { Dictionary } from 'types'

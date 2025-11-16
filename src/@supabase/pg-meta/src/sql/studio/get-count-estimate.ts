@@ -1,11 +1,14 @@
-/**
- * Count estimate SQL stub for Open Studio
- */
+export const THRESHOLD_COUNT = 50000
 
-export const THRESHOLD_COUNT = 500000
-
-export const getCountEstimateSQL = (schema: string, table: string) => {
-  return `SELECT reltuples::bigint AS estimate
-FROM pg_class
-WHERE oid = '${schema}.${table}'::regclass`
-}
+export const COUNT_ESTIMATE_SQL = /* SQL */ `
+CREATE OR REPLACE FUNCTION pg_temp.count_estimate(
+    query text
+) RETURNS integer LANGUAGE plpgsql AS $$
+DECLARE
+    plan jsonb;
+BEGIN
+    EXECUTE 'EXPLAIN (FORMAT JSON)' || query INTO plan;
+    RETURN plan->0->'Plan'->'Plan Rows';
+END;
+$$;
+`.trim()

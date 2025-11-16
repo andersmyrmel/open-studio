@@ -4,7 +4,7 @@ import { Check, ChevronLeft, Edit, MoreVertical, Plus, Search, Trash, X } from '
 import Link from 'next/link'
 import { useState } from 'react'
 
-import { PostgresColumn } from '@supabase/postgres-meta'
+import { PostgresColumn } from '@supabase/pg-meta'
 import { useParams } from '@/lib/common'
 import NoSearchResults from 'components/to-be-cleaned/NoSearchResults'
 import Table from 'components/to-be-cleaned/Table'

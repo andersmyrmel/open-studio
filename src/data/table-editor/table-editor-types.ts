@@ -4,7 +4,7 @@ import type {
   PostgresRelationship,
   PostgresTable,
   PostgresView,
-} from '@supabase/postgres-meta'
+} from '@supabase/pg-meta'
 import { WRAPPER_HANDLERS } from 'components/interfaces/Integrations/Wrappers/Wrappers.constants'
 import { ENTITY_TYPE } from 'data/entity-types/entity-type-constants'
 

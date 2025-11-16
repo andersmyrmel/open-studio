@@ -1,4 +1,4 @@
-import type { PostgresFunction } from '@supabase/postgres-meta'
+import type { PostgresFunction } from '@supabase/pg-meta'
 import { PermissionAction } from '@supabase/shared-types/out/constants'
 import { noop } from 'lodash'
 import { Search } from 'lucide-react'

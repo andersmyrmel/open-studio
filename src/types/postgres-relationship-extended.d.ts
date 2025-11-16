@@ -2,9 +2,9 @@
  * Extended PostgresRelationship type declarations
  */
 
-import { PostgresRelationship } from '@supabase/postgres-meta'
+import { PostgresRelationship } from '@supabase/pg-meta'
 
-declare module '@supabase/postgres-meta' {
+declare module '@supabase/pg-meta' {
   export interface PostgresRelationship {
     schema: string
     table: string
