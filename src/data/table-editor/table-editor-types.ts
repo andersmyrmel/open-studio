@@ -110,7 +110,7 @@ export function postgresTableToEntity(table: PostgresTable): Entity | undefined 
     deletion_action: 'a',
     update_action: 'a',
     ...rel,
-  })) as TableRelationship[]
+  })) as unknown as TableRelationship[]
 
   return {
     id: table.id,

@@ -69,7 +69,7 @@ export const generateRowFields = (
               target_table_name: foreignKey.table,
               target_column_name:
                 foreignKey.columns.find((c) => c.source === column.name)?.target ?? '',
-            } as PostgresRelationship)
+            } as unknown as PostgresRelationship)
           : undefined,
       id: column.id,
       name: column.name,
