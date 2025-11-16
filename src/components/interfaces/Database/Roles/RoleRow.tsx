@@ -115,7 +115,7 @@ export const RoleRow = ({ role, disabled = false, onSelectDelete }: RoleRowProps
                   </div>
                 </div>
                 <div className="flex items-center space-x-4">
-                  {role.activeConnections > 0 && (
+                  {(role.activeConnections ?? 0) > 0 && (
                     <div className="relative h-2 w-2">
                       <span className="flex h-2 w-2">
                         <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-brand opacity-75"></span>
@@ -126,10 +126,10 @@ export const RoleRow = ({ role, disabled = false, onSelectDelete }: RoleRowProps
                   <p
                     id="collapsible-trigger"
                     className={`text-sm ${
-                      role.activeConnections > 0 ? 'text-foreground' : 'text-foreground-light'
+                      (role.activeConnections ?? 0) > 0 ? 'text-foreground' : 'text-foreground-light'
                     }`}
                   >
-                    {role.activeConnections} connections
+                    {role.activeConnections ?? 0} connections
                   </p>
                   {!disabled && (
                     <DropdownMenu>

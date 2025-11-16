@@ -38,9 +38,24 @@ export const screen = {
   findByRole: async () => null,
 }
 
-export function fireEvent(element: any, event: any): void {
-  // No-op stub
-}
+export const fireEvent = Object.assign(
+  (element: any, event: any): void => {
+    // No-op stub
+  },
+  {
+    click: (element: any, options?: any): void => {},
+    change: (element: any, options?: any): void => {},
+    input: (element: any, options?: any): void => {},
+    submit: (element: any, options?: any): void => {},
+    focus: (element: any, options?: any): void => {},
+    blur: (element: any, options?: any): void => {},
+    keyDown: (element: any, options?: any): void => {},
+    keyUp: (element: any, options?: any): void => {},
+    keyPress: (element: any, options?: any): void => {},
+    mouseEnter: (element: any, options?: any): void => {},
+    mouseLeave: (element: any, options?: any): void => {},
+  }
+)
 
 export function waitFor(callback: () => void, options?: any): Promise<void> {
   return Promise.resolve()

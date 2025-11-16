@@ -45,7 +45,7 @@ export const RolesList = () => {
   const roles = sortBy(data ?? [], (r) => r.name.toLocaleLowerCase())
 
   const filteredRoles = (
-    filterType === 'active' ? roles.filter((role) => role.activeConnections > 0) : roles
+    filterType === 'active' ? roles.filter((role) => (role.activeConnections ?? 0) > 0) : roles
   ).filter((role) => role.name.includes(filterString))
   const [supabaseRoles, otherRoles] = partition(filteredRoles, (role) =>
     SUPABASE_ROLES.includes(role.name as SUPABASE_ROLE)
@@ -56,8 +56,8 @@ export const RolesList = () => {
     .reduce((a, b) => a + b, 0)
   // order the roles with active connections by number of connections, most connections first
   const rolesWithActiveConnections = sortBy(
-    roles.filter((role) => role.activeConnections > 0),
-    (r) => -r.activeConnections
+    roles.filter((role) => (role.activeConnections ?? 0) > 0),
+    (r) => -(r.activeConnections ?? 0)
   )
 
   return (
