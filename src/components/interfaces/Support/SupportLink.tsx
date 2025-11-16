@@ -15,6 +15,7 @@ export interface SupportLinkProps {
     subject?: string
     message?: string
     sid?: string
+    error?: Error | string | any
   }
   className?: string
   href?: string

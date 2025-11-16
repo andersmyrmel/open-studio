@@ -11,6 +11,7 @@ export type SendEventVariables = {
   groups?: Record<string, string>
   event?: {
     type: string
+    action?: string
     data?: Record<string, any>
   }
 }
