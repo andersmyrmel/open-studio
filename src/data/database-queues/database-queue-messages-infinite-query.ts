@@ -56,7 +56,7 @@ export async function getDatabaseQueue({
   }
 
   let archivedQuery = ``
-  if (status.includes('archived')) {
+  if (status.includes(QUEUE_MESSAGE_TYPE.ARCHIVED)) {
     archivedQuery = `SELECT msg_id, enqueued_at, read_ct, vt, message, archived_at FROM "pgmq"."a_${queueName}"`
   }
 

@@ -126,7 +126,7 @@ export const getAllTableRowsSql = ({
     }
   } else {
     sorts.forEach((sort) => {
-      queryChains = queryChains.order(sort.table, sort.column, sort.ascending, sort.nullsFirst)
+      queryChains = queryChains.order(sort.table ?? table.name, sort.column, sort.ascending, sort.nullsFirst)
     })
 
     // Add primary keys as tie-breakers so page order doesn't shuffle

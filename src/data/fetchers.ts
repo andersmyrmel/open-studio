@@ -69,8 +69,8 @@ function pgMetaGuard(request: Request) {
       throw new ResponseError(
         'API Error: happened while trying to acquire connection to the database',
         400,
-        retryAfterHeader ? parseInt(retryAfterHeader) : undefined,
-        request.headers.get('X-Request-Id') ?? undefined
+        request.headers.get('X-Request-Id') ?? undefined,
+        retryAfterHeader ? parseInt(retryAfterHeader) : undefined
       )
     }
     if (!request.headers.get('x-pg-application-name')) {
@@ -180,7 +180,7 @@ export const handleError = (error: unknown, options: HandleErrorOptions = {}): n
 
   // throw a generic error if we don't know what the error is. The message is intentionally vague because it might show
   // up in the UI.
-  throw new ResponseError(undefined)
+  throw new ResponseError('An unexpected error occurred')
 }
 
 // [Joshen] The methods below are brought over from lib/common/fetch because we still need them
