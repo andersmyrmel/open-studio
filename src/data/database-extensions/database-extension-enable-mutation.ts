@@ -27,7 +27,7 @@ export async function enableDatabaseExtension({
   cascade = false,
   createSchema = false,
 }: DatabaseExtensionEnableVariables) {
-  let headers = new Headers()
+  const headers = new Headers()
   if (connectionString) headers.set('x-connection-encrypted', connectionString)
 
   const { sql } = pgMeta.extensions.create({ schema, name, version, cascade })

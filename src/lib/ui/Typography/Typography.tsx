@@ -13,7 +13,7 @@ function Typography({ children, className, tag = 'div', style }: any) {
   // if (className) {
   //   classes.push(className)
   // }
-  let CustomTag: any = `${tag}`
+  const CustomTag: any = `${tag}`
   return (
     <CustomTag
       style={style}

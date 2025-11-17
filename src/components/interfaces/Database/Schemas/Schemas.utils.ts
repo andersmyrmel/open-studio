@@ -197,7 +197,7 @@ const getLayoutedElementsViaLocalStorage = (
 
   const nodesWithNoSavedPositons = nodes.filter((n) => !(n.id in positions))
   let newNodeCount = 0
-  let basePosition = {
+  const basePosition = {
     x: 0,
     y: -(NODE_SEP + TABLE_NODE_ROW_HEIGHT + nodesWithNoSavedPositons.length * 10),
   }

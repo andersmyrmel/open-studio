@@ -20,9 +20,9 @@ interface RadixProps
     > {}
 
 interface CustomProps {
-  id?: String | undefined
+  id?: string | undefined
   disabled?: boolean
-  className?: String
+  className?: string
   children?: React.ReactNode
   header?: string | React.ReactNode
   visible: boolean
@@ -32,9 +32,9 @@ interface CustomProps {
   hideFooter?: boolean
   customFooter?: React.ReactNode
   onCancel?: () => void
-  cancelText?: String
+  cancelText?: string
   onConfirm?: () => void
-  confirmText?: String
+  confirmText?: string
   triggerElement?: React.ReactNode
   tooltip?: string
 }
@@ -137,7 +137,7 @@ const SidePanel = ({
 }
 
 export function Separator() {
-  let __styles = styleHandler('sidepanel')
+  const __styles = styleHandler('sidepanel')
 
   return <div className={__styles.separator}></div>
 }
@@ -149,7 +149,7 @@ export function Content({
   children: React.ReactNode
   className?: string
 }) {
-  let __styles = styleHandler('sidepanel')
+  const __styles = styleHandler('sidepanel')
 
   return <div className={[__styles.content, className].join(' ').trim()}>{children}</div>
 }

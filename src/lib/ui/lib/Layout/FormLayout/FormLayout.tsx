@@ -65,12 +65,12 @@ export function FormLayout({
 
   const flex = layout === 'flex'
 
-  let containerClasses: Array<string> = []
+  const containerClasses: Array<string> = []
 
   containerClasses.push(__styles.size[size])
 
-  let labelContainerClasses: Array<string> = []
-  let dataInputContainerClasses: Array<string> = []
+  const labelContainerClasses: Array<string> = []
+  const dataInputContainerClasses: Array<string> = []
 
   if (layout !== 'horizontal' && !labelLayout && !flex) {
     labelContainerClasses.push(__styles.labels_horizontal_layout)

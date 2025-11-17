@@ -20,7 +20,7 @@ export async function disableDatabaseExtension({
   id,
   cascade,
 }: DatabaseExtensionDisableVariables) {
-  let headers = new Headers()
+  const headers = new Headers()
   if (connectionString) headers.set('x-connection-encrypted', connectionString)
 
   const { sql } = pgMeta.extensions.remove(id, { cascade })

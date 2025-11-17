@@ -18,7 +18,7 @@ export async function getForeignTables(
 ) {
   if (!projectRef) throw new Error('projectRef is required')
 
-  let headers = new Headers()
+  const headers = new Headers()
   if (connectionString) headers.set('x-connection-encrypted', connectionString)
 
   const { data, error } = await get('/platform/pg-meta/{ref}/foreign-tables', {

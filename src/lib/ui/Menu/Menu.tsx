@@ -56,7 +56,7 @@ export function Item({
 
   const { type } = useMenuContext()
 
-  let classes = [__styles.item.base]
+  const classes = [__styles.item.base]
 
   classes.push(__styles.item.variants[type].base)
 
@@ -66,14 +66,14 @@ export function Item({
     classes.push(__styles.item.variants[type].normal)
   }
 
-  let contentClasses = [__styles.item.content.base]
+  const contentClasses = [__styles.item.content.base]
   if (active) {
     contentClasses.push(__styles.item.content.active)
   } else {
     contentClasses.push(__styles.item.content.normal)
   }
 
-  let iconClasses = [__styles.item.icon.base]
+  const iconClasses = [__styles.item.icon.base]
   if (active) {
     iconClasses.push(__styles.item.icon.active)
   } else {

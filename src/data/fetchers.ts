@@ -100,7 +100,7 @@ client.use(
       // handle errors
       try {
         // attempt to parse the response body as JSON
-        let body = await response.clone().json()
+        const body = await response.clone().json()
 
         // add code field to body
         body.code = response.status
@@ -241,7 +241,7 @@ async function handleFetchError(response: unknown): Promise<ResponseError> {
       ? parseInt(response.headers.get('Retry-After')!)
       : undefined
 
-  let error = new ResponseError(message, status, undefined, retryAfter)
+  const error = new ResponseError(message, status, undefined, retryAfter)
 
   // @ts-expect-error - [Alaister] many of our local api routes check `if (response.error)`.
   // This is a fix to keep those checks working without breaking changes.

@@ -96,7 +96,7 @@ class BackwardIterator {
       this.lineNumber = -1
       return BOF
     }
-    let ch = this._line.charCodeAt(this.offset)
+    const ch = this._line.charCodeAt(this.offset)
     this.offset--
     return ch
   }
@@ -107,7 +107,7 @@ class BackwardIterator {
     let curlyNesting = 0
     let paramCount = 0
     while (this.hasNext()) {
-      let ch = this.next()
+      const ch = this.next()
       switch (ch) {
         case _LParent:
           parentNesting--
@@ -182,10 +182,10 @@ class BackwardIterator {
   }
 
   readIdents(maxlvl: number) {
-    let idents = []
+    const idents = []
     while (maxlvl > 0) {
       maxlvl--
-      let ident = this.readIdent()
+      const ident = this.readIdent()
       if (!ident) {
         break
       }

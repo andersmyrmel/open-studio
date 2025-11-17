@@ -52,7 +52,7 @@ export function useTableSort() {
 
       // Use the derived 'sorts' state from the hook
       const existingSortIndex = sorts.findIndex((s) => s.column === columnKey)
-      let newSorts = [...sorts] // Create a mutable copy
+      const newSorts = [...sorts] // Create a mutable copy
 
       if (existingSortIndex !== -1) {
         // Column already exists in sorts: Update the existing sort (toggle handled by removeSort)

@@ -38,7 +38,7 @@ function Overlay({
   const ref = useRef(null)
   const [visibleState, setVisibleState] = useState(!!visible)
 
-  let classes = [
+  const classes = [
     OverlayStyles['sbui-overlay-container'],
     OverlayStyles[`sbui-overlay-container--${placement}`],
   ]

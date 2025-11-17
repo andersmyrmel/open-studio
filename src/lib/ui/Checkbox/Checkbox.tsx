@@ -149,7 +149,7 @@ export function Checkbox({
 
         // if (values && !value) value = values[id || name]
 
-        let containerClasses = [__styles.container]
+        const containerClasses = [__styles.container]
 
         function onInputChange(e: React.ChangeEvent<HTMLInputElement>) {
           // '`onChange` callback for parent component

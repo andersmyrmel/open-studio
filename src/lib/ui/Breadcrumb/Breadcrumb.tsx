@@ -13,8 +13,8 @@ interface Props {
  * @deprecated Use `import { Breadcrumb_shadcn_ } from "ui"` instead
  */
 const Breadcrumb = ({ className, style, children, spacing = 'small' }: Props) => {
-  let classes = [BreadcrumbStyle['sbui-breadcrumb--container']]
-  let separatorClasses = [BreadcrumbStyle['sbui-breadcrumb--separator']]
+  const classes = [BreadcrumbStyle['sbui-breadcrumb--container']]
+  const separatorClasses = [BreadcrumbStyle['sbui-breadcrumb--separator']]
 
   if (className) {
     classes.push(className)
@@ -49,7 +49,7 @@ interface ItemProps {
  * @deprecated Use ./BreadcrumbItem_shadcn_ instead
  */
 export function Item({ children, active, onClick, style }: ItemProps) {
-  let classes = [BreadcrumbStyle['sbui-breadcrumb--item']]
+  const classes = [BreadcrumbStyle['sbui-breadcrumb--item']]
   if (active) classes.push(BreadcrumbStyle['sbui-breadcrumb--item__active'])
   return (
     <span

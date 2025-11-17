@@ -39,17 +39,17 @@ export function Alert({
   icon,
   actions,
 }: AlertProps) {
-  let __styles = styleHandler('alert')
+  const __styles = styleHandler('alert')
 
   const [visible, setVisible] = useState(true)
 
-  let containerClasses = [__styles.base]
+  const containerClasses = [__styles.base]
   containerClasses.push(__styles.variant[variant].base)
 
   if (className) containerClasses.push(className)
 
-  let descriptionClasses = [__styles.description, __styles.variant[variant].description]
-  let closeButtonClasses = [__styles.close]
+  const descriptionClasses = [__styles.description, __styles.variant[variant].description]
+  const closeButtonClasses = [__styles.close]
 
   return (
     <>

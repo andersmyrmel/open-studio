@@ -12,13 +12,13 @@ export default function getPgsqlSignatureHelpProvider(monaco: any, pgInfoRef: Re
       // position.lineNumber should minus 1
       const iterator = new BackwardIterator(model, position.column - 2, position.lineNumber - 1)
 
-      let paramCount = iterator.readArguments()
+      const paramCount = iterator.readArguments()
       if (paramCount < 0) return null
 
-      let ident = iterator.readIdent()
+      const ident = iterator.readIdent()
       if (!ident || ident.match(/^\".*?\"$/)) return null
 
-      let fn = (pgInfoRef.current.functions as DatabaseFunction[]).find(
+      const fn = (pgInfoRef.current.functions as DatabaseFunction[]).find(
         (f) => f.name.toLocaleLowerCase() === ident.toLocaleLowerCase()
       )
       if (!fn) return null

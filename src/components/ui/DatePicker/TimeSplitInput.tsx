@@ -39,10 +39,10 @@ export const TimeSplitInput = ({
     if (!_time.ss) _time.ss = '00'
 
     let endTimeChanges = false
-    let endTimePayload = endTime
+    const endTimePayload = endTime
 
     let startTimeChanges = false
-    let startTimePayload = startTime
+    const startTimePayload = startTime
 
     // Only run time conflicts if
     // startDate and endDate are the same date

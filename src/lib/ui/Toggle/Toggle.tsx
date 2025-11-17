@@ -92,7 +92,7 @@ function Toggle({
      * Create change event for formik
      * formik expects an input change event
      */
-    let event: any = {}
+    const event: any = {}
     event.target = {
       type: 'checkbox',
       name: name,
@@ -110,10 +110,10 @@ function Toggle({
     if (validation) fieldLevelValidation(id, validation(!intChecked))
   }
 
-  let toggleClasses = [__styles.base, __styles.handle_container[size]]
+  const toggleClasses = [__styles.base, __styles.handle_container[size]]
   if (active) toggleClasses.push(__styles.active)
 
-  let handleClasses = [__styles.handle['base'], __styles.handle[size]]
+  const handleClasses = [__styles.handle['base'], __styles.handle[size]]
   if (active) handleClasses.push(__styles.handle_active[size])
 
   return (

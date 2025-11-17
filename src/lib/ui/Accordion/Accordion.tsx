@@ -13,7 +13,7 @@ type Align = 'left' | 'right'
 interface ContextValue {
   bordered?: boolean
   type: Type
-  justified: Boolean
+  justified: boolean
   chevronAlign: Align
 }
 
@@ -34,7 +34,7 @@ export interface AccordionProps {
   type?: Type
   size?: Size
   defaultValue?: string | string[] | undefined
-  justified?: Boolean
+  justified?: boolean
   chevronAlign?: Align
 }
 
@@ -53,7 +53,7 @@ function Accordion({
 }: AccordionProps) {
   const __styles = styleHandler('accordion')
 
-  let containerClasses = [__styles.variants[type].base]
+  const containerClasses = [__styles.variants[type].base]
 
   if (className) {
     containerClasses.push(className)
@@ -110,11 +110,11 @@ export function Item({ children, className, header, id, disabled }: ItemProps) {
 
   const { type, justified, chevronAlign } = useContext(AccordionContext)
 
-  let triggerClasses = [__styles.variants[type].trigger]
+  const triggerClasses = [__styles.variants[type].trigger]
   if (justified) triggerClasses.push(__styles.justified)
   if (className) triggerClasses.push(className)
 
-  let chevronClasses = [__styles.chevron.base, __styles.chevron.align[chevronAlign]]
+  const chevronClasses = [__styles.chevron.base, __styles.chevron.align[chevronAlign]]
 
   if (open && !disabled) {
     chevronClasses.unshift('!rotate-180')

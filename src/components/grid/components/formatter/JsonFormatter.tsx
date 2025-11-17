@@ -6,7 +6,7 @@ import { EmptyValue } from '../common/EmptyValue'
 import { NullValue } from '../common/NullValue'
 
 export const JsonFormatter = (p: PropsWithChildren<RenderCellProps<SupaRow, unknown>>) => {
-  let value = p.row[p.column.key]
+  const value = p.row[p.column.key]
 
   if (value === null) return <NullValue />
   if (value === '') return <EmptyValue />

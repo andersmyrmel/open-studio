@@ -166,7 +166,7 @@ function Listbox({
      * Create change event for formik
      * formik expects an input change event
      */
-    let event: any = {}
+    const event: any = {}
     event.target = {
       type: 'select',
       name: name,
@@ -185,8 +185,8 @@ function Listbox({
     if (validation) fieldLevelValidation(id, validation(value))
   }
 
-  let selectClasses = [__styles.container, __styles.base, buttonClassName]
-  let addonBeforeClasses = [__styles.addOnBefore]
+  const selectClasses = [__styles.container, __styles.base, buttonClassName]
+  const addonBeforeClasses = [__styles.addOnBefore]
 
   if (error) selectClasses.push(__styles.variants.error)
   if (!error) selectClasses.push(__styles.variants.standard)

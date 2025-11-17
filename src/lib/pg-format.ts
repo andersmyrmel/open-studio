@@ -9,7 +9,7 @@ function arrayToList(useSpace: any, array: any, formatter: any) {
   let sql = ''
 
   sql += useSpace ? ' (' : '('
-  for (var i = 0; i < array.length; i++) {
+  for (let i = 0; i < array.length; i++) {
     sql += (i === 0 ? '' : ', ') + formatter(array[i])
   }
   sql += ')'
@@ -32,7 +32,7 @@ export function quoteLiteral(value: any): any {
   } else if (value instanceof Buffer) {
     return "E'\\\\x" + value.toString('hex') + "'"
   } else if (Array.isArray(value) === true) {
-    let temp = []
+    const temp = []
     for (let i = 0; i < value.length; i++) {
       if (Array.isArray(value[i]) === true) {
         temp.push(arrayToList(i !== 0, value[i], quoteLiteral))
@@ -52,7 +52,7 @@ export function quoteLiteral(value: any): any {
   let quoted = "'"
 
   for (let i = 0; i < literal.length; i++) {
-    let c = literal[i]
+    const c = literal[i]
     if (c === "'") {
       quoted += c + c
     } else if (c === '\\') {

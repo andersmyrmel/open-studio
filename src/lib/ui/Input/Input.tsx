@@ -129,7 +129,7 @@ function Input({
     setHidden(false)
   }
 
-  let inputClasses = ['peer/input', __styles.base]
+  const inputClasses = ['peer/input', __styles.base]
 
   if (error) inputClasses.push(__styles.variants.error)
   if (!error) inputClasses.push(__styles.variants.standard)
@@ -304,7 +304,7 @@ function TextArea({
 
   const __styles = styleHandler('input')
 
-  let classes = [__styles.base]
+  const classes = [__styles.base]
 
   if (error) classes.push(__styles.variants.error)
   if (!error) classes.push(__styles.variants.standard)

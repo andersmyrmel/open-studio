@@ -13,7 +13,7 @@ export default function getPgsqlCompletionProvider(monaco: any, pgInfoRef: RefOb
       try {
         // position.column should minus 2 as it returns 2 for first char
         // position.lineNumber should minus 1
-        let iterator = new BackwardIterator(model, position.column - 2, position.lineNumber - 1)
+        const iterator = new BackwardIterator(model, position.column - 2, position.lineNumber - 1)
 
         if (context.triggerCharacter === '"') {
           return startingQuoteScenarioSuggestions(monaco, pgInfoRef, iterator)
@@ -33,7 +33,7 @@ export default function getPgsqlCompletionProvider(monaco: any, pgInfoRef: RefOb
 function startingQuoteScenarioSuggestions(monaco: any, pgInfoRef: RefObject<any>, iterator: any) {
   const items: any[] = []
 
-  let startingQuotedIdent = iterator.isFowardDQuote()
+  const startingQuotedIdent = iterator.isFowardDQuote()
   if (!startingQuotedIdent) return { suggestions: items }
 
   iterator.next() // get passed the starting quote
@@ -45,7 +45,7 @@ function startingQuoteScenarioSuggestions(monaco: any, pgInfoRef: RefObject<any>
       isQuotedIdent = true
       ident = fixQuotedIdent(ident)
     }
-    let table = pgInfoRef.current.tableColumns.find((tbl: TableColumn) => {
+    const table = pgInfoRef.current.tableColumns.find((tbl: TableColumn) => {
       return (
         (isQuotedIdent && tbl.tablename === ident) ||
         (!isQuotedIdent && tbl.tablename.toLocaleLowerCase() == ident.toLocaleLowerCase())
@@ -78,7 +78,7 @@ function startingQuoteScenarioSuggestions(monaco: any, pgInfoRef: RefObject<any>
 function dotScenarioSuggestions(monaco: any, pgInfoRef: RefObject<any>, iterator: any) {
   const items: any[] = []
 
-  let idents = readIdents(iterator, 3)
+  const idents = readIdents(iterator, 3)
   let pos = 0
 
   let schema = pgInfoRef.current.schemas.find((sch: Schema) => {
@@ -112,7 +112,7 @@ function dotScenarioSuggestions(monaco: any, pgInfoRef: RefObject<any>, iterator
     return { suggestions: items }
   }
 
-  let table = pgInfoRef.current.tableColumns.find((tbl: TableColumn) => {
+  const table = pgInfoRef.current.tableColumns.find((tbl: TableColumn) => {
     const _ident = idents && idents.length > pos ? idents[pos] : {}
     return (
       (tbl.schemaname == schema.name && _ident.isQuoted && tbl.tablename === _ident.name) ||
@@ -171,7 +171,7 @@ function defaultScenarioSuggestions(monaco: any, pgInfoRef: RefObject<any>) {
       x.columns.forEach((field: any) => {
         if (!field) return
 
-        let foundItem = items.find(
+        const foundItem = items.find(
           (i: any) =>
             i.label === field?.attname &&
             i.kind === monaco.languages.CompletionItemKind.Field &&

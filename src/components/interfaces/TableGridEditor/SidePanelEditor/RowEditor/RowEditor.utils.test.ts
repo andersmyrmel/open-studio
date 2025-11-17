@@ -336,17 +336,17 @@ describe('isValueTruncated', () => {
 
 describe('convertByteaToHex', () => {
   it('should convert buffer data to hex', () => {
-    const input = { type: 'Buffer' as 'Buffer', data: [72, 101, 108, 108, 111] }
+    const input = { type: 'Buffer' as const, data: [72, 101, 108, 108, 111] }
     expect(convertByteaToHex(input)).toBe('\\x48656c6c6f')
   })
 
   it('should convert empty buffer', () => {
-    const input = { type: 'Buffer' as 'Buffer', data: [] }
+    const input = { type: 'Buffer' as const, data: [] }
     expect(convertByteaToHex(input)).toBe('\\x')
   })
 
   it('should handle errors gracefully and return original value', () => {
-    const invalidInput = { type: 'Buffer' as 'Buffer', data: null as any }
+    const invalidInput = { type: 'Buffer' as const, data: null as any }
     expect(convertByteaToHex(invalidInput)).toBe(invalidInput)
   })
 

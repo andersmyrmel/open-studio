@@ -203,7 +203,7 @@ function Radio({
         const active =
           activeId === markupId ? true : checked ? true : checked === false ? false : undefined
 
-        let classes = [
+        const classes = [
           className,
           __styles.variants[type].container.base,
           // __styles.variants[type].container.align[align],
