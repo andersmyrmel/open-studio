@@ -1,6 +1,6 @@
 import { Query } from '@supabase/pg-meta/src/query'
 import {
-  getCountEstimateSQL,
+  COUNT_ESTIMATE_SQL,
   THRESHOLD_COUNT,
 } from '@supabase/pg-meta/src/sql/studio/get-count-estimate'
 import { QueryClient, useQuery, useQueryClient } from '@tanstack/react-query'
@@ -60,7 +60,7 @@ export const getTableRowsCountSql = ({
     const countBaseSql = countQueryChains.toSql().slice(0, -1)
 
     const sql = `
-${getCountEstimateSQL}
+${COUNT_ESTIMATE_SQL}
 
 with approximation as (
     select reltuples as estimate
