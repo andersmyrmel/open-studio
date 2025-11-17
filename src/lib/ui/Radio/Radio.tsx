@@ -194,7 +194,7 @@ function Radio({
         const markupName = name || inputName
 
         // console.log('markupName', markupName)
-        // @ts-ignore
+        // @ts-expect-error
         size = parentSize || size
 
         // check if radio id is via parent component

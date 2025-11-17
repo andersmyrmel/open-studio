@@ -1,5 +1,5 @@
 import React from 'react'
-// @ts-ignore
+// @ts-expect-error
 // import TextStyles from './Text.module.css'
 
 export interface Props {

@@ -195,9 +195,9 @@ const ColumnEditor = ({
       size="xlarge"
       key="ColumnEditor"
       visible={visible}
-      // @ts-ignore
+      // @ts-expect-error
       onConfirm={(resolve: () => void) => onSaveChanges(resolve)}
-      // @ts-ignore
+      // @ts-expect-error
       header={<HeaderTitle table={selectedTable} column={column} />}
       onCancel={closePanel}
       customFooter={

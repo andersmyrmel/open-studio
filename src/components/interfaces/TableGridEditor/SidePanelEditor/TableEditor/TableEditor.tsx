@@ -312,7 +312,7 @@ export const TableEditor = ({
       <SidePanel.Content className="space-y-10 py-6">
         <Checkbox
           id="enable-rls"
-          // @ts-ignore
+          // @ts-expect-error
           label={
             <div className="flex items-center space-x-2">
               <span>Enable Row Level Security (RLS)</span>

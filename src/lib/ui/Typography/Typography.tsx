@@ -1,5 +1,5 @@
 import React from 'react'
-// @ts-ignore
+// @ts-expect-error
 import TypographyStyles from './Typography.module.css'
 import Title from './Title'
 import Text from './Text'

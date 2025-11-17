@@ -1,11 +1,11 @@
 'use client'
 
 import React, { useEffect, useRef, useState } from 'react'
-//@ts-ignore
+//@ts-expect-error
 import { useOnClickOutside } from './../../lib/Hooks'
 import { DropdownContext } from './OverlayContext'
 import { AnimationTailwindClasses } from '../../types'
-// @ts-ignore
+// @ts-expect-error
 import OverlayStyles from './Overlay.module.css'
 
 import { Transition } from '@headlessui/react'

@@ -225,7 +225,7 @@ export function withArray(fmt: string, parameters: unknown[]): string {
   const re = new RegExp(reText, 'g')
 
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-ignore
+  // @ts-expect-error
   return fmt.replace(re, (_, type: string): string => {
     if (type === '%') {
       return '%'

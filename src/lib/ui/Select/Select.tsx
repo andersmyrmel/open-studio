@@ -150,7 +150,7 @@ function Select({
           value={value}
           disabled={disabled}
           required={required}
-          // @ts-ignore
+          // @ts-expect-error
           placeholder={placeholder}
           {...props}
         >

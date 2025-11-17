@@ -526,7 +526,7 @@ export const ForeignKeySelector = ({
                     value={fk.deletionAction}
                     className="[&>div>label]:flex [&>div>label]:items-center"
                     label="Action if referenced row is removed"
-                    // @ts-ignore
+                    // @ts-expect-error
                     labelOptional={
                       <DocsButton href={`${DOCS_URL}/guides/database/postgres/cascade-deletes`} />
                     }

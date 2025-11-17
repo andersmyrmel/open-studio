@@ -7,7 +7,7 @@ import { useContext } from 'react'
 import defaultTheme from '@/lib/ui/lib/theme/defaultTheme'
 import { ThemeContext } from '@/lib/ui/components/ThemeProvider/ThemeProvider'
 
-export default function styleHandler(target: string) {
+export default function useStyleHandler(target: string) {
   let {
     theme: { [target]: __styles },
   }: any = useContext(ThemeContext)
@@ -21,4 +21,6 @@ export default function styleHandler(target: string) {
   return __styles
 }
 
-export const getStyleHandler = () => styleHandler
+// Export as both names for backward compatibility
+export const styleHandler = useStyleHandler
+export const getStyleHandler = () => useStyleHandler

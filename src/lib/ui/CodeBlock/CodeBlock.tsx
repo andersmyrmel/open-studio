@@ -177,7 +177,7 @@ export const CodeBlock = ({
             wrapperClassName
           )}
         >
-          {/* @ts-ignore */}
+          {/* @ts-expect-error */}
           <SyntaxHighlighter
             suppressContentEditableWarning
             language={lang}

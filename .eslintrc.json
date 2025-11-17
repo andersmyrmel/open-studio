@@ -3,6 +3,27 @@
   "rules": {
     "@typescript-eslint/no-explicit-any": "warn",
     "@typescript-eslint/no-unused-vars": ["warn", { "argsIgnorePattern": "^_" }],
-    "react-hooks/exhaustive-deps": "warn"
-  }
+    "react-hooks/exhaustive-deps": "warn",
+    "@typescript-eslint/ban-ts-comment": ["error", {
+      "ts-expect-error": false,
+      "ts-ignore": true
+    }],
+    "react/no-unescaped-entities": "warn",
+    "@typescript-eslint/no-non-null-asserted-optional-chain": "warn",
+    "react/display-name": "warn",
+    "@typescript-eslint/no-empty-object-type": "warn",
+    "@typescript-eslint/no-unused-expressions": "warn",
+    "react-hooks/rules-of-hooks": "warn",
+    "react/jsx-key": "warn",
+    "@typescript-eslint/no-namespace": "warn",
+    "prefer-const": "warn"
+  },
+  "overrides": [
+    {
+      "files": ["*.config.js", "tailwind.config.js"],
+      "rules": {
+        "@typescript-eslint/no-require-imports": "off"
+      }
+    }
+  ]
 }
