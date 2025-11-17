@@ -42,8 +42,8 @@ export { DEFAULT_SYSTEM_SCHEMAS, DEFAULT_PLATFORM_APPLICATION_NAME } from './src
 
 // Export studio SQL helpers
 export { COUNT_ESTIMATE_SQL, THRESHOLD_COUNT } from './src/sql/studio/get-count-estimate'
-export { checkPrimaryKeysExistSQL } from './src/sql/studio/check-primary-keys-exists'
-export { checkTablesAnonAuthenticatedAccessSQL } from './src/sql/studio/check-tables-anon-authenticated-access'
+export { getCheckPrimaryKeysExistsSQL } from './src/sql/studio/check-primary-keys-exists'
+export { getTablesWithAnonAuthenticatedAccessSQL } from './src/sql/studio/check-tables-anon-authenticated-access'
 
 // Export table row query helpers
 export { getTableRowsSql, MAX_CHARACTERS, MAX_ARRAY_SIZE } from './src/query/table-row-query'
