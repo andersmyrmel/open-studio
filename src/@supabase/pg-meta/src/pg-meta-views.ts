@@ -84,7 +84,7 @@ export function retrieve(identifier: ViewIdentifier): {
   sql: string
   zod: typeof pgViewOptionalZod
 } {
-  let whereClause = getIdentifierWhereClause(identifier)
+  const whereClause = getIdentifierWhereClause(identifier)
 
   const sql = `${generateEnrichedViewsSql({ includeColumns: true })} where ${whereClause};`
   return {

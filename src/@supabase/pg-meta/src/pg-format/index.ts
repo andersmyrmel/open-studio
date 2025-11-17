@@ -41,7 +41,6 @@ function arrayToList(useSpace: boolean, array: unknown[], formatter: (value: unk
 }
 
 // Ported from PostgreSQL 9.2.4 source code in src/interfaces/libpq/fe-exec.c
-// eslint-disable-next-line radar/cognitive-complexity
 export function ident(value?: unknown): string {
   if (value === undefined || value === null) {
     throw new Error('SQL identifier cannot be null or undefined')
@@ -86,7 +85,6 @@ export function ident(value?: unknown): string {
 }
 
 // Ported from PostgreSQL 9.2.4 source code in src/interfaces/libpq/fe-exec.c
-// eslint-disable-next-line radar/cognitive-complexity
 export function literal(value?: unknown): string {
   let tliteral = ''
   let explicitCast: string | undefined
@@ -164,7 +162,6 @@ export function literal(value?: unknown): string {
   return quoted
 }
 
-// eslint-disable-next-line radar/cognitive-complexity
 export function string(value?: unknown): string {
   if (value === undefined || value === null) {
     return ''

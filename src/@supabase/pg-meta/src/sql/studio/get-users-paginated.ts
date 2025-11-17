@@ -97,7 +97,7 @@ export const getPaginatedUsersSQL = ({
     }
   }
 
-  let usersData = `
+  const usersData = `
     select
       auth.users.id,
       auth.users.email,
@@ -117,7 +117,7 @@ export const getPaginatedUsersSQL = ({
       auth.users
     ${whereStatement}`
 
-  let usersQuery = `
+  const usersQuery = `
 with
   users_data as (${usersData})
 select

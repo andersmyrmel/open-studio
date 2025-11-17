@@ -86,7 +86,7 @@ export function retrieve(identifier: MaterializedViewIdentifier): {
   sql: string
   zod: typeof pgMaterializedViewOptionalZod
 } {
-  let whereClause = getIdentifierWhereClause(identifier)
+  const whereClause = getIdentifierWhereClause(identifier)
 
   const sql = `${generateEnrichedMaterializedViewsSql({ includeColumns: true })} where ${whereClause};`
   return {

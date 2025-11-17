@@ -64,14 +64,14 @@ const MsSqlAdmonition = ({ title, children }: MsSqlAdmonitionProps): ReactNode =
 
 const MsSqlSortWarningAdmonition = (): ReactNode => (
   <MsSqlAdmonition title="Cannot sort by filtered column">
-    Sorting only by columns filtered with "=" or "is" doesn't work on MSSQL tables. Pick a different
+    Sorting only by columns filtered with &quot;=&quot; or &quot;is&quot; doesn&apos;t work on MSSQL tables. Pick a different
     sorting column, or add a column not in your filter.
   </MsSqlAdmonition>
 )
 
 const MsSqlNoValidSortAdmonition = (): ReactNode => (
   <MsSqlAdmonition title="No valid sort column remaining">
-    All columns that can be sorted have been filtered with "=" or "is", which doesn't work on MSSQL
+    All columns that can be sorted have been filtered with &quot;=&quot; or &quot;is&quot;, which doesn&apos;t work on MSSQL
     tables. Remove a column from your filter to continue.
   </MsSqlAdmonition>
 )

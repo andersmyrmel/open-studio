@@ -109,7 +109,7 @@ function retrieve(identifier: TableIdentifier): {
   sql: string
   zod: z.ZodType<TableWithColumns>
 } {
-  let whereClause = getIdentifierWhereClause(identifier)
+  const whereClause = getIdentifierWhereClause(identifier)
 
   const sql = `${generateEnrichedTablesSql({ includeColumns: true })} where ${whereClause};`
   return {

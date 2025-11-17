@@ -105,7 +105,7 @@ function create({
       .join(',')}`
   }
 
-  let publishOps = []
+  const publishOps = []
   if (publish_insert) publishOps.push('insert')
   if (publish_update) publishOps.push('update')
   if (publish_delete) publishOps.push('delete')

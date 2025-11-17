@@ -30,7 +30,7 @@ export function useKeyboardShortcuts(
       return
     }
 
-    let keyPressed = getKeyPresses(event)
+    const keyPressed = getKeyPresses(event)
 
     if (keyMap[keyPressed]) {
       /**
