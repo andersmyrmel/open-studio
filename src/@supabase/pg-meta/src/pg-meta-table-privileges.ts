@@ -33,6 +33,8 @@ const pgTablePrivilegesZod = z.object({
     })
   ),
 })
+
+export type PGTablePrivileges = z.infer<typeof pgTablePrivilegesZod>
 const pgTablePrivilegesArrayZod = z.array(pgTablePrivilegesZod)
 const pgTablePrivilegesOptionalZod = z.optional(pgTablePrivilegesZod)
 

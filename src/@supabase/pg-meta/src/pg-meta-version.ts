@@ -8,6 +8,8 @@ export const pgVersionZod = z.object({
   max_connections: z.number(),
 })
 
+export type PGVersion = z.infer<typeof pgVersionZod>
+
 function retrieve() {
   return {
     sql: VERSION_SQL,

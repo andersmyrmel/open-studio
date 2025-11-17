@@ -22,6 +22,8 @@ const pgColumnPrivilegesZod = z.object({
   column_name: z.string(),
   privileges: z.array(pgColumnPrivilegeGrant),
 })
+
+export type PGColumnPrivileges = z.infer<typeof pgColumnPrivilegesZod>
 const pgColumnPrivilegesArrayZod = z.array(pgColumnPrivilegesZod)
 
 const privilegeGrant = z.object({

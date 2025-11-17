@@ -18,6 +18,8 @@ const pgTypeZod = z.object({
   comment: z.string().nullable(),
 })
 
+export type PGType = z.infer<typeof pgTypeZod>
+
 const pgTypeArrayZod = z.array(pgTypeZod)
 
 function list({

@@ -37,6 +37,8 @@ const pgIndexZod = z.object({
   ),
 })
 
+export type PGIndex = z.infer<typeof pgIndexZod>
+
 const pgIndexArrayZod = z.array(pgIndexZod)
 const pgIndexOptionalZod = z.optional(pgIndexZod)
 

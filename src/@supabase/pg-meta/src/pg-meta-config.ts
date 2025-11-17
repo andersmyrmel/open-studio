@@ -23,6 +23,8 @@ const pgConfigZod = z.object({
   pending_restart: z.boolean(),
 })
 
+export type PGConfig = z.infer<typeof pgConfigZod>
+
 const pgConfigArrayZod = z.array(pgConfigZod)
 
 function list({

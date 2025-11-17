@@ -13,6 +13,8 @@ const pgTablePrimaryKeyZod = z.object({
   table_name: z.string(),
 })
 
+export type PGPrimaryKey = z.infer<typeof pgTablePrimaryKeyZod>
+
 const pgTableRelationshipZod = z.object({
   id: z.number(),
   constraint_name: z.string(),
@@ -23,6 +25,8 @@ const pgTableRelationshipZod = z.object({
   target_table_name: z.string(),
   target_column_name: z.string(),
 })
+
+export type PGRelationship = z.infer<typeof pgTableRelationshipZod>
 
 const pgTableZod = z.object({
   id: z.number(),
