@@ -3,12 +3,22 @@
  * Handles dynamic theming and style management
  */
 
-export const styleHandler = (styles: any) => {
-  // Simple passthrough for now
-  // In full Supabase Studio, this handles complex theming logic
-  return styles
+import { useContext } from 'react'
+import defaultTheme from '@/lib/ui/lib/theme/defaultTheme'
+import { ThemeContext } from '@/lib/ui/components/ThemeProvider/ThemeProvider'
+
+export default function styleHandler(target: string) {
+  let {
+    theme: { [target]: __styles },
+  }: any = useContext(ThemeContext)
+
+  if (!__styles) __styles = defaultTheme[target as keyof typeof defaultTheme]
+
+  // Normalize whitespace in CSS class strings
+  __styles = JSON.stringify(__styles).replace(/\\n/g, '').replace(/\s\s+/g, ' ')
+  __styles = JSON.parse(__styles)
+
+  return __styles
 }
 
 export const getStyleHandler = () => styleHandler
-
-export default styleHandler
