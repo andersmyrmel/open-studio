@@ -150,7 +150,6 @@ function Select({
           value={value}
           disabled={disabled}
           required={required}
-          placeholder={placeholder}
           {...props}
         >
           {children}

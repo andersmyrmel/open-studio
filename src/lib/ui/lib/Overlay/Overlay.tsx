@@ -1,7 +1,6 @@
 'use client'
 
 import React, { useEffect, useRef, useState } from 'react'
-//@ts-expect-error
 import { useOnClickOutside } from './../../lib/Hooks'
 import { DropdownContext } from './OverlayContext'
 import { AnimationTailwindClasses } from '../../types'
