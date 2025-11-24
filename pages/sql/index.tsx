@@ -1,5 +1,3 @@
-'use client'
-
 import { SQLEditor } from '@/components/interfaces/SQLEditor/SQLEditor'
 import { DatabaseLayout } from '@/components/layouts/DatabaseLayout'
 
