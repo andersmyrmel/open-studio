@@ -8,3 +8,10 @@ export default function TableEditorPage() {
     </DatabaseLayout>
   )
 }
+
+// Disable static generation since this page uses router hooks
+export const getServerSideProps = async () => {
+  return {
+    props: {},
+  }
+}
