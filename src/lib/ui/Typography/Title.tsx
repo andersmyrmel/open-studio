@@ -1,5 +1,4 @@
 import React from 'react'
-// @ts-expect-error
 // import TitleStyles from './Title.module.css'
 
 interface Props {

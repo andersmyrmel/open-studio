@@ -136,8 +136,7 @@ export function Checkbox({
                   .replace(/ /g, '-')
               : undefined
 
-        // @ts-expect-error
-        size = parentSize ? parentSize : size
+        size = (parentSize ? parentSize : size) as 'tiny' | 'small' | 'medium' | 'large' | 'xlarge'
 
         // if name does not exist on Radio then use Context Name from Radio.Group
         // if that fails, use the id

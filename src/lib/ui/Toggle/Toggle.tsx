@@ -83,7 +83,6 @@ function Toggle({
   function onClick() {
     // '`onChange` callback for this component
 
-    // @ts-expect-error // issue with conflicting input/button tag being used
     if (onChange) onChange(!active)
 
     setIntChecked(!intChecked)

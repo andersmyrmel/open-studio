@@ -1,5 +1,4 @@
 import React from 'react'
-// @ts-expect-error
 // import SpaceStyles from './Space.module.css'
 
 /**

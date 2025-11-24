@@ -121,7 +121,6 @@ export function Item({ children, className, header, id, disabled }: ItemProps) {
   }
 
   return (
-    // @ts-expect-error TODO: investigate why this is making TS angry
     <RadixAccordion.Item
       value={id}
       className={__styles.variants[type].container}
@@ -130,14 +129,12 @@ export function Item({ children, className, header, id, disabled }: ItemProps) {
         setOpen(!open)
       }}
     >
-      {/* @ts-expect-error TODO: investigate why this is making TS angry */}
       <RadixAccordion.Trigger className={triggerClasses.join(' ')}>
         {header}
         {!disabled && (
           <ChevronDown aria-hidden className={chevronClasses.join(' ')} strokeWidth={2} />
         )}
       </RadixAccordion.Trigger>
-      {/* @ts-expect-error TODO: investigate why this is making TS angry */}
       <RadixAccordion.Content className={__styles.variants[type].content}>
         <div className={__styles.variants[type].panel}>{children}</div>
       </RadixAccordion.Content>

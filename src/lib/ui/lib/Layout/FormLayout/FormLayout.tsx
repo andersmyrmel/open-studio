@@ -1,8 +1,6 @@
 import React from 'react'
-// @ts-expect-error
 import defaultTheme from '../../theme/defaultTheme'
 import { cn } from '../../utils'
-// @ts-expect-error
 // import FormLayoutStyles from './FormLayout.module.css'
 
 type Props = {

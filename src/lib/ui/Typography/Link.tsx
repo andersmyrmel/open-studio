@@ -1,5 +1,4 @@
 import React from 'react'
-// @ts-expect-error
 // import LinkStyles from './Link.module.css'
 
 interface Props {

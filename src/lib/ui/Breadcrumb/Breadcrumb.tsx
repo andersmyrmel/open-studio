@@ -1,4 +1,3 @@
-// @ts-expect-error
 import { ChevronRight } from 'lucide-react'
 import BreadcrumbStyle from './Breadcrumb.module.css'
 

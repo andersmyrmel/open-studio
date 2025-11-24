@@ -5,7 +5,6 @@ import React, { useEffect, useRef, useState } from 'react'
 import { useOnClickOutside } from './../../lib/Hooks'
 import { DropdownContext } from './OverlayContext'
 import { AnimationTailwindClasses } from '../../types'
-// @ts-expect-error
 import OverlayStyles from './Overlay.module.css'
 
 import { Transition } from '@headlessui/react'
