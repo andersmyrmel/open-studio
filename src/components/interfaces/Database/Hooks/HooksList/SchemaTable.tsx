@@ -1,4 +1,4 @@
-import { PostgresTrigger } from '@supabase/postgres-meta'
+import { PostgresTrigger } from '@supabase/pg-meta'
 import { noop } from 'lodash'
 
 import Table from 'components/to-be-cleaned/Table'

@@ -57,7 +57,7 @@ export async function executeSql<T = any>(
     throw new Error('Query is too large to be run via the SQL Editor')
   }
 
-  let headers = new Headers(headersInit)
+  const headers = new Headers(headersInit)
 
   let data
   let error

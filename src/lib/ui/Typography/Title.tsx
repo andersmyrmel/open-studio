@@ -1,5 +1,4 @@
 import React from 'react'
-// @ts-ignore
 // import TitleStyles from './Title.module.css'
 
 interface Props {

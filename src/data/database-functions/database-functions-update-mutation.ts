@@ -21,7 +21,7 @@ export async function updateDatabaseFunction({
   func,
   payload,
 }: DatabaseFunctionUpdateVariables) {
-  const { sql, zod } = pgMeta.functions.update(func, payload)
+  const { sql, zod } = pgMeta.functions.update(func as any, payload)
 
   const { result } = await executeSql({
     projectRef,

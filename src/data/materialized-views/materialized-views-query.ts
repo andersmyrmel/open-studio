@@ -11,6 +11,7 @@ export interface MaterializedView {
   schema: string
   name: string
   comment: string | null
+  is_populated: boolean
 }
 
 export const materializedViewsKeys = {

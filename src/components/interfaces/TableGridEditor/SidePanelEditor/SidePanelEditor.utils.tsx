@@ -1,4 +1,4 @@
-import type { PostgresPrimaryKey } from '@supabase/postgres-meta'
+import type { PostgresPrimaryKey } from '@supabase/pg-meta'
 import { chunk, find, isEmpty, isEqual } from 'lodash'
 import Papa from 'papaparse'
 import { toast } from 'sonner'

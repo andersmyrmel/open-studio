@@ -1,5 +1,5 @@
 import dagre from '@dagrejs/dagre'
-import type { PostgresSchema, PostgresTable } from '@supabase/postgres-meta'
+import type { PostgresSchema, PostgresTable } from '@supabase/pg-meta'
 import { uniqBy } from 'lodash'
 import { Edge, Node, Position } from 'reactflow'
 import 'reactflow/dist/style.css'
@@ -197,7 +197,7 @@ const getLayoutedElementsViaLocalStorage = (
 
   const nodesWithNoSavedPositons = nodes.filter((n) => !(n.id in positions))
   let newNodeCount = 0
-  let basePosition = {
+  const basePosition = {
     x: 0,
     y: -(NODE_SEP + TABLE_NODE_ROW_HEIGHT + nodesWithNoSavedPositons.length * 10),
   }

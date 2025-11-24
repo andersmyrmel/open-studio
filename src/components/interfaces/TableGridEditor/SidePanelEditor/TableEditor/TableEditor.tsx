@@ -1,4 +1,4 @@
-import type { PostgresTable } from '@supabase/postgres-meta'
+import type { PostgresTable } from '@supabase/pg-meta'
 import { isEmpty, isUndefined, noop } from 'lodash'
 import { useEffect, useMemo, useState } from 'react'
 import { toast } from 'sonner'
@@ -312,7 +312,7 @@ export const TableEditor = ({
       <SidePanel.Content className="space-y-10 py-6">
         <Checkbox
           id="enable-rls"
-          // @ts-ignore
+          // @ts-expect-error
           label={
             <div className="flex items-center space-x-2">
               <span>Enable Row Level Security (RLS)</span>

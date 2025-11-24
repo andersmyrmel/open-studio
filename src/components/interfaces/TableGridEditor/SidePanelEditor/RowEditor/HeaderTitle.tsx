@@ -4,7 +4,7 @@ interface HeaderTitleProps {
 }
 
 const HeaderTitle = ({ isNewRecord, tableName }: HeaderTitleProps) => {
-  let header = `${isNewRecord ? 'Add new' : 'Update'} row ${isNewRecord ? 'to' : 'from'} `
+  const header = `${isNewRecord ? 'Add new' : 'Update'} row ${isNewRecord ? 'to' : 'from'} `
 
   return (
     <>

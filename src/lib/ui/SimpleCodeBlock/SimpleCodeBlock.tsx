@@ -41,7 +41,7 @@ export const SimpleCodeBlock = ({
   const { resolvedTheme } = useTheme()
   const [showCopied, setShowCopied] = useState(false)
   const target = useRef(null)
-  let highlightLines: any = []
+  const highlightLines: any = []
 
   useEffect(() => {
     if (!showCopied) return

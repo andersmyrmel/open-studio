@@ -1,4 +1,4 @@
-import { PostgresTrigger } from '@supabase/postgres-meta'
+import { PostgresTrigger } from '@supabase/pg-meta'
 import { PermissionAction } from '@supabase/shared-types/out/constants'
 import { includes, sortBy } from 'lodash'
 import { Check, Copy, Edit, Edit2, MoreVertical, Trash, X } from 'lucide-react'

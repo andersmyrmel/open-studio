@@ -1,4 +1,4 @@
-import type { PostgresSchema } from '@supabase/postgres-meta'
+import type { PostgresSchema } from '@supabase/pg-meta'
 import { toPng, toSvg } from 'html-to-image'
 import { Check, Copy, Download, Loader2 } from 'lucide-react'
 import { useTheme } from 'next-themes'

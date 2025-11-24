@@ -1,6 +1,6 @@
 import { PermissionAction } from '@supabase/shared-types/out/constants'
 import Link from 'next/link'
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/navigation'
 import { useCallback } from 'react'
 
 import { useParams } from '@/lib/common'
@@ -77,7 +77,7 @@ export const TableGridEditor = ({
       const tabId = createTabId(selectedTable.entity_type, { id: selectedTable.id })
       tabs.handleTabClose({
         id: tabId,
-        router,
+        router: router as any,
         editor: 'table',
         onClearDashboardHistory: () => setLastVisitedTable(undefined),
       })
@@ -133,7 +133,7 @@ export const TableGridEditor = ({
                   onClick={() => {
                     tabs.handleTabClose({
                       id: tabId,
-                      router,
+                      router: router as any,
                       editor: 'table',
                       onClearDashboardHistory: () => setLastVisitedTable(undefined),
                     })

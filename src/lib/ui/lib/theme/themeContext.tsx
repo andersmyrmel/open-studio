@@ -35,7 +35,7 @@ interface Props extends React.HTMLAttributes<HTMLDivElement> {
   // usePreferences?: boolean
 }
 
-const themeWrapper: React.FC<Props> = ({
+const ThemeWrapper: React.FC<Props> = ({
   children,
   theme: customTheme,
   // dark,
@@ -66,4 +66,4 @@ const themeWrapper: React.FC<Props> = ({
   return <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>
 }
 
-export default themeWrapper
+export default ThemeWrapper

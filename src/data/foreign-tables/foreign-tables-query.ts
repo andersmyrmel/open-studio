@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query'
 
 import { DEFAULT_PLATFORM_APPLICATION_NAME } from '@supabase/pg-meta/src/constants'
-import { PostgresView } from '@supabase/postgres-meta'
+import { PostgresForeignTable } from '@supabase/pg-meta'
 import { get, handleError } from 'data/fetchers'
 import type { ResponseError, UseCustomQueryOptions } from 'types'
 import { foreignTableKeys } from './keys'
@@ -18,7 +18,7 @@ export async function getForeignTables(
 ) {
   if (!projectRef) throw new Error('projectRef is required')
 
-  let headers = new Headers()
+  const headers = new Headers()
   if (connectionString) headers.set('x-connection-encrypted', connectionString)
 
   const { data, error } = await get('/platform/pg-meta/{ref}/foreign-tables', {
@@ -38,7 +38,7 @@ export async function getForeignTables(
   })
 
   if (error) handleError(error)
-  return data as PostgresView[]
+  return data as PostgresForeignTable[]
 }
 
 export type ForeignTablesData = Awaited<ReturnType<typeof getForeignTables>>

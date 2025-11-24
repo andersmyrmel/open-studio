@@ -1418,7 +1418,7 @@ export async function POST(request: NextRequest) {
 - `/app/api/pg-meta/roles/route.ts` - List roles
 - `/app/api/pg-meta/policies/route.ts` - List RLS policies
 
-**Use @supabase/postgres-meta package** (extracted as local package) for metadata queries.
+**Use @supabase/pg-meta package** (extracted as local package) for metadata queries.
 
 ---
 

@@ -1,28 +1,13 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Enable standalone output for Docker
-  output: 'standalone',
-
-  // Disable telemetry
-  telemetry: {
-    disabled: true,
-  },
-
-  // Strict mode for better error handling
   reactStrictMode: true,
-
-  // Environment variables exposed to the browser (if needed)
-  env: {
-    // Add any public env vars here
-  },
-
-  // Performance optimizations
-  swcMinify: true,
-
-  // Experimental features
+  // Disable static optimization to avoid prerendering issues
   experimental: {
-    // Enable server actions if needed in future
-    // serverActions: true,
+    disableOptimizedLoading: true,
+  },
+  // Force all pages to be SSR for now
+  async redirects() {
+    return []
   },
 }
 

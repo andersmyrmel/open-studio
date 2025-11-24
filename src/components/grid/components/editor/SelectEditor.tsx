@@ -38,7 +38,6 @@ export function SelectEditor<TRow, TSummaryRow = unknown>({
       defaultValue={value ?? ''}
       className="sb-grid-select-editor !gap-2"
       style={{ width: `${column.width}px` }}
-      // @ts-ignore
       onChange={onChange}
       onBlur={onBlur}
     >

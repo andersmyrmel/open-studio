@@ -24,7 +24,7 @@ export async function getSchemas(
 ) {
   if (!projectRef) throw new Error('projectRef is required')
 
-  let headers = new Headers(headersInit)
+  const headers = new Headers(headersInit)
   if (connectionString) headers.set('x-connection-encrypted', connectionString)
 
   const { data, error } = await get('/api/pg-meta/schemas', {

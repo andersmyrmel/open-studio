@@ -1,4 +1,4 @@
-import type { PostgresTable } from '@supabase/postgres-meta'
+import type { PostgresTable } from '@supabase/pg-meta'
 import { useQuery, useQueryClient } from '@tanstack/react-query'
 import { sortBy } from 'lodash'
 import { useCallback } from 'react'
@@ -31,9 +31,9 @@ export async function getTables(
 ) {
   // Note: projectRef and connectionString are kept for compatibility but not used in standalone mode
 
-  let headers = new Headers()
+  const headers = new Headers()
 
-  let queryParams: Record<string, string> = {
+  const queryParams: Record<string, string> = {
     //include_columns is a string, even though it's true or false
     include_columns: `${includeColumns}`,
   }

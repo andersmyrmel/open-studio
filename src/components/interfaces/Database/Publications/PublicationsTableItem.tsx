@@ -1,4 +1,4 @@
-import type { PostgresPublication, PostgresTable } from '@supabase/postgres-meta'
+import type { PostgresPublication, PostgresTable } from '@supabase/pg-meta'
 import { PermissionAction } from '@supabase/shared-types/out/constants'
 import { useState } from 'react'
 import { toast } from 'sonner'
