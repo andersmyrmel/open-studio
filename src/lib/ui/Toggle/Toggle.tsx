@@ -83,7 +83,7 @@ function Toggle({
   function onClick() {
     // '`onChange` callback for this component
 
-    if (onChange) onChange(!active)
+    if (onChange) (onChange as any)(!active)
 
     setIntChecked(!intChecked)
 
