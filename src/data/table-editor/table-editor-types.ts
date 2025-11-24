@@ -9,16 +9,8 @@ import { WRAPPER_HANDLERS } from 'components/interfaces/Integrations/Wrappers/Wr
 import { ENTITY_TYPE } from 'data/entity-types/entity-type-constants'
 
 interface TableRelationship extends PostgresRelationship {
-  id?: number
   deletion_action: 'a' | 'r' | 'c' | 'n' | 'd'
   update_action: 'a' | 'r' | 'c' | 'n' | 'd'
-  // Old schema properties for backwards compatibility
-  source_schema?: string
-  source_table_name?: string
-  source_column_name?: string
-  target_table_schema?: string
-  target_table_name?: string
-  target_column_name?: string
 }
 
 export interface Table extends Omit<PostgresTable, 'columns' | 'relationships'> {

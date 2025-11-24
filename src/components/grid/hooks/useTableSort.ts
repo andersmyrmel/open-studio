@@ -59,7 +59,6 @@ export function useTableSort() {
         newSorts[existingSortIndex] = {
           ...newSorts[existingSortIndex],
           ascending: ascending,
-          order: ascending ? 'asc' : 'desc'
         }
       } else {
         // Column doesn't exist in sorts: Add it to the beginning
@@ -67,7 +66,6 @@ export function useTableSort() {
           table: tableName,
           column: columnKey,
           ascending: ascending,
-          order: ascending ? 'asc' : 'desc'
         })
       }
 

@@ -77,7 +77,7 @@ export const TableGridEditor = ({
       const tabId = createTabId(selectedTable.entity_type, { id: selectedTable.id })
       tabs.handleTabClose({
         id: tabId,
-        router,
+        router: router as any,
         editor: 'table',
         onClearDashboardHistory: () => setLastVisitedTable(undefined),
       })
@@ -133,7 +133,7 @@ export const TableGridEditor = ({
                   onClick={() => {
                     tabs.handleTabClose({
                       id: tabId,
-                      router,
+                      router: router as any,
                       editor: 'table',
                       onClearDashboardHistory: () => setLastVisitedTable(undefined),
                     })
