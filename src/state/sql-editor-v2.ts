@@ -105,7 +105,7 @@ export const sqlEditorState = proxy({
   },
 
   setSnippet: (projectRef: string, snippet: SnippetWithContent) => {
-    let storedSnippet = sqlEditorState.snippets[snippet.id]
+    const storedSnippet = sqlEditorState.snippets[snippet.id]
     if (storedSnippet) {
       if (!storedSnippet.snippet.content) {
         storedSnippet.snippet.content = snippet.content
@@ -116,7 +116,7 @@ export const sqlEditorState = proxy({
   },
 
   setSql: (id: string, sql: string) => {
-    let snippet = sqlEditorState.snippets[id]?.snippet
+    const snippet = sqlEditorState.snippets[id]?.snippet
     if (snippet?.content) {
       snippet.content.sql = sql
       sqlEditorState.needsSaving.set(id, false)
@@ -132,7 +132,7 @@ export const sqlEditorState = proxy({
     name: string
     description?: string
   }) => {
-    let snippet = sqlEditorState.snippets[id]?.snippet
+    const snippet = sqlEditorState.snippets[id]?.snippet
     if (snippet) {
       snippet.name = name
       snippet.description = description
@@ -180,7 +180,7 @@ export const sqlEditorState = proxy({
   },
 
   saveFolder: ({ id, name }: { id: string; name: string }) => {
-    let storeFolder = sqlEditorState.folders[id]
+    const storeFolder = sqlEditorState.folders[id]
     const isNewFolder = id === 'new-folder'
     const hasChanges = storeFolder.folder.name !== name
 
@@ -307,7 +307,7 @@ async function upsertSnippet(
       ])
     }
 
-    let snippet = sqlEditorState.snippets[id]?.snippet
+    const snippet = sqlEditorState.snippets[id]?.snippet
     if (snippet?.content && 'isNotSavedInDatabaseYet' in snippet) {
       snippet.isNotSavedInDatabaseYet = false
     }
@@ -346,7 +346,7 @@ async function upsertFolder(id: string, projectRef: string, name: string) {
       error.message.includes('update') &&
       sqlEditorState.lastUpdatedFolderName.length > 0
     ) {
-      let storeFolder = sqlEditorState.folders[id]
+      const storeFolder = sqlEditorState.folders[id]
 
       storeFolder.status = 'idle'
       storeFolder.folder.name = sqlEditorState.lastUpdatedFolderName

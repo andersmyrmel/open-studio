@@ -101,10 +101,10 @@ function Select({
 
   const __styles = styleHandler('select')
 
-  let classesContainer = [__styles.container]
+  const classesContainer = [__styles.container]
   if (className) classesContainer.push(className)
 
-  let classes = [__styles.base]
+  const classes = [__styles.base]
   if (error) classes.push(__styles.variants.error)
   if (!error) classes.push(__styles.variants.standard)
   if (icon) classes.push(__styles.with_icon)
@@ -150,8 +150,6 @@ function Select({
           value={value}
           disabled={disabled}
           required={required}
-          // @ts-ignore
-          placeholder={placeholder}
           {...props}
         >
           {children}

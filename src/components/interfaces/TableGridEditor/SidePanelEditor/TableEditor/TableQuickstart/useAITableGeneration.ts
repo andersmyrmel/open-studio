@@ -212,7 +212,7 @@ export const useAITableGeneration = () => {
       const reader = response.body.getReader()
       const decoder = new TextDecoder()
       let jsonBuffer = ''
-      let latestPartialSchema: PartialSchema = {}
+      const latestPartialSchema: PartialSchema = {}
 
       try {
         while (true) {

@@ -41,7 +41,7 @@ export function useUrlState<ValueParams extends UrlStateParams>({
       const params = paramsRef.current
 
       const nextParams = typeof newParams === 'function' ? newParams(params) : newParams
-      let newQuery = Object.fromEntries(
+      const newQuery = Object.fromEntries(
         Object.entries({ ...params, ...nextParams }).filter(([, value]) => Boolean(value))
       ) as Record<string, string | string[]>
 

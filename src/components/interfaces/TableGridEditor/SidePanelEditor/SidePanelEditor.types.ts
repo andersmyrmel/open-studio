@@ -1,4 +1,4 @@
-import type { PostgresRelationship } from '@supabase/postgres-meta'
+import type { PostgresRelationship } from '@supabase/pg-meta'
 import { CreateColumnBody } from 'data/database-columns/database-column-create-mutation'
 import { UpdateColumnBody } from 'data/database-columns/database-column-update-mutation'
 
@@ -38,11 +38,6 @@ export interface Field {
 export interface ExtendedPostgresRelationship extends PostgresRelationship {
   deletion_action: string
   update_action: string
-  // Aliases for different naming conventions
-  target_table_schema?: string
-  target_table_name?: string
-  target_column_name?: string
-  id?: number
 }
 
 export interface ColumnField {

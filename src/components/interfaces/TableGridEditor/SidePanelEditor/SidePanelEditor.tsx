@@ -1,4 +1,4 @@
-import type { PostgresColumn, PostgresTable } from '@supabase/postgres-meta'
+import type { PostgresColumn, PostgresTable } from '@supabase/pg-meta'
 import { useQueryClient } from '@tanstack/react-query'
 import { isEmpty, isUndefined, noop } from 'lodash'
 import { useState } from 'react'
@@ -672,7 +672,7 @@ export const SidePanelEditor = ({
       />
       <ForeignRowSelector
         visible={snap.sidePanel?.type === 'foreign-row-selector'}
-        // @ts-ignore
+        // @ts-expect-error
         foreignKey={
           snap.sidePanel?.type === 'foreign-row-selector'
             ? snap.sidePanel.foreignKey.foreignKey

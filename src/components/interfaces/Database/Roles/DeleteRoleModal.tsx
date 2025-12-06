@@ -1,4 +1,4 @@
-import type { PostgresRole } from '@supabase/postgres-meta'
+import type { PostgresRole } from '@supabase/pg-meta'
 import { toast } from 'sonner'
 
 import { useDatabaseRoleDeleteMutation } from 'data/database-roles/database-role-delete-mutation'

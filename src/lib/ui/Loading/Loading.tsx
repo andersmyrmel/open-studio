@@ -11,15 +11,15 @@ interface Props {
 export default function Loading({ children, active, isFullHeight = false }: Props) {
   const __styles = styleHandler('loading')
 
-  let classNames = [__styles.base]
+  const classNames = [__styles.base]
 
-  let contentClasses = [__styles.content.base]
+  const contentClasses = [__styles.content.base]
 
   if (active) {
     contentClasses.push(__styles.content.active)
   }
 
-  let spinnerClasses = [__styles.spinner]
+  const spinnerClasses = [__styles.spinner]
 
   return (
     <div className={cn(classNames.join(' '), isFullHeight && 'h-full')}>

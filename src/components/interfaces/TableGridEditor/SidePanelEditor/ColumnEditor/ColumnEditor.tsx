@@ -1,4 +1,4 @@
-import type { PostgresColumn, PostgresTable } from '@supabase/postgres-meta'
+import type { PostgresColumn, PostgresTable } from '@supabase/pg-meta'
 import { isEmpty, noop } from 'lodash'
 import { ExternalLink, Plus } from 'lucide-react'
 import Link from 'next/link'
@@ -195,9 +195,9 @@ const ColumnEditor = ({
       size="xlarge"
       key="ColumnEditor"
       visible={visible}
-      // @ts-ignore
+      // @ts-expect-error
       onConfirm={(resolve: () => void) => onSaveChanges(resolve)}
-      // @ts-ignore
+      // @ts-expect-error
       header={<HeaderTitle table={selectedTable} column={column} />}
       onCancel={closePanel}
       customFooter={

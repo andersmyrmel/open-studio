@@ -77,10 +77,10 @@ export const getURL = () => {
  * Generates a random string using alpha characters
  */
 export const makeRandomString = (length: number) => {
-  var result = ''
-  var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'
-  var charactersLength = characters.length
-  for (var i = 0; i < length; i++) {
+  let result = ''
+  const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'
+  const charactersLength = characters.length
+  for (let i = 0; i < length; i++) {
     result += characters.charAt(Math.floor(Math.random() * charactersLength))
   }
   return result.toString()
@@ -92,7 +92,7 @@ export const makeRandomString = (length: number) => {
  * @param {array} fields a list of properties to pluck. eg: ['first_name', 'last_name']
  */
 export const pluckObjectFields = (model: any, fields: any[]) => {
-  let o: any = {}
+  const o: any = {}
   fields.forEach((field) => {
     o[field] = model[field]
   })

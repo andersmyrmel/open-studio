@@ -2,7 +2,7 @@ import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { toast } from 'sonner'
 
 import { PGTrigger, PGTriggerCreate } from '@supabase/pg-meta/src/pg-meta-triggers'
-import { PostgresTrigger } from '@supabase/postgres-meta'
+import { PostgresTrigger } from '@supabase/pg-meta'
 import { executeSql } from 'data/sql/execute-sql-query'
 import { quoteLiteral } from 'lib/pg-format'
 import type { ResponseError, UseCustomMutationOptions } from 'types'

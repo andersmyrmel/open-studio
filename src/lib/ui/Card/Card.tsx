@@ -15,9 +15,9 @@ interface CardProps {
 }
 
 function Card({ children, className, cover, hoverable, style, title, titleExtra }: CardProps) {
-  let __styles = styleHandler('card')
+  const __styles = styleHandler('card')
 
-  let classes = [__styles.base]
+  const classes = [__styles.base]
   if (hoverable) classes.push(__styles.hoverable)
   if (className) classes.push(className)
 

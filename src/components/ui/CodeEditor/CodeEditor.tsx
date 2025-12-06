@@ -108,7 +108,7 @@ const CodeEditor = ({
         () => {
           editor.executeEdits('source', [
             {
-              // @ts-ignore
+              // @ts-expect-error
               identifier: 'add-placeholder',
               range: new monaco.Range(1, 1, 1, 1),
               text: (placeholder ?? '')
@@ -197,7 +197,7 @@ const CodeEditor = ({
         () => {
           editor.executeEdits('source', [
             {
-              // @ts-ignore
+              // @ts-expect-error
               identifier: 'add-placeholder',
               range: new monaco.Range(1, 1, 1, 1),
               text: (placeholder ?? '  ')

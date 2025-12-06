@@ -40,7 +40,7 @@ export function convertArgumentTypes(value: string) {
 export function convertConfigParams(value: Record<string, string> | null | undefined) {
   const temp = []
   if (value) {
-    for (var key in value) {
+    for (const key in value) {
       temp.push({ name: key, value: value[key] })
     }
   }

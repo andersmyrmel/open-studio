@@ -13,7 +13,7 @@ export type TableRowTruncateVariables = {
 }
 
 export function getTableRowTruncateSql({ table }: Pick<TableRowTruncateVariables, 'table'>) {
-  let queryChains = new Query().from(table.name, table.schema ?? undefined).truncate()
+  const queryChains = new Query().from(table.name, table.schema ?? undefined).truncate()
 
   return queryChains.toSql()
 }

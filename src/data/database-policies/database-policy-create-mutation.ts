@@ -28,7 +28,7 @@ export async function createDatabasePolicy({
   connectionString,
   payload,
 }: DatabasePolicyCreateVariables) {
-  let headers = new Headers()
+  const headers = new Headers()
   if (connectionString) headers.set('x-connection-encrypted', connectionString)
 
   const { sql } = pgMeta.policies.create(payload)

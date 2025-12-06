@@ -1,4 +1,4 @@
-import { checkTablesAnonAuthenticatedAccessSQL } from '@supabase/pg-meta/src/sql/studio/check-tables-anon-authenticated-access'
+import { getTablesWithAnonAuthenticatedAccessSQL } from '@supabase/pg-meta/src/sql/studio/check-tables-anon-authenticated-access'
 import { useQuery } from '@tanstack/react-query'
 
 import { executeSql, ExecuteSqlError } from '../sql/execute-sql-query'
@@ -20,7 +20,7 @@ export async function getTablesWithAnonAuthenticatedAccess(
 ) {
   if (!schema) throw new Error('schema is required')
 
-  const sql = checkTablesAnonAuthenticatedAccessSQL({ schema })
+  const sql = getTablesWithAnonAuthenticatedAccessSQL({ schema })
 
   const { result } = (await executeSql(
     { projectRef, connectionString, sql, queryKey: ['TablesRolesAccess', schema] },

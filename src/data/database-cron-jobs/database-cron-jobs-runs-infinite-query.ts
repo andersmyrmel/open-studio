@@ -35,7 +35,7 @@ export async function getDatabaseCronJobRuns({
 }: DatabaseCronJobRunsVariables & { afterTimestamp: string }) {
   if (!projectRef) throw new Error('Project ref is required')
 
-  let query = `
+  const query = `
     SELECT * FROM cron.job_run_details
     WHERE
       jobid = '${jobId}'

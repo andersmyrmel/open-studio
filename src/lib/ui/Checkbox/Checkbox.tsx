@@ -136,8 +136,7 @@ export function Checkbox({
                   .replace(/ /g, '-')
               : undefined
 
-        // @ts-ignore
-        size = parentSize ? parentSize : size
+        size = (parentSize ? parentSize : size) as 'tiny' | 'small' | 'medium' | 'large' | 'xlarge'
 
         // if name does not exist on Radio then use Context Name from Radio.Group
         // if that fails, use the id
@@ -149,7 +148,7 @@ export function Checkbox({
 
         // if (values && !value) value = values[id || name]
 
-        let containerClasses = [__styles.container]
+        const containerClasses = [__styles.container]
 
         function onInputChange(e: React.ChangeEvent<HTMLInputElement>) {
           // '`onChange` callback for parent component

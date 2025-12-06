@@ -1,4 +1,4 @@
-import type { PostgresTable } from '@supabase/postgres-meta'
+import type { PostgresTable } from '@supabase/pg-meta'
 import { sortBy } from 'lodash'
 import { ArrowRight, Database, HelpCircle, Loader2, Table, X } from 'lucide-react'
 import { Fragment, useEffect, useState } from 'react'
@@ -526,7 +526,7 @@ export const ForeignKeySelector = ({
                     value={fk.deletionAction}
                     className="[&>div>label]:flex [&>div>label]:items-center"
                     label="Action if referenced row is removed"
-                    // @ts-ignore
+                    // @ts-expect-error
                     labelOptional={
                       <DocsButton href={`${DOCS_URL}/guides/database/postgres/cascade-deletes`} />
                     }

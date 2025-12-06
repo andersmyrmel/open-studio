@@ -26,7 +26,7 @@ const ActionBar = ({
 }: PropsWithChildren<ActionBarProps>) => {
   const [isRunning, setIsRunning] = useState(false)
 
-  // @ts-ignore
+  // @ts-expect-error
   const applyCallback = () => new Promise((resolve) => applyFunction(resolve))
 
   const onSelectApply = async () => {

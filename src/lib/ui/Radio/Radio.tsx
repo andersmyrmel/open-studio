@@ -194,8 +194,7 @@ function Radio({
         const markupName = name || inputName
 
         // console.log('markupName', markupName)
-        // @ts-ignore
-        size = parentSize || size
+        size = (parentSize || size) as 'tiny' | 'small' | 'medium' | 'large' | 'xlarge'
 
         // check if radio id is via parent component
         // then check if radio checked prop is true or false
@@ -203,7 +202,7 @@ function Radio({
         const active =
           activeId === markupId ? true : checked ? true : checked === false ? false : undefined
 
-        let classes = [
+        const classes = [
           className,
           __styles.variants[type].container.base,
           // __styles.variants[type].container.align[align],

@@ -13,7 +13,7 @@ type Align = 'left' | 'right'
 interface ContextValue {
   bordered?: boolean
   type: Type
-  justified: Boolean
+  justified: boolean
   chevronAlign: Align
 }
 
@@ -34,7 +34,7 @@ export interface AccordionProps {
   type?: Type
   size?: Size
   defaultValue?: string | string[] | undefined
-  justified?: Boolean
+  justified?: boolean
   chevronAlign?: Align
 }
 
@@ -53,7 +53,7 @@ function Accordion({
 }: AccordionProps) {
   const __styles = styleHandler('accordion')
 
-  let containerClasses = [__styles.variants[type].base]
+  const containerClasses = [__styles.variants[type].base]
 
   if (className) {
     containerClasses.push(className)
@@ -110,18 +110,17 @@ export function Item({ children, className, header, id, disabled }: ItemProps) {
 
   const { type, justified, chevronAlign } = useContext(AccordionContext)
 
-  let triggerClasses = [__styles.variants[type].trigger]
+  const triggerClasses = [__styles.variants[type].trigger]
   if (justified) triggerClasses.push(__styles.justified)
   if (className) triggerClasses.push(className)
 
-  let chevronClasses = [__styles.chevron.base, __styles.chevron.align[chevronAlign]]
+  const chevronClasses = [__styles.chevron.base, __styles.chevron.align[chevronAlign]]
 
   if (open && !disabled) {
     chevronClasses.unshift('!rotate-180')
   }
 
   return (
-    // @ts-ignore TODO: investigate why this is making TS angry
     <RadixAccordion.Item
       value={id}
       className={__styles.variants[type].container}
@@ -130,14 +129,12 @@ export function Item({ children, className, header, id, disabled }: ItemProps) {
         setOpen(!open)
       }}
     >
-      {/* @ts-ignore TODO: investigate why this is making TS angry */}
       <RadixAccordion.Trigger className={triggerClasses.join(' ')}>
         {header}
         {!disabled && (
           <ChevronDown aria-hidden className={chevronClasses.join(' ')} strokeWidth={2} />
         )}
       </RadixAccordion.Trigger>
-      {/* @ts-ignore TODO: investigate why this is making TS angry */}
       <RadixAccordion.Content className={__styles.variants[type].content}>
         <div className={__styles.variants[type].panel}>{children}</div>
       </RadixAccordion.Content>

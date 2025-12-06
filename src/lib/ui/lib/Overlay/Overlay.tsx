@@ -1,11 +1,9 @@
 'use client'
 
 import React, { useEffect, useRef, useState } from 'react'
-//@ts-ignore
 import { useOnClickOutside } from './../../lib/Hooks'
 import { DropdownContext } from './OverlayContext'
 import { AnimationTailwindClasses } from '../../types'
-// @ts-ignore
 import OverlayStyles from './Overlay.module.css'
 
 import { Transition } from '@headlessui/react'
@@ -38,7 +36,7 @@ function Overlay({
   const ref = useRef(null)
   const [visibleState, setVisibleState] = useState(!!visible)
 
-  let classes = [
+  const classes = [
     OverlayStyles['sbui-overlay-container'],
     OverlayStyles[`sbui-overlay-container--${placement}`],
   ]

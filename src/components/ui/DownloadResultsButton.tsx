@@ -71,7 +71,7 @@ export const DownloadResultsButton = ({
 
       const columns = Object.keys(formattedResults[0])
       const rows = formattedResults.map((x) => {
-        let temp: any[] = []
+        const temp: any[] = []
         columns.forEach((col) => temp.push(x[col]))
         return temp
       })

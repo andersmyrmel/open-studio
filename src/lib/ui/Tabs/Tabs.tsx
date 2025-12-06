@@ -70,7 +70,7 @@ const Tabs: React.FC<PropsWithChildren<TabsProps>> & TabsSubComponents = ({
     if (activeId && activeId !== activeTab) setActiveTab(activeId)
   }, [activeId])
 
-  let __styles = styleHandler('tabs')
+  const __styles = styleHandler('tabs')
 
   function onTabClick(id: string) {
     onClick?.(id)
@@ -148,7 +148,7 @@ interface PanelProps {
  * @deprecated Use ./TabsContent_Shadcn_ instead
  */
 export const Panel: React.FC<PropsWithChildren<PanelProps>> = ({ children, id, className }) => {
-  let __styles = styleHandler('tabs')
+  const __styles = styleHandler('tabs')
 
   return (
     <TabsPrimitive.Content value={id} className={[__styles.content, className].join(' ')}>

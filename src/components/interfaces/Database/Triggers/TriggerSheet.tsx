@@ -5,7 +5,7 @@ import { SubmitHandler, useForm } from 'react-hook-form'
 import { toast } from 'sonner'
 import * as z from 'zod'
 
-import { PostgresTrigger } from '@supabase/postgres-meta'
+import { PostgresTrigger } from '@supabase/pg-meta'
 import FormBoxEmpty from 'components/ui/FormBoxEmpty'
 import { useDatabaseTriggerCreateMutation } from 'data/database-triggers/database-trigger-create-mutation'
 import { useDatabaseTriggerUpdateMutation } from 'data/database-triggers/database-trigger-update-mutation'
@@ -148,7 +148,7 @@ export const TriggerSheet = ({
         projectRef: project?.ref,
         connectionString: project?.connectionString,
         originalTrigger: selectedTrigger,
-        payload: { id: selectedTrigger.id, name: payload.name, enabled_mode: payload.enabled_mode },
+        payload: { name: payload.name, enabled_mode: payload.enabled_mode },
       })
     } else {
       createDatabaseTrigger({
@@ -171,9 +171,9 @@ export const TriggerSheet = ({
           tableId: initalSelectedTable?.id.toString(),
           table: initalSelectedTable?.name,
           schema: initalSelectedTable?.schema,
-        })
+        } as any)
       } else if (isEditing) {
-        form.reset(selectedTrigger)
+        form.reset(selectedTrigger as any)
       } else if (tables.length > 0) {
         form.reset({
           ...defaultValues,
