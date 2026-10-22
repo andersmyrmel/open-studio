@@ -1,0 +1,24 @@
+name: Container runtime compatibility
+on:
+  pull_request:
+    paths:
+      - Dockerfile
+      - .dockerignore
+      - package.json
+      - package-lock.json
+      - .github/workflows/container.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10
+      - name: Build complete production image
+        run: docker build --progress=plain --tag open-studio:security-test .
+      - name: Verify runtime and user
+        run: |
+          test "$(docker run --rm --entrypoint node open-studio:security-test --version)" = "v22.23.4"
+          test "$(docker run --rm --entrypoint id open-studio:security-test -u)" = "1001"
